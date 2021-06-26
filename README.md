@@ -8,7 +8,7 @@ M-F 6:00 pm – 9:36 pm
 ### Holidays
 
 July 5th -- Independence Day  
-September 6 -- Labor Day  
+September 6th -- Labor Day  
 
 ### Staff
 
