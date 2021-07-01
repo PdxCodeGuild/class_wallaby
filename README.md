@@ -50,7 +50,7 @@ Presentation Day: November 12th, 2021
 
 ## Python Labs Assigned:
 
-...coming soon...
+Lab 2: Average Numbers
 
 <!-- #### Optional Python Labs -->
 
