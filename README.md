@@ -51,6 +51,7 @@ Presentation Day: November 12th, 2021
 ## Python Labs Assigned:
 
 Lab 2: Average Numbers
+Lab 3: Number To Phrase
 
 <!-- #### Optional Python Labs -->
 
