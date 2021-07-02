@@ -23,7 +23,7 @@ for card in player_hand:
   if card in card_table:
     score += card_table[card]
 
-#Checks for an ace and possiblity of changing it's value from 1 to 11. Adding the differenc, 10 if it would cause a bust
+#Checks for an ace and possiblity of changing it's value from 1 to 11. Adding the difference, 10 if it would not cause a bust
 if 'A' in player_hand and score <= 11:
   score += 10
 
