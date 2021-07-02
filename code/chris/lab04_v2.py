@@ -13,13 +13,11 @@ card_table = {
   'Q': 10,
   'K': 10,
 }
+score = 0
 
 player_hand = [input('''\nWhat's your first card? ''' ).upper()]
 player_hand.append(input('''\nWhat's your second card? ''' ).upper())
 player_hand.append(input('''\nWhat's your third card? ''' ).upper())
-score = 0
-
-print(player_hand)
 
 for card in player_hand:
   if card in card_table:
