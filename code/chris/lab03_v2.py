@@ -33,39 +33,35 @@ ones_dict = {
   9: 'nine',
 }
 
-while True:
-  x = input('\nenter a number 100-999 or done: ')
-  if x == 'done':
-    break
+key_errors = []
+for x in range(100, 999):
   try:
-    x = int(x)
+    hundreds_digit = x // 100
+    tens_digit = x // 10 - hundreds_digit * 10
+    ones_digit = x % 10
 
-  except:
-    print('\nPlease enter a valid number')
-    break
+    print_str = f'{ones_dict[hundreds_digit]} hundred'
+    if tens_digit == 0 and ones_digit > 0:
+      print_str += ' and '
 
-  hundreds_digit = x // 100
-  tens_digit = x // 10 - hundreds_digit * 10
-  ones_digit = x % 10
+    if tens_digit >= 2:
+      print_str += f' {tens_dict[tens_digit]}'
 
-  print_str = f'{ones_dict[hundreds_digit]} hundred'
-  if tens_digit == 0 and ones_digit > 0:
-    print_str += ' and '
+    if tens_digit >= 2 and ones_digit > 0:
+      print_str += '-'
 
-  if tens_digit >= 2:
-    print_str += f' {tens_dict[tens_digit]}'
+    if ones_digit > 0 and tens_digit != 1:
+      print_str += f'{ones_dict[ones_digit]}'
 
-  if tens_digit >= 2 and ones_digit > 0:
-    print_str += '-'
+    if tens_digit == 1 and ones_digit > 0:
+      print_str += f' and {teens_dict[ones_digit]}'
+    elif tens_digit == 1 and ones_digit == 0:
+      print_str += ' ten'
 
-  if ones_digit > 0 and tens_digit != 1:
-    print_str += f'{ones_dict[ones_digit]}'
+    print(hundreds_digit, tens_digit, ones_digit)
 
-  if tens_digit == 1 and ones_digit > 0:
-    print_str += f' and {teens_dict[ones_digit]}'
-  elif tens_digit == 1 and ones_digit == 0:
-    print_str += ' ten'
+    print(print_str)
 
-  print(hundreds_digit, tens_digit, ones_digit)
-
-  print(print_str)
+  except KeyError:
+    key_errors.append(x)
+print(key_errors)
