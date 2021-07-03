@@ -34,7 +34,7 @@ ones_dict = {
 }
 
 key_errors = []
-for x in range(100, 999):
+for x in range(100, 1000):
   try:
     hundreds_digit = x // 100
     tens_digit = x // 10 - hundreds_digit * 10

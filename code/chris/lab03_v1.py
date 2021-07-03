@@ -33,7 +33,7 @@ ones_dict = {
   9: 'nine',
 }
 
-# for x in range(99):
+# for x in range(100):
 #   output_str = ''
 #   tens_digit = x // 10
 #   ones_digit = x % 10
@@ -51,7 +51,7 @@ ones_dict = {
 
 # then comment this block in, and run it again
 key_errors = []
-for x in range(99):
+for x in range(100):
   try:
     output_str = ''
     tens_digit = x // 10
@@ -59,6 +59,8 @@ for x in range(99):
 
     if tens_digit >= 2:
       output_str += tens_dict[tens_digit]
+      if ones_digit != 0:
+        output_str += '-'
 
     elif tens_digit == 1:
       output_str += teens_dict[ones_digit]
