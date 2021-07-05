@@ -1,3 +1,5 @@
+# Lab 02v2: Average numbers
+
 nums = []
 
 for i in range(len(nums)):
