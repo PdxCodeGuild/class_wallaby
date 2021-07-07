@@ -27,11 +27,11 @@ cards = {
 
 while True:
 
-    a = input(f'What is you first card ? or "done" to quit. :  ')
+    a = input(f'What is you first card ? or "done" to quit. :  ').upper()
     if a == "done":
         break
-    b = input(f'What is you second card ? : ')
-    c = input(f'What is you third card ? : ')
+    b = input(f'What is you second card ? : ').upper()
+    c = input(f'What is you third card ? : ').upper()
 
     
     a2 = cards[a]
