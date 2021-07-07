@@ -42,6 +42,7 @@ def play(num_of_tickets):
 
 play(100000)
 
+
 # **** T E S T S ****
 def test_pick6():
   pick6_list = pick6()
@@ -70,4 +71,7 @@ def test_scorekeeper():
   assert scorekeeper(4, ticket_cost) == matches_dict[4]-ticket_cost
   assert scorekeeper(5, ticket_cost) == matches_dict[5]-ticket_cost
   assert scorekeeper(6, ticket_cost) == matches_dict[6]-ticket_cost
+
+def test_play():
+  assert play(1) == 2 or -2
 
