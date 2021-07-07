@@ -3,6 +3,15 @@ import random
 balance = 0 # why can't this variable be referenced within the def?
 ticket_cost = 2
 
+matches_dict = {
+    1: 4,
+    2: 7,
+    3: 100,
+    4: 50000,
+    5: 1000000,
+    6: 25000000
+  }
+
 # **** F U N C T I O N S ****
 def pick6():
   six_list = []
@@ -19,14 +28,7 @@ def num_matches(winning, ticket):
 
 def scorekeeper(matches, ticket_cost):
   balance = -ticket_cost
-  matches_dict = {
-    1: 4,
-    2: 7,
-    3: 100,
-    4: 50000,
-    5: 1000000,
-    6: 25000000
-  }
+
   if matches > 0:
     balance += matches_dict[matches]
   return balance
@@ -61,11 +63,11 @@ def test_num_matches():
 
 # test matches 0-6 for correct return
 def test_scorekeeper():
-  assert scorekeeper(0, ticket_cost) == -2
-  assert scorekeeper(1, ticket_cost) == 2
-  assert scorekeeper(2, ticket_cost) == 5
-  assert scorekeeper(3, ticket_cost) == 98
-  assert scorekeeper(4, ticket_cost) == 49998
-  assert scorekeeper(5, ticket_cost) == 999998
-  assert scorekeeper(6, ticket_cost) == 24999998
+  assert scorekeeper(0, ticket_cost) == -ticket_cost
+  assert scorekeeper(1, ticket_cost) == matches_dict[1]-ticket_cost
+  assert scorekeeper(2, ticket_cost) == matches_dict[2]-ticket_cost
+  assert scorekeeper(3, ticket_cost) == matches_dict[3]-ticket_cost
+  assert scorekeeper(4, ticket_cost) == matches_dict[4]-ticket_cost
+  assert scorekeeper(5, ticket_cost) == matches_dict[5]-ticket_cost
+  assert scorekeeper(6, ticket_cost) == matches_dict[6]-ticket_cost
 
