@@ -25,4 +25,4 @@ payout = {
  '6' : 25000000,
 }
 
-print(total) #Print matches from total list.
+#print(total) #Print matches from total list
