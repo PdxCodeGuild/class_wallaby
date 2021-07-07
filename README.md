@@ -52,6 +52,9 @@ Presentation Day: November 12th, 2021
 
 Lab 2: Average Numbers
 Lab 3: Number To Phrase
+Lab 4: Blackjack Advice
+Lab 5: Pick 6
+Lab 6: Credit Card Validator
 
 <!-- #### Optional Python Labs -->
 
