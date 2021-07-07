@@ -10,7 +10,7 @@ Dict = {'0': '', '1': 'one', '2': 'two', '3': 'three', '4': 'four', '5': 'five',
 Dict_1 = {'1': 'one hundred', '2': 'two hundred', '3': 'three hundred', '4': 'four hundred', '5': 'five hundred', '6': 'six hundred', '7': 'seven hundred', 
 '8': 'eight hundred', '9': 'nine hundred'}
 
-def hundreds(sendit):
+'''def hundreds(sendit):
     switcher= {
         1:'one hundred',
         2:'two hundred',
@@ -21,12 +21,12 @@ def hundreds(sendit):
         7:'seven hundred',
         8:'eight hundred',
         9:'nine hundred'
-    }
+    }'''
 
 def base(here):
     if len(str(given_number)) == 1 and given_number == 0:
         return 'zero'
-    elif given_number in range(1, 9):
+    elif given_number in range(1, 10):
         return(Dict[ones_digit])
     elif given_number in range(1, 21):
         if given_number == 10:
@@ -71,11 +71,17 @@ def base(here):
     
 
 
+key_errors = []    
 if given_number in range(0, 100):
     print(base(given_number))
 if given_number in range(100, 1000):
-    x = Dict_1[hundreths_digit]
-    given_number = given_number - (int(hundreths_digit) * 100)
-    print(x, base(given_number))
+    try:
+        x = Dict_1[hundreths_digit]
+        given_number = given_number - (int(hundreths_digit) * 100)
+        print(x, base(given_number))
+    
+    except KeyError:
+        key_errors.append(given_number)
+print(key_errors)
     
 

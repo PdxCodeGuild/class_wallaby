@@ -13,4 +13,11 @@ too_many_mangos = ['apples', 'mangos', 'bananas', 'mangos', 'blueberries',
 Dict_1 = {'1': 'one hundred', '2': 'two hundred', '3': 'three hundred', '4': 'four hundred', '5': 'five hundred', '6': 'six hundred', '7': 'seven hundred', 
 '8': 'eight hundred', '9': 'nine hundred'}
 
-print(Dict_1.get('1')) '''
+print(Dict_1.get('1')) 
+
+def cap(message):
+   x = message.upper()
+   return x
+
+y = cap('hello')
+print(y)'''

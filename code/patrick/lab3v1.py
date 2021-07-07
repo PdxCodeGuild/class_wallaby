@@ -37,24 +37,28 @@ def base(here):
             return('twenty')
     elif given_number in range(21,30):
         return(f'twenty {Dict[ones_digit]}')
-    elif given_number in range(30,39):
+    elif given_number in range(30,40):
         return(f'thirty {Dict[ones_digit]}')
-    elif given_number in range(40,49):
+    elif given_number in range(40,50):
         return(f'fourty {Dict[ones_digit]}')
-    elif given_number in range(50,59):
+    elif given_number in range(50,60):
         return(f'fifty {Dict[ones_digit]}')
-    elif given_number in range(60,69):
+    elif given_number in range(60,70):
         return(f'sixty {Dict[ones_digit]}') 
-    elif given_number in range(70,79):
+    elif given_number in range(70,80):
         return(f'seventy {Dict[ones_digit]}')
-    elif given_number in range(80,89):
+    elif given_number in range(80,90):
         return(f'eighty {Dict[ones_digit]}')        
     elif given_number in range(90,100):
-        return(f'ninety {Dict[ones_digit]}')  
+        return(f'ninety {Dict[ones_digit]}') 
     
 
-
+key_errors = []
 if given_number in range(0, 100):
-    print(base(given_number))
-
+    try:
+        print(base(given_number))
+    except KeyError:
+        key_errors.append(given_number)
+print(key_errors)
+  
   

@@ -74,7 +74,7 @@ def base(here):
 # if given_number in range(0, 100):
 #     print(base(given_number))
 
-key_errors = []
+'''key_errors = []
 
 for given_number in range(1000):
     try:
@@ -83,5 +83,19 @@ for given_number in range(1000):
         print(x, base(given_number))
     except KeyError:
         key_errors.append(given_number)
-print(key_errors)
+print(key_errors)'''
 
+
+
+key_errors = []    
+if given_number in range(0, 100):
+    print(base(given_number))
+if given_number in range(100, 1000):
+    try:
+        x = Dict_1[hundreths_digit]
+        given_number = given_number - (int(hundreths_digit) * 100)
+        print(x, base(given_number))
+    
+    except KeyError:
+        key_errors.append(given_number)
+print(key_errors)
