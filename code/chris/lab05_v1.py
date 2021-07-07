@@ -1,6 +1,6 @@
 import random
 
-balance = 0
+balance = 0 # why can't this variable be referenced within the def?
 ticket_cost = 2
 
 # **** F U N C T I O N S ****
@@ -33,7 +33,12 @@ def scorekeeper(matches, ticket_cost):
 
 def play(num_of_tickets):
   winning = pick6()
+  balance = 0
+  for i in range(num_of_tickets):
+    balance += scorekeeper(num_matches(winning, pick6()), ticket_cost)
+  print(f'''Balance: {'-' if balance < 0 else ''}${abs(balance)}''')
 
+play(100000)
 
 # **** T E S T S ****
 def test_pick6():
