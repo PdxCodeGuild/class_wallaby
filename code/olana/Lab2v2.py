@@ -1,6 +1,5 @@
 nums = []
 
-
 while True:
     user_input =int(input("Enter number: "))
     nums.append(user_input)
