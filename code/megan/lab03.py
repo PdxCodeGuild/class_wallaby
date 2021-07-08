@@ -75,4 +75,4 @@ elif user_num >= 100 and user_num < 1000:
     if tens_digit != 0:
         print(f"{num_to_phrase[tens_digit]}-{num_to_phrase[ones_digit]}")
     elif tens_digit == 0:
-        print(f"{num_to_phrase[user_num]} hundred {num_to_phrase[tens_digit]}-{num_to_phrase[user_num]}")
+        print(f"{num_to_phrase[user_num]} hundred {num_to_phrase[tens_digit]}-{num_to_phrase[user_num]}") 
