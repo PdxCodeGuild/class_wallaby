@@ -34,10 +34,11 @@ for i in user_input:
  
     output.append(x) 
 
-print(''.join(output))'''
+print(''.join(output))
 new = []
 list = (3, 2, 1)
 for i in range(len(list)):
    i = i + 13 
    new.append(list[i])
-print(new)
+print(new)'''
+

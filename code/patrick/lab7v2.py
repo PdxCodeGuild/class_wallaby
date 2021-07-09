@@ -9,8 +9,6 @@ dict_1 = dict(zip(english, rot_13)) #https://stackoverflow.com/questions/1191890
 output = []
 for i in user_input:
     x = dict_1.get(i)
-
- 
     output.append(x) 
 
 print(''.join(output))  
