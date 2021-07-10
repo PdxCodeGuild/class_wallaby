@@ -1,3 +1,5 @@
+# ARI is the grade level required to understand a text. 
+
 import math
 text_1 = open('dracula.txt')
 book = text_1.read()
@@ -8,11 +10,11 @@ def ari_counter(text):
     text = text.replace('.', ' ')
     characters = (len(text) - text.count(' '))
     ari_score = 4.71*(characters/words)+.5*(words/sentences)-21.43
-    print("words:",words)
-    print('sentences',sentences)
-    print('characters', characters)
+    # print("words:",words)
+    # print('sentences',sentences)
+    # print('characters', characters)
 
-    print(ari_score)
+    #print(ari_score)
     if ari_score >= 14:
         ari_score = 14
     return math.ceil(ari_score)
@@ -32,5 +34,10 @@ ari_scale = {
     13: {'ages': '17-18', 'grade_level':   '12th Grade'},
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
+ari = ari_counter(book)
 
-print(ari_counter(book))
+print(ari_scale[ari])
+for key in ari_scale:
+    if key == ari:
+        print(f'The ARI for dracula.txt is {key}.\nThis corresponds to a')
+
