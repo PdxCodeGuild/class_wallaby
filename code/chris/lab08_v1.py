@@ -16,12 +16,19 @@ def valleys(data):
   valleys_list = []
   for idx, value in enumerate(data):
     if idx > 0 and idx < len(data):
-      print('code runs ', idx)
       if data[idx - 1] > value and data[idx + 1] > value:
         valleys_list.append(idx)
 
   return valleys_list
 
+def peaks_and_valleys(data):
+  result_list = peaks(data)
+  valleys_list = valleys(data)
+  result_list.extend(valleys_list)
+  result_list.sort()
+  return result_list
+
 
 print('peaks list:', peaks(data))
 print('valleys list:', valleys(data))
+print('peaks & valleys', peaks_and_valleys(data))
