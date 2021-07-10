@@ -1,7 +1,8 @@
 # ARI is the grade level required to understand a text. 
 
 import math
-text_1 = open('dracula.txt')
+text_title = ('dracula.txt') # change this when using different texts. 
+text_1 = open(text_title)
 book = text_1.read()
 
 def ari_counter(text):
@@ -36,8 +37,8 @@ ari_scale = {
 }
 ari = ari_counter(book)
 
-print(ari_scale[ari])
+
 for key in ari_scale:
     if key == ari:
-        print(f'The ARI for dracula.txt is {key}.\nThis corresponds to a')
+        print(f"The ARI for {text_title} is {key}.\nThis corresponds to a", ari_scale[key]['grade_level'], "level of difficulty\nthat is suitable for an average person", ari_scale[key]['ages'], "years old.")
 
