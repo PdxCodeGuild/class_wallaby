@@ -1,11 +1,21 @@
-text_1 = "I am Sam. "
+import math
+text_1 = open('dracula.txt')
+book = text_1.read()
+
 def ari_counter(text):
     words = len(text.split())
     sentences = (len(text.split('. '))) -1
     text = text.replace('.', ' ')
     characters = (len(text) - text.count(' '))
     ari_score = 4.71*(characters/words)+.5*(words/sentences)-21.43
-    return ari_score
+    print("words:",words)
+    print('sentences',sentences)
+    print('characters', characters)
+
+    print(ari_score)
+    if ari_score >= 14:
+        ari_score = 14
+    return math.ceil(ari_score)
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
      2: {'ages':   '6-7', 'grade_level':    '1st Grade'},
@@ -23,4 +33,4 @@ ari_scale = {
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
 
-print(ari_counter(text_1))
+print(ari_counter(book))
