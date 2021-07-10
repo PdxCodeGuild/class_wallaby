@@ -1,35 +1,49 @@
-# Lab 06: Credit Card Validation
-
 test_card_num = '4556737586899855'
+# user_input = input('Enter your credit card number for validation: ')
 
-card_nums_list = []
+# 1. Convert the input string into a list of ints
+test_card_num_list = list(test_card_num)
+test_card_num_list = [int(i) for i in test_card_num_list]
 
-user_input = (input('Enter your credit card number for validation: ')
+print(test_card_num_list)
 
-# define function
+#for i in range(len(test_card_num_list)):
+#    print(test_card_num_list[i]) 
 
-def validation(x): # change x to?
-    card_nums_list = user_input
-    # convert to ints
-    for i in range (len(card_nums)):
-        card_nums[i] = int(card_nums[i])
-    # convert to list
-    ints_list = []
-    # .append
-   
+# 2. Slice off the last digit. That is the check digit.
+sliced_list = []
+test_card_num_list = test_card_num_list[:-1]
 
-# Slice off the last digit. That is the check digit.
-    sliced_list = []
-card_nums = card_nums[:-1]
+print(test_card_num_list)
 
-print(card_nums)
-  
-# Reverse the digits.
-    reversed_list = []
-card_nums.reverse() 
+# 3. Reverse the digits.
 
-print(card_nums)
+reversed_list = []
+test_card_num_list.reverse()
 
+print(test_card_num_list)
+
+# 4. Double every other element in the reversed list.
+    #slicing?
+
+print(reversed_list[::1*2]) # error
+
+#for i in range(reversed_list): # error
+ #   if i % 2 == 0:
+  #      reversed_list = reversed_list * 2
+
+#print(test_card_num_list)
+
+# 5. Subtract nine from numbers over nine.
+
+# 6. Sum all values.
+
+# 7. Take the second digit of that sum.
+
+# 8. If that matches the check digit, the whole card number is valid.
+
+
+"""
 # Double every other element in the reversed list.
 
     # use enumerate?
@@ -37,18 +51,10 @@ print(card_nums)
     double_every_other_list = reversed_list[::2]
     
 
-# Subtract nine from numbers over nine.
-
-
-
-# Sum all values.
-
-# Take the second digit of that sum.
-
-# If that matches the check digit, the whole card number is valid.
 
 if True:
     print('Valid')
 
     else:
         print('Invalid')
+"""
