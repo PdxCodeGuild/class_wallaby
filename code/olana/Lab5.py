@@ -4,9 +4,11 @@ amount = []
 
 def pick6():
   return(random.sample(range(0, 99), 6,))
+
 winning_ticket = pick6()
+
 print(f"The winning_ticket is: {winning_ticket}")
-for _ in range(100000):
+for _ in range(3):
     random_ticket = pick6()
     print(random_ticket)
     compare_tickets = [True if i == j else False for i,j in zip(random_ticket, winning_ticket)]
@@ -33,4 +35,5 @@ for _ in range(100000):
        
 print(compare_tickets)
 print(match_count)
+print(amount)
 print(total)
