@@ -15,78 +15,66 @@
 #https://thispointer.com/python-how-to-find-all-indexes-of-an-item-in-a-list/
 #https://www.codespeedy.com/python-check-if-all-the-elements-in-a-list-are-equal/
 #https://stackoverflow.com/questions/38035317/comparing-same-index-in-2-lists
+#https://www.kite.com/python/answers/how-to-count-the-number-of-true-booleans-in-a-list-in-python
 
 
 #1. Generate a list of 6 random numbers representing the winning ticket
-#print("Winning Ticket: ", random.sample(range(0, 99), 6))
+
 
 import random 
 
 def pick6():
-  return(random.sample(range(0, 99), 6))
+  return(random.sample(range(0, 99), 6,))
 computer_ticket = pick6()
-a = enumerate(computer_ticket)
-print(list(a))
-#print(computer_ticket)
+print(computer_ticket)
 
+#3. Generate a list of 6 random numbers representing the ticket
 def lottery_ticket():
   return(random.sample(range(0, 99), 6))  
 my_ticket = lottery_ticket()
-b = enumerate(my_ticket)
-print(list(b))
-#print(my_ticket)
+print(my_ticket)
 
+
+
+#5. Find how many numbers match 
 winning_ticket = [True if i == j else False for i,j in zip(my_ticket, computer_ticket)]
 print(winning_ticket)
 
-'''
-winning_ticket = []
+match_count = sum(winning_ticket)
+print(match_count)
+
+#2. Start your balance at 0 and loop 100,000 times
+
+
+#6. Add to your balance the winnings from your matches
 counter = 0
-
-for num in my_ticket:  
-    if num in computer_ticket:
-        counter +=1
-print(str(counter) + " matched")
-'''
+counter_list = []
 
 
-
-
-
-
-
-        
-
-
-#computer_ticket,my_ticket = [],[]
-#print[index for index,(e1,e2) in enumerate(zip(computer_ticket, my_ticket)) if e1 == e2]
-
-
-
-#for i, nums in enumerate(computer_ticket):
-    #print(f"{i}: {computer_ticket}")
-
-
-
-    
-#print(computer_ticket)
-#a = enumerate(computer_ticket)
-#print(list(a))
-#print(winning_ticket)
-
-#3. Generate a list of 6 random numbers representing the ticket
-#print("My Ticket: ", random.sample(range(0, 99), 6))
-'''
-def lottery_ticket():
-  return(random.sample(range(0, 99), 6))  
-my_ticket = lottery_ticket()
-print(my_ticket)
-b = enumerate(my_ticket)
-print(list(b))
-print(my_ticket)
-'''
-
-
+if match_count == 0:
+    counter =-2
+    counter_list.append(counter)
+elif match_count == 1:
+    counter =+4
+    counter_list.append(counter)
+elif match_count == 2:
+    counter =+7
+    counter_list.append(counter)
+elif match_count == 3:
+    counter =+100
+    counter_list.append(counter)
+elif match_count == 4:
+    counter =+50000
+    counter_list.append(counter)
+elif match_count == 5:
+    counter =+1000000
+    counter_list.append(counter)
+elif match_count == 6:
+    counter =+25000000
+    counter_list.append(counter)
+print(counter)
+print(counter_list)
+#balance = sum(counter_list)
 
     
 
