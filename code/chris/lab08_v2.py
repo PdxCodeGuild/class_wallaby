@@ -30,27 +30,31 @@ def peaks_and_valleys(data):
   return result_list
 
 decon_data = copy.copy(data)
-print(decon_data)
+graph_matrix = [copy.copy(decon_data)]
 
 while_tracker = True
 
 while while_tracker:
-  for jdx in range(len(decon_data)):
-    decon_data[jdx] -= 1
-  print(decon_data)
+  while_tracker = False
+  for idx in range(len(decon_data)):
+    if decon_data[idx] > 0:
+      while_tracker = True
+      decon_data[idx] -= 1
+  # print(decon_data)
+  graph_matrix.append(copy.copy(decon_data))
 
+for row in reversed(graph_matrix):
+  for idx, value in enumerate(row):
+    if row[idx] == 0:
+      row[idx] = ' '
+    else:
+      row[idx] = 'X'
+  row = '  '.join(row)
+  print(f'''       {row}''')
 
-graph_matrix_row = [
-  'X' for idx, value in enumerate(data)
-]
+print(f'''Data: {data}
 
-graph = '  '.join(graph_matrix_row)
-
-# print(f'''
-
-#        {graph}
-# Data: {data}
-# Peaks: {peaks(data)}
-# Valleys: {valleys(data)}
-# ''')
+Peaks: {peaks(data)}
+Valleys: {valleys(data)}
+''')
 
