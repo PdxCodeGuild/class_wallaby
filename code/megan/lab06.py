@@ -7,7 +7,6 @@ test_card_num_list = [int(i) for i in test_card_num_list]
 print(f"1. {test_card_num_list}")
 
 # 2. Slice off the last digit. That is the check digit.
-# test_card_num_list = test_card_num_list[:-1]
 check_digit = test_card_num_list.pop(-1)
 print(f"2. {test_card_num_list}")
 
@@ -36,16 +35,14 @@ sum = sum(subtract_9_list)
 
 print(f"6. {sum}")
 
-# 7. Take the second digit of that sum.
-
-# ones_digit = user_num % 10
+# 7. Take the second digit of that sum (isolate ones digit).
 
 second_digit = sum % 10
-print(second_digit)
+print(f"7. {second_digit}")
 
 # 8. If that matches the check digit, the whole card number is valid.
 
 if second_digit == check_digit:
-    print("Valid")
+    print("8. Valid")
 else:
-    print("Invalid")
+    print("8. Invalid")
