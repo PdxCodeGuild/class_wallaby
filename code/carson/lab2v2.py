@@ -1,0 +1,1 @@
+hundreds digit = test_number % 100 // 10 
