@@ -3,7 +3,7 @@ from string import ascii_uppercase
 from time import sleep
 
 from colorama import init, Fore
-
+print()
 init()
 
 colors = [
