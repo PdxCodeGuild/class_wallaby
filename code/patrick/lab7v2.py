@@ -1,16 +1,14 @@
-places_2 = int(input('place to move: '))
+
+places_2 = int(input('place to move - 1 thru 26: '))
 user_input = input("enter stuffs to be encrypted: ")
-english = 'abcdefghijklmnopqrstuvwxyz'
+english = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz'
 
-rot_13 = english[places_2:]
-
-dict_1 = dict(zip(english, rot_13)) #https://stackoverflow.com/questions/11918909/how-do-i-create-a-dictionary-from-two-parallel-strings
-
-output = []
+rot_1 = ""
 for i in user_input:
-    x = dict_1.get(i)
-    output.append(x) 
-
-print(''.join(output))  
+    letter_index = english.index(i)
+    rot_1 += english[letter_index + places_2]
+#     print(rot_1)
+    
+print(rot_1)
 
 
