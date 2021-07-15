@@ -1,4 +1,4 @@
-with open('fire-and-ice.txt', 'r') as f:
+with open('fire-and-ice.txt', 'r', encoding='utf-8') as f:
 	print(f)
 	poem = f.read()
 improved_poem = poem.upper()
@@ -13,3 +13,8 @@ improved_poem = poem.upper()
 
 with open('FIRE-AND-ICE.txt', 'w') as f:
 	f.write(improved_poem)
+
+# Python snake_case
+# JavaScript camelCase
+# C PascalCase
+# HTML/CSS kebab-case
