@@ -10,4 +10,7 @@ students = [
     'westley'
 ]
 
-print(random.choice(students))
+while True:
+	print(random.choice(students))
+	if input():
+		break
