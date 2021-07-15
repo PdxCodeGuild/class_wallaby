@@ -1,8 +1,5 @@
-# Lab 03: Number to Phrase
-
-# create dictionary for number-value pairs
-num_to_phrase = { # easier to use multiple dictionaries?
-    0: 'zero',
+ones_dict = {
+    0: '',
     1: 'one',
     2: 'two',
     3: 'three',
@@ -11,68 +8,60 @@ num_to_phrase = { # easier to use multiple dictionaries?
     6: 'six',
     7: 'seven',
     8: 'eight',
-    9: 'nine',
-    10: 'ten',
-    11: 'eleven',
-    12: 'twelve',
-    13: 'thirteen',
-    14: 'fourteen',
-    15: 'fifteen',
-    16: 'sixteen',
-    17: 'seventeen',
-    18: 'eighteen',
-    19: 'nineteen',
-    20: 'twenty',
-    30: 'thirty',
-    40: 'forty',
-    50: 'fifty',
-    60: 'sixty',
-    70: 'seventy',
-    80: 'eighty',
-    90: 'ninety',
+    9: 'nine'
 }
 
-# ask for user input (do I need to do this?)
+teens_dict = {
+    0: 'ten',
+    1: 'eleven',
+    2: 'twelve',
+    3: 'thirteen',
+    4: 'fourteen',
+    5: 'fifteen',
+    6: 'sixteen',
+    7: 'seventeen',
+    8: 'eighteen',
+    9: 'nineteen',
+}
+
+tens_dict = {
+    0: '',
+    1: 'ten',
+    2: 'twenty-',
+    3: 'thirty-',
+    4: 'forty-',
+    5: 'fifty-',
+    6: 'sixty-',
+    7: 'seventy-',
+    8: 'eighty-',
+    9: 'ninety-'
+}
+
 user_num = int(input("Enter a number between 0-999: "))
 
-# convert user input into an integer
-# user_num = int(user_num)
+hundreds_digit = user_num // 100
+tens_digit = user_num % 100 // 10
+ones_digit = user_num % 10
 
-# extract ones and tens digits
-
-
-
-
-# run a loop to convert user entered number into phrase
-#while True:
-    #if num_to_phrase == 'done':
-        #print("\nGoodbye!")
-        #break 
-
-if user_num < 20:
-    print(num_to_phrase[user_num])
-
-elif user_num >= 20 and user_num < 100: #shorthand
-    tens_digit = user_num // 10
-    print(f"{tens_digit}0")
-    ones_digit = user_num % 10
-    print(f"{ones_digit}")
-    if tens_digit > 1:
-        print(f"{num_to_phrase[tens_digit]}-{num_to_phrase[ones_digit]}")
-        # print(num_to_phrase[tens_digit] + num_to_phrase[ones_digit])
-    # elif tens_digit == 0:
-        # print(f"{num_to_phrase[user_num]}-{num_to_phrase[user_num]}")
-
-elif user_num >= 100 and user_num < 1000:    
+def num_to_phrase(num):
+    if user_num == 0:
+        return 'zero'
     hundreds_digit = user_num // 100
-    print(f"{hundreds_digit} hundred")
-    tens_digit = user_num // 10
+    tens_digit = user_num % 100 // 10
     ones_digit = user_num % 10
-    if hundreds_digit != 0:
-        print(f"{num_to_phrase[hundreds_digit]} ")
-    elif hundreds_digit == 0:
-        print(f"{num_to_phrase[tens_digit]}-{num_to_phrase[ones_digit]}")
-    if tens_digit != 0:
-        print(f"{num_to_phrase[tens_digit]}-{num_to_phrase[ones_digit]}")
-    elif tens_digit == 0:
-        print(f"{num_to_phrase[user_num]} hundred {num_to_phrase[tens_digit]}-{num_to_phrase[user_num]}") 
+
+    hundreds = ones_dict[hundreds_digit]
+    tens = tens_dict[tens_digit]
+    ones = ones_dict[ones_digit]
+
+    if hundreds_digit == 0:
+        if tens_digit == 1:
+            return teens_dict[ones_digit]
+        return f'{tens}{ones}'
+
+    if tens_digit == 1:
+        return f'{hundreds} hundred {teens_dict[ones_digit]}'
+    
+    return f'{hundreds} hundred {tens}{ones}'
+
+print(f'{num_to_phrase(user_num)}')
