@@ -9,8 +9,17 @@ students = [
     'chris',
     'westley'
 ]
+ 
+called_on_students = []
 
 while True:
-	print(random.choice(students))
-	if input():
-		break
+	student = random.choice(students)
+
+	if student in called_on_students:
+		continue
+
+	called_on_students.append(student)
+	print(student)
+	
+	if input() or len(students) == len(called_on_students):
+		break 	
