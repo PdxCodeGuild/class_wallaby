@@ -1,7 +1,7 @@
-balance_1 = 0 #confused as to why this is not gloabal. 
+balance_1 = 0 #confused as to why this is not gloabal. Used global for v1.1, then I figured out that I needed to add amount to interest_calc below in order to insert calc_interest(self,
 class ATM: 
     def __init__(self):
-        self.balance = 0
+        self.balance = 0 
         print('Welcome to the ATM')
         print('''Please chose from the following:
 
@@ -27,13 +27,11 @@ class ATM:
         elif amount <= self.balance:
             return True
     def withdraw(self, amount):
-        global balance_1 
         self.balance -=  amount
         return amount
     
-    def calc_interest(amount): #should this be happening at _init_?
-        x = self.balance
-        amount = x *.10
+    def calc_interest(self, amount): #should this be happening at _init_? Everytime this is called, interest is calculated and added to balance. 
+        amount = self.balance *.10
         return amount
 
     
@@ -56,7 +54,7 @@ while True:
         else:
             print('Insufficient funds')
     elif command == 'interest':
-        amount = atm.calc_interest() # call the calc_interest() method
+        amount = atm.calc_interest(amount) # Added amount in order to recieve two arguments
         atm.deposit(amount)
         print(f'Accumulated ${amount} in interest')
     elif command == 'help':
