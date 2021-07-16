@@ -4,9 +4,8 @@ balance = 0
 earnings = 0
 expenses = 0
 
-
-
 winnings_dict = {
+    0: 0,
     1: 4,
     2: 7,
     3: 100,
@@ -16,6 +15,7 @@ winnings_dict = {
 }
 
 def pick6():
+    """return a list of 6 random numbers from 1-99"""
     pick_6_list = []
     while len(pick_6_list) < 6:
         pick_6_list.append(random.randint(1,99))
@@ -36,7 +36,8 @@ def num_matches(winning, ticket):
 
 winning = winning_ticket()
 
-for i in range (1, 100000): 
+for i in range (100000): 
+    matches = 0
     ticket = pick6()
     balance -= 2
     expenses += 2
@@ -48,4 +49,8 @@ for i in range (1, 100000):
 roi = (earnings - expenses)/expenses 
 
 print(f'After 100,000 tries, your balance is ${balance}.')
-print(f'Your earnings = {earnings}, your expenses = {expenses}, and your return on investment (ROI) = {roi}.')
+print(f'''
+Earnings: ${earnings}
+Expenses: ${expenses}
+Return on investment (ROI): {roi}.
+''')

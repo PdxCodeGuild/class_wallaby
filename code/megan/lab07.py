@@ -1,14 +1,51 @@
-# import ascii?
-# from string import ascii_uppercase
-# from string import ascii_lowercase
+from string import ascii_lowercase
 
-# access: a[i]
-# .replace
-#for char in text: 
-
-# lists?
 english_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 rot_13_list = ['n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm']
+
+secret_message = input("Type a secret message for encryption: ")
+
+# turn string into list 
+secret_message_list = list(secret_message)
+print(secret_message_list)
+
+# slicing
+# print(secret_message[::13])
+'''
+encrypted_message = ''
+
+# take user input as a string
+# take character at index in english_list and replace it with character in rot13_list at that index 
+
+english_list[i]
+
+for i, letter in enumerate(english_list):
+    encrypted_message = english_list[(i + 13) % 26]
+
+for i in range(len(english_list)):
+    encrypted_message = ''
+    encrypted_message = english_list[(i + 13) % 26]
+
+for char in secret_message:
+    print(char)
+print(secret_message[0])
+
+secret_message_list = list(secret_message)
+print(secret_message_list)
+
+for letter in secret_message_list:
+    secret_message_list[13].replace
+
+print(encrypted_message)
+
+#for letter in string.ascii_lowercase:
+#    print(ord(letter), chr(ord(letter)))
+#test = 'hello world'
+#print(test.replace('hello', 'goodbye'))
+
+# access: a[i] (lists + assignment; dictionaries)
+# .replace (strings)
+# for char in text: (strings)
 
 # dictionaries?
 english_dict = {
@@ -68,51 +105,4 @@ rot13_dict = {
     24: 'l', 
     25: 'm'
 }
-
-secret_message = input("Type a secret message for encryption: "
-
-# secret_message_list[-1] = '!'
-
-# convert list back to string
-# encrypted_message = ''.join
-# print(encrypted_message)
-
-# help from https://www.geeksforgeeks.org/rot13-cipher/
-def encryption(secret_message):
-    encrypted_message = ''
-    for letter in secret_message:
-        # check for spaces
-        if letter != ' ':
-            index = (english_dict[letter]) % 26
-            encrypted_message += rot13_dict[index]
-        else:
-            encrypted_message += ' '
-    return encrypted_message
-
-print(encryption(secret_message))
-
-# error -- fix dictionaries!
-
-'''    
-    for i in range(len(secret_message)):
-        # take character at index in english_list and replace it with character in rot13_list at that index 
-        if     
-    return encrypted_message
-print(encryption())
-    
-    counter = 0
-    counter += 1 % len(user_str)
-    print(counter)
-print(encryption())
-
-counter = 0
-
-while True:
-	index = counter % len(secret_message)
-	letter = ascii_uppercase[index]
-	print(index, counter)
-	print(
-	counter += 1
 '''
-
-

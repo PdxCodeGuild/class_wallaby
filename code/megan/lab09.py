@@ -7,7 +7,7 @@ sentences = contents.split('.')
 words = contents.split()
 characters = list(contents)
 
-ari = 4.71(characters/words) + 0.5(words/sentences) - 21.43
+ari = 4.71*(characters/words) + 0.5*(words/sentences) - 21.43
 
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
@@ -26,4 +26,8 @@ ari_scale = {
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
 
-print(f"The ARI for {text} is {ari}. This corresponds to a {ari_scale['grade_level']} of difficulty that is suitable for an average person {ari_scale['ages']} years old.")
+print(f"""
+The ARI for {text} is {ari}. 
+This corresponds to a {ari_scale.get('grade_level')} level of difficulty 
+that is suitable for an average person {ari_scale.get('ages')} years old.
+""")
