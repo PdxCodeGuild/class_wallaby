@@ -1,18 +1,23 @@
 balance_1 = 0 #confused as to why this is not gloabal. Used global for v1.1, then I figured out that I needed to add amount to interest_calc below in order to insert calc_interest(self,
 class ATM: 
     def __init__(self):
-        self.balance = 0 
+        self.balance = 0
+        self.transactions_1 = [] 
         print('Welcome to the ATM')
         print('''Please chose from the following:
 
 1. Balance
 2. Deposit
 3. Withdraw
-4. Interest          
+4. Interest
+5. Transactions        
  ''')
     def check_balance(self):
-        
+        self.transactions_1.append(f"User has checked their balance and had {self.balance}.")
         return self.balance
+    
+    def show_transactions(self):
+        return self.transactions_1
     
     # def check_balance(self):
     #     global balance_1 
@@ -20,6 +25,7 @@ class ATM:
     
     def deposit(self, amount):
         self.balance += amount
+        self.transactions_1.append(f"User has deposited {amount}.")
         return amount 
     def check_withdrawal(self, amount):
         if amount > self.balance:
@@ -28,10 +34,13 @@ class ATM:
             return True
     def withdraw(self, amount):
         self.balance -=  amount
+        self.transactions_1.append(f"User has withdrawn {amount}.")
         return amount
     
     def calc_interest(self, amount): #should this be happening at _init_? Everytime this is called, interest is calculated and added to balance. 
         amount = round((self.balance *.10), 2)
+        
+        self.transactions_1.append(f"User has calculated interest of {amount}.")
         return amount
 
     
@@ -57,13 +66,18 @@ while True:
         amount = atm.calc_interest(amount) # Added amount in order to recieve two arguments
         atm.deposit(amount)
         print(f'Accumulated ${amount} in interest')
+    elif command == 'transactions':
+        transaction_history = atm.show_transactions()
+        print(transaction_history)
     elif command == 'help':
         print('Available commands:')
         print('balance  - get the current balance')
         print('deposit  - deposit money')
         print('withdraw - withdraw money')
         print('interest - accumulate interest')
+        print('transactions - history or transactions')
         print('exit     - exit the program')
+        
     elif command == 'exit':
         break
     else:
