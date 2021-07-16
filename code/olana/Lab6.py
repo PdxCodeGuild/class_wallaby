@@ -2,7 +2,7 @@
 #1. Convert the input string into a list of ints
 creditcard = "4556737586899855"
 #creditcard = input("Please enter credit card numbers: ")
-print(list(creditcard))
+print(list(creditcard)) 
 
 creditcard_as_integers = [int(n) for n in creditcard]
 
