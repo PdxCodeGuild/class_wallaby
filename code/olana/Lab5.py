@@ -8,7 +8,7 @@ def pick6():
 winning_ticket = pick6()
 
 print(f"The winning_ticket is: {winning_ticket}")
-for _ in range(3):
+for _ in range(100_000):
     random_ticket = pick6()
     print(random_ticket)
     compare_tickets = [True if i == j else False for i,j in zip(random_ticket, winning_ticket)]
