@@ -2,30 +2,32 @@ class Player:
     def _init_(self, name, token):
        self.name = name
        self.token = token # X or O
-
+        
 class Game:
-    def _init_ (self, board):
-        self.board_1 = self
+    def __init__ (self, move, image_1):
+        self.image_1 = image_1
+        self.move = move
+        self.__repr__ = repr
+        
         
     
-    def _repr_():
-        pass
+    def __repr__(self):
+        tic_image = self.image_1
+        return tic_image
     
-    def image(self):
-        board_1 = [
-        ["1", "2", "3"],
-        ["4", "5", "6"],
-        ["7", "8", "9"]
-        ]
-        for i in 
-        return enumerate(board_1)
-
-        # for row in board_1: 
-        #     for collum in row:
-        #         return collum
-        #for x, y
-           
-   
+    def image_1(self):
+        # image_13 = {
+        #     0:" |", 1:" ", 2:" ",
+        #     3:" |", 4:" ", 5:" ",
+        #     6:" |", 7:" ", 8:" ",
+        # }
+        #return dict.keys(tic_image)
+        board = '''f(
+        {1}|
+        
+        )'''
+        return board
+    
     def move(x, y, player):
         pass
     
@@ -38,12 +40,14 @@ class Game:
     
     def is_game_over():
         pass
-game = Game()    
+
+game = Game(None, None)    
 player = Player()
 
 
-x = game.image()
-print(x)
+print(game.image_1)
+
+
 
 
     
