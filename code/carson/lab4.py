@@ -27,14 +27,11 @@ cards = {
 
 while True:
 
-    a = input(f'What is you first card ? or "done" to quit. :  ')
-    
+    a = input(f'What is you first card ? or "done" to quit. :  ').upper()
     if a == "done":
         break
-    
-    b = input(f'What is you second card ? : ')
-    
-    c = input(f'What is you third card ? : ')
+    b = input(f'What is you second card ? : ').upper()
+    c = input(f'What is you third card ? : ').upper()
 
     
     a2 = cards[a]
@@ -46,29 +43,16 @@ while True:
     
     
     if total < 17:
-        
         print( f'HIT! ;)')
-        
         break
-    
-    
     if total >= 17 and total < 21:
-
         print( f'STAY! :/ ')
-
         break
-    
     if total == 21:
-
         print(f'BLACKJACK!! :)')
-        
         break
-
-
     if total > 21:
-
         print(f'ALREADY BUSTED! :(') 
-        
         break        
         
     

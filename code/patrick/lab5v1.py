@@ -1,14 +1,14 @@
 import random
 
 def pick6():
-    picks = []
+    picks = [] # list 
     while len(picks) < 6:
-        picks.append(random.randrange(1, 100))
+        picks.append(random.randrange(1, 100)) #randrange includes step and non inclusive, randint does not include step and is   
     return picks
 def winning():
     pick = []
     while len(pick) < 6:
-        pick.append(random.randrange(1, 100))
+        pick.append(random.randrange(0, 100))
     return pick
 
 
