@@ -1,6 +1,11 @@
 import random
 
+balance = 0
+earnings = 0
+expenses = 0
+
 winnings_dict = {
+    0: 0,
     1: 4,
     2: 7,
     3: 100,
@@ -10,18 +15,17 @@ winnings_dict = {
 }
 
 def pick6():
+    """return a list of 6 random numbers from 1-99"""
     pick_6_list = []
     while len(pick_6_list) < 6:
         pick_6_list.append(random.randint(1,99))
     return pick_6_list
-# print(pick6())
 
 def winning_ticket():
     winning_nums = []
     while len(winning_nums) < 6:
         winning_nums.append(random.randint(1,99))
     return winning_nums
-# print(winning_ticket())
 
 def num_matches(winning, ticket):
     matches = 0
@@ -30,30 +34,23 @@ def num_matches(winning, ticket):
             matches += 1
     return matches
 
-# 1. Generate a list of 6 random numbers representing the winning tickets
-winner = winning_ticket()
-# print(winner)
+winning = winning_ticket()
 
-# 2. Start your balance at 0
-balance = 0
-
-# 3. Loop 100,000 times, for each loop:
-for i in range (1, 5): # (1, 100000):
-    # 4. Generate a list of 6 random numbers representing the ticket
+for i in range (100000): 
+    matches = 0
     ticket = pick6()
-    # 5. Subtract 2 from your balance (you bought a ticket)
     balance -= 2
-    # 6. Find how many numbers match
-    matches = num_matches()
-    # 7. Add to your balance the winnings from your matches
+    expenses += 2
+    earnings += winnings_dict[matches]
+    matches = num_matches(winning, ticket)
     if matches > 0:
         balance += winnings_dict[matches]
-    
-# 8. After the loop, print the final balance
 
-print(balance)
+roi = (earnings - expenses)/expenses 
 
-
-
-
-
+print(f'After 100,000 tries, your balance is ${balance}.')
+print(f'''
+Earnings: ${earnings}
+Expenses: ${expenses}
+Return on investment (ROI): {roi}.
+''')
