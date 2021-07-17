@@ -4,26 +4,26 @@ english_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 rot_13_list = ['n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm']
 
 # take user input as a string
-secret_message = input("Type a secret message for encryption: ")
+user_str = input("Type a secret message for encryption: ")
 
 # turn string into list 
-secret_message_list = list(secret_message)
-print(secret_message_list)
+user_str_lst = list(user_str)
+print(user_str_lst)
 
 # compare letters in secret message list to rot_13_list
 # take letters from secret message list and compare to english_list
 # replace each letter with letter from rot13_list at that index 
 
 def encryption():
-    encrypted_message = []
-    for i in range(len(english_list)):
+    output_lst = []
+    for i in range(len(english_list) - 1):
     # for letter in secret_message_list:
         # check for spaces
         while i != ' ':
-            encrypted_message = secret_message_list[(i + 13) % 26]
+            output_lst = user_str_lst[(i + 13) % 26]
         else:
-            encrypted_message += ' '
-    return encrypted_message
+            output_lst += ' '
+    return output_lst
 
 print(encryption())
 
