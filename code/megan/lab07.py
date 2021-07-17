@@ -1,21 +1,40 @@
-from string import ascii_lowercase
+# from string import ascii_lowercase?
 
 english_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 rot_13_list = ['n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm']
 
+# take user input as a string
 secret_message = input("Type a secret message for encryption: ")
 
 # turn string into list 
 secret_message_list = list(secret_message)
 print(secret_message_list)
 
-# slicing
+# compare letters in secret message list to rot_13_list
+# take letters from secret message list and compare to english_list
+# replace each letter with letter from rot13_list at that index 
+
+def encryption():
+    encrypted_message = []
+    for i in range(len(english_list)):
+    # for letter in secret_message_list:
+        # check for spaces
+        while i != ' ':
+            encrypted_message = secret_message_list[(i + 13) % 26]
+        else:
+            encrypted_message += ' '
+    return encrypted_message
+
+print(encryption())
+
+# slicing?
 # print(secret_message[::13])
+
+# enumerate?
+
 '''
 encrypted_message = ''
 
-# take user input as a string
-# take character at index in english_list and replace it with character in rot13_list at that index 
 
 english_list[i]
 
@@ -42,6 +61,7 @@ print(encrypted_message)
 #    print(ord(letter), chr(ord(letter)))
 #test = 'hello world'
 #print(test.replace('hello', 'goodbye'))
+'''
 
 # access: a[i] (lists + assignment; dictionaries)
 # .replace (strings)
@@ -105,4 +125,3 @@ rot13_dict = {
     24: 'l', 
     25: 'm'
 }
-'''
