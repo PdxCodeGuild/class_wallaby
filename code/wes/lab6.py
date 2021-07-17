@@ -1,7 +1,6 @@
 
 
-test = "4556737586899855"
-
+test = ("4556737586899855")
 
 
 #user_input = input("Please enter card number: ")
@@ -24,10 +23,14 @@ range(len(card_numbers))]
     else:
         return False
      
-card_numbers = input('Enter Credit Card Number: ')
-output = 'Card Number Valid!' if credit_card(card_numbers) is True else 'Invalid Card Number! '
+card_numbers = credit_card(test)
 
-print(output)         
+
+#output = 'Card Number Valid!' if credit_card(card_numbers) is True else 'Invalid Card Number! '
+
+print(card_numbers)
+
+
        
  
    
@@ -36,7 +39,7 @@ print(output)
 
 
     
-print(credit_card(test))
+
 
 
 
