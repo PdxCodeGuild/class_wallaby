@@ -25,5 +25,4 @@ def encrypt(text):
             rot_13_message += character
     return rot_13_message
 
-print(encrypt(input(" "))) 
-  
+print(encrypt(input(" ")))
