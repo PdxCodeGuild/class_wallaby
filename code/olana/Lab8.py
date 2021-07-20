@@ -15,8 +15,8 @@ data_list = [1 ,2 ,3 ,4 ,5 ,6 ,7 ,6 ,5 ,4 ,5 ,6 ,7 ,8 ,9 ,8 ,7 ,6 ,7 ,8 ,9]
 #for i, name in enumerate(l):
     #print(i, name)
 index = 0
-'''
-index = 0
+
+
 for idx in range(1, len(data_list) - 1):
     if data_list[idx + 1] > data_list[idx] < data_list[idx - 1]:
         index += 1
@@ -34,7 +34,7 @@ index = len([data_list[idx] for idx in range(1, len(data_list) - 1) if data_list
 
 print("Peaks and Valleys:" + str(index))
 
-'''
 
-def peaks(x,z,y):
+
+
 
