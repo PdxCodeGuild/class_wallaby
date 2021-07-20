@@ -1,11 +1,13 @@
 import math
+import re ### not working?
 
 text = 'The Yellow Wallpaper'
 
 with open('the-yellow-wallpaper.txt', 'r', encoding='utf-8') as f: 
     contents = f.read()
 
-sentences = len(contents.split('.'))
+sentences = len(contents.split('.')) ### split on more than . (?, !)
+# sentences = re.split(r'\.|?|!', contents) ### fix
 # print(sentences)
 
 words = len(contents.split())
