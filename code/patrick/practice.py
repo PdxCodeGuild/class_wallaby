@@ -20,4 +20,55 @@ def cap(message):
    return x
 
 y = cap('hello')
-print(y)'''
+print(y)
+user_input = input("enter stuffs to be encrypted: ")
+english = 'a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z'
+rot_13 = 'n, o, p, q, r, s, t, u, v, w, x, y, za, b, c, d, e, f, g, h, i, j, k, l, m'
+
+dict_1 = dict(zip(english, rot_13)) #https://stackoverflow.com/questions/11918909/how-do-i-create-a-dictionary-from-two-parallel-strings
+
+output = []
+for i in user_input:
+    x = dict_1.get(i)
+
+ 
+    output.append(x) 
+
+print(''.join(output))
+new = []
+list = (3, 2, 1)
+for i in range(len(list)):
+   i = i + 13 
+   new.append(list[i])
+print(new)'''
+
+
+# board = [["1", "2-", "3-"], ["-", "-", "-"], ["-", "-", "-"]]   
+# class Game:
+#    def _repr_(self):
+#       for row in board: # goes through rows 
+#          for j in row:  # goes through each string in each ro
+#             return j
+
+# game = Game()
+
+# game.repr(print())
+                    
+# class Game:
+ 
+        
+#     def image(board):
+#          board_1 = [
+#             ["1", "2", "3"],
+#             ["4", "5", "6"],
+#             ["7", "8", "9"],]
+#          lst = []
+#          for x in board_1: 
+#             for y in x:
+#                lst.append(y)
+#          return lst
+                  
+                 
+# game = Game()
+# x = game.image()
+# print(x)

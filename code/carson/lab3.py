@@ -3,7 +3,6 @@ ones = ["zero","one ","two ","three ","four ", "five ", "six ",
 "seven ","eight ","nine ",] 
 teens = ["ten ","eleven ","twelve ", "thirteen ",
  "fourteen ","fifteen ","sixteen ","seventeen ", "eighteen ","nineteen "]
- 
 tens = ["","", "twenty ","thirty ","forty ", "fifty ","sixty ","seventy ",
 "eighty ","ninety "] 
 
@@ -16,10 +15,8 @@ def num(n):
 
     if n >= 10 and n <= 19: 
         c = teens[n - 10]
-    
     elif b >= 1:
         c = tens[b] + ones[a]   #double digit
-    
     elif b <= 9: 
         c = ones[a] # single digit
     return c 
@@ -30,11 +27,8 @@ while True:
     
     if x == "done":
      break
-    
     else:
-       
-       x = int(x)
-       
+       x = int(x) 
     print( f' Your number is {num(x)} !')
 
 
