@@ -12,3 +12,7 @@ say_hello(fn, ln)
 a=lambda x,y:x+y
 print(a(5,4))
 
+
+translator_dict ={
+  0:  
+}
