@@ -33,19 +33,37 @@ class Game:
         {self.board[6]}|{self.board[7]}|{self.board[8]}
         """
     def move_1(self):
-        self.count += 1
-        x = int(input('Spot number 0-8: '))
-        self.board[x] = 'x'
-        # win condition calc_winner
-        print(self.count)
-        print(game)
+        True
+        while True:
+            False
+            x = int(input('Spot number 0-8: '))
+            if x <= 8:
+                self.count += 1
+                self.board[x] = 'x'
+                # win condition calc_winner
+                print(self.count)
+                return print(game)
+                
+            else:
+                print('Enter a valid number!')
+                False
+                  
+
     def move_2(self):   
-        self.count += 1
-        x = int(input('Spot number 0-8: '))
-        self.board[x] = 'o'
-        print(self.count)
-        print(game)
-         
+        True
+        while True:
+            False
+            x = int(input('Spot number 0-8: '))
+            if x <= 8:
+                self.count += 1
+                self.board[x] = 'o'
+                # win condition calc_winner
+                print(self.count)
+                
+                return print(game)
+            else:
+                print('Enter a valid number!')
+                False
         
     
     # def move_2(self):
@@ -55,10 +73,40 @@ class Game:
     
 
     def calc_winner(self):
-        if self.board == ['x', 'x', 'x', ' ', ' ', ' ', 'o', 'o', 'o']:
-            print('winner')
-        else:
-            return False
+        if {self.board[0]} == {self.board[1]} == {self.board[2]} and {self.board[0]} != (' ') and {self.board[1]} != ''  and {self.board[2]} != '':
+            return print(f'player1 {self.board[0]} has won')
+        elif {self.board[3]} == {self.board[4]} == {self.board[5]} and {self.board[3]}  and {self.board[4]} and {self.board[5]} != '':
+            return print(f'player 2{self.board[4]} has won')
+        elif {self.board[6]} == {self.board[7]} == {self.board[8]} and {self.board[6]} and {self.board[7]} and {self.board[8]} != '':
+            return print(f'player 3{self.board[7]} has won')
+        elif {self.board[0]} == {self.board[3]} == {self.board[6]} and {self.board[0]} and {self.board[3]} and {self.board[6]} != '':
+            return print(f'player4 {self.board[3]} has won')
+        elif {self.board[1]} == {self.board[4]} == {self.board[7]} and {self.board[1]} and {self.board[4]} and {self.board[7]} != '':
+            return print(f'player5 {self.board[7]} has won')
+        elif {self.board[2]} == {self.board[5]} == {self.board[8]} and {self.board[2]} and {self.board[5]} and {self.board[8]} != '':
+            return print(f'player6 {self.board[8]} has won')
+        elif {self.board[0]} == {self.board[4]} == {self.board[8]} and {self.board[0]} and {self.board[4]} and {self.board[8]} != '':
+            return print(f'player 7{self.board[8]} has won')
+        elif {self.board[2]} == {self.board[4]} == {self.board[6]} and {self.board[2]} and {self.board[4]} and {self.board[6]} != '':
+            return print(f'player 8{self.board[6]} has won')
+        else: 
+            pass
+
+        # if {self.board[0]}=={self.board[1]}=={self.board[2]} == "x":
+        #     print("Player X has won")
+        # elif {self.board[3]}=={self.board[4]}=={self.board[5]} == 'x':
+        #     print("Player X has won")
+        # elif {self.board[6]}=={self.board[7]}=={self.board[8]} == 'x':
+        #     print("Player X has won")
+        # elif {self.board[0]}=={self.board[1]}=={self.board[2]} == 'o':
+        #     print("yes1")
+        # elif {self.board[3]}=={self.board[4]}=={self.board[5]} == 'o':
+        #     print("yes2")
+        # elif {self.board[6]}=={self.board[7]}=={self.board[8]} == 'o':
+        #     print("yes3")
+
+    # def __getitem__(self, index):
+    #     return self.board[index]
     
     def is_full(self):
         if game.count >= 10:
@@ -69,6 +117,7 @@ class Game:
                 game.count = 0
                 return True
             else:
+                print('Enter a valid number!')
                 return False
     
     def is_game_over():
@@ -80,35 +129,28 @@ player = Player()
 
 
 def main():
-    print(game.first_image)
+    print(game.first_image())
     print(game.instructions())
-    game_running = True
     
-    while game_running:
+    
+    while True:
+        
         game.is_full()
         game.move_1()
-        # if game.count > 10:
-        #     print('game is a draw!')
-        #     again = input('Would you like to play again?: ').lower()
-        #     if again == 'yes' or again == 'y':
-        #         game.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-        #         game.count = 1
-        #         True
-        #     else:
-        #         break
+        game.calc_winner()
+      
         game.is_full()
         game.move_2()
-      
-        # game.calc_winner()
+        game.calc_winner()
         
-            
+        
+           
     
     
 
 
     
-    # game.move()
-    # print(game)
+   
 
 
 main()
