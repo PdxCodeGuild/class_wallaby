@@ -39,36 +39,23 @@ new = []
 list = (3, 2, 1)
 for i in range(len(list)):
    i = i + 13 
-   new.append(list[i])
-print(new)'''
+#    new.append(list[i])
+# print(new)'''
 
+# board = [
 
-# board = [["1", "2-", "3-"], ["-", "-", "-"], ["-", "-", "-"]]   
+#      ["1", "2-", "3-"],
+#      ["-", "-", "-"],
+#      ["-", "-", "-"]
+#      ]
 # class Game:
-#    def _repr_(self):
+#    def _repr_(self, board):
 #       for row in board: # goes through rows 
 #          for j in row:  # goes through each string in each ro
-#             return j
+#             returnprint(j, end=" ")
 
 # game = Game()
 
-# game.repr(print())
+# game._repr_(print(board))
                     
-# class Game:
- 
-        
-#     def image(board):
-#          board_1 = [
-#             ["1", "2", "3"],
-#             ["4", "5", "6"],
-#             ["7", "8", "9"],]
-#          lst = []
-#          for x in board_1: 
-#             for y in x:
-#                lst.append(y)
-#          return lst
-                  
-                 
-# game = Game()
-# x = game.image()
-# print(x)
+   
