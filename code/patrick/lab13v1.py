@@ -1,10 +1,13 @@
-
-
-
 class Player:
-    def _init_(self, name, token):
-       self.name = name
-       self.token = token # X or O
+    def _init_(self, token):
+       self.name = " "
+    #    self.token = token
+
+    def player_name(self):
+        name = input(f"Enter player #1's name: ")
+        self.name = name
+        
+    
         
 class Game:
     def __init__ (self):
@@ -38,29 +41,34 @@ class Game:
             False
             x = int(input('Spot number 0-8: '))
             if x <= 8:
-                self.count += 1
-                self.board[x] = 'x'
-                # win condition calc_winner
-                print(self.count)
-                return print(game)
-                
+                if self.board[x] == ' ':
+                    self.count += 1
+                    self.board[x] = 'x'
+                    print(self.count)
+                    return print(self)
+                elif self.board[x] == 'x' or self.board[x] == 'o':
+                    print('Spot has already been chosen') 
+                    False
             else:
                 print('Enter a valid number!')
                 False
                   
 
     def move_2(self):   
+        
         True
         while True:
             False
             x = int(input('Spot number 0-8: '))
             if x <= 8:
-                self.count += 1
-                self.board[x] = 'o'
-                # win condition calc_winner
-                print(self.count)
-                
-                return print(game)
+                if self.board[x] == ' ':
+                    self.count += 1
+                    self.board[x] = 'o'
+                    print(self.count)
+                    return print(self)
+                elif self.board[x] == 'x' or self.board[x] == 'o':
+                    print('Spot has already been chosen') 
+                    False
             else:
                 print('Enter a valid number!')
                 False
@@ -72,25 +80,46 @@ class Game:
     #     return self.board
     
 
-    def calc_winner(self):
-        if {self.board[0]} == {self.board[1]} == {self.board[2]} and {self.board[0]} != (' ') and {self.board[1]} != ''  and {self.board[2]} != '':
-            return print(f'player1 {self.board[0]} has won')
-        elif {self.board[3]} == {self.board[4]} == {self.board[5]} and {self.board[3]}  and {self.board[4]} and {self.board[5]} != '':
-            return print(f'player 2{self.board[4]} has won')
-        elif {self.board[6]} == {self.board[7]} == {self.board[8]} and {self.board[6]} and {self.board[7]} and {self.board[8]} != '':
-            return print(f'player 3{self.board[7]} has won')
-        elif {self.board[0]} == {self.board[3]} == {self.board[6]} and {self.board[0]} and {self.board[3]} and {self.board[6]} != '':
-            return print(f'player4 {self.board[3]} has won')
-        elif {self.board[1]} == {self.board[4]} == {self.board[7]} and {self.board[1]} and {self.board[4]} and {self.board[7]} != '':
-            return print(f'player5 {self.board[7]} has won')
-        elif {self.board[2]} == {self.board[5]} == {self.board[8]} and {self.board[2]} and {self.board[5]} and {self.board[8]} != '':
-            return print(f'player6 {self.board[8]} has won')
-        elif {self.board[0]} == {self.board[4]} == {self.board[8]} and {self.board[0]} and {self.board[4]} and {self.board[8]} != '':
-            return print(f'player 7{self.board[8]} has won')
-        elif {self.board[2]} == {self.board[4]} == {self.board[6]} and {self.board[2]} and {self.board[4]} and {self.board[6]} != '':
-            return print(f'player 8{self.board[6]} has won')
-        else: 
+    def calc_winner(self, name):
+        if self.board[0] !=  ' ' and self.board[1] != ' '  and self.board[2] != ' ' and {self.board[0]} == {self.board[1]} and {self.board[1]} == {self.board[2]} != [' ']:
+            print(f'{name} has won')
+            return False
+        
+        elif self.board[3] != ' ' and {self.board[4]} != ' '  and {self.board[5]} != ' ' and {self.board[3]} == {self.board[4]} and {self.board[4]} == {self.board[5]}:
+            return print(f'{name} has won') 
+
+        elif self.board[6] != ' ' and self.board[7] != ' '  and self.board[8] != ' ' and {self.board[6]} == {self.board[7]} and {self.board[7]} == {self.board[8]}:
+            return print(f'{name} has won') 
+        elif self.board[0] != ' ' and self.board[3] != ' '  and self.board[6] != ' ' and {self.board[0]} == {self.board[3]} and {self.board[3]} == {self.board[6]}:
+                return print(f'{name} has won') 
+        elif self.board[1] != ' ' and self.board[4] != ' '  and self.board[7] != ' ' and {self.board[1]} == {self.board[4]} and {self.board[4]} == {self.board[7]}:
+                return print(f'{name} has won') 
+        elif self.board[2] != ' ' and self.board[5] != ' '  and self.board[8] != ' ' and {self.board[2]} == {self.board[5]} and {self.board[5]} == {self.board[8]}:
+                return print(f'{name} has won') 
+        elif self.board[2] != ' ' and self.board[4] != ' '  and self.board[6] != ' 'and {self.board[2]} == {self.board[4]} and {self.board[4]} == {self.board[6]}:
+                return print(f'{name} has won')
+        elif self.board[0] != ' ' and self.board[4] != ' '  and self.board[8] != ' ' and {self.board[0]} == {self.board[4]} and {self.board[4]} == {self.board[8]}:
+                return print(f'{name} has won')  
+        else:
             pass
+            
+            
+            
+            
+        #     elif {self.board[6]} == {self.board[7]} == {self.board[8]} and {self.board[6]} and {self.board[7]} and {self.board[8]} != '':
+        #         return print(f'player 3{self.board[7]} has won')
+        # elif {self.board[0]} == {self.board[3]} == {self.board[6]} and {self.board[0]} and {self.board[3]} and {self.board[6]} != '':
+        #     return print(f'player4 {self.board[3]} has won')
+        # elif {self.board[1]} == {self.board[4]} == {self.board[7]} and {self.board[1]} and {self.board[4]} and {self.board[7]} != '':
+        #     return print(f'player5 {self.board[7]} has won')
+        # elif {self.board[2]} == {self.board[5]} == {self.board[8]} and {self.board[2]} and {self.board[5]} and {self.board[8]} != '':
+        #     return print(f'player6 {self.board[8]} has won')
+        # elif {self.board[0]} == {self.board[4]} == {self.board[8]} and {self.board[0]} and {self.board[4]} and {self.board[8]} != '':
+        #     return print(f'player 7{self.board[8]} has won')
+        # elif {self.board[2]} == {self.board[4]} == {self.board[6]} and {self.board[2]} and {self.board[4]} and {self.board[6]} != '':
+        #     return print(f'player 8{self.board[6]} has won')
+        # else: 
+        #     pass
 
         # if {self.board[0]}=={self.board[1]}=={self.board[2]} == "x":
         #     print("Player X has won")
@@ -109,12 +138,12 @@ class Game:
     #     return self.board[index]
     
     def is_full(self):
-        if game.count >= 10:
+        if self.count >= 10:
             print('game is a draw!')
             again = input('Would you like to play again?: ').lower()
             if again == 'yes' or again == 'y':
-                game.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-                game.count = 0
+                self.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+                self.count = 0
                 return True
             else:
                 print('Enter a valid number!')
@@ -123,26 +152,33 @@ class Game:
     def is_game_over():
         pass
 
-game = Game()    
-player = Player()
+
 
 
 
 def main():
+    game = Game()    
+    player_1 = Player()
+    player_2 = Player()
+    player_1.player_name()    
+    player_2.player_name()  
     print(game.first_image())
     print(game.instructions())
     
-    
+    True
     while True:
         
         game.is_full()
+        print(f'Player on deck: {player_1.name}')
         game.move_1()
-        game.calc_winner()
+        game.calc_winner(player_1.name)
       
         game.is_full()
+        print(f'Player on deck: {player_2.name}')
         game.move_2()
-        game.calc_winner()
-        
+        game.calc_winner(player_2.name)
+        False
+        print("would you like to play again?: ")    
         
            
     
