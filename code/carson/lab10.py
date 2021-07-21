@@ -24,29 +24,42 @@ contacts = [
 names = []
 fruit = []
 color = []
-dict = {}
-dict["names"] =names
-dict["fruit"] = fruit
-dict["color"] = color
+contacts = []
+###dict["names"] = names
+#dict["fruit"] = fruit
+#dict["color"] = color
 
 
 
 with open('contact_list.csv', 'r') as f:
     lines = f.read().split('\n')
+    headers = lines[0].split(',')
+
     #print(lines)
-    for row in lines:
+    #print(headers)
+    for row in lines[1::]:
+        dict = {}
         row = row.split(',')
         #print(row)
-        names.append(row[0]) 
-        fruit.append(row[1])
-        color.append(row[2])
+        for i, key in enumerate(headers):
+            value = row[i]
+            dict[key] = value
+        contacts.append(dict) 
+            #print(key)
+            #print(value)
+    print(contacts)
+        
+        
+        #names.append(row[0]) 
+        #fruit.append(row[1])
+        #color.append(row[2])
     
     
     #print(names)
     #print(fruit)
     #print(color)
     
-print(dict)
+#print(dict)
     
 
    

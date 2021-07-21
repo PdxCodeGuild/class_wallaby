@@ -1,0 +1,14 @@
+>>> nums = [1,2,3]
+>>> letters = ['a', 'b', 'c']
+>>> for i, num in enumerate(nums):
+...     print(num, letters[i])
+...
+1 a
+2 b
+3 c
+>>> for i in range(len(nums)):
+...     print(nums[i], letters[i])
+...
+1 a
+2 b
+3 c
