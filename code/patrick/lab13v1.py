@@ -1,7 +1,7 @@
 class Player:
     def _init_(self, token):
        self.name = " "
-    #    self.token = token
+  
 
     def player_name(self):
         name = input(f"Enter player #1's name: ")
@@ -86,56 +86,33 @@ class Game:
             return False
         
         elif self.board[3] != ' ' and {self.board[4]} != ' '  and {self.board[5]} != ' ' and {self.board[3]} == {self.board[4]} and {self.board[4]} == {self.board[5]}:
-            return print(f'{name} has won') 
+            print(f'{name} has won')
+            return False
 
         elif self.board[6] != ' ' and self.board[7] != ' '  and self.board[8] != ' ' and {self.board[6]} == {self.board[7]} and {self.board[7]} == {self.board[8]}:
-            return print(f'{name} has won') 
+            print(f'{name} has won')
+            return False 
         elif self.board[0] != ' ' and self.board[3] != ' '  and self.board[6] != ' ' and {self.board[0]} == {self.board[3]} and {self.board[3]} == {self.board[6]}:
-                return print(f'{name} has won') 
+            print(f'{name} has won')
+            return False 
         elif self.board[1] != ' ' and self.board[4] != ' '  and self.board[7] != ' ' and {self.board[1]} == {self.board[4]} and {self.board[4]} == {self.board[7]}:
-                return print(f'{name} has won') 
+            print(f'{name} has won')
+            return False 
         elif self.board[2] != ' ' and self.board[5] != ' '  and self.board[8] != ' ' and {self.board[2]} == {self.board[5]} and {self.board[5]} == {self.board[8]}:
-                return print(f'{name} has won') 
+            print(f'{name} has won')
+            return False 
         elif self.board[2] != ' ' and self.board[4] != ' '  and self.board[6] != ' 'and {self.board[2]} == {self.board[4]} and {self.board[4]} == {self.board[6]}:
-                return print(f'{name} has won')
+            print(f'{name} has won')
+            return False
         elif self.board[0] != ' ' and self.board[4] != ' '  and self.board[8] != ' ' and {self.board[0]} == {self.board[4]} and {self.board[4]} == {self.board[8]}:
-                return print(f'{name} has won')  
+            print(f'{name} has won')
+            return False  
         else:
             pass
             
             
             
-            
-        #     elif {self.board[6]} == {self.board[7]} == {self.board[8]} and {self.board[6]} and {self.board[7]} and {self.board[8]} != '':
-        #         return print(f'player 3{self.board[7]} has won')
-        # elif {self.board[0]} == {self.board[3]} == {self.board[6]} and {self.board[0]} and {self.board[3]} and {self.board[6]} != '':
-        #     return print(f'player4 {self.board[3]} has won')
-        # elif {self.board[1]} == {self.board[4]} == {self.board[7]} and {self.board[1]} and {self.board[4]} and {self.board[7]} != '':
-        #     return print(f'player5 {self.board[7]} has won')
-        # elif {self.board[2]} == {self.board[5]} == {self.board[8]} and {self.board[2]} and {self.board[5]} and {self.board[8]} != '':
-        #     return print(f'player6 {self.board[8]} has won')
-        # elif {self.board[0]} == {self.board[4]} == {self.board[8]} and {self.board[0]} and {self.board[4]} and {self.board[8]} != '':
-        #     return print(f'player 7{self.board[8]} has won')
-        # elif {self.board[2]} == {self.board[4]} == {self.board[6]} and {self.board[2]} and {self.board[4]} and {self.board[6]} != '':
-        #     return print(f'player 8{self.board[6]} has won')
-        # else: 
-        #     pass
-
-        # if {self.board[0]}=={self.board[1]}=={self.board[2]} == "x":
-        #     print("Player X has won")
-        # elif {self.board[3]}=={self.board[4]}=={self.board[5]} == 'x':
-        #     print("Player X has won")
-        # elif {self.board[6]}=={self.board[7]}=={self.board[8]} == 'x':
-        #     print("Player X has won")
-        # elif {self.board[0]}=={self.board[1]}=={self.board[2]} == 'o':
-        #     print("yes1")
-        # elif {self.board[3]}=={self.board[4]}=={self.board[5]} == 'o':
-        #     print("yes2")
-        # elif {self.board[6]}=={self.board[7]}=={self.board[8]} == 'o':
-        #     print("yes3")
-
-    # def __getitem__(self, index):
-    #     return self.board[index]
+         
     
     def is_full(self):
         if self.count >= 10:
@@ -165,20 +142,28 @@ def main():
     print(game.first_image())
     print(game.instructions())
     
-    True
+    
     while True:
         
         game.is_full()
         print(f'Player on deck: {player_1.name}')
         game.move_1()
-        game.calc_winner(player_1.name)
+        if game.calc_winner(player_1.name) == False:
+            again = input('Would you like to play again?: ').lower()
+            if again == 'yes' or again == 'y':
+                game.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+                game.count = 0
+
       
         game.is_full()
         print(f'Player on deck: {player_2.name}')
         game.move_2()
-        game.calc_winner(player_2.name)
-        False
-        print("would you like to play again?: ")    
+        if game.calc_winner(player_2.name) == False:
+            again = input('Would you like to play again?: ').lower()
+            if again == 'yes' or again == 'y':
+                game.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+                game.count = 0
+        
         
            
     
