@@ -2,12 +2,22 @@ with open('contacts.csv', 'r') as f:
     lines = f.read().split('\n')
     
 for row in lines:
-    print(row.split(','))
+    # print(row.split(','))
+    contacts = row.split(',')
+    print(contacts)
+
+contacts = {first_name: last_name}
+
+# dictionary conversions
+# dict comprehensions
 
 # turn into a list of dictionaries
-contacts = [dict()]
+# print(dict(contacts))
 
-print(contacts)
+# contacts = [dict()]
+# contacts = []
+
+# print(contacts)
 
 
 # contacts = [
