@@ -1,13 +1,8 @@
 import requests
 
 
-response = requests.get('http://icanhazdadjoke.com', params = {'format': 'json'})
-print(response.text)
-data = response.json()
-print(data)
-print(data['ip'])
-
-# import json
-# data = json.loads(response.text)
-# print(data)
-# print(data['ip'])
+response = requests.get('http://icanhazdadjoke.com', headers = {'accept':'application/json'}) #headers={'Content-Encoding': 'gzip'}
+#print(response.apparent_encoding)
+x = response.json()
+joke_1 = x['joke']#.split('?')
+print(joke_1)
