@@ -57,5 +57,36 @@ for i in range(len(list)):
 # game = Game()
 
 # game._repr_(print(board))
-                    
-   
+# from string import punctuation
+# def check_palindrome(string):
+#    string = string.lower()
+#    string = string.replace(' ','')
+#    string = string.replace('!','')
+#    string = string.replace("'",'')
+
+#    rev_string = string[::-1]
+#    if string == rev_string:
+#       return True
+#    return False, string
+
+# print(check_palindrome("Go Hang a Salami! I'm a Lasagna Hog!"))
+
+# x = 'dormitory'
+# lst = []
+# for i in x:
+#    lst.append(i)
+# print(lst)
+# lst_1 = lst.sort()
+# x = list('dormitory')
+# y = list("abcde")
+# if x == y:
+#    print("yes")
+# else:
+#    print('no')
+
+# string = "abc"
+# print([i for i, x in enumerate(string)])
+
+
+
+
