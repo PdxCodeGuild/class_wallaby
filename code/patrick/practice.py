@@ -39,36 +39,54 @@ new = []
 list = (3, 2, 1)
 for i in range(len(list)):
    i = i + 13 
-   new.append(list[i])
-print(new)'''
+#    new.append(list[i])
+# print(new)'''
 
+# board = [
 
-# board = [["1", "2-", "3-"], ["-", "-", "-"], ["-", "-", "-"]]   
+#      ["1", "2-", "3-"],
+#      ["-", "-", "-"],
+#      ["-", "-", "-"]
+#      ]
 # class Game:
-#    def _repr_(self):
+#    def _repr_(self, board):
 #       for row in board: # goes through rows 
 #          for j in row:  # goes through each string in each ro
-#             return j
+#             returnprint(j, end=" ")
 
 # game = Game()
 
-# game.repr(print())
-                    
-# class Game:
- 
-        
-#     def image(board):
-#          board_1 = [
-#             ["1", "2", "3"],
-#             ["4", "5", "6"],
-#             ["7", "8", "9"],]
-#          lst = []
-#          for x in board_1: 
-#             for y in x:
-#                lst.append(y)
-#          return lst
-                  
-                 
-# game = Game()
-# x = game.image()
-# print(x)
+# game._repr_(print(board))
+# from string import punctuation
+# def check_palindrome(string):
+#    string = string.lower()
+#    string = string.replace(' ','')
+#    string = string.replace('!','')
+#    string = string.replace("'",'')
+
+#    rev_string = string[::-1]
+#    if string == rev_string:
+#       return True
+#    return False, string
+
+# print(check_palindrome("Go Hang a Salami! I'm a Lasagna Hog!"))
+
+# x = 'dormitory'
+# lst = []
+# for i in x:
+#    lst.append(i)
+# print(lst)
+# lst_1 = lst.sort()
+# x = list('dormitory')
+# y = list("abcde")
+# if x == y:
+#    print("yes")
+# else:
+#    print('no')
+
+# string = "abc"
+# print([i for i, x in enumerate(string)])
+
+
+
+
