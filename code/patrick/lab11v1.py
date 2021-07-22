@@ -7,4 +7,5 @@ def search_lst(list, object):
         return list.index(object)
     else:
         return False
+
 print(search_lst(lst_1, 3))
