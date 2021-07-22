@@ -1,6 +1,3 @@
-# import pytest # import libraries first
-
-# then import your own modules
 from palindrome import check_palindrome
 from anagram import check_anagram
 from every_permutation import every_permutation
@@ -8,15 +5,18 @@ from every_permutation import every_permutation
 
 # Test the check_palindrome function
 def test_check_palindrome1():
+	# got it!
 	assert check_palindrome('racecar') == True
 
 def test_check_palindrome2():
 	assert check_palindrome('Hannah') == True
 
 def test_check_palindrome3():
+	# got it!
 	assert check_palindrome('dog') == False
 
 def test_check_palindrome4():
+	# got it!
 	assert check_palindrome("Go Hang a Salami! I'm a Lasagna Hog!") == True
 
 
@@ -27,7 +27,7 @@ def test_check_anagram1():
 def test_check_anagram2():
 	assert check_anagram('pizza', 'ice cream') == False
 
-def test_check_anagram2():
+def test_check_anagram3():
 	assert check_anagram('Jim Morrison', 'Mr. Mojo Risin') == True
 
 
