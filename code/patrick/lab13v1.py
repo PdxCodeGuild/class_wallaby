@@ -1,11 +1,8 @@
 class Player:
-    def _init_(self, token):
-       self.name = " "
-  
+    def __init__(self, token, name):
+       self.name = name
+       self.token = token
 
-    def player_name(self):
-        name = input(f"Enter player #1's name: ")
-        self.name = name
         
     
         
@@ -17,67 +14,42 @@ class Game:
        
       
     def instructions(self):
-        return 'Using the above example, please enter the corresponding number you wish to place an X: ' 
+        return 'Using the below example, please enter the corresponding number you wish to place an X: ' 
 
     
     
-    def first_image(self): 
+    def first_image(self): # shows the players the relationship between spot within the grid and corresponding number. 
         return f"""
         {self.game[0]}|{self.game[1]}|{self.game[2]} 
         {self.game[3]}|{self.game[4]}|{self.game[5]}
         {self.game[6]}|{self.game[7]}|{self.game[8]}
         """
 
-    def __repr__(self):
+    def __repr__(self): # This is the board that is going to be called more than once.
         
         return f"""
         {self.board[0]}|{self.board[1]}|{self.board[2]} 
         {self.board[3]}|{self.board[4]}|{self.board[5]}
         {self.board[6]}|{self.board[7]}|{self.board[8]}
         """
-    def move_1(self):
-        True
+    def move(self, move, token):
+        
         while True:
-            False
-            x = int(input('Spot number 0-8: '))
-            if x <= 8:
-                if self.board[x] == ' ':
+            
+            if move <= 8:
+                if self.board[move] == ' ':
                     self.count += 1
-                    self.board[x] = 'x'
+                    self.board[move] = token
                     print(self.count)
                     return print(self)
-                elif self.board[x] == 'x' or self.board[x] == 'o':
+                elif self.board[move] == 'x' or self.board[move] == 'o':
                     print('Spot has already been chosen') 
-                    False
+                    return False
             else:
                 print('Enter a valid number!')
-                False
+                return False
                   
 
-    def move_2(self):   
-        
-        True
-        while True:
-            False
-            x = int(input('Spot number 0-8: '))
-            if x <= 8:
-                if self.board[x] == ' ':
-                    self.count += 1
-                    self.board[x] = 'o'
-                    print(self.count)
-                    return print(self)
-                elif self.board[x] == 'x' or self.board[x] == 'o':
-                    print('Spot has already been chosen') 
-                    False
-            else:
-                print('Enter a valid number!')
-                False
-        
-    
-    # def move_2(self):
-    #     x = int(input('Spot number 0-8: '))
-    #     self.board[x] = 'o'
-    #     return self.board
     
 
     def calc_winner(self, name):
@@ -134,36 +106,61 @@ class Game:
 
 
 def main():
-    game = Game()    
-    player_1 = Player()
-    player_2 = Player()
-    player_1.player_name()    
-    player_2.player_name()  
-    print(game.first_image())
+    game = Game()
+    name_1 = input('What is your name?: ')
+    name_2 = input('What is your name?: ')
+
+    player_1 = Player('x', name_1)
+    player_2 = Player('o', name_2) 
     print(game.instructions())
     
     
     while True:
         
         game.is_full()
-        print(f'Player on deck: {player_1.name}')
-        game.move_1()
+        print(game.first_image()) # inserted this here instead of only once becausse I always wish I had a quick reference. 
+        print(f'Player on deck: {player_1.name}\nPlayers token = {player_1.token}')
+        while True:
+            move = int(input('Spot number 0-8?: '))
+            if game.move(move, player_1.token) == False:
+                continue
+            else:
+                break
+                
         if game.calc_winner(player_1.name) == False:
-            again = input('Would you like to play again?: ').lower()
-            if again == 'yes' or again == 'y':
-                game.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-                game.count = 0
-
+            while True:
+                again = input('Would you like to play again?: ').lower()
+                if again == 'yes' or again == 'y':
+                    game.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+                    game.count = 0
+                    main()
+                elif again == 'no' or again == 'n':
+                    quit()
+                else:
+                    print('Please enter Yes or No')
+                    continue
       
         game.is_full()
-        print(f'Player on deck: {player_2.name}')
-        game.move_2()
-        if game.calc_winner(player_2.name) == False:
-            again = input('Would you like to play again?: ').lower()
-            if again == 'yes' or again == 'y':
-                game.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-                game.count = 0
-        
+        print(game.first_image())
+        print(f'Player on deck: {player_2.name}\nPlayers token = {player_2.token}')
+        while True:
+            move = int(input('Spot number 0-8?: '))
+            if game.move(move, player_2.token) == False:
+                continue
+            else:
+                break
+        if game.calc_winner(player_1.name) == False:
+            while True:
+                again = input('Would you like to play again?: ').lower()
+                if again == 'yes' or again == 'y':
+                    game.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+                    game.count = 0
+                    main()
+                elif again == 'no' or again == 'n':
+                    quit()
+                else:
+                    print('Please enter Yes or No')
+                    continue
         
            
     
