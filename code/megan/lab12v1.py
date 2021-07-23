@@ -19,12 +19,14 @@ class ATM:
     
     def withdraw(self, amount):
         """withdraws the amount from the account and returns it"""
-        self.balance - amount
-        print(f'{self.balance}') # not working right
+        # new_balance = self.balance - amount
+        self.balance -= amount
+        return self.balance
     
-    def calc_interest(self):
+    def calc_interest(self): ### is this correct/complete?
         """returns the amount of interest calculated on the account"""
-        self.balance * 0.1 # TypeError: unsupported operand type(s) for +=: 'float' and 'NoneType'
+        interest = self.balance * 0.1
+        return interest 
 
 atm = ATM() # create an instance of our class
 print('Welcome to the ATM')
