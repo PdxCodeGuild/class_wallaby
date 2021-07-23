@@ -8,8 +8,33 @@ Let's represent an ATM with a class containing two attributes: a balance and an 
 - `withdraw(amount)` withdraws the amount from the account and returns it
 - `calc_interest()` returns the amount of interest calculated on the account
 
+Fill in the methods for the `ATM` class:
 
 ```python
+class ATM:
+	def __init__(self, balance=0, interest_rate=0.1):
+		...
+	
+	def check_balance(self)
+		"""return the account balance"""
+		...
+	
+	def deposit(self, amount):
+		"""deposit a given amount into account"""
+		...
+	
+	def check_withdrawal(self, amount):
+		"""return True if account has enough funds to withdraw given amount"""
+		...
+	
+	def withdraw(self, amount):
+		"""withdraw given amount from account and return that amount"""
+		...
+	
+	def calc_interest(self):
+		"""calculate and return interest gained on account"""
+		...
+
 atm = ATM() # create an instance of our class
 print('Welcome to the ATM')
 while True:
