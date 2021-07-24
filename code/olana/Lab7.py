@@ -17,12 +17,13 @@ def encrypt(text):
     # the encrypted message
     rot_13_message = ''
     
+    
     # Replace each letter in the string with a letter which is 13 positions further
     for character in text:
-        if character.isalpha:
+        if character.isalpha():
             rot_13_message += english_alphabet[(english_alphabet.index(character) + 13) % 26]
         else:
             rot_13_message += character
     return rot_13_message
-
-print(encrypt(input(" ")))
+variable1 = 'hello'
+print(encrypt(variable1))

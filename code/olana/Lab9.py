@@ -54,11 +54,8 @@ ari_scale = {
 
 
 
-ari_key = roundup_num
-ari_dict = []
-values_of_key = [ari_dict[ari_key] for ari_dict in ari_scale]
+print(ari_scale[roundup_num])
 
-print(values_of_key)
 
 
 
