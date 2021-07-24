@@ -50,11 +50,17 @@ Presentation Day: November 12th, 2021
 
 ## Python Labs Assigned:
 
-Lab 2: Average Numbers
-Lab 3: Number To Phrase
-Lab 4: Blackjack Advice
-Lab 5: Pick 6
-Lab 6: Credit Card Validator
+Lab  2: Average Numbers  
+Lab  3: Number To Phrase  
+Lab  4: Blackjack Advice  
+Lab  5: Pick 6  
+Lab  6: Credit Card Validator  
+Lab  7: Rot13  
+Lab  8: Peaks & Valleys  
+Lab  9: ARI
+Lab 10: Contact List  
+Lab 11: Searching & Sorting  
+Lab 12: ATM  
 
 <!-- #### Optional Python Labs -->
 
