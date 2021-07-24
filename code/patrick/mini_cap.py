@@ -23,3 +23,6 @@ print(response.apparent_encoding)
 # print(response.url)
 
 # api
+
+
+#maybe building this out in Django would be better?
