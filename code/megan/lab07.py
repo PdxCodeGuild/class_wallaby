@@ -10,11 +10,12 @@ def encryption(message):
     add it to an output string."""
     output = ''
     for letter in message:
-        output += alphabet[(alphabet.index(letter)+ 13) % 26]
+        if letter == ' ':
+            output += letter
+        elif letter != ' ':
+            output += alphabet[(alphabet.index(letter)+ 13) % 26]
     return output
 
 print(f"Encrypted ROT13 message: {encryption(user_str)}")
-
-# how to deal with spaces?
 
 # test: 'help me' = 'uryc zr'
