@@ -92,7 +92,6 @@ A program is a series of instructions given to a computer which perform operatio
 	- views
 	- templates
 	- models, databases, ORM
-	- class-based views
 	- forms
 	- user management
 	- files
