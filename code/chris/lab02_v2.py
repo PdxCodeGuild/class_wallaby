@@ -10,7 +10,7 @@ while continue_flag == True:
   else:
     list_of_nums.append(int(new_num))
 
-if len(list_of_nums) != 0:
+if len(list_of_nums) > 0:
   for num in list_of_nums:
     totalSum += num
 
