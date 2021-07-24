@@ -18,9 +18,9 @@ contacts_lst = []
 '''
 for i in range(len(contacts)):
     if i == 0:
-        contacts_dct.update({'name': contacts[0]})
+        contacts_dct.update({'first name': contacts[0]})
     elif i == 1:
-        contacts_dct.update({'lastname': contacts[1]})
+        contacts_dct.update({'last name': contacts[1]})
     elif i == 2:
         contacts_dct.update({'city': contacts[2]})
     elif i == 3:
@@ -35,7 +35,8 @@ values = (list())
 print(values)
 
 for i in range(len(lines)):
-    values
+    values = lines[i]
+    keys.append(values)
 
 contacts_lst = [] 
 
