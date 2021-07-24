@@ -81,12 +81,11 @@ A program is a series of instructions given to a computer which perform operatio
 	- objects
 	- functions
 	- mutability, scope
-	- canvas drawing
 	- timing
 	- event handlers
 	- dom manipulation
 	- classes, methods, inheritance
-	- ajax, http methods
+	- http methods
 - Django
 	- cli commands, file structure
 	- routes
