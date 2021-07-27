@@ -7,15 +7,11 @@ with open('contacts.csv', 'r') as f:
         contacts = row.split(',')
         # print(contacts)
 
-# make first row the keys
 # make following rows the values
 
 contacts_dct = {}   
-'''
-keys = []
-values = []
-contacts_lst = []
-'''
+
+# make first row the keys
 for i in range(len(contacts)):
     if i == 0:
         contacts_dct.update({'first name': contacts[0]})
@@ -31,6 +27,10 @@ print(contacts_dct) # {'name': 'joni', 'lastname': 'mitchell', 'city': 'ashland'
 keys = (list(contacts_dct)) # ['name', 'lastname', 'city', 'occupation']
 print(keys)
 
+values = []
+
+
+'''
 values = (list())
 print(values)
 
@@ -64,7 +64,7 @@ for contact in contacts_dct:
     contact.append(contacts_dct)
 
 print(contacts_dct)
-
+ 
 # turn into a list of dictionaries
 
 # zip + list (or dictionary?) comprehension
@@ -89,3 +89,4 @@ print(contacts_dct)
 # Version 2: CRUD REPL
 
 # Version 3: (work backwards)
+'''
