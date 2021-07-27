@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.navbar {
+    background-color: blue;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.nav-list {
+    list-style-type: none;
+}
