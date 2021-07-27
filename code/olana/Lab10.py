@@ -1,62 +1,52 @@
-'''
-showdogs_file = open('dogs.csv','r')
-for row in showdogs_file:
-    print(row.split(',')[0])
-'''
 with open('dogs.csv','r', encoding ='utf-8') as file:
     dogs = file.read().split('\n')
-    print(dogs)
+    #print(dogs)
+
+best_in_class = {}
+
+for i in range(len(dogs)):
+    if i == 0:
+        best_in_class.update({'Herding':dogs[0]})
+    elif i == 1:
+        best_in_class.update({'Toy':dogs[1]})
+    elif i == 2:
+        best_in_class.update({'Hound':dogs[2]})
+    elif i == 3:
+        best_in_class.update({'Non-sporting':dogs[3]})
+    elif i == 4:
+        best_in_class.update({'Terrier':dogs[4]})
+    elif i == 5:
+        best_in_class.update({'Working':dogs[5]})
+print(best_in_class)
 
 #hint: look up dictionary methods, create a line item
 
-dogs.append('labrador, medium, sporting')
-print(dogs)
+best_in_class.update({'Sporting':'Labrador, Olivia, 3 years old'})
+print(best_in_class)
 
 
-#Retrieve a record: ask the user for the breed of dog 
-#search = input("Enter breed name: ")
+#Retrieve a record: ask the user for the winner of the group
+search = input("Search for winner by entering the group name: ")
 #find the breed in the list, and display its information
 
-#results = dogs.get()
-#print(results)
-
-'''
-if search == 'border collie':
+if search == "Herding":
+    print(dogs[0])
+elif search == "Toy":
     print(dogs[1])
-elif search == 'pug':
+elif search == "Hound":
     print(dogs[2])
-elif search == 'greyhound':
+elif search == "Non-sporting":
     print(dogs[3])
-elif search == 'poodle':
+elif search == "Terrier":
     print(dogs[4])
-elif search == 'norwich terrier':
+elif search == "Working":
     print(dogs[5])
-elif search == 'akita':
+elif search == "Sporting": # bug
     print(dogs[6])
-elif search == 'labrador':
-    print(dogs[7])
-#Ask the user to update the list
 
-update_breed = input("To update the dog's info type enter the breed: ")
-update_attributes = input("Which attribute would you like to update, type size or group: ")
-if update_attributes == 'size':
-    update_size_attributes = input("Update size: ")
-    dogs.append(update_size_attributes)
-    print(dogs)
-else:
-    update_group_attributes = input("Update group: ")
-    dogs.append(update_group_attributes)
 
-'''
-'''
-#cite: list_exercises.py
-spring = ['march', 'april', 'may']
-summer = ['june', 'july', 'august']
-fall = ['september', 'october', 'november']
-winter = ['december', 'january', 'febuary']
+#Update a record: ask the user for the contact's name, then for which attribute of the user they'd like to update and the value of the attribute they'd like to set.
 
-seasons2d = [spring, summer, fall, winter]
+update_group_record = input(" To update the winner, please enter the group name: ")
+update_dog_attribute = input('Change attributes: ' )
 
-print(seasons2d[1][1])
-
-'''
