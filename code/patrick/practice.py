@@ -90,3 +90,31 @@ for i in range(len(list)):
 
 
 
+import requests
+from datetime import datetime
+
+
+payload = {'dt_text':'2021-07-27 21:00:00'}
+headers_dict = {'dt_txt':'something'}
+r = requests.get(f'http://api.openweathermap.org/data/2.5/forecast?q=portland&units=imperial&appid=884cfd64f3a52a3354c76c381207cf1e', params=payload)
+r = r.json()
+
+
+i = 0
+while True:   
+   for the in r:
+      
+      dt = int(r['list'][i]['dt'])
+      
+      
+      date = datetime.utcfromtimestamp(dt).strftime('%Y-%m-%d %I:%M:%p')
+      date = date.split(' ')
+      temp = r['list'][i]['main']['temp']
+      feels =r['list'][i]['main']['feels_like']
+      max = r['list'][i]['main']['temp_max']
+      min= r['list'][i]['main']['temp_min']
+      print(f'For the date of {date[0]} at {date[1]} the expected temp will be {temp}F but will feel like {feels}F. The max temp will be {max}F and the min will be {min}F.')
+      i += 1
+   if i >= 40:
+      break
+      
