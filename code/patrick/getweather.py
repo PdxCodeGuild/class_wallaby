@@ -50,7 +50,7 @@ def main():
 
 
     while True:
-        again = input('Would you like to enter a new city?: ').lower()
+        again = input('Would you like to enter a new city?: (YES or NO) ').lower()
         if again == 'yes' or again == 'y':
             main()
         elif again == 'no' or again == 'n':
