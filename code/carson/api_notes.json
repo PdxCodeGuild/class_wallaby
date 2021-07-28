@@ -1,0 +1,51 @@
+
+{
+ "type": "PHYSICAL",
+
+  "storePageId": "5d7ba084a63ee8bb410ce0b1",
+  "name": "Artisanal Steak Dry Rub",
+
+  "description": "Absolutly mouth watering expolosion of flavor that will make you slap your mama!",
+
+  "isVisible": true,
+  
+  "variantAttributes": ["flavor"],
+  
+  "variants": [
+    { 
+     
+      "sku": "SQ0557856",
+     
+      "pricing": {
+        
+        "basePrice": {
+          
+          "currency": "USD",
+          
+          "value": "12.95"
+        }
+
+        }
+      },{
+     
+      
+      "attributes": {
+        "flavor": "Habanero"
+      },
+     
+        "weight": {
+        
+          "unit": "POUND",
+          "value": 2.0
+        }, 
+        
+          "unit": "INCH",
+         
+          "length": 7.0,
+         
+          "width": 5.0,
+         
+          "height": 5.0
+        } 
+  ]
+} 

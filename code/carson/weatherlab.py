@@ -1,3 +1,13 @@
+""" have user pick from list of infomation to display
+
+i.e daily, weekly, and monthly forcast
+
+"""
+
+
+
+
+
 import requests
 print(' Search for a city to get the weather ! :)')
 state = input('State: ')
