@@ -7,7 +7,7 @@ i.e daily, weekly, and monthly forcast
 
 
 
-
+choices = [1,2,3]
 import requests
 print(' Search for a city to get the weather ! :)')
 state = input('State: ')
