@@ -1,25 +1,15 @@
-rot =[
-'n','o','p','q','r','s','t','u','v','w','x','y','z','a','b','c','d','e','f','g','h','i','j','k','l', 'm',]
-#print(rot)
-abc = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',]
-#print(abc)
+import string
 
-#print(letters)
-#word =['car']
-#l = word.split()
+abc = string.ascii_lowercase
+print(abc)
+user = input("Welcome ! please enter a word to be encrypted : ")
+dict = {}
+all = ''
 
-#print(word)
+for i, char in enumerate(abc):
+  dict[char] = abc[(i + 13) % 26]
 
-for letter in abc:
-   number =[]
-   number = ord(letter), chr(ord(letter))
-print(number)
-    #num = (number,letter)
-    #print(num)
-    #for  in abc:
-        #all = 
+for i, char in enumerate(user):
+  all += dict[char]
 
-
-    #cypher = rot[number]
-#print(cypher)
- 
+print(f"ROT13 code: {all}")
