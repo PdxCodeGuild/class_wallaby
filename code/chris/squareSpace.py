@@ -15,6 +15,57 @@ def view_product(id):
   return response.json()
 
 def create_product_data():
+  product_name = input('input product name: ')
+  product_desc = input('input product description: ')
+  sku = input('input product sku: ')
+  price = input('product currency value: ')
+
+  data = json.dumps({
+  "type": "PHYSICAL",
+  "storePageId": "6100bd69c9f97105f4fc7fd6",
+  "name": product_name,
+  "description": product_desc,
+
+  "tags": [
+    "artisanal",
+    "steak"
+  ],
+  "isVisible": True,
+  "variantAttributes": [
+    "flavor"
+  ],
+  "variants": [
+    {
+      "sku": sku,
+      "pricing": {
+        "basePrice": {
+          "currency": "USD",
+          "value": price
+        },
+      },
+      "stock": {
+        "quantity": 10,
+        "unlimited": False
+      },
+      "attributes": {
+        "flavor": "Habanero"
+      },
+      "shippingMeasurements": {
+        "weight": {
+          "unit": "POUND",
+          "value": 2
+        },
+        "dimensions": {
+          "unit": "INCH",
+          "length": 7,
+          "width": 5,
+          "height": 5
+        }
+      }
+    }
+  ]
+})
+  return data
 
 
 while True:
@@ -52,7 +103,10 @@ while True:
       })
 
   elif main_input == '4':
-    print('add new product')
+    http_method = 'POST'
+    url = 'https://api.squarespace.com/1.0/commerce/products/'
+    payload = create_product_data()
+    print(payload)
   elif main_input == '5':
     prod_id = input('\nEnter product ID ')
     http_method = 'DELETE'
@@ -61,3 +115,5 @@ while True:
 
   response = requests.request(http_method, url, headers=headers, data=payload)
   print(response.text)
+  if response.status_code >= 200 or response.status_code <= 299:
+    print('\noperation successful!')
