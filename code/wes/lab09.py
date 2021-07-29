@@ -1,7 +1,7 @@
 import string
 
 
-with open ('tale_of_2_cities.txt') as file:
+with open ('tale_of_2_cities.txt', encoding="utf8") as file:
     contents = file.read()
 
 file_name = file.name
