@@ -1,0 +1,79 @@
+
+<html>
+    <style>
+        .header {font-family: 'Times New Roman', Times, serif;  text-align: center; padding-top: 10px; padding-bottom: 10px; font-size: 40px; display: flexbox; flex: 1}
+        ul {list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;}
+        li {float: left; border-right: 1px solid #bbb;}
+        li:last-child {border-right:none;}
+        li a {display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;}
+        li a:hover:not(.active){background-color: #111;}
+        .active {background-color: #04aa6d;}
+        .colum-layout {max-width: 13oopx; background-color: violet;margin: 40px auto 0 auto;
+        line-height: 1.65; padding: 20px 50px;
+        display: flex;}
+        .main-colum {flex: 2; background-color: olivedrab; border-style: solid; padding: 8px;}
+        .sidebar-one {flex: 1; background-color: rgb(229, 231, 223); border-style: solid; padding: 8px;}
+        .sidebar-two {flex:1; background-color: olivedrab; border-style: solid; padding: 8px;}
+        header {background-color: turquoise;}
+        body {background-color: royalblue;}
+    </style>
+    <header>
+        <div class="header">This is the <strong>TOP</strong> of the page</div>
+    </header>
+    <nav>
+        <ul>
+            <li><a class="active" href ="#index.html">Home</a></li>
+            <li><a href="blog_pages/page_1.html">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li style="float:right"><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+    <body>
+        <section>
+            <div class="colum-layout">
+                <div class="main-colum">
+                    <h2>Main Colum</h2>
+                    <p> blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahbl
+                        ahblahblahblahblahblahblahblahblahblahblah
+                        blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahb
+                        lahblahblahblah
+                        blahblahblahblahblahblahblahblah</p>
+                    <p>blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahbla
+                        hblahblahblah
+                        blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahbla
+                        hblahblahblahblah
+                    </p>
+                    <p>blahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
+                        blahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
+                        blahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
+                        blahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
+                        blahblahblahblahblahblahblahblahblahblahblahblahblah
+                    </p>
+
+                </div>
+                <div class ="sidebar-one">
+                    <h3>Sidebar One</h3>
+                    <p>blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahbla
+                        hblahblahblahblah
+                        blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
+                    </p>
+                </div>
+                <div class ="sidebar-two">
+                    <h3>Sidebar Two</h3>
+                    <p>blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahbl
+                        ahblahblahblah
+                        blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+
+    </body>
+    
+
+    
+<!--https://codepen.io/pen?editors=0100
+https://www.w3schools.com/css/css_navbar_horizontal.asp-->
+</html>

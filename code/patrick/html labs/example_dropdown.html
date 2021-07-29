@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--code by codingflicks (https://www.codingflicks.com/)-->
+<html lang="en">
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.menu-area a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: darkslategrey;
+  height: 60px;
+  font-family:Poppins;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+
+}
+.menu-area a:hover{
+  background: tomato;
+  color: #fff;
+}
+.menu-area ul{
+  list-style: none;
+  display: flex;
+}
+.menu-area li{
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+.menu-area li:hover .dropdown-1 > li{
+  display: block;
+  top: 0;
+}
+.dropdown-1 li{
+  display: none;
+  position: relative;
+}
+.dropdown-1{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.dropdown-1 li:hover .dropdown-2 li{
+  display: block;
+}
+.dropdown-2 li{
+  display: none;
+}
+.dropdown-2{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+}
+.banner-area{
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(https://i.postimg.cc/Y0YM36yL/aa.jpg);
+  -webkit-background-size:cover;
+  background-size:cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 60px);
+}
+.banner-area h1 {
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 100px;
+	font-family: poppins;
+	letter-spacing: 2px;
+}
+  
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Dropdown Navigation Menu using Flexbox</title>
+</head>
+<body>
+    
+<div class="menu-area">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a>
+      <ul class="dropdown-1">
+        <li><a href="#">service one</a></li>
+        <li><a href="#">service two</a></li>
+        <li><a href="#">service three</a>
+          <ul class="dropdown-2">
+            <li><a href="#">service four</a></li>
+            <li><a href="#">service five</a></li>
+            <li><a href="#">service six</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#">Porfolio</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+<div class="banner-area">
+  <h1>Banner Text</h1>
+</div>
+
+</body>
+</html>

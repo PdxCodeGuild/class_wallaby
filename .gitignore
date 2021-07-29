@@ -114,3 +114,6 @@ token.txt
 #django uploaded files
 uploaded_files/
 node_modules
+
+.fake
+.ionide
