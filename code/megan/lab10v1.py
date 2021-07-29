@@ -1,36 +1,43 @@
-# https://www.w3schools.com/python/python_ref_dictionary.asp
-
 with open('contacts.csv', 'r') as f:
     lines = f.read().split('\n')
     # print(lines)
     for row in lines:
-        contacts = row.split(',')
+        headers = row.split(',')
         # print(contacts)
+
+keys = {}   
+values = {}
+contacts = []
+
+# make first row (headers) the keys
+for i in range(len(headers)):
+    if i == 0:
+        keys.update({'first name': headers[0]})
+    elif i == 1:
+        keys.update({'last name': headers[1]})
+    elif i == 2:
+        keys.update({'city': headers[2]})
+    elif i == 3:
+        keys.update({'occupation': headers[3]})
+# print(keys)
 
 # make following rows the values
 
-contacts_dct = {}   
 
-# make first row the keys
-for i in range(len(contacts)):
-    if i == 0:
-        contacts_dct.update({'first name': contacts[0]})
-    elif i == 1:
-        contacts_dct.update({'last name': contacts[1]})
-    elif i == 2:
-        contacts_dct.update({'city': contacts[2]})
-    elif i == 3:
-        contacts_dct.update({'occupation': contacts[3]})
-   
-print(contacts_dct) # {'name': 'joni', 'lastname': 'mitchell', 'city': 'ashland', 'occupation': 'doula'}
+# zip keys and values dictionaries?
 
-keys = (list(contacts_dct)) # ['name', 'lastname', 'city', 'occupation']
+print(contacts)
+
+
+
+'''
+keys = (list(contacts)) # ['name', 'lastname', 'city', 'occupation']
 print(keys)
 
 values = []
 
 
-'''
+
 values = (list())
 print(values)
 
