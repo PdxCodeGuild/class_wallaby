@@ -1,36 +1,48 @@
+from csv import DictWriter
+
 with open('contacts.csv', 'r') as f:
     lines = f.read().split('\n')
     # print(lines)
     for row in lines:
-        headers = row.split(',')
-        # print(contacts)
+        rows = row.split(',')
+        # print(rows)
 
-keys = {}   
+# headers = keys
+# rows = values
+
+# keys = {}
+contacts_dct = {}   
 values = {}
 contacts = []
 
 # make first row (headers) the keys
-for i in range(len(headers)):
+for i in range(len(rows)):
     if i == 0:
-        keys.update({'first name': headers[0]})
+        contacts_dct.update({'first name': rows[0]})
     elif i == 1:
-        keys.update({'last name': headers[1]})
+        contacts_dct.update({'last name': rows[1]})
     elif i == 2:
-        keys.update({'city': headers[2]})
+        contacts_dct.update({'city': rows[2]})
     elif i == 3:
-        keys.update({'occupation': headers[3]})
+        contacts_dct.update({'occupation': rows[3]})
 # print(keys)
 
-# make following rows the values
-
-
-# zip keys and values dictionaries?
+# add all values to list
+for row in rows:
+    contacts.append(contacts_dct)
 
 print(contacts)
 
 
 
+
+
+
+
 '''
+# zip keys and values dictionaries?
+
+
 keys = (list(contacts)) # ['name', 'lastname', 'city', 'occupation']
 print(keys)
 
