@@ -1,5 +1,5 @@
 # Part 1 - Linear Search
-'''
+
 nums = [1, 2, 3, 4, 5, 6, 7, 8]
 
 def linear_search(nums, value):
@@ -11,7 +11,7 @@ index = linear_search(nums, 3) # 2
 index = linear_search(nums, 9) # False
 
 print(index)
-'''
+
 # Part 2 - Binary Search
 
 nums = [1, 2, 3, 4, 5, 6, 7, 8]
@@ -20,18 +20,17 @@ def binary_search(nums, value):
     low = nums[0]
     high = nums[-1]
     while low < high:
-        mid = len(nums) / 2
-        if mid == value:
-            return mid # nums.index(value)
-        elif value < mid:
-            high = mid 
-        elif value > mid:
-            low = mid 
+        mid = (low + high) // 2
+        if value < nums[mid]:
+            high = mid - 1
+        elif value > nums[mid]:
+            low = mid + 1
         else:
-            print('Value not found.')
+            return mid
+    print('Value not found.')
 
-index = binary_search(nums, 3)
-# index = binary_search(nums, 9)
+index = binary_search(nums, 3) # 2
+# index = binary_search(nums, 9) # Value not found. None.
 
 print(index)
 
