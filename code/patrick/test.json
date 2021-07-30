@@ -1,0 +1,48 @@
+{
+  "type": "PHYSICAL",
+  "storePageId": "6100baf22aeebf7b71db5b0b",
+  "name": "Test Seasonal",
+  "description": "<p>This is a test.</p>",
+  "urlSlug": "test-of-test",
+  "tags": [
+    "test"
+  ],
+  "isVisible": true,
+  "variantAttributes": [
+    "test"
+  ],
+  "variants": [
+    {
+      "sku": "SQ05578569969",
+      "pricing": {
+        "basePrice": "2500",
+        "currency": "USD",
+        "value": "12.95"
+      },
+      "onSale": false,
+      "salePrice": {
+        "currency": "USD",
+        "value": "0.00"
+      },
+      "stock": {
+        "quantity": 0,
+        "unlimited": true
+      },
+      "attributes": {
+        "size": "test"
+      },
+      "shippingMeasurements": {
+        "weight": {
+          "unit": "POUND",
+          "value": 2.0
+        },
+        "dimensions": {
+          "unit": "INCH",
+          "length": 7.0,
+          "width": 5.0,
+          "height": 5.0
+        }
+      }
+    }
+  ]
+}

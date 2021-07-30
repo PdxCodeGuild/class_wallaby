@@ -1,0 +1,67 @@
+{
+    "products" : [ {
+      "id" : "6100baf32aeebf7b71db5b71",
+      "type" : "PHYSICAL",
+      "storePageId" : "6100baf22aeebf7b71db5b0b",
+      "name" : "Jane Skirt",
+      "description" : "<pre><code>DESCRIPTION</code></pre><p class=\"\" style=\"white-space:pre-wrap;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><pre><code>DETAILS</code></pre><ul data-rte-list=\"default\"><li><p class=\"\" style=\"white-space:pre-wrap;\">100% Cotton</p></li><li><p class=\"\" style=\"white-space:pre-wrap;\">Machine wash cold </p></li><li><p class=\"\" style=\"white-space:pre-wrap;\">Tumble dry low</p></li></ul>",
+      "url" : "https://apple-bassoon-hejb.squarespace.com/shop/p/jane-skirt-txexj",
+      "urlSlug" : "p/jane-skirt-txexj",
+      "images" : [ {
+        "id" : "6100baf32aeebf7b71db5b73",
+        "altText" : "",
+        "orderIndex" : 0,
+        "url" : "https://static1.squarespace.com/static/6100baac41353c4b7d8d54ac/6100baf22aeebf7b71db5b0b/6100baf32aeebf7b71db5b73/1585936065771/kimem-long-pleated-skirt-black_0354-v1-FINAL-copy.jpg",
+        "originalSize" : {
+          "width" : 1600,
+          "height" : 1600
+        },
+        "availableFormats" : [ "100w", "300w", "500w", "750w", "1000w", "1500w" ]
+      }, {
+        "id" : "6100baf32aeebf7b71db5b76",
+        "altText" : "",
+        "orderIndex" : 1,
+        "url" : "https://static1.squarespace.com/static/6100baac41353c4b7d8d54ac/6100baf22aeebf7b71db5b0b/6100baf32aeebf7b71db5b76/1585936065703/kimem-long-pleated-skirt-black_DETAIL.jpg",
+        "originalSize" : {
+          "width" : 1500,
+          "height" : 1500
+        },
+        "availableFormats" : [ "100w", "300w", "500w", "750w", "1000w", "1500w", "1500w" ]
+      } ],
+      "tags" : [ ],
+      "isVisible" : true,
+      "variantAttributes" : [ "Size" ],
+      "variants" : [ {
+        "id" : "19cfa3de-1d07-467d-b0c7-a4ee30303c11",
+        "sku" : "SQ6466148",
+        "pricing" : {
+          "basePrice" : {
+            "value" : "50.00",
+            "currency" : "USD"
+          },
+          "salePrice" : {
+            "value" : "0.00",
+            "currency" : "USD"
+          },
+          "onSale" : false
+        },
+        "stock" : {
+          "quantity" : 0,
+          "unlimited" : true
+        },
+        "attributes" : {
+          "Size" : "0"
+        },
+        "shippingMeasurements" : {
+          "weight" : {
+            "unit" : "POUND",
+            "value" : 0.0
+          },
+          "dimensions" : {
+            "unit" : "INCH",
+            "length" : 0.0,
+            "width" : 0.0,
+            "height" : 0.0
+            } ],
+          }
+     
