@@ -1,5 +1,6 @@
 import math
-import re ### not working?
+# import re ### not working?
+# import regex? 
 
 text = 'The Yellow Wallpaper'
 
@@ -7,7 +8,8 @@ with open('the-yellow-wallpaper.txt', 'r', encoding='utf-8') as f:
     contents = f.read()
 
 sentences = len(contents.split('.')) ### split on more than . (?, !)
-# sentences = re.split(r'\.|?|!', contents) ### fix
+# sentences = re.split(r'\.|?|\!', contents) ### not working
+# sentences = regex.split(r'\.|?|\!', contents) ### not working
 # print(sentences)
 
 words = len(contents.split())
