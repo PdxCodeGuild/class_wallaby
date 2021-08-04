@@ -1,0 +1,21 @@
+{
+    "type": "PHYSICAL",
+    "storePageId": "6100c0b1f091d942295b1b8d",
+    "name": "ECO Purse",
+    "description": "<p> ECO Sustainable Travel Purse <i>paragraphs</i>.</p>",
+    "urlSlug": "ECO Purse",
+    "variantAttributes": [
+        "color"
+    ],
+    "variants": [
+        {
+            "sku": "SQ0557856",
+            "pricing": {
+                "basePrice": {
+                    "currency": "USD",
+                    "value": "72.95"
+                }
+            }
+        }
+    ]
+}
