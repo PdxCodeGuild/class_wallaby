@@ -1,6 +1,5 @@
 with open('contacts.csv', 'r') as f:
     lines = f.read().split('\n')
-    # print(lines)
 
 contacts_dct = {}
 fields = []
@@ -9,15 +8,11 @@ contacts = []
 for i in range(len(lines)):
     values = lines[i]
     fields.append(values)
-    # print(fields)
 
 for row in lines:
     rows = row.split(',')
-    # print(rows)
     contacts_dct = {'first name': rows[0], 'last name': rows[1], 'city': rows[2], 'occupation': rows[3]}
     contacts.append(contacts_dct)
-
-# print(contacts)
 
 print('''Welcome to Contacts.
 
@@ -49,8 +44,10 @@ while True:
     # retrieve a record
     elif command == 'find':
         user_query = input('Enter name to search: ')
-        if user_query == contacts[0]:
-            print(contacts.index(user_query))
+        # if user_query == contacts[0]:
+        if user_query in contacts_dct:
+            print(contacts_dct.get('first name'))
+            # print(contacts.index(user_query))
         else:
             print(f'No contact {user_query} found.')
 
@@ -71,6 +68,10 @@ while True:
             print(f'{removed} has been deleted from Contacts.')
         else:
             print(f'No contact by {user_delete} found.')
+
+    # view all contacts
+    elif command == 'view':
+        print(contacts)
 
     elif command == 'exit':
         break
