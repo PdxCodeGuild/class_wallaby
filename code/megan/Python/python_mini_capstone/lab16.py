@@ -5,6 +5,7 @@
 # https://pypi.org/project/SpeechRecognition/
 # https://realpython.com/python-speech-recognition/ 
 # https://www.youtube.com/watch?v=x8xjj6cR9Nc&ab_channel=TraversyMedia
+# https://www.guru99.com/reading-and-writing-files-in-python.html#1
 
 '''
 from os import path
@@ -59,16 +60,23 @@ def respond(voice_command):
         # ask for title
         title = record_audio('What is the title for your blog post?')
         # create file title.txt to capture audio recording
-        ...(title)
+        with open({title}.txt, 'w') as f:
+            f.write(f"{title}\n")
+            f.close()
         with sr.Microphone() as source:
             audio = r.record(source)
             voice_data = r.recognize_google(audio)
-            print(voice_data)
+        print(voice_data)
     if 'stop' in voice_command:
         # stop recording
         assistant_speak('Recording stopped.')
         print(voice_data)
-        # save audio output to title.txt    
+        # save audio output to title.txt
+        with open({title}.txt, 'w') as f:
+            f.write(f"{title}\n")
+            f.write(voice_data)
+            # f.close()
+            assistant_speak(f'File created called {title}.txt')    
     if 'post' in voice_command:
         # open blog
         url = 'https://www.blogger.com/blog/post/edit/5461940182074273538/4621234515163086597?hl=en'
