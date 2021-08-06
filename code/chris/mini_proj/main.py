@@ -1,10 +1,14 @@
 import requests
 import re
 
+google_results = {}
+url_list = []
+current_scrape_url = ''
+url_input = ''
+
 search_input = input('\nWhat recipe would you like? ')
 search_input = search_input.split(' ')
 search_input = '+'.join(search_input)
-# search_input = 'kim chi'
 print()
 
 response = requests.get(f'https://www.google.com/search?q={search_input}+recipe')
@@ -24,17 +28,67 @@ for idx, item in reversed(list(enumerate(data))):
   elif item == None:
     data.pop(idx)
 
-google_results = {}
-for item in data:
-  google_results[item] = item
+for url in data:
+  google_results[url] = url
 
-for item in google_results:
-  print(item)
+for idx, url in enumerate(google_results):
+  print(f'{idx + 1}) ', url)
   print()
-with open('google_query.txt', 'wb') as file:
-  data = str(data)
-  data = data.encode('utf-8')
-  file.write(data)
+  url_list.append(url)
+
+url_input = int(input('\nSelect which url to scrape from by entering URL: '))
+url = url_list[url_input - 1]
+
+if url.startswith('www.foodnetwork.com'):
+
+  response = requests.get(f'https://{url}')
+  print(url)
+
+  data = response.text
+  data = re.split('(<span class="o-Ingredients__a-Ingredient--CheckboxLabel">)|(</span>)', data)
+
+  for idx, item in reversed(list(enumerate(data))):
+    if item == None:
+      data.pop(idx)
+    else:
+      data[idx] = item.strip()
+      if len(item) > 500 or len(item) < 9 or '<span' in item or item.startswith('Deselect'):
+        data.pop(idx)
+
+
+  data = '#'.join(data)
+  print(data)
+
+  data = re.split('(<)|(#)', data)
+
+  for idx, item in reversed(list(enumerate(data))):
+    if item == None:
+      data.pop(idx)
+    elif item.startswith('/p') or item.startswith('/label') or len(item) < 7 or item.startswith('/') or item.startswith('p c') or item.startswith('label') or item.startswith('input ') or item.startswith('span'):
+      data.pop(idx)
+    # input('enter')
+
+
+
+  with open('food_network_results.txt', 'wb') as file:
+    fillstr = '\n'
+    for idx, item in enumerate(data):
+      file.write(item.encode('utf-8'))
+      file.write(fillstr.encode('utf-8'))
   file.close()
+
+
+else:
+  print('\nScraping for that website does not exist')
+
+
+# with open('google_query.txt', 'wb') as file:
+#   google_results = str(google_results)
+#   google_results = google_results.encode('utf-8')
+#   file.write(google_results)
+#   for item in google_results:
+#     file.write(item.encode('utf-8'))
+#     file.write(', '.encode('utf-8'))
+#   file.close()
 
 
