@@ -1,5 +1,6 @@
 import requests
 import re
+from smtp import send_email
 
 google_results = {}
 url_list = []
@@ -7,11 +8,11 @@ current_scrape_url = ''
 url_input = ''
 
 search_input = input('\nWhat recipe would you like? ')
-search_input = search_input.split(' ')
-search_input = '+'.join(search_input)
+search_input_query = search_input.split(' ')
+search_input_query = '+'.join(search_input_query)
 print()
 
-response = requests.get(f'https://www.google.com/search?q={search_input}+recipe')
+response = requests.get(f'https://www.google.com/search?q={search_input_query}+recipe')
 
 data = response.text
 
@@ -68,8 +69,6 @@ if url.startswith('www.foodnetwork.com'):
       data.pop(idx)
     # input('enter')
 
-
-
   with open('food_network_results.txt', 'wb') as file:
     fillstr = '\n'
     for idx, item in enumerate(data):
@@ -77,6 +76,12 @@ if url.startswith('www.foodnetwork.com'):
       file.write(fillstr.encode('utf-8'))
   file.close()
 
+  input()
+
+  # email = input('Enter your email: ')
+  email = 'chrishawly@gmail.com'
+
+  send_email(email, search_input, data)
 
 else:
   print('\nScraping for that website does not exist')
