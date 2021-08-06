@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container mt-5">
+  <form action="/temperature/" method="post">
+  <div class="mb-3">
+    <label for="selected_city" class="form-label"
+      >City</label
+    >
+    <input
+      class="form-control"
+      name ='selected_city'
+      id="selected_city"
+      rows="3"
+    ></input>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+</div>
+{% endblock %}
