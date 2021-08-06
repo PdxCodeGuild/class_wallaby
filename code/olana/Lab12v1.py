@@ -10,36 +10,42 @@
 
 #Fill in the methods for the `ATM` class:
 
-
 class ATM:
-	def __init__(self, balance=0, interest_rate=0.1):
-		self.balance = balance
-        #self.interest_rate = interest_rate
-
-	def check_balance(self):
-		"""return the account balance"""
-		self.balance
+    def __init__(self, balance, interest_rate):
+        self.current_balance=balance
+        self.interest_rate=interest_rate
 	
-	def deposit(self, amount, transactions):
-		"""deposit a given amount into account"""
-		self.balance += amount
-        self.transactions = []
+    def check_balance(self):
+		#return the account balance
+        return self.current_balance 
 	
-	def check_withdrawal(self, amount):
-		"""return True if account has enough funds to withdraw given amount"""
-		self.balance -= amount
+    def deposit(self, amount):
+		#deposit a given amount into account
+	    self.current_balance += amount
+	
+    def check_withdrawal(self, amount):
+		#return True if account has enough funds to withdraw given amount
+        if amount <= self.current_balance:
+            return True
+        else:
+            amount > self.current_balance
+            return False
+
+
+    def withdraw(self, amount):
+		#withdraw given amount from account and return that amount
+        if self.check_withdrawal(amount)== True:
+            self.current_balance - amount
+            return self.current_balance
 
 	
-	def withdraw(self, amount):
-		"""withdraw given amount from account and return that amount"""
-		...
-	
-	def calc_interest(self):
-		"""calculate and return interest gained on account"""
+    def calc_interest(self):
+		#calculate and return interest gained on account
+        balance * self.interest_rate
+        return amount
+		
 
-		...
-
-atm = ATM() # create an instance of our class
+atm = ATM(0,0.1) # create an instance of our class
 print('Welcome to the ATM')
 while True:
     command = input('Enter a command: ')
@@ -72,3 +78,9 @@ while True:
         break
     else:
         print('Command not recognized')
+
+
+## Version 2
+
+#Have the ATM maintain a list of transactions. Every time the user makes a deposit or withdrawal, add a string to a list saying 'user deposited $15' or 'user withdrew $15'. Add a new method `print_transactions()` to your class for printing out the list of transactions.
+
