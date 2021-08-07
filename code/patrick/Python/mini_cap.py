@@ -3,6 +3,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+from bs4 import BeautifulSoup
+import requests
 
 
 user_input = 'corporate actions'
@@ -15,13 +17,41 @@ try:
     g_search.send_keys(user_input)
     g_search.submit()
    
-    
+    lst = [] 
     lnks=driver.find_elements_by_tag_name("href" and "a")
 # traverse list
     for lnk in lnks:
     # get_attribute() to get all href
-        print(lnk.get_attribute('href'))
+        lst.append(lnk.get_attribute('href'))
    
     
 except:                                                         
-    pass
+    pass       
+lst_1 = []
+
+for url in lst:
+
+    try:    
+        if 'javascript:void' in url:
+            pass
+        elif 'google' not in url:
+            lst_1.append(url)
+    except:
+        print("error")
+
+
+
+for x in lst_1:
+    r = requests.get(x)
+    soup = BeautifulSoup(r.content, 'html5lib') # If this line causes an error, run 'pip install html5lib' or install html5lib
+    #print(soup.prettify())    
+    table = soup.find_all("div" and "p")
+    print(table)
+
+# for the in lst_1:
+#     driver.get(the)
+#     try:
+#         stuff =WebDriverWait(driver, 20).until(driver.find_element_by_tag_name('p'))
+#         print(stuff)
+#     except:
+#         print("error")
