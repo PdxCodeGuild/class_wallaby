@@ -1,20 +1,9 @@
-# Lab 12: ATM
-
-#Let's represent an ATM with a class containing two attributes: a balance and an interest rate. A newly created account will default to a balance of 0 and an interest rate of 0.1%. Implement the initializer, as well as the following functions:
-
-#check_balance()` returns the account balance
-#deposit(amount)` deposits the given amount in the account
-#check_withdrawal(amount)` returns true if the withdrawn amount won't put the account in the negative
-#withdraw(amount)` withdraws the amount from the account and returns it
-#calc_interest()` returns the amount of interest calculated on the account
-
-#Fill in the methods for the `ATM` class:
-
 class ATM:
     def __init__(self, balance, interest_rate):
         self.current_balance=balance
         self.interest_rate=interest_rate
-	
+        self.transactions = []
+
     def check_balance(self):
 		#return the account balance
         return self.current_balance 
@@ -22,7 +11,8 @@ class ATM:
     def deposit(self, amount):
 		#deposit a given amount into account
 	    self.current_balance += amount
-	
+        self.transactions.append(f'User Deposited: {amount}')
+
     def check_withdrawal(self, amount):
 		#return True if account has enough funds to withdraw given amount
         if amount <= self.current_balance:
@@ -31,20 +21,22 @@ class ATM:
             amount > self.current_balance
             return False
 
-
     def withdraw(self, amount):
 		#withdraw given amount from account and return that amount
         if self.check_withdrawal(amount)== True:
-            balance - amount
-            return amount
-    
+            self.current_balance - amount
+            self.transactions.append(f'User Withdraw: {amount}')
+            return self.current_balance
+            
     def calc_interest(self):
 		#calculate and return interest gained on account
-        balance * self.interest_rate(amount)
+        balance * self.interest_rate
         return amount
-        
-
     
+    def print_transaction(self):
+        return self.transactions
+    
+
 atm = ATM(0,0.1) # create an instance of our class
 print('Welcome to the ATM')
 while True:
@@ -55,18 +47,21 @@ while True:
     elif command == 'deposit':
         amount = float(input('How much would you like to deposit? '))
         atm.deposit(amount) # call the deposit(amount) method
-        print(f'Deposited ${amount}')
+        print(f'User Deposited ${amount}')
     elif command == 'withdraw':
         amount = float(input('How much would you like '))
         if atm.check_withdrawal(amount): # call the check_withdrawal(amount) method
             atm.withdraw(amount) # call the withdraw(amount) method
-            print(f'Withdrew ${amount}')
         else:
             print('Insufficient funds')
     elif command == 'interest':
         amount = atm.calc_interest() # call the calc_interest() method
         atm.deposit(amount)
         print(f'Accumulated ${amount} in interest')
+    
+    elif command == 'transaction':
+        print(atm.print_transaction())
+
     elif command == 'help':
         print('Available commands:')
         print('balance  - get the current balance')
@@ -78,7 +73,5 @@ while True:
         break
     else:
         print('Command not recognized')
-
-
 
 
