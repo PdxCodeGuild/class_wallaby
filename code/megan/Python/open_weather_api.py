@@ -1,5 +1,5 @@
 # https://openweathermap.org/price
-# api_key = '1128f4f2ee85b1109fc9c6b1880d0a86'
+# api_key = 'xyz'
 
 import requests
 
@@ -21,8 +21,8 @@ while True:
         # state = input('Enter state (ex: WA): ')
         lat = input('Enter latitude: ')
         lon = input('Enter longitude: ')
-        # response = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city},{state}&appid=1128f4f2ee85b1109fc9c6b1880d0a86')
-        response = requests.get(f'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,daily,alerts&appid=1128f4f2ee85b1109fc9c6b1880d0a86')
+        # response = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city},{state}&appid=xyz')
+        response = requests.get(f'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,daily,alerts&appid=xyz')
         # print(response.status_code)
         data = response.json()
         # print(type(response))
@@ -34,7 +34,7 @@ while True:
     elif command == '2':
         lat = input('Enter latitude: ')
         lon = input('Enter longitude: ')
-        response = requests.get(f'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,alerts&appid=1128f4f2ee85b1109fc9c6b1880d0a86')
+        response = requests.get(f'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,alerts&appid=xyz')
         # print(response.status_code)
         data = response.json()
         print(data)
@@ -42,7 +42,7 @@ while True:
     elif command == '3':
         lat = input('Enter latitude: ')
         lon = input('Enter longitude: ')
-        response = requests.get(f'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,daily&appid=1128f4f2ee85b1109fc9c6b1880d0a86')
+        response = requests.get(f'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,daily&appid=xyz')
         # print(response.status_code)
         data = response.json()
         print(data)
