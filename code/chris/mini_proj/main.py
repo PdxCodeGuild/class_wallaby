@@ -84,7 +84,7 @@ if url.startswith('www.foodnetwork.com'):
   send_email(email, search_input, data)
 
 else:
-  print('\nScraping for that website does not exist')
+  print('\nScraping for that website does not supported')
 
 
 # with open('google_query.txt', 'wb') as file:
