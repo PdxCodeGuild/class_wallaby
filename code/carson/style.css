@@ -1,0 +1,28 @@
+p {
+color: red;
+padding: 0px 525px
+
+
+}
+body{
+
+    text-align: center;
+}
+
+
+ul {
+    display: table;
+    margin: 0 auto;
+    text-align: left ;
+    margin-bottom: 14px;
+  }
+
+html{
+        background-image: url('https://media.giphy.com/media/Rit9s7Lcg9uCwzunWm/giphy.gif');
+        background-size: cover;
+    
+        height: 100vh;
+        padding:0;
+        margin:0;
+    }
+    
