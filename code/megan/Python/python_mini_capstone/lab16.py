@@ -3,6 +3,7 @@
 
 # Sources:
 # https://pypi.org/project/SpeechRecognition/
+# https://people.csail.mit.edu/hubert/pyaudio/docs/#id1
 # https://realpython.com/python-speech-recognition/ 
 # https://www.youtube.com/watch?v=x8xjj6cR9Nc&ab_channel=TraversyMedia
 # https://towardsdatascience.com/building-a-speech-recognizer-in-python-2dad733949b4

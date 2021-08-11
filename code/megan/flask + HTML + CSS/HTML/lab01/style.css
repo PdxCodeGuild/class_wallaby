@@ -1,0 +1,111 @@
+body {
+    font-family: "Oswald", sans-serif;
+    color: whitesmoke;
+    background-image: url("../images/patrick-fore-0gkw_9fy0eQ-unsplash.jpg");
+    background-image: url("https://unsplash.com/photos/0gkw_9fy0eQ");
+    background-size: cover;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Oswald", sans-serif;
+    color: white
+}
+
+h1 {
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-image: url("https://www.freepik.com/free-icon/fountain-pen_750856.htm");
+    list-style-position: inside;
+    text-align: left;
+}
+
+.container {
+    max-width: 840px;
+    margin: 0 auto;
+    background-color: #0c294d;
+    opacity: 0.8;
+}
+
+.intro {
+    padding: 20px;
+}
+
+.bio-photo {
+    width: 456px;
+    height: 594px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px 0px grey;
+    transition: all ease-in-out .2s;
+}
+
+.bio-photo:hover {
+    box-shadow: 0px 8px 12px 0px grey;
+}
+
+#additional {
+    width: 100%;
+    min-height: 400px;
+}
+
+a {
+    width: 50%;
+    float: left;
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Hahmlet";
+    font-style: italic, bold;
+    font-size: 20px;
+    color: whitesmoke;
+    padding: 0px 30px 0px 0px;
+    border: 5px;
+    border-color: whitesmoke;
+}
+
+#places-lived {
+    width: 50%;
+    float: right;
+    display: inline;
+    text-align: left;
+    padding: 0px 0px 0px 30px;
+}
+
+#wiki-link {
+    width: 50%;
+    float: left;
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Hahmlet";
+    font-style: italic, bold;
+    font-size: 20px;
+    color: whitesmoke;
+    padding: 0px 30px 0px 0px;
+    border: 5px;
+    border-color: whitesmoke;
+}
+
+.wiki-link:link {
+    color: whitesmoke;
+}
+
+.wiki-link:visited {
+    color: wheat;
+}
+
+.wiki-link:hover {
+    color: orange;
+}
+
+.wiki-link:active {
+    color: gainsboro;
+}
