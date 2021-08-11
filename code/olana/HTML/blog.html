@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Cite: w3 schools.com*/
+/* Style the header */
+header {
+  background-color:#f1f1f1;
+  padding: 50px;
+  text-align: center;
+  font-size: 40px;
+  color:black;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #f1f1f1;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color:grey;
+  padding: 50px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<h2>Florida Living</h2>
+
+<header>
+  <h2>Floridian Cooking</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a href="#">Ybor City Spanish/Cuban Fusion</a></li>
+      <li><a href="#">Fresh out of the Gulf Seafood</a></li>
+      <li><a href="#">Native Cracker Cuisine</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1>Tampa Bay</h1>
+    <p>Take a bite into culinary diversity. Travel to countryside in nearby Lakeland, and discover a fusion of fine dining and farm-to-table restaurants of historical southern native "cracker" cuisine. 
+        Then take a tour to Clearwater to enjoy fresh seafood as it comes straight from the pier to the table. 
+        A colorful evening out downtown in Ybor city  you will be fancied with a blend of authentic Spanish/Cuban dishes.</p>
+  </article>
+</section>
+
+<footer>
+    <q>Fusion of Cuisines in Tampa Bay</q>
+  <img src = https://tampamagazines.com/wp-content/uploads/2021/05/SaltShack_C9165.jpg>
+</footer>
+
+</body>
+</html>
+
