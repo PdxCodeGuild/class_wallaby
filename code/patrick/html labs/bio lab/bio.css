@@ -1,7 +1,7 @@
 
 
 body {background-image: url("https://cdn.pixabay.com/photo/2017/09/08/09/26/star-2728185_960_720.jpg"); text-align: center; padding-left: 25px; padding-right: 25px;}
-li {color:rgb(228, 201, 201); margin: auto; list-style-position: inside; text-align:start;padding-left: 475px;}
+li {color:rgb(228, 201, 201); margin: auto; list-style-position: inside; text-shadow: 5px 5px 5px burlywood;}
 
 .title {color:rgb(226, 223, 223); font-size: 40px; padding-bottom: 20px;}
 .p1 {color:rgb(231, 230, 235); font-size: 25px; font-style: oblique;padding-top: 25px;}
