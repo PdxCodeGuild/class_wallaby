@@ -6,11 +6,11 @@ li {color:rgb(228, 201, 201); margin: auto; list-style-position: inside; text-al
 .title {color:rgb(226, 223, 223); font-size: 40px; padding-bottom: 20px;}
 .p1 {color:rgb(231, 230, 235); font-size: 25px; font-style: oblique;padding-top: 25px;}
 
-img { display: flex; height: 250px; width: 250px; }
+img {height: 250px; width: 250px;border-radius: 25px; }
 .link {text-decoration: underline; color: rgb(194, 105, 42); font-size: 30px;}
 .h2 {font-size: 20px; color:rgb(211, 27, 27)}
-figure {border: thin #c0c0c0 solid; display: flex; flex-flow: column; ; max-width: 250; margin: auto;}
+figure {border-radius: 25px; border: 2px solid #f9faf7;; flex-flow: column; ; max-width: 250; margin: auto; background-color: #222;}
 
-figcaption {background-color: #222;color: #fff; font: italic smaller sans-serif; padding: 3px; text-align: inherit;}
+figcaption {background-color: #222;color: #fff; font: italic smaller sans-serif; text-align: inherit; border-radius: 25px; position: relative; bottom: 11px;}
 the_1 {font-size: 30px; color: white; font-style: oblique; position:relative; top:50px;}
 
