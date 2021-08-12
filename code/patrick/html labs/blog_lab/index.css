@@ -1,0 +1,16 @@
+.header {font-family: 'Times New Roman', Times, serif;  text-align: center; padding-top: 10px; padding-bottom: 10px; font-size: 40px; display: flexbox; flex: 1}
+ul {list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;}
+li {float: left; border-right: 1px solid #bbb;}
+li:last-child {border-right:none;}
+li a {display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;}
+li a:hover:not(.active){background-color: #111;}
+.active {background-color: #04aa6d;}
+.colum-layout {max-width: 13oopx; background-color: violet;margin: 40px auto 0 auto;
+line-height: 1.65; padding: 20px 50px;
+display: flex;}
+.main-colum {flex: 2; background-color: olivedrab; border-style: solid; padding: 8px;}
+.sidebar-one {flex: 1; background-color: rgb(229, 231, 223); border-style: solid; padding: 8px;}
+.sidebar-two {flex:1; background-color: olivedrab; border-style: solid; padding: 8px;}
+header {background-color: turquoise;}
+body {background-color: royalblue;}
+.flex {background-color: darkgreen ;border:cornsilk; display:flex; flex-wrap: wrap}
