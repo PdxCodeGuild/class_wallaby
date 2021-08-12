@@ -1,0 +1,67 @@
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: black;
+    background-color: #e1ede9;
+}
+
+h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: 70px;
+    color: black;
+    text-align: center;
+}
+
+h2,
+h3,
+h4 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: black;
+}
+
+p {
+    display: inline-flex;
+}
+
+ul {
+    display: flex;
+    background: white;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    list-style-type: none;
+    padding: 20px;
+    margin: 5px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    margin: 0px;
+    display: flex;
+    vertical-align: top;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border: 2px gainsboro;
+}
+
+.post-one {
+    flex-grow: 3;
+    flex: 1 100px;
+}
+
+.post-two,
+.post-three,
+.post-four {
+    flex: 1 100px;
+}
