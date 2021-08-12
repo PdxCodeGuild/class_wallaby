@@ -1,12 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap'); url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+*{font-family: 'Noto Sans KR', sans-serif;}
 p {
-color: red;
-padding: 0px 525px
+color: rgb(252, 246, 246);
+text-align: justify;
+padding: 0px 0px;
+margin: 30px;
+background-color: #bb3030;
+border: 1px solid rgb(97, 33, 33);
+opacity: 0.6
 
 
 }
 body{
-
+    border-style: groove;
     text-align: center;
+    max-width: 905px;
+    margin: auto;
+    font-size: 27px;
+  
 }
 
 
@@ -18,11 +30,39 @@ ul {
   }
 
 html{
-        background-image: url('https://media.giphy.com/media/Rit9s7Lcg9uCwzunWm/giphy.gif');
+        background-image: url('https://media.giphy.com/media/dXQySomSteGzajNFmD/giphy.gif');
         background-size: cover;
     
         height: 100vh;
         padding:0;
         margin:0;
     }
-    
+
+h1{
+    color: rgb(241, 233, 233);
+}
+
+h2{
+    text-align: right;
+}
+
+h3{
+    margin: 30px;
+    background-color: #bb3030;
+    border: 1px solid black;
+    opacity: 0.6
+}
+
+q{
+    color: red;
+    margin: 30px;
+    background-color: #000000;
+    border: 1px solid black;
+    opacity: 0.6;
+    text-align: center;
+}
+img{
+    border-radius: 25px
+}
+a{
+ color:rgb(204, 207, 24);
