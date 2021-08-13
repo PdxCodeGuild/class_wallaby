@@ -35,7 +35,7 @@ try:
     # # time.sleep(45)
     # # searchbox.send_keys(Keys.ENTER)
     
-    keyword = "news" #what you want to search for
+    keyword = "mars" #what you want to search for
     driver.get("https://www.instagram.com/explore/tags/" + keyword + "/")
     time.sleep(5)
 
