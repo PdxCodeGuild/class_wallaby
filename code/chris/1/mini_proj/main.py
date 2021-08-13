@@ -67,7 +67,6 @@ if url.startswith('www.foodnetwork.com'):
       data.pop(idx)
     elif item.startswith('/p') or item.startswith('/label') or len(item) < 7 or item.startswith('/') or item.startswith('p c') or item.startswith('label') or item.startswith('input ') or item.startswith('span'):
       data.pop(idx)
-    # input('enter')
 
   with open('food_network_results.txt', 'wb') as file:
     fillstr = '\n'
@@ -78,8 +77,7 @@ if url.startswith('www.foodnetwork.com'):
 
   input()
 
-  # email = input('Enter your email: ')
-  email = 'chrishawly@gmail.com'
+  email = input('Enter your email: ')
 
   send_email(email, search_input, data)
 
@@ -87,13 +85,13 @@ else:
   print('\nScraping for that website does not supported')
 
 
-# with open('google_query.txt', 'wb') as file:
-#   google_results = str(google_results)
-#   google_results = google_results.encode('utf-8')
-#   file.write(google_results)
-#   for item in google_results:
-#     file.write(item.encode('utf-8'))
-#     file.write(', '.encode('utf-8'))
-#   file.close()
+with open('google_query.txt', 'wb') as file:
+  google_results = str(google_results)
+  google_results = google_results.encode('utf-8')
+  file.write(google_results)
+  for item in google_results:
+    file.write(item.encode('utf-8'))
+    file.write(', '.encode('utf-8'))
+  file.close()
 
 
