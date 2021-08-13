@@ -1,28 +1,57 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from bs4 import BeautifulSoup
 import requests
-# from requests import api #https://realpython.com/python-requests/#getting-started-with-requests
 
 
-from requests.exceptions import HTTPError 
-for url in ['https://www.sec.gov/edgar/search-and-access']:
-    try:
-        #response.encoding = 'json'
-        
-        response = requests.get(url)
-        # json_response = response.json()
-        # repository = json_response['items'][0]
-        # print(repository)
-        response.raise_for_status()
-    except HTTPError as http_err:
-        print(f'HTTP error occured: {http_err}')
-    except Exception as err:
-        print(f'Other error occurred: {err}')
-    else:
-        print('Success!')
+user_input = 'corporate actions'
+driver = webdriver.Chrome() #path to chrominium, inside (), is not needed if included in the same folder.
+driver.get("https://www.google.com/search?q=related:&rlz=1C1ONGR_enUS958US958&tbm=nws&source=lnt&tbs=qdr:d&sa=X&ved=2ahUKEwjvx6y-vpbyAhVRo54KHc6OBxsQpwV6BAgHECE&biw=929&bih=888&dpr=1")
+try:
+    g_search = WebDriverWait(driver, 20).until(EC.element_to_be_clickable(
+        (By.XPATH, "//input[@title='Search']")))
+    g_search.clear()
+    g_search.send_keys(user_input)
+    g_search.submit()
+   
+    lst = [] 
+    lnks=driver.find_elements_by_tag_name("href" and "a")
+# traverse list
+    for lnk in lnks:
+    # get_attribute() to get all href
+        lst.append(lnk.get_attribute('href'))
+   
+    
+except:                                                         
+    pass       
+lst_1 = []
 
-print(response.apparent_encoding)
-# print(response.url)
+for url in lst:
 
-# api
+    try:    
+        if 'javascript:void' in url:
+            pass
+        elif 'google' not in url:
+            lst_1.append(url)
+    except:
+        print("error")
 
 
-#maybe building this out in Django would be better?
+
+for x in lst_1:
+    r = requests.get(x)
+    soup = BeautifulSoup(r.content, 'html5lib') # If this line causes an error, run 'pip install html5lib' or install html5lib
+    #print(soup.prettify())    
+    table = soup.find_all("div" and "p")
+    print(table)
+
+# for the in lst_1:
+#     driver.get(the)
+#     try:
+#         stuff =WebDriverWait(driver, 20).until(driver.find_element_by_tag_name('p'))
+#         print(stuff)
+#     except:
+#         print("error")
