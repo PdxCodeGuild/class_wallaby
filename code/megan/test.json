@@ -1,0 +1,45 @@
+{
+    "type": "PHYSICAL",
+    "storePageId": "6100bb8a421abe4707af1cbd",
+    "name": "Artisanal Steak Dry Rub",
+    "description": "<p>This can be a few words or even a few <i>paragraphs</i>.</p>",
+    "urlSlug": "artisanal-steak-dry-rub",
+    "tags": ["artisanal", "steak"],
+    "isVisible": true,
+    "variantAttributes": ["flavor"],
+    "variants": [
+      {
+        "sku": "SQ0557856",
+        "pricing": {
+          "basePrice": {
+            "currency": "USD",
+            "value": "12.95"
+          },
+          "onSale": false,
+          "salePrice": {
+            "currency": "USD",
+            "value": "0.00"
+          }
+        },
+        "stock": {
+          "quantity": 10,
+          "unlimited": false
+        },
+        "attributes": {
+          "flavor": "Habanero"
+        },
+        "shippingMeasurements": {
+          "weight": {
+            "unit": "POUND",
+            "value": 2.0
+          },
+          "dimensions": {
+            "unit": "INCH",
+            "length": 7.0,
+            "width": 5.0,
+            "height": 5.0
+          }
+        }
+      }
+    ]
+}

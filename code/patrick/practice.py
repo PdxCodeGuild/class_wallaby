@@ -39,36 +39,82 @@ new = []
 list = (3, 2, 1)
 for i in range(len(list)):
    i = i + 13 
-   new.append(list[i])
-print(new)'''
+#    new.append(list[i])
+# print(new)'''
 
+# board = [
 
-# board = [["1", "2-", "3-"], ["-", "-", "-"], ["-", "-", "-"]]   
+#      ["1", "2-", "3-"],
+#      ["-", "-", "-"],
+#      ["-", "-", "-"]
+#      ]
 # class Game:
-#    def _repr_(self):
+#    def _repr_(self, board):
 #       for row in board: # goes through rows 
 #          for j in row:  # goes through each string in each ro
-#             return j
+#             returnprint(j, end=" ")
 
 # game = Game()
 
-# game.repr(print())
-                    
-# class Game:
- 
-        
-#     def image(board):
-#          board_1 = [
-#             ["1", "2", "3"],
-#             ["4", "5", "6"],
-#             ["7", "8", "9"],]
-#          lst = []
-#          for x in board_1: 
-#             for y in x:
-#                lst.append(y)
-#          return lst
-                  
-                 
-# game = Game()
-# x = game.image()
-# print(x)
+# game._repr_(print(board))
+# from string import punctuation
+# def check_palindrome(string):
+#    string = string.lower()
+#    string = string.replace(' ','')
+#    string = string.replace('!','')
+#    string = string.replace("'",'')
+
+#    rev_string = string[::-1]
+#    if string == rev_string:
+#       return True
+#    return False, string
+
+# print(check_palindrome("Go Hang a Salami! I'm a Lasagna Hog!"))
+
+# x = 'dormitory'
+# lst = []
+# for i in x:
+#    lst.append(i)
+# print(lst)
+# lst_1 = lst.sort()
+# x = list('dormitory')
+# y = list("abcde")
+# if x == y:
+#    print("yes")
+# else:
+#    print('no')
+
+# string = "abc"
+# print([i for i, x in enumerate(string)])
+
+
+
+
+# import requests
+# from datetime import datetime
+
+
+# payload = {'dt_text':'2021-07-27 21:00:00'}
+# headers_dict = {'dt_txt':'something'}
+# r = requests.get(f'http://api.openweathermap.org/data/2.5/forecast?q=portland&units=imperial&appid=884cfd64f3a52a3354c76c381207cf1e', params=payload)
+# r = r.json()
+
+
+# i = 0
+# while True:   
+#    for the in r:
+      
+#       dt = int(r['list'][i]['dt'])
+      
+      
+#       date = datetime.utcfromtimestamp(dt).strftime('%Y-%m-%d %I:%M:%p')
+#       date = date.split(' ')
+#       temp = r['list'][i]['main']['temp']
+#       feels =r['list'][i]['main']['feels_like']
+#       max = r['list'][i]['main']['temp_max']
+#       min= r['list'][i]['main']['temp_min']
+#       print(f'For the date of {date[0]} at {date[1]} the expected temp will be {temp}F but will feel like {feels}F. The max temp will be {max}F and the min will be {min}F.')
+#       i += 1
+#    if i >= 40:
+#       break
+      

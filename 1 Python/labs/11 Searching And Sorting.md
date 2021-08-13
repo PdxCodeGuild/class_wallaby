@@ -77,7 +77,7 @@ print(index) # 2
 
 
 
-## Part 3 - Bubble Sort
+## Part 3 - Bubble Sort (optional)
 
 [Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort) is one of the simplest and least efficient sorting algorithms. We repeatedly loop over the list, comparing each number to the one next to it, and swapping them if needed.
 

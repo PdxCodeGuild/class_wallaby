@@ -1,22 +1,24 @@
 import math
+# import re ### not working?
+# import regex? 
 
 text = 'The Yellow Wallpaper'
 
 with open('the-yellow-wallpaper.txt', 'r', encoding='utf-8') as f: 
     contents = f.read()
 
-sentences = len(contents.split('.'))
-print(sentences)
+sentences = len(contents.split('.')) ### split on more than . (?, !)
+# sentences = re.split(r'\.|?|\!', contents) ### not working
+# sentences = regex.split(r'\.|?|\!', contents) ### not working
+# print(sentences)
 
 words = len(contents.split())
-print(words)
+# print(words)
 
 characters = len(list(contents))
-print(characters)
+# print(characters)
 
 ari = math.ceil(4.71*(characters/words) + 0.5*(words/sentences) - 21.43)
-
-# ari round up?
 
 if ari >= 14:
     ari = 14
@@ -41,5 +43,5 @@ ari_scale = {
 print(f"""
 The ARI for {text} is {ari}. 
 This corresponds to a {ari_scale.get(ari).get('grade_level')} level of difficulty 
-that is suitable for an average person {ari_scale.get('ages')} years old.
+that is suitable for an average person {ari_scale.get(ari).get('ages')} years old.
 """)
