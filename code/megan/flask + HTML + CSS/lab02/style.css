@@ -1,6 +1,4 @@
 body {
-    font-family: 'Open Sans Condensed', sans-serif;
-    color: black;
     background-color: #e1ede9;
 }
 
@@ -13,13 +11,42 @@ h1 {
 
 h2,
 h3,
-h4 {
+h4,
+h5 {
     font-family: 'Open Sans Condensed', sans-serif;
     color: black;
 }
 
+
+/* from https://codepen.io/joeyhoer/pen/BmqIx */
+
+.accessory {
+    height: 6px;
+    background-image: radial-gradient( closest-side, hsla(0, 0%, 50%, 1.0), hsla(0, 0%, 50%, 0) 100%);
+    position: relative;
+}
+
+.accessory:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    background-color: hsl(0, 0%, 75%);
+    height: 12px;
+    width: 12px;
+    transform: rotate(45deg);
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 4px 0;
+    border: 4px solid hsla(0, 0%, 100%, 0.35);
+    background-clip: padding-box;
+    box-shadow: -10px 10px 0 hsla(0, 0%, 100%, 0.15), 10px -10px 0 hsla(0, 0%, 100%, 0.15);
+}
+
 p {
     display: inline-flex;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: black;
 }
 
 ul {

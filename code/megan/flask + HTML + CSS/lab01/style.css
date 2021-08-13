@@ -1,12 +1,6 @@
 body {
-    font-family: "Oswald", sans-serif;
-    color: whitesmoke;
-    background-image: url("../images/patrick-fore-0gkw_9fy0eQ-unsplash.jpg");
-    background-image: url("https://unsplash.com/photos/0gkw_9fy0eQ");
-    background-size: cover;
-    text-align: center;
-    margin: 20px;
-    padding: 20px;
+    background-image: url("../lab01/images/patrick-fore-0gkw_9fy0eQ-unsplash.jpg") !important;
+    background-size: 100%;
 }
 
 h1,
@@ -22,16 +16,30 @@ h1 {
     margin-bottom: 10px;
 }
 
+a {
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Hahmlet";
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    color: whitesmoke;
+    padding: 45px;
+}
+
 ul {
     list-style-position: inside;
     text-align: left;
 }
 
 li {
-    list-style-image: url("https://www.freepik.com/free-icon/fountain-pen_750856.htm");
+    font-family: "Oswald", sans-serif;
+    color: white;
+    list-style-image: url("../lab01/images/pen-icon-18-ffffff-24.png");
 }
 
 .container {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -43,6 +51,10 @@ li {
 
 .intro {
     padding: 20px;
+    margin: 10px;
+    font-family: "Oswald", sans-serif;
+    color: whitesmoke;
+    text-align: center;
 }
 
 .bio-photo {
@@ -51,75 +63,27 @@ li {
     border-radius: 50%;
     box-shadow: 0px 4px 6px 0px grey;
     transition: all ease-in-out .2s;
+    align-items: center;
+    margin: 10px 0px;
 }
 
 .bio-photo:hover {
     box-shadow: 0px 8px 12px 0px grey;
 }
 
-.section-two {
+.wiki-link,
+.places-lived {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-a {
-    display: inline;
-    text-align: center;
-    vertical-align: middle;
-    font-family: "Hahmlet";
-    font-style: italic, bold;
-    font-size: 20px;
-    color: whitesmoke;
-    padding: 0px 30px 0px 0px;
+    align-content: center;
+    align-items: center;
     border: 5px whitesmoke;
-}
-
-#places-lived {
-    display: inline;
-    text-align: left;
-    padding: 0px 0px 0px 30px;
-}
-
-#wiki-link {
-    display: inline;
-    text-align: center;
-    vertical-align: middle;
-    font-family: "Hahmlet";
-    font-style: italic, bold;
-    font-size: 20px;
-    color: whitesmoke;
-    padding: 0px 30px 0px 0px;
-    border: 5px;
-    border-color: whitesmoke;
-}
-
-.wiki-link:link {
-    color: whitesmoke;
-}
-
-.wiki-link:visited {
-    color: wheat;
-}
-
-.wiki-link:hover {
-    color: orange;
-}
-
-.wiki-link:active {
-    color: gainsboro;
 }
 
 @media screen and(max-width: 760px) {
     ul {
         flex-direction: column;
     }
-}
-
-
-/*
-#additional {
-    width: 80%;
-    min-height: 400px;
-    padding: 20px;
 }
