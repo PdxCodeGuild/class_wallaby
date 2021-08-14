@@ -16,23 +16,29 @@ data_list = [1 ,2 ,3 ,4 ,5 ,6 ,7 ,6 ,5 ,4 ,5 ,6 ,7 ,8 ,9 ,8 ,7 ,6 ,7 ,8 ,9]
     #print(i, name)
 index = 0
 
-
+valleys =[]
 for idx in range(1, len(data_list) - 1):
     if data_list[idx + 1] > data_list[idx] < data_list[idx - 1]:
         index += 1
+        valleys.append(idx)
+print(f" The valleys are: {valleys}")
 
-print("Peaks:" + str(index))
-
+peaks =[]
 for idx in range(1, len(data_list) - 1):
     if data_list[idx + 1] < data_list[idx] > data_list[idx - 1]:
         index += 1
+        peaks.append(idx)
 
-print("Valleys:" + str(index))
+print(f" The peaks are: {peaks}")
 
-index = len([data_list[idx] for idx in range(1, len(data_list) - 1) if data_list[idx + 1] >
-           data_list[idx] < data_list[idx - 1] or data_list[idx + 1] < data_list[idx] > data_list[idx - 1]])
+peaks_and_valleys =[]
+for idx in range(1, len(data_list) - 1):
+    if data_list[idx + 1] > data_list[idx] < data_list[idx - 1] or data_list[idx + 1] < data_list[idx] > data_list[idx - 1]:
+        index +=1
+        peaks_and_valleys.append(idx)
+print(f"The peaks and valleys are: {peaks_and_valleys}")
 
-print("Peaks and Valleys:" + str(index))
+
 
 
 
