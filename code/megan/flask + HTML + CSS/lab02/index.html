@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Blog Title</title>
-    <link rel="icon" type="image/png" href="../images/suitcase1.png" size="32x32" />
+    <title>Travel Blog</title>
+    <link rel="icon" type="image/png" href="../lab02/images/favicon.png" size="32x32" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,99 +15,89 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Destinations</li>
-            <li>Collaborate</li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../lab02/images/logo.png" alt="logo" width="30" height="24">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Destinations
+                </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">City</a></li>
+                            <li><a class="dropdown-item" href="#">Nature</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Abroad</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Collaborate</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Search</button>
+                </form>
+            </div>
+        </div>
     </nav>
     <main>
-        <h1>Travel Blog Title</h1>
-        <hr class="accessory">
-
-        <!-- edit here; add cards to columns -->
-        <div class="row align-items-center">
-            <div class="col">
-                One of four columns
-            </div>
-            <div class="col">
-                One of four columns
-            </div>
-            <div class="col">
-                One of four columns
-            </div>
-            <div class="col">
-                One of four columns
+        <div class="card bg-dark text-white">
+            <img src="../lab02/images/ross-parmly-rf6ywHVkrlY-unsplash.jpg" class="card-img" alt="travel">
+            <div class="card-img-overlay">
+                <h1 class="card-title">Travel Blog</h1>
+                <h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h3>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam quidem repellat aspernatur modi libero quasi.</p>
+                <a href="#" class="btn btn-dark">Click here</a>
             </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
-            <img src="../lab02/images/annie-spratt-qyAka7W5uMY-unsplash.jpg" class="card-img-top" alt="Lorem ipsum">
-            <div class="card-body">
-                <h5 class="card-title">Lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis adipisci accusamus sed sint laborum porro ipsam voluptates cumque quae reprehenderit reiciendis at non beatae nulla, voluptate animi fuga quod dolor.</p>
-                <a href="#" class="btn btn-primary">Read more</a>
+        <div class="card-group">
+            <div class="card">
+                <img src="../lab02/images/alexandra-tran-vK2ob70c29c-unsplash.jpg" class="card-img-top" alt="Lorem Ipsum">
+                <div class="card-body">
+                    <h5 class="card-title">Lorem ipsum dolor sit amet</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore fuga, rem ipsa praesentium expedita adipisci officiis sed itaque cum optio vitae nulla voluptate, quos excepturi est nostrum. Aut, maiores officiis!</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Published August 13, 2021</small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../lab02/images/annie-spratt-qyAka7W5uMY-unsplash.jpg" class="card-img-top" alt="Lorem Ipsum">
+                <div class="card-body">
+                    <h5 class="card-title">Consectetur adipisicing elit</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, reprehenderit rerum, earum sequi asperiores dolores, temporibus ratione id totam delectus numquam reiciendis quae! Quo atque laborum neque! Quisquam, distinctio eligendi!</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Published August 6, 2021</small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../lab02/images/arnel-hasanovic-Nl-SXO4FAHw-unsplash.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Vitae cumque accusamus possimus quibusdam</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto tenetur optio adipisci, ut dolore aliquam voluptatum illum est perferendis facilis quidem ullam rem alias explicabo labore sapiente, voluptate ducimus odit.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Published July 30, 2021</small>
+                </div>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <img src="../lab02/images/arnel-hasanovic-Nl-SXO4FAHw-unsplash.jpg" class="card-img-top" alt="Lorem ipsum">
-            <div class="card-body">
-                <h5 class="card-title">Lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis adipisci accusamus sed sint laborum porro ipsam voluptates cumque quae reprehenderit reiciendis at non beatae nulla, voluptate animi fuga quod dolor.</p>
-                <a href="#" class="btn btn-primary">Read more</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="../lab02/images/diego-jimenez-A-NVHPka9Rk-unsplash.jpg" class="card-img-top" alt="Lorem ipsum">
-            <div class="card-body">
-                <h5 class="card-title">Lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis adipisci accusamus sed sint laborum porro ipsam voluptates cumque quae reprehenderit reiciendis at non beatae nulla, voluptate animi fuga quod dolor.</p>
-                <a href="#" class="btn btn-primary">Read more</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="../lab02/images/dino-reichmuth-A5rCN8626Ck-unsplash.jpg" class="card-img-top" alt="Lorem ipsum">
-            <div class="card-body">
-                <h5 class="card-title">Lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis adipisci accusamus sed sint laborum porro ipsam voluptates cumque quae reprehenderit reiciendis at non beatae nulla, voluptate animi fuga quod dolor.</p>
-                <a href="#" class="btn btn-primary">Read more</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="../lab02/images/jack-ward-rknrvCrfS1k-unsplash.jpg" class="card-img-top" alt="Lorem ipsum">
-            <div class="card-body">
-                <h5 class="card-title">Lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis adipisci accusamus sed sint laborum porro ipsam voluptates cumque quae reprehenderit reiciendis at non beatae nulla, voluptate animi fuga quod dolor.</p>
-                <a href="#" class="btn btn-primary">Read more</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="../lab02/images/linmiao-xu-60qA6VQGeyA-unsplash.jpg" class="card-img-top" alt="Lorem ipsum">
-            <div class="card-body">
-                <h5 class="card-title">Lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis adipisci accusamus sed sint laborum porro ipsam voluptates cumque quae reprehenderit reiciendis at non beatae nulla, voluptate animi fuga quod dolor.</p>
-                <a href="#" class="btn btn-primary">Read more</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="../lab02/images/patrick-hendry-eDgUyGu93Yw-unsplash.jpg" class="card-img-top" alt="Lorem ipsum">
-            <div class="card-body">
-                <h5 class="card-title">Lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis adipisci accusamus sed sint laborum porro ipsam voluptates cumque quae reprehenderit reiciendis at non beatae nulla, voluptate animi fuga quod dolor.</p>
-                <a href="#" class="btn btn-primary">Read more</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="../lab02/images/ryan-spencer-XGKaRnWjv1c-unsplash.jpg" class="card-img-top" alt="Lorem ipsum">
-            <div class="card-body">
-                <h5 class="card-title">Lorem ipsum</h5>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis adipisci accusamus sed sint laborum porro ipsam voluptates cumque quae reprehenderit reiciendis at non beatae nulla, voluptate animi fuga quod dolor.</p>
-                <a href="#" class="btn btn-primary">Read more</a>
-            </div>
-        </div>
-
 
     </main>
     <footer>
