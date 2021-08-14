@@ -1,0 +1,18 @@
+body{text-align:center ;}
+    
+.jumbotron{
+
+        background-image: url("https://cdnb.artstation.com/p/assets/images/images/016/736/913/large/sergey-voronov-star-city-concept.jpg?1553266318&dl=1");
+        background-size: cover;
+        text-align:center ;
+        color: white;
+      
+    
+    } 
+
+h1{text-align: center;}
+
+.two{
+
+    height: 0px;
+}
