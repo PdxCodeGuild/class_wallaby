@@ -1,7 +1,8 @@
-.jumbotron {background-image: url(https://www.seti.org/sites/default/files/2020-10/earth-view-from-moon-perspective-footprints-1400px.jpg);
+.jumbotron {background-image: url(https://cdn.pixabay.com/photo/2015/05/30/17/19/denver-790472_1280.jpg);
 color: white;
 background-repeat: no-repeat;
-background-size: cover;}
+background-size:cover;
+height: 600px;}
 
 
 
