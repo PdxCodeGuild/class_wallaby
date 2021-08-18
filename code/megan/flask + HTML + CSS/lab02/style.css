@@ -1,5 +1,5 @@
 body {
-    background-color: #e1ede9;
+    background-color: black;
 }
 
 h1 {
@@ -39,18 +39,26 @@ li {
     font-size: 20px;
 }
 
-img {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    margin: 0px;
-    display: flex;
-    vertical-align: top;
-}
-
 .nav-item {
     font-family: 'Open Sans Condensed', sans-serif;
     color: black;
+}
+
+#banner {
+    opacity: .5;
+    color: white;
+}
+
+.card-img-overlay {
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    align-items: center;
+}
+
+.card {
+    padding: 10px;
+    position: relative;
 }
 
 .card-body {
@@ -58,21 +66,28 @@ img {
     color: black;
 }
 
-.card-title {
-    font-family: 'Open Sans Condensed', sans-serif;
-    color: black;
-}
-
-.card-text {
-    font-family: 'Open Sans Condensed', sans-serif;
-    color: black;
-}
-
+.card-title,
+.card-text,
 .card-footer {
     font-family: 'Open Sans Condensed', sans-serif;
     color: black;
 }
 
+.side-nav {
+    align-self: right;
+    align-items: right;
+    position: fixed;
+}
+
 .btn {
     font-family: 'Open Sans Condensed', sans-serif;
+    align-items: center;
+}
+
+.footer {
+    background-color: black;
+    color: white !important;
+    padding: 50 px;
+    align-items: center;
+    vertical-align: middle;
 }

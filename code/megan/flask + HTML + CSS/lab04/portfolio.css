@@ -1,0 +1,100 @@
+body {
+    background-color: white;
+    align-content: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+ul {
+    font-family: 'Inter', sans-serif;
+}
+
+p {
+    font-family: 'Assistant', sans-serif;
+}
+
+li {
+    font-family: 'Assistant', sans-serif;
+    list-style: none;
+}
+
+.intro {
+    align-content: center;
+}
+
+.bio-img {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 50%;
+    box-shadow: 0px 10px 15px 0px #d4281c;
+    transition: all ease-in-out .2s;
+    animation-name: slide-in;
+    animation-duration: 3.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+.pin {
+    animation-name: pin-fade-in;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+
+/* .about {
+}
+
+.experience {
+}
+
+.projects {
+}
+
+.skills {
+}
+
+.education {
+}
+
+.contact {
+} */
+
+.social-links {
+    align-content: left;
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        left: 0px
+    }
+    25% {
+        opacity: .25;
+        left: -300px
+    }
+    50% {
+        opacity: .5;
+        left: -200px
+    }
+    75% {
+        opacity: .75;
+        left: -100px
+    }
+    100% {
+        opacity: 1;
+        left: 0px
+    }
+}
+
+@keyframes pin-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

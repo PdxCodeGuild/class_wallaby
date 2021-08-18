@@ -16,7 +16,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-a {
+a:link {
     text-align: center;
     vertical-align: middle;
     font-family: "Hahmlet";
@@ -24,7 +24,22 @@ a {
     font-weight: bold;
     font-style: italic;
     color: whitesmoke;
+    text-decoration: none;
     padding: 45px;
+}
+
+a:visited {
+    color: burlywood;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orange text-decoration: none;
+}
+
+a:active {
+    color: lightblue;
+    text-decoration: none;
 }
 
 ul {
