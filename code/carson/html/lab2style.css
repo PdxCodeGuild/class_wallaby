@@ -1,0 +1,43 @@
+body{text-align:center ;}
+    
+.jumbotron{
+
+        background-image: url("https://cdnb.artstation.com/p/assets/images/images/016/736/913/large/sergey-voronov-star-city-concept.jpg?1553266318&dl=1");
+        background-size: cover;
+        text-align:center ;
+        color: white;
+      
+    
+    } 
+
+h1{
+    color: white;
+    text-align: center;}
+
+.two{
+
+    height: 0px;
+}
+h2{color: red;}
+
+body{
+    
+    background-image: url(https://media.giphy.com/media/3og0IV7MOCfnm85iRa/giphy.gif);
+    background-size: cover;
+}
+.row{color: rgb(208, 3, 184);
+
+}
+.pap{color: red;}
+.pic{
+    height: 200px;
+}
+ 
+footer{
+  text-align: center;
+  padding: 3px;
+  background: rgb(158,29,36);
+  background: linear-gradient(90deg, rgba(158,29,36,0.9721577726218098) 0%, rgba(161,19,131,1) 51%, rgba(31,54,120,1) 98%);  
+  color: white;
+}
+
