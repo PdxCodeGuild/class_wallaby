@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +11,8 @@
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="new-user.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../static/new-user.css" media="screen" />
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='new-user.css') }}" /> -->
 
 </head>
 
@@ -50,10 +52,10 @@
         </div>
     </nav>
 
-    <form class="row g-3 register-form">
+    <form class="row g-3 register-form" action="/tempature/" method="POST">
         <div class="col-md-6">
             <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4">
+            <input type="email" class="form-control" id="inputEmail4" name="email">
         </div>
         <div class="col-md-3">
             <label for="inputPassword4" class="form-label">Password</label>
@@ -95,10 +97,20 @@
                 </label>
             </div>
         </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Register</button>
+        <div class="col col-sm vstack d-flex text-align-center ">
+            <button type="submit" class="btn btn-primary">Register</button> 
+            <p class="or">OR</p>
+            
         </div>
+
+      
     </form>
+    <div class="vstack gap-2 col-sm-4 mx-auto text-align-center">
+        <button type="button" class="btn btn-success btn-google">Register using Google</button>
+
+    </div>
+
+
 
 
 

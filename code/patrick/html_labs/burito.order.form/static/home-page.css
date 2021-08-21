@@ -53,10 +53,18 @@ body::before {
 
 .tapas-text {
     font-weight: 900;
-text-align: start;
+text-align: center;
+color: yellow;
+-webkit-text-stroke: 1px rgb(15, 15, 15);
 }
 .my-car {
-    height: 50vh;
-    width: 90vh;
+    height: 60vh;
+    width: 100vh;
+    border-radius: 35%;
   
+}
+
+.name {
+    text-align: center;
+    padding-left: 570px;
 }

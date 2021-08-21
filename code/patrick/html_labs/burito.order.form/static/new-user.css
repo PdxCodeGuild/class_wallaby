@@ -1,3 +1,4 @@
+
 .register-form {
     
     padding-top: 100px;
@@ -46,4 +47,8 @@ body::before {
 
 .bar-space {
     padding-left: 50px !important;
+}
+.or{
+    text-align: center;
+    padding-top: 20px;
 }
