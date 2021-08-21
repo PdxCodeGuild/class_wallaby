@@ -10,14 +10,12 @@ def temperature():
     if request.method == 'POST':
         
         email = request.form['email'] # Jane
-       
+        # person_age = request.form['person_age'] # 34
         print("email username", email)
-        return redirect('templates/new-user.html')
+        return render_template('user-input.html',email=email)
     elif request.method == 'GET':
         return 'a GET request was made.'
 
 app.run(debug=True)
-
-
 
 
