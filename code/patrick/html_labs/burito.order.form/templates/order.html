@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order</title>
+    <title>Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home-page.css') }}" />
 </head>
 <body>
-    {{wrap}}
-    {{rice}}
+    {{wraps}}
+    {{rice1}}
+    {{beans}}
+    {{protiens}}
+    {{cheese1}}
+    {{delivery1}}
+    <ul class="list-group">
+        <li class="list-group-item">Wrap: {{wraps}}</li>
+        <li class="list-group-item">Rice: {{rice1}}</li>
+        <li class="list-group-item">Beans: {{beans}}</li>
+        <li class="list-group-item">Protiens: {{protiens}}</li>
+        <li class="list-group-item">Cheese: {{cheese1}}</li>
+        <li class="list-group-item">Delivery Instructions: {{delivery1}}</li>
+      
+    
+      </ul>
 </body>
 </html>

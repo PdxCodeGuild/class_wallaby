@@ -5,32 +5,29 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
-    wrap= ['Spinach', 'Wheat Flour', 'White Flour']  
-    rice=['White', 'Brown']
-    return render_template('home-page.html', wrap=wrap, rice=rice)
+    wrap= ['Spinach', 'Wheat Flour', 'White Flour'] 
+    rice= ['Brown', 'White', 'None'] 
+    bean= ['Black', 'Pinto', 'None']
+    protien= ['Carnitas', 'Chicken', 'Sofritas', 'None']
+    cheese= ['Cheese', 'Sour Cream']
+    return render_template('home-page.html', wrap=wrap, rice=rice, bean=bean, protien=protien, cheese=cheese)
 
 @app.route('/orders/', methods=['POST', 'GET'])
 def order_form():
     if request.method == 'POST':
         print('post request')
-        wrap = request.form['wrap']
-        rice = request.form['rice']
-        
-        return render_template('order.html', wrap=wrap, rice=rice)
+        wraps = request.form['wrap']
+        rice1 = request.form['rice']
+        beans= request.form['bean']
+        cheese1= request.form['cheese']
+        protiens= request.form['protien']
+        delivery1= request.form['delivery']
+        print(wraps, rice1, beans)
+        return render_template('order.html', wraps=wraps, rice1=rice1, beans=beans, cheese1=cheese1, protiens=protiens, delivery1=delivery1)
     
     elif request.method == 'GET':
         return redirect('/')
-# class SimpleForm(Form):
-#     example = RadioField('Label', choices=[('value','description'),('value_two','whatever')])
 
-# # @app.route('/',methods=['post','get'])
-# def hello_world():
-#     form = SimpleForm()
-#     if form.validate_on_submit():
-#         print form.example.data
-#     else:
-#         print form.errors
-#     return render_template('example.html',form=form)
 
 
 @app.route('/login/', methods=['POST', 'GET'])
