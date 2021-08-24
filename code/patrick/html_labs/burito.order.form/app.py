@@ -1,12 +1,48 @@
 from flask import Flask, render_template, request, redirect
+# from flask.ext.wtf import Form
+# from wtforms import RadioField
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('new-user.html')
+@app.route('/', methods=['POST', 'GET'])
+def home():
+    wrap= ['Spinach', 'Wheat Flour', 'White Flour']  
+    rice=['White', 'Brown']
+    return render_template('home-page.html', wrap=wrap, rice=rice)
 
-@app.route('/tempature/', methods=['POST', 'GET'])
-def temperature():
+@app.route('/orders/', methods=['POST', 'GET'])
+def order_form():
+    if request.method == 'POST':
+        print('post request')
+        wrap = request.form['wrap']
+        rice = request.form['rice']
+        
+        return render_template('order.html', wrap=wrap, rice=rice)
+    
+    elif request.method == 'GET':
+        return redirect('/')
+# class SimpleForm(Form):
+#     example = RadioField('Label', choices=[('value','description'),('value_two','whatever')])
+
+# # @app.route('/',methods=['post','get'])
+# def hello_world():
+#     form = SimpleForm()
+#     if form.validate_on_submit():
+#         print form.example.data
+#     else:
+#         print form.errors
+#     return render_template('example.html',form=form)
+
+
+@app.route('/login/', methods=['POST', 'GET'])
+def login():
+    return render_template('login.html')
+
+@app.route('/home/', methods=['POST', 'GET'])
+def main():
+    return render_template('home-page.html')
+
+@app.route('/register/', methods=['POST', 'GET'])
+def register():
     if request.method == 'POST':
         
         email = request.form['email'] # Jane
@@ -31,6 +67,15 @@ def temperature():
         )
     elif request.method == 'GET':
         return 'a GET request was made.'
+
+# @app.route('/order/', methods=['POST', 'GET'])
+# def temperature():
+#     if request.method == 'POST':
+
+
+
+#     elif request.method == 'GET':
+#         return 'a GET request was made.'
 
 app.run(debug=True)
 
