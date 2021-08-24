@@ -37,18 +37,48 @@ a {
     align-content: center;
 }
 
-.bio-img {
+
+/* .flip-img {
+    background-color: transparent;
     width: 300px;
     height: 300px;
     position: relative;
     border-radius: 50%;
     box-shadow: 0px 8px 12px 0px #d4281c;
     transition: all ease-in-out .2s;
-    /* animation-name: slide-in;
+    perspective: 1000px;
+} */
+
+
+/* .flip-img-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+} */
+
+
+/* .flip-img:hover .flip-img-inner {
+    transform: rotateY(180deg);
+} */
+
+.bio-img {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border-radius: 50%;
+    box-shadow: 0px 8px 12px 0px #d4281c;
+    transition: all ease-in-out .2s;
+    perspective: 1000px;
+}
+
+
+/* animation-name: slide-in;
     animation-duration: 3.5s;
     animation-delay: 1s;
     animation-fill-mode: forwards; */
-}
 
 .bio-img:hover {
     background-image: url("../lab04/images/bio-image-hover.png");

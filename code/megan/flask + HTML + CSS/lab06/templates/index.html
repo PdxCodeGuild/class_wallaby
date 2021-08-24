@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block content %}
+
+<p>To encode a secret message, first enter a number (13). Then, enter your message.</p>
+<form action="/" method="post">
+    <input type="text" name="number" placeholder="Enter 13">
+    <input type="text" name="message" placeholder="Enter message">
+    <button type="submit">Submit</button>
+</form>
+<p>encoded_message</p>
+
+{% endblock %}
