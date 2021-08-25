@@ -1,0 +1,50 @@
+.login, nav {
+    padding-top: 300px;
+    font-size: large;
+}
+
+.row, .btn {
+    margin: 0px 40px 0px 40px;
+    font-size: large;
+}
+
+body {
+    position: relative;
+    /* background-color: white; */
+    /* background-image: url("https://cdn.pixabay.com/photo/2017/11/13/03/56/grilled-pineapple-pork-burrito-2944562_960_720.jpg"); */
+    /* background-repeat:no-repeat; */
+    width: 100%;
+    height: 100vh;
+    /* background-size: cover; */
+    font-weight: 700;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    background-image: url("https://i0.hippopx.com/photos/249/864/1010/background-frame-food-kitchen-preview.jpg"); 
+    /* background-color: rgba(0,0,0,0.25); */
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: contrast(140%) brightness(100%) saturate(100%) sepia(50%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+    top: 0;
+    bottom:0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.btn-form {
+    margin-left: 0 !important;
+}   
+
+.not-mem {
+    text-align: center;
+}
+
+
+
+
+
+
