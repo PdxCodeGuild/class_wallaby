@@ -1,0 +1,19 @@
+body{
+    background-color: #333
+
+}
+.box{
+    width: 200px;
+    height: 200px;
+    background-color:white;
+    position: relative;
+    animation-name: move-around;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move-around{
+    0% {background-color: white; top:0px;left:0px;border-radius: 0 0 0 0;}
+    25% {background-color: red;top:0px;left:200px;border-radus:50% 0 0 0;}
+    100% {}   
+}
