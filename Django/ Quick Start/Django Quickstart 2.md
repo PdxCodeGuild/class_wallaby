@@ -58,7 +58,10 @@ class Car(models.Model):
 
 ```
 
-Check [this video](https://www.youtube.com/watch?v=wIPHER2UBB4&t=61s) for a more visual explanation of the models.
+<img src="relation.png"
+     alt="One to many relationship"/>
+
+Check [this video](https://www.youtube.com/watch?v=wIPHER2UBB4&t=61s) for a more visual explanation of the relationship between models.
 
 
 ## Create your model
