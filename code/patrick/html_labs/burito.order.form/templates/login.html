@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/../static/login.css" media="screen" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #287ab5;">
+
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <strong>Navbar</strong>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+
+                    <a class="nav-link rounded btn-outline-success" href="{{url_for('home')}}">Home</a>
+
+                    <a class="nav-link rounded btn-outline-success" href="new-user.html">Locations</a>
+
+                    <a class="nav-link rounded btn-outline-success " href="#">Cart
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-cart4" viewBox="0 0 16 16">
+                            <path
+                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                            "Cart"
+                        </svg>
+                    </a>
+
+                </div>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav justify-content-end">
+                        <a class="nav-link rounded btn-outline-success " href="login.html">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <form class="login">
+
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-lg-1 col-form-label">Username</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control bar-space" id="inputEmail3"
+                    placeholder="Please enter e-mail or phone number">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputPassword3" class="col-lg-1 col-form-label">Password</label>
+            <div class="col-sm-10 ">
+                <input type="password" class="form-control" id="inputPassword3">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-10 offset-sm-1">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                        Remember Me
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3 ">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary btn-form">Sign in</button>
+                
+                
+            </div>
+        </div>
+
+       
+            <div class="vstack gap-2 col-sm-3 mx-auto text-align-center">
+                
+                    <p class="not-mem">Not a member?</p>
+                    <a class="btn btn-success" href="new-user.html">Sign Up!</a> 
+                    <button type="button" class="btn btn-success btn-google">Register using Google</button>     
+               
+            </div>
+       
+    </form>
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
