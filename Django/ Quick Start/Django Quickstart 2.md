@@ -73,10 +73,18 @@ class Blog(models.Model):
         title = models.CharField(max_length = 200)
         text = models.TextField(max_length = 500)
         pub_date = models.DateField()
-        user = models.ForeignKey(User, on_delete = models.CASCADE, null = True, blank = True)
+
 
         def __str__(self):
             return self.title
+
+
+class Author(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 ```
 
 - Stage your migrations: `python manage.py makemigrations <appname>`
@@ -102,12 +110,12 @@ Create a few Author entries
 - run `Author`, you should be returned a class
 - run `Author.objects.all()`, to see the content of your database. You should see `<QuerySet []>` if empty
 
-Every object in the database has an ID. To create an Author object, we'll need to grab the ID of a Blog entry first.
+Because the Author database table is linked to the Blog table via Foreign Key, to create an Author object, we'll need to grab the ID of a Blog entry first.
 
 - run `blog = Blog.objects.filter(title__startswith='I made')` returns a query set (list)
-- `c[0].id` gets the ID of the first element in the query Set
-- if we know the ID from the beginning, we could have typed `c = Blog.objects.get(id=3)` 
-- run `Author.objects.create(name='alex', blog = c )`
+- `blog[0].id` gets the ID of the first element in the query Set
+- `blog = Blog.objects.get(id=#num)` 
+- run `Author.objects.create(name='alex', blog = blog )`
 
 - add a few extra Author entries with different names. You should have something like this at the end:
 
@@ -140,7 +148,7 @@ from django.contrib import admin
 from . import models
 
 admin.site.register(models.Blog)
-
+admin.site.register(models.Author)
 ```
 - In the terminal, make sure that the server is not running and type `python manage.py createsuperuser`
 - Start the server with `python manage.py runserver`
