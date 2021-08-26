@@ -1,0 +1,6 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Temperature for {{city}}</h1>
+{% for data in coordinates.items() %}
+<p>{{data}}</p>
+{% endfor %} {% endblock %}

@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
-# from flask.ext.wtf import Form
-# from wtforms import RadioField
+
 app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
