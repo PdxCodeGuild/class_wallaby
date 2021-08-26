@@ -1,19 +1,22 @@
 from flask import Flask, render_template, request
+import requests
 
 app = Flask(__name__)
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/')
 def home():
-    if request.method=='POST':
-        return render_template('index.html')
-    elif request.method=='GET':
-        return render_template('index.html')
+    return render_template('index.html')
 
-@app.route('/path2/', methods=['POST', 'GET'])
-def path2():
+@app.route('/events/', methods=['POST', 'GET'])
+def events():
     if request.method=='POST':
-        return render_template('path2.html')
+        city = request.form.get('selected_city')
+        response = requests.get(f'https://api.seatgeek.com/2/venues?city={city}client_id=MjMwNjQ3MjJ8MTYyOTk1MTc3MS4yNTY4OTcy&client_secret=677e6a58213924503cc0d9ecedef678556e4c663670f4f5272e570d630abe066')
+        venues = response.json()
+        city = venues['name']
+        print(venues)
+        return render_template('events.html', venues=venues, city=city)
     elif request.method=='GET':
-        return render_template('path2.html')
+        return 'A GET request was made'
 
 app.run(debug=True)
