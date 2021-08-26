@@ -1,0 +1,31 @@
+
+
+
+body {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    font-size: large;
+    
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    background-image: url("https://pixnio.com/free-images/space/jupiter-planet-of-the-solar-system-850x1062.jpg"); 
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: contrast(140%) brightness(100%) saturate(100%) sepia(50%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+    
+    top: 0;
+    bottom:0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.the1 {
+    padding-left: 300px;
+    font-size: 40px;
+}
