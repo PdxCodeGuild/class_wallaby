@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>LAB 02 Flask Intro</title>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='style.css') }} />
+  </head>
+  <body>
+    <p>this is the html</p>
+    <form action='/rot13' method='POST'>
+      <input type='text' name='rot13_text' placeholder="enter string to be rot13'd">
+      <button type='submit'>Encode</button>
+    </form>
+
+
+  </body>
+</html>
