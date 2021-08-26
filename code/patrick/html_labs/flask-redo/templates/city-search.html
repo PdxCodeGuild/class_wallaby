@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}search{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class='container-fluid d-flex justify-content-center p-5'>
+    <form method="post" action='/search/'>
+      <label for="city">City</label>
+      <input name="search" id="search" required>
+      <input type="submit" value="search">
+    </form>
+  </div>
+{% endblock %}
+ 
+
