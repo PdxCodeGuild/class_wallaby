@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Conversion{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class='container-fluid d-flex justify-content-center p-5'>
+    <form method="post" action='/converts/'>
+      <label for="distance">Distance</label>
+      <input name="distance" id="search" required>
+      <label for="city">Input Units</label>
+      <input name="Input Units" id="search" required>
+      <label for="city">Output Units</label>
+      <input name="Output Units"  id="search" required>
+      <input type="submit" value="search">
+    </form>
+  </div>
+{% endblock %}
