@@ -1,13 +1,10 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="container mt-5">
-    <form action="/events/" method="post">
-        <div class="mb-3">
-            <label for="selected_city" class="form-label">Type a city for a list of venues:</label>
-            <input class="form-control" name='selected_city' id="selected_city" rows="3"></input>
-        </div>
-        <button type="submit" class="btn btn-dark">Find venues</button>
+<form action="/venues/" method="post">
+    <label for="selected_city" class="form-label">Type a city for a list of venues:</label>
+    <input class="form-control" name='selected-city' id="selected-city" rows="3"></input>
+    </div>
+    <button type="submit" class="btn btn-dark">Find venues</button>
+</form>
 
-    </form>
-</div>
 {% endblock %}

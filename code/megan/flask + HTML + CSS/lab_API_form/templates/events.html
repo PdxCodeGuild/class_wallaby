@@ -1,8 +1,6 @@
 {% extends "base.html" %} {% block content %}
-<div class="container mt-5">
-    <h1>Upcoming events in selected {{city}}</h1>
-    {%for data in coordinates.items()%}
-    <p>{{data}}</p>
-    {%endfor%}
-</div>
-{% endblock %}
+
+<h1>Upcoming events at selected {{selected_venues}}</h1>
+{%for data in events.items()%}
+<p>{{data}}</p>
+{%endfor%} {% endblock %}
