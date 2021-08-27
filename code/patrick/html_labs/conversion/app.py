@@ -43,7 +43,7 @@ def converts():
             # meters = np.round(meters, 0)
             # np.set_printoptions(precision=0)
             if meters[0] >= 1:
-                meters = round(meters[0], 0)
+                meters = round(meters[0], 2)
             else:
                 meters = round(meters[0], 4)
             return meters
