@@ -22,25 +22,32 @@
 </head>
 
 <body>
-    <h1>UNIT CONVERTER</h1>
 
-    <form action="" class="container">
-        <label for="distance">Distance to be converted:</label>
-        <input type="text" id="distance" name="distance"><br><br>
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Units
-            <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-            <li><a id="inches" name="inches">Inches</a></li>
-            <li><a id="feet" name="feet">Feet</a></li>
-            <li><a id="yards" name="yards">Yards</a></li>
-            <li><a id="meters" name="meters">Meters</a></li>
-            <li><a id="kilometers" name="kilometers">Kilometer</a></li>
-            <li><a id="miles" name="miles">Miles</a></li>
-        </ul><br></br>
+    <form action="/home/" method="POST" class="container">
+        <fieldset>
+            <legend>Unit Converter</legend>
+            <div class="mb-3">
+                <label for="TextInput" class="form-label"> Distance To Be Converted Into Meters</label>
+                <input type="text" id="distance" name="distance" class="form-control" placeholder=" input">
+            </div>
+            <div class="mb-3">
+                <label for="Select" class="form-label"> Select A Unit Of Measurement</label>
+                <select id="Select" class="form-select" name="distance_choice" >
+                    <option id="inches" name="inches"> Inches</option>
+                    <option id="feet" name="feet">Feet</option>
+                    <option id="yards" name="yards"> Yards</option>
+                    <option id="meters" name="meters"> Meters</option>
+                    <option id="kilometers" name="kilometers"> Kilometers</option>
+                    <option id="miles" name="miles">Miles</option>
 
-        <input type="submit" value="Submit">
+                </select>
+            </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
     </form>
-
+ <h1> {{distance}} meters converted into {{distance_choice}} is {{output}} {{distance_choice}}</h1> 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
