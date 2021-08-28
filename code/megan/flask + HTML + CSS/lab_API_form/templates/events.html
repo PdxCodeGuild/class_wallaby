@@ -1,6 +1,15 @@
 {% extends "base.html" %} {% block content %}
 
-<h1>Upcoming events at selected {{selected_venues}}</h1>
-{%for data in events.items()%}
+<h1>Upcoming events at the following venues: {{selected_venues}}</h1>
+{% for key, value in events.items() %}
+<tr>
+    <th> {{ key }} </th>
+    <td> {{ value }} </td>
+</tr>
+{% endfor %}
+
+<!-- {%for data in events.items()%}
 <p>{{data}}</p>
-{%endfor%} {% endblock %}
+{%endfor%}  -->
+
+{% endblock %}

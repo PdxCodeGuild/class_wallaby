@@ -1,15 +1,23 @@
 {% extends "base.html" %} {% block content %}
 
-<h1>Venues in selected {{selected_city}}</h1>
-{%for data in venues.items()%}
+<h1>Venues in {{city}}</h1>
+{% for key, value in venues.items() %}
+<tr>
+    <th> {{ key }} </th>
+    <td> {{ value }} </td>
+</tr>
+{% endfor %}
+
+<!-- {%for data in venues.items()%}
 <p>{{data}}</p>
-{%endfor%}
+{%endfor%} -->
 
 <form action="/events/" method="post">
-    <label for="selected-venues" class="form-label">Select one or more venues:</label>
-    <!-- display dropdown list of venues for user to select 1+ venues -->
-    <input type="checkbox" id="venues" name="select-venues" value="venue_id">
+    <label for="selected_venues" class="form-label">Select one or more venues:</label>
+    <input type="checkbox" id="venues" name="select_venues" value="venue_id">
     <button type="submit">Find events</button>
 </form>
 
 {% endblock %}
+
+<!-- tr = table row; th = table header; td = table cell -->
