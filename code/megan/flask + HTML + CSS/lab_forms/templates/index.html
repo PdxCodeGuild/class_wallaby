@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block content %}
+
+<form action="/" method="post">
+    <input type="text" name="number" placeholder="Enter 13">
+    <input type="text" name="message" placeholder="Enter message">
+    <button type="submit">Submit</button>
+</form>
+<p>Encrypted message: {{output}}</p>
+
+{% endblock %}

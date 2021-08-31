@@ -1,0 +1,104 @@
+body {
+    background-image: url("../lab01/images/patrick-fore-0gkw_9fy0eQ-unsplash.jpg") !important;
+    background-size: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Oswald", sans-serif;
+    color: white
+}
+
+h1 {
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+a:link {
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Hahmlet";
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 45px;
+}
+
+a:visited {
+    color: burlywood;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orange text-decoration: none;
+}
+
+a:active {
+    color: lightblue;
+    text-decoration: none;
+}
+
+ul {
+    list-style-position: inside;
+    text-align: left;
+}
+
+li {
+    font-family: "Oswald", sans-serif;
+    color: white;
+    list-style-image: url("../lab01/images/pen-icon-18-ffffff-24.png");
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 840px;
+    margin: 0 auto;
+    background-color: #0c294d;
+    opacity: 0.8;
+}
+
+.intro {
+    padding: 20px;
+    margin: 10px;
+    font-family: "Oswald", sans-serif;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.bio-photo {
+    width: 456px;
+    height: 594px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px 0px grey;
+    transition: all ease-in-out .2s;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.bio-photo:hover {
+    box-shadow: 0px 8px 12px 0px grey;
+}
+
+.wiki-link,
+.places-lived {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: 5px whitesmoke;
+}
+
+@media screen and(max-width: 760px) {
+    ul {
+        flex-direction: column;
+    }
+}

@@ -46,19 +46,19 @@ def path1():
     return 'you\'re home'
 
 # localhost:5000/path1/
-@app.route('/path1/')
-def path1():
-    return 'you\'re at path 1'
-
-# localhost:5000/path2/
 @app.route('/path2/')
 def path2():
     return 'you\'re at path 2'
 
-# localhost:5000/path2/path3/
-@app.route('/path2/path3/')
+# localhost:5000/path2/
+@app.route('/path2/')
 def path3():
     return 'you\'re at path 3'
+
+# localhost:5000/path2/path3/
+@app.route('/path4/')
+def path4():
+    return 'you\'re at path 4'
 ```
 
 

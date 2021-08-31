@@ -1,0 +1,103 @@
+body {
+    background-color: black;
+}
+
+h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: 70px;
+    color: black;
+    text-align: center;
+}
+
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: black;
+}
+
+p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: black;
+}
+
+ul {
+    display: flex;
+    background: white;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    list-style-type: none;
+    padding: 20px;
+    margin: 5px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+}
+
+.nav-item {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: black;
+    text-decoration: none;
+}
+
+.jumbotron {
+    width: 100%;
+    height: 400px;
+    display: block;
+    position: relative;
+}
+
+.jumbotron::after {
+    content: "";
+    background: url("../lab02/images/ross-parmly-rf6ywHVkrlY-unsplash.jpg");
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+}
+
+
+/* .card-group {
+} */
+
+.card {
+    position: relative;
+}
+
+.card-body,
+.card-title,
+.card-text,
+.card-footer {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: black;
+}
+
+.side-nav {
+    align-self: left;
+    align-items: left;
+    position: sticky;
+}
+
+.btn {
+    font-family: 'Open Sans Condensed', sans-serif;
+    align-content: center;
+    align-self: center;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    padding: 50 px;
+    align-content: center;
+    vertical-align: middle;
+}
