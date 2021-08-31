@@ -11,7 +11,7 @@ def add_blog_post(request):
     authors = Author.objects.all()
     context = {'authors': authors}
     if request.method == 'GET':
-        return render(request, 'pages/posts.html', context)
+        return render(request, 'pages/add_blog_post.html', context)
     elif request.method == 'POST':
         title = request.POST['title']
         text = request.POST['text']
@@ -19,7 +19,7 @@ def add_blog_post(request):
         author = request.POST['author']
         result = Author.objects.get(id = author)
         Article.objects.create(author = result, title = title, text = text, pub_date = pub_date)
-        return redirect('posts')
+        return redirect('view_all')
 
 def register_author(request):
     if request.method == 'GET': 
@@ -29,4 +29,8 @@ def register_author(request):
         last_name = request.POST['last_name']    
         email = request.POST['email']
         Author.objects.create(first_name = first_name, last_name = last_name, email = email)
-        return redirect('posts')
+        return redirect('add_posts')
+
+def view_all(request):
+    articles = Article.objects.all()
+    return render(request, 'pages/all.html', {'articles': articles})
