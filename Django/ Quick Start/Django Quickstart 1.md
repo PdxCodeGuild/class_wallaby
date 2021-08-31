@@ -67,7 +67,7 @@ deactivate ##to deactivate
 {% endblock %}
 ```
 
-3. Create a static directory at the same level as the _project_name_ directory. _static_ **should not** be nested inside another directory. Inside of _static_, create two directories, _CSS_ and _JS_. Inside of _CSS_ create a **file** _site.css_. inside of _JS_ create a **file** _main.js_. inside of _site.css_ add the following css:
+3. Create a static directory at the same level as the _project_name_ directory. _static_ **should not** be nested inside another directory. Inside of _static_, create two files: _site.css_ and _main.js_. Inside of _site.css_ add the following css:
 
    ```css
    h1 {
@@ -75,7 +75,7 @@ deactivate ##to deactivate
    }
    ```
 
-   inside _main.js_ add the following:
+Inside _main.js_ add the following:
 
    ```javascript
    console.log("hello from main.js");
@@ -115,12 +115,12 @@ In root directory of the **templates** folder, add a base.html file:
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="{% static 'css/site.css' %}" />
+    <link rel="stylesheet" href="{% static 'site.css' %}" />
     <title>welcome</title>
   </head>
   <body>
     {% block content %} {% endblock %}
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'main.js' %}"></script>
   </body>
 </html>
 ```
