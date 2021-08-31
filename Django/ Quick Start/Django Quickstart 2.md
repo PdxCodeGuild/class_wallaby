@@ -70,24 +70,24 @@ Go to the your app folder and inside the models.py file add a model. The followi
 
 ```python
 from django.db import models
-from django.contrib.auth.models import User
-
-class Blog(models.Model):
-        title = models.CharField(max_length = 200)
-        text = models.TextField(max_length = 500)
-        pub_date = models.DateField()
-
-
-        def __str__(self):
-            return self.title
-
 
 class Author(models.Model):
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    email = models.EmailField()
+    
+    def __str__(self):
+        return self.first_name
+
+
+class Article(models.Model):
+    blog = models.ForeignKey(Author, on_delete=models.CASCADE) ##if we delete an Author, all articles associated with that author will get deleted. 
+    title = models.CharField(max_length = 200)
+    text = models.TextField(max_length = 500)
+    pub_date = models.DateField()
 
     def __str__(self):
-        return self.name
+        return self.title
 ```
 
 - Stage your migrations: `python manage.py makemigrations <appname>`
@@ -98,47 +98,46 @@ class Author(models.Model):
  Learn more about making queries [here](https://docs.djangoproject.com/en/3.1/topics/db/queries/) and [here](https://docs.djangoproject.com/en/3.1/topics/db/queries/)
 
 - In the terminal run `python manage.py shell`
-- run `from my_app.models import Blog`
-- run `Blog`, you should be returned a class
-- run `Blog.objects.all()`, to see the content of your database. You should see `<QuerySet []>` if empty
-
-Create a few Blog entries:
-
-- run `Blog.objects.create(title='I made my kittens bark', text='lorem ipsum', pub_date='2009-11-12')`
-- run `Blog.objects.create(title='The economy of the 20th century', text='another lorem ipsum', pub_date='2020-01-12')`
-
-Create a few Author entries
-
 - run `from my_app.models import Author`
 - run `Author`, you should be returned a class
 - run `Author.objects.all()`, to see the content of your database. You should see `<QuerySet []>` if empty
 
-Because the Author database table is linked to the Blog table via Foreign Key, to create an Author object, we'll need to grab the ID of a Blog entry first.
+Create a few Authors:
 
-- run `blog = Blog.objects.filter(title__startswith='I made')` returns a query set (list)
-- `blog[0].id` gets the ID of the first element in the query Set
-- `blog = Blog.objects.get(id=#num)` 
-- run `Author.objects.create(name='alex', blog = blog )`
+- run `Author.objects.create(first_name= 'Vinny', last_name = 'G', email = 'vinny@gmail.com')`
+- run `Author.objects.create(first_name= 'Pauly', last_name = 'D', email = 'paulyD@gmail.com')`
 
-- add a few extra Author entries with different names. You should have something like this at the end:
+Create a few Article entries:
 
-`<QuerySet [<Author: jake>, <Author: alex>, <Author: alex>, <Author: sam>, <Author: luke>]>`
+- run `from my_app.models import Article`
+- run `Article`, you should be returned a class
+- run `Article.objects.all()`, to see the content of your database. You should see `<QuerySet []>` if empty
+
+Because the Article database table is linked to the Author table via Foreign Key, to create an Article object, we'll need to grab the ID of a Author entry first.
+
+- run `author = Author.objects.filter(first_name__startswith='Vinny')` returns a query set (list)
+- `author[0].id` gets the ID of the first element in the query Set
+- `author = Author.objects.get(id=#num)` 
+- run `Article.objects.create(author = author, title = 'I love Jersey Shore', text = 'my friends are awesome', pub_date = '2009-11-11' )`
+
+- Exercise: 
+
+1) Create a new Author instance with your name
+2) Create a new article for you and Pauly D
 
 Filtering:
 
-- run `Blog.objects.filter(title = 'I made my kittens bark')`
-- run `Blog.objects.filter(id = 1)`
-- run `Blog.objects.filter(title__startswith='I made')`
+- run `Article.objects.filter(title = 'I love Jersey Shore')`
+- run `Article.objects.filter(title__startswith='<enter the beginning of an Article's title')`
 
-- run `a = Blog.objects.all()` to assign all posts to a variable
+- run `a = Article.objects.all()` to assign all posts to a variable
 - run `a` to see all blog posts
 - run `a[0]` to access the first element
 - run `a[0].delete()` to delete the first element
 
 How can I filter for all Author entries that are linked to `Alex`?
 
-- run `Author.objects.filter(name = 'alex')`
-
+- run `Author.objects.filter(first_name= 'Vinny')`
 
 
 ## Superuser
@@ -150,7 +149,7 @@ from django.contrib import admin
 
 from . import models
 
-admin.site.register(models.Blog)
+admin.site.register(models.Article)
 admin.site.register(models.Author)
 ```
 - In the terminal, make sure that the server is not running and type `python manage.py createsuperuser`
