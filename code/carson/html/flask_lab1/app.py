@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 import string
 
@@ -26,11 +26,17 @@ def cypher():
       
       all += dict[char]
     print(f'print: {all}')
-    return render_template('index.html', all = all)
- 
-  elif request.method == 'GET':
+    return render_template('answer.html', all = all)
+  
+  
+  elif request.method == 'GET': 
     return render_template('index.html')
 
+@app.route('/answer/', methods=['POST','GET'])
+def answer():
+  if request.method == 'POST':
     
+    return all
+
     
-app.run(debug=True)
+  app.run(debug=True)
