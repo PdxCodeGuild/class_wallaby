@@ -178,4 +178,4 @@ This page is linked to the `register_author` function and it simply allows you t
 ```
 This is an important step. We are passing a list of authors to the page, but at the same time we are querying the database and displaying a list of articles associated to each author thanks to `_set.all`. 
 
-To clarify, we run the first loop to iterate through all authors, then we go one level deeper and we run an additional nested loop that returns all articles associated with each author. You can read more about sets [here](https://docs.djangoproject.com/en/3.2/topics/db/examples/many_to_one/)
+To clarify, we run the first loop to iterate through all authors, then we go one level deeper and we run an additional nested loop that returns all articles linked to each author. You can read more about sets [here](https://docs.djangoproject.com/en/3.2/topics/db/examples/many_to_one/)
