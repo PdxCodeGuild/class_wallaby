@@ -51,7 +51,7 @@ deactivate ##to deactivate
 
 ## Setup your static files. Base.HTML, CSS and Javascript files.
 
-1. create a _templates_ directory at the same level as the _project_name_ directory. **It should not** be nested inside another directory. Inside of the templates folder create a folder called _pages_. Pages will hold basic pages that display a home page, an about page, etc. Inside the folder _pages_, create a page named `home.html`that has the following:
+1. create a _templates_ template directory at the same level as the _project_name_ directory. **It should not** be nested inside another directory. Inside of the templates folder create a folder called _pages_. Pages will hold basic pages that display a home page, an about page, etc. Inside the folder _pages_, create a page named `home.html`that has the following:
 
 ```html
 {% extends 'base.html' %} {% block content %}
@@ -67,7 +67,7 @@ deactivate ##to deactivate
 {% endblock %}
 ```
 
-3. Create a static directory at the same level as the _project_name_ directory. _static_ **should not** be nested inside another directory. Inside of _static_, create two directories, _CSS_ and _JS_. Inside of _CSS_ create a **file** _site.css_. inside of _JS_ create a **file** _main.js_. inside of _site.css_ add the following css:
+3. Create a static directory at the same level as the _project_name_ directory. _static_ **should not** be nested inside another directory. Inside of _static_, create two directories, _css_ and _js_. Inside of _css_ create a **file** _site.css_. inside of _js_ create a **file** _main.js_. inside of _site.css_ add the following css:
 
    ```css
    h1 {
@@ -81,7 +81,7 @@ deactivate ##to deactivate
    console.log("hello from main.js");
    ```
 
-4. We now need to tell django where to find our templates and static files. Open up _settings.py_ in the _project_ folder. Modify the templates section to look like the following snippet. Specifically you need to modify the 'DIRS' line by adding `os.path.join(BASE_DIR, 'templates')`.
+4. We now need to tell django where to find our templates and static files. Open up _settings.py_ in the _my_project_name_ folder. Modify the templates section to look like the following snippet. specifically you need to modify the 'DIRS' line by adding `os.path.join(BASE_DIR, 'templates')`.
 
    ```python
    TEMPLATES = [

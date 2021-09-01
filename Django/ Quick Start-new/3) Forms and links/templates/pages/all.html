@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container mt-5">
+  <h1>Your articles</h1>
+  {%for article in articles%}
+  <ul class="list-group mt-4">
+    <li class="list-group-item">{{article.title}}</li>
+    <li class="list-group-item">{{article.text}}</li>
+    <li class="list-group-item">{{article.pub_date}}</li>
+  </ul>
+  {% endfor %}
+</div>
+
+{% endblock %}
