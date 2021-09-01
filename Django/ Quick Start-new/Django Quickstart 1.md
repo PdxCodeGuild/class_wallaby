@@ -78,7 +78,7 @@ deactivate ##to deactivate
 Inside _app.js_ add the following:
 
 ```javascript
-console.log("hello from main.js");
+console.log("hello there");
 ```
 
 4. We now need to tell django where to find our templates and static files. Open up _settings.py_ in the _project_ folder. Modify the templates section to look like the following snippet. Specifically you need to modify the 'DIRS' line by adding `os.path.join(BASE_DIR, 'templates')`.
