@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Blog
+from .models import Author, Article
 
 def home(request):
     return render(request, 'pages/home.html')
@@ -8,25 +7,34 @@ def home(request):
 def about(request):
     return render(request, 'pages/about.html')
 
-def blog_posts(request):
-    blogs = Blog.objects.all()  # gets all of the blog posts from the database and store them in a variable
-    print(blogs)
-    # create the context dictionary to send the blog posts to the template
-    context = {
-       'blogs': blogs
-    }
-    return render(request, 'pages/posts.html', context)
-
-def add_post(request):
-    if request.method == 'GET': 
-        return render(request, 'pages/add.html')
+def add_blog_post(request):
+    authors = Author.objects.all()
+    context = {'authors': authors}
+    if request.method == 'GET':
+        return render(request, 'pages/add_blog_post.html', context)
     elif request.method == 'POST':
-        title = request.POST['title']  
-        text = request.POST['text']   
+        title = request.POST['title']
+        text = request.POST['text']
         pub_date = request.POST['pub_date']
-        blogs = Blog.objects.create(title = title, text = text, pub_date = pub_date)
-        return redirect('posts')
+        author = request.POST['author']
+        result = Author.objects.get(id = author)
+        Article.objects.create(author = result, title = title, text = text, pub_date = pub_date)
+        return redirect('view_all')
 
-def see_details(request, id):
-    post = Blog.objects.get(id = id)
-    return render(request, 'pages/details.html', {"post": post})
+def register_author(request):
+    if request.method == 'GET': 
+        return render(request, 'pages/register.html')
+    elif request.method == 'POST':
+        first_name = request.POST['first_name']  
+        last_name = request.POST['last_name']    
+        email = request.POST['email']
+        Author.objects.create(first_name = first_name, last_name = last_name, email = email)
+        return redirect('add_posts')
+
+def view_all(request):
+    authors = Author.objects.all()
+    return render(request, 'pages/all.html', {"authors": authors})
+
+def post_details(request, id): ##we get the id of the element. Remember, all elements are created with an ID in the database.
+    post = Article.objects.get(id = id) ## we are assigning the item to a variable
+    return render(request, 'pages/post_details.html', {"post": post}) ## we are passing the variable to the page

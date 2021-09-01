@@ -32,5 +32,5 @@ def register_author(request):
         return redirect('add_posts')
 
 def view_all(request):
-    articles = Article.objects.all()
-    return render(request, 'pages/all.html', {'articles': articles})
+    authors = Author.objects.all()
+    return render(request, 'pages/all.html', {"authors": authors})

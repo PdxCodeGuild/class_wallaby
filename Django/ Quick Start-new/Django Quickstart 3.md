@@ -54,8 +54,8 @@ def add_blog_post(request):
 This function returns a list of articles that exist in the database
 """
 def view_all(request):
-    articles = Article.objects.all() ## This queries the database, and saves a list of articles in the variable 'articles'
-    return render(request, 'pages/all.html', {'articles': articles}) ##passing the list to the page all.html.
+  authors = Author.objects.all()## This queries the database, and saves a list of authors in the variable 'authors'
+  return render(request, 'pages/all.html', {'authors': authors}) ##passing the list to the page all.html.
 
    
 ```
@@ -163,15 +163,17 @@ This page is linked to the `register_author` function and it simply allows you t
 
 <div class="container mt-5">
   <h1>Your articles</h1>
-  {%for article in articles%}
+  {%for person in authors%} 
+    {%for post in person.article_set.all%}
   <ul class="list-group mt-4">
-    <li class="list-group-item">{{article.title}}</li>
-    <li class="list-group-item">{{article.text}}</li>
-    <li class="list-group-item">{{article.pub_date}}</li>
+    <li class="list-group-item">{{person.first_name}}</li>
+    <li class="list-group-item">{{post.title}}</li>
+    <li class="list-group-item">{{post.text}}</li>
+    <li class="list-group-item">{{post.pub_date}}</li>
   </ul>
+    {% endfor %} 
   {% endfor %}
 </div>
-
 {% endblock %}
-
 ```
+This is an important step. We are passing a list of authors to the page, but at the same time we are querying the database and displaying a list of articles associated to each author thanks to `_set.all`. You can read more about it [here](https://docs.djangoproject.com/en/3.2/topics/db/examples/many_to_one/)
