@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Metric Conversion Calculator</h1>
+    <p>Click on one of the text labels to toggle the related radio button:</p>
+    <form action="/" method="POST">
+        <input type="radio" id="feet" name="metric" value="ft">    
+        <label for="feet">ft</label><br>  
+        <input type="radio" id="miles" name="metric" value="mi">
+        <label for="miles">mi</label><br>
+        <input type="radio" id="meters" name="metric" value="m">
+        <label for="meters">m</label><br>
+        <input type="radio" id="kilometers" name="metric" value="km">
+        <label for="kilmeters">km</label><br>
+        <input type="radio" id="yards" name="metric" value="yd">
+        <label for="yards">yd</label><br> 
+        <input type="radio" id="inches" name="metric" value="in">
+        <label for="inches">in</label><br>  
+        <label for="text">Enter number here...</label>
+        <input type="text" id="user_input" name="user_metric_input">
+        <button type="submit">submit</button>   
+    </form>
+
+    <h1>{{metric}}</h1>
+</body>
+</html>
