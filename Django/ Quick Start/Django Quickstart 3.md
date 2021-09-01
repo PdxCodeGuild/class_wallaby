@@ -48,7 +48,7 @@ def add_post(request):
 {% extends 'base.html' %}
 {% block content %}
 <ul>
-<a href="{% url 'add_posts' %}">add a blog post</a>
+<a href="http://localhost:8000/add">add a blog post</a>
   {% for post in blogs %}
   <p>Title: {{ post.title }}</p>
   <p>ID: {{ post.id }}</p>
