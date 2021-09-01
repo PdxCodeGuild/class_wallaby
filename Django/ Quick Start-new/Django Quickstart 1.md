@@ -67,7 +67,7 @@ deactivate ##to deactivate
 {% endblock %}
 ```
 
-3. Create a static directory at the same level as the _project_name_ directory. _static_ **should not** be nested inside another directory. Inside of _static_, create two files: _site.css_ and _main.js_. Inside of _site.css_ add the following css:
+3. Create a static directory at the same level as the _project_name_ directory. _static_ **should not** be nested inside another directory. Inside of _static_, create two files: _styles.css_ and _app.js_. Inside of _styles.css_ add the following css:
 
    ```css
    h1 {
@@ -75,11 +75,11 @@ deactivate ##to deactivate
    }
    ```
 
-Inside _main.js_ add the following:
+Inside _app.js_ add the following:
 
-   ```javascript
-   console.log("hello from main.js");
-   ```
+```javascript
+console.log("hello from main.js");
+```
 
 4. We now need to tell django where to find our templates and static files. Open up _settings.py_ in the _project_ folder. Modify the templates section to look like the following snippet. Specifically you need to modify the 'DIRS' line by adding `os.path.join(BASE_DIR, 'templates')`.
 
@@ -115,12 +115,33 @@ In root directory of the **templates** folder, add a base.html file:
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="{% static 'site.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <title>welcome</title>
   </head>
   <body>
     {% block content %} {% endblock %}
-    <script src="{% static 'main.js' %}"></script>
+    <script src="{% static 'app.js' %}"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
 ```
@@ -165,6 +186,6 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('<path>/', include('<appname>.urls')) 
+    path('<path>/', include('<appname>.urls'))
 ]
 ```

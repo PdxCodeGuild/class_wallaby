@@ -7,74 +7,171 @@ Before continuing further, add a new URL in the my_app > urls.py folder:
 urlpatterns = [
     path('', views.home, name = 'home'),
     path('about/', views.about, name = 'about'),
-    path('posts/', views.blog_posts, name = 'posts'),
-    path('add/', views.add_post, name = 'add_posts')
-]
+    path('add/', views.add_blog_post, name = 'add_posts'),
+    path('register/', views.register_author, name = 'register_author'),
+    path('view_all/', views.view_all, name = 'view_all')
+    ]
 ```
 
-- Go to the my_app folder > views.py, import the model and add a new function based view:
+- Go to the my_app folder > views.py, import both models and add new function based views:
 
 ```python
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Blog
+from .models import Author, Article
 
-def blog_posts(request):
-    blogs = Blog.objects.all()  # gets all of the blog posts from the database and store them in a variable
-  
-    # creates the context dictionary to send the blog posts to the template
-    context = {
-       'blogs': blogs
-    }
-    return render(request, 'pages/posts.html', context)
 
-def add_post(request):
-    if request.method == 'GET': # if its a GET request, just display the add.html template
-        return render(request, 'pages/add.html')
-    elif request.method == 'POST': # if it's a POST request ..
-        title = request.POST['title']   # get the title from the POST submission, this comes from a form
-        text = request.POST['text']     # get the text from the POST submission, this comes from a form
+""" This function allows to register a new author and the form in the
+register.html page is linked to it. 
+"""
+def register_author(request): ##if you visit the register/ url, simply render the template
+    if request.method == 'GET': 
+        return render(request, 'pages/register.html')
+    elif request.method == 'POST': ## if you interact with the form on the html page, then get the input from the form and create an instance of the Author class in the database.
+        first_name = request.POST['first_name']  
+        last_name = request.POST['last_name']    
+        email = request.POST['email']
+        Author.objects.create(first_name = first_name, last_name = last_name, email = email)
+        return redirect('add_posts')
+
+"""
+This function allows you to create a new Article object in the database.
+"""
+def add_blog_post(request):
+    authors = Author.objects.all() ## returns a list of Authors
+    context = {'authors': authors} 
+    if request.method == 'GET':
+        return render(request, 'pages/add_blog_post.html', context) ##passing the list of authors to the page
+    elif request.method == 'POST':
+        title = request.POST['title']
+        text = request.POST['text']
         pub_date = request.POST['pub_date']
-        # add the new blog post to the database. objects.create() automatically saves the new blog post for us so we
-        # don't need a separate call to the save() method
-        blogs = Blog.objects.create(title = title, text = text, pub_date = pub_date)
-        return redirect('posts')
+        author = request.POST['author']
+        result = Author.objects.get(id = author)
+        Article.objects.create(author = result, title = title, text = text, pub_date = pub_date)
+        return redirect('view_all')
+
+"""
+This function returns a list of articles that exist in the database
+"""
+def view_all(request):
+    articles = Article.objects.all() ## This queries the database, and saves a list of articles in the variable 'articles'
+    return render(request, 'pages/all.html', {'articles': articles}) ##passing the list to the page all.html.
+
    
 ```
+## Add a form to register a new Author.
 
-- In the Pages folder create a new page `posts.html` and add the following:
+- In the Pages folder create a new page `register.html` and add the following:
 
 ```html
-{% extends 'base.html' %}
-{% block content %}
-<ul>
-<a href="{% url 'add_posts' %}">add a blog post</a>
-  {% for post in blogs %}
-  <p>Title: {{ post.title }}</p>
-  <p>ID: {{ post.id }}</p>
-  <p>Description: {{ post.text }}</p>
-  <p>Pub Date: {{post.pub_date}}</p>
-  {% empty %}
-  {% endfor %}
-</ul>
+{% extends 'base.html' %} {% block content %}
+
+<div class="container mt-5">
+  <form action="{% url 'register_author' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+      <input
+        type="text"
+        name="first_name"
+        class="form-control"
+        placeholder="First Name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+      <input
+        type="text"
+        name="last_name"
+        class="form-control"
+        placeholder="Last Name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
 {% endblock %}
 ```
+This page is linked to the `register_author` function and it simply allows you to create a new Author instance in the database.
 
 ## Add a form to create blog posts.
 
-- In the Pages folder create a new page `add.html` and add the following:
+- In the Pages folder create a new page `add_blog_post.html` and add the following:
 
 ```html
-{% extends 'base.html' %}
-{% block content %}
-<form action="{% url 'add_posts' %}" method="POST">
-    {% csrf_token %} title: <br />
-    <input type="text" name="title" placeholder="enter todo title" /><br /><br />
-    <textarea name="text" id="" cols="30" rows="10"></textarea><br />
-    <input type="date" id="start" name="pub_date" value="2018-07-22" min="2018-01-01" max="2030-12-31">
-    <br />
-    <input type="submit" />
-</form>
+{% extends 'base.html' %} {% block content %}
+
+<div class="container mt-5">
+  <form class="mt-3" action="{%url 'add_posts' %}" method="POST">
+    {% csrf_token %}
+    <div id="author-form" class="form-group">
+      <label for="book_title">Article Title</label>
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        placeholder="enter the article title"
+      /></br>
+      <textarea
+        class="form-control"
+        rows="3"
+        name="text"
+        placeholder="article main text"
+      ></textarea></br>
+      <input
+        type="date"
+        class="form-control"
+        name="pub_date"
+        value="2018-07-22"
+        min="2018-01-01"
+        max="2030-12-31"
+      /><br />
+      {%if authors%} 
+      <select class="form-control" name="author">
+        {%for author in authors%}
+        <option value="{{author.id}}">{{author}}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn btn-primary mb-2 mt-3">Submit</button>
+      {%else%}
+      <a class="nav-link" href="{% url 'register_author'%}"
+        >Register an author first!</a
+      >
+      {%endif%}
+    </div>
+  </form>
+</div>
+{% endblock %}
+```
+## Add a page where you can display all the articles.
+
+- In the Pages folder create a new page `all.html` and add the following:
+
+```html
+
+{% extends 'base.html' %} {% block content %}
+
+<div class="container mt-5">
+  <h1>Your articles</h1>
+  {%for article in articles%}
+  <ul class="list-group mt-4">
+    <li class="list-group-item">{{article.title}}</li>
+    <li class="list-group-item">{{article.text}}</li>
+    <li class="list-group-item">{{article.pub_date}}</li>
+  </ul>
+  {% endfor %}
+</div>
+
 {% endblock %}
 
 ```
