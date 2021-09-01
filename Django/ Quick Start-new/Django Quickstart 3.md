@@ -1,7 +1,7 @@
 This guide covers the content in the folder **Forms and Links**.
 ## How to use a model and a database inside your template
 
-Before continuing further, add a new URL in the my_app > urls.py folder:
+Before continuing further, add new URLs in the my_app > urls.py folder:
 
 ```python
 urlpatterns = [
@@ -13,7 +13,7 @@ urlpatterns = [
     ]
 ```
 
-- Go to the my_app folder > views.py, import both models and add new function based views:
+- Go to the my_app folder > views.py, import both models and add new views:
 
 ```python
 from django.shortcuts import render, redirect
@@ -176,4 +176,6 @@ This page is linked to the `register_author` function and it simply allows you t
 </div>
 {% endblock %}
 ```
-This is an important step. We are passing a list of authors to the page, but at the same time we are querying the database and displaying a list of articles associated to each author thanks to `_set.all`. You can read more about it [here](https://docs.djangoproject.com/en/3.2/topics/db/examples/many_to_one/)
+This is an important step. We are passing a list of authors to the page, but at the same time we are querying the database and displaying a list of articles associated to each author thanks to `_set.all`. 
+
+To clarify, we run the first loop to iterate through all authors, then we go one level deeper and we run an additional nested loop that returns all articles associated with each author. You can read more about sets [here](https://docs.djangoproject.com/en/3.2/topics/db/examples/many_to_one/)

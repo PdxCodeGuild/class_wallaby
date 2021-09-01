@@ -116,14 +116,14 @@ Create a few Article entries:
 Because the Article database table is linked to the Author table via Foreign Key, to create an Article object, we'll need to grab the ID of a Author entry first.
 
 - run `author = Author.objects.filter(first_name__startswith='Vinny')` returns a query set (list)
-- `author[0].id` gets the ID of the first element in the query Set
-- `author = Author.objects.get(id=#num)` 
+- `id = author[0].id` gets the ID of the first element in the query Set
+- `author = Author.objects.get(id=id)` 
 - run `Article.objects.create(author = author, title = 'I love Jersey Shore', text = 'my friends are awesome', pub_date = '2009-11-11' )`
 
-- Quick Lab: 
+## Quick Lab: 
 
 1) Create a new Author instance with your name
-2) Create a new article for you and Pauly D
+2) Create a new articles and link them to your profile and to Pauly D's profile.
 
 Filtering:
 

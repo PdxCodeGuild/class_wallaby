@@ -67,7 +67,7 @@ deactivate ##to deactivate
 {% endblock %}
 ```
 
-3. Create a static directory at the same level as the _project_name_ directory. _static_ **should not** be nested inside another directory. Inside of _static_, create two files: _styles.css_ and _app.js_. Inside of _styles.css_ add the following css:
+3. Create a static directory at the same level as the _project_name_ directory. _Static_ **should not** be nested inside another directory. Inside of _static_, create two files: _styles.css_ and _app.js_. Inside of _styles.css_ add the following css:
 
    ```css
    h1 {
