@@ -8,5 +8,4 @@ urlpatterns = [
     path('register/', views.register_author, name = 'register_author'),
     path('view_all/', views.view_all, name = 'view_all'),
     path('post_details/<int:id>', views.post_details, name = 'details'),
-
     ]
