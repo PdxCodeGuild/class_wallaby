@@ -22,12 +22,12 @@ urlpatterns = [
     ]
 ```
 
-- Inside _my_app > views.py add a view to return a page based on the ID of the element we are targeting:
+- Inside your app folder > views.py add a view to return a page based on the ID of the element we are targeting:
 
 ```python
 def post_details(request, id): ##we get the id of the element. Remember, all elements are created with an ID in the database.
     post = Article.objects.get(id = id) ## we are assigning the element to a variable
-    return render(request, 'pages/details.html', {"post": post}) ## we are passing the context to the page
+    return render(request, 'pages/post_details.html', {"post": post}) ## we are passing the context to the page
 ```
 
 - Update the Templates > Pages > all.html to look like the following:
