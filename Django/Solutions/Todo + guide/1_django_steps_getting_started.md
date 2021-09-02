@@ -2,28 +2,9 @@
 ## part 1: django initial setup
 
 0. create a directory for your project
-1. `cd` into the directory you just created, then create your virtual environment using `pipenv`
-   ```python
-   pipenv shell
-   ``` 
+1. `cd` into the directory you just created, then create your virtual environment using `pipenv` or `virtualenv`
+
 2. install django and ensure it was installed
-
-   ```python
-   pipenv install django
-   pip list
-   ```
-
-   the output from the `pip list` command should be similar to the following (the output will depend on the version of django you installed):
-
-   | Package    | Version |
-   | ---------- | ------- |
-   | asgiref    | 3.2.3   |
-   | Django     | 3.0     |
-   | pip        | 19.3.1  |
-   | pytz       | 2019.3  |
-   | setuptools | 42.0.2  |
-   | sqlparse   | 0.3.0   |
-   | wheel      | 0.33.6  |
 
 3. create a django project with the command<br>
    `django-admin startproject my_project_name .`
@@ -31,7 +12,7 @@
 4. test to make sure the server runs<br>
    `python3 manage.py runserver`<br>
   
-   if everything was done correctly, you should see the default server page with the animated rocket.
+   If everything was done correctly, you should see the default server page with the animated rocket.
    [](./django_scrnsht.png)
 
 ## part 2: todo list setup. Adding views, URLS and static pages.
@@ -42,7 +23,7 @@ There are many ways to approach a django project. This is just one version of ho
    `python3 manage.py startapp todo_app` <br>
    `python3 manage.py startapp pages_app`
 
-   go into your _my_project_name/settings.py_ file and install your apps. Add the name of your app to the list of installed apps like so:
+   Go into your _my_project_name/settings.py_ file and install your apps. Add the name of your app to the list of installed apps like so:
 
    ```python
    INSTALLED_APPS = [
@@ -57,9 +38,9 @@ There are many ways to approach a django project. This is just one version of ho
    ]
    ```
 
-2. create a _templates_ template directory at the same level as the _to_do_app_ and _my_project_name_ directories. **It should not** be nested inside another directory. Inside of the templates folder create a folder called _pages_ and another called _todos_. Pages will hold basic pages that display a home page, an about page, etc. todos will hold pages that have something to do with our todo_list app.
+2. Create a _templates_ template directory at the same level as the _to_do_app_ and _my_project_name_ directories. **It should not** be nested inside another directory. Inside of the templates folder create a folder called _pages_ and another called _todos_. Pages will hold basic pages that display a home page, an about page, etc. Todos will hold pages that have something to do with our todo_list app.
 
-3. create a static directory at the same level as the _to_do_app_, _templates_, and _my_project_name_ directories. _static_ **should not** be nested inside another directory. Inside of _static_, create two directories, _css_ and _js_. inside of _css_ create a **file** _site.css_. inside of _js_ create a **file** _main.js_. inside of _site.css_ add the following css:
+3. Create a static directory at the same level as the _to_do_app_, _templates_, and _my_project_name_ directories. _static_ **should not** be nested inside another directory. Inside of _static_, create two directories, _css_ and _js_. inside of _css_ create a **file** _site.css_. inside of _js_ create a **file** _main.js_. inside of _site.css_ add the following css:
 
    ```css
    h1 {
@@ -67,13 +48,13 @@ There are many ways to approach a django project. This is just one version of ho
    }
    ```
 
-   inside _main.js_ add the following:
+   Inside _main.js_ add the following:
 
    ```javascript
    console.log("hello from main.js");
    ```
 
-4. We now need to tell django where to find our templates and static files. Open up _settings.py_ in the _my_project_name_ folder. modify the templates section to look like the following snippet. specifically you need to modify the 'DIRS' line by adding `os.path.join(BASE_DIR, 'templates')`.
+4. We now need to tell django where to find our templates and static files. Open up _settings.py_ in the _my_project_name_ folder. Modify the templates section to look like the following snippet. specifically you need to modify the 'DIRS' line by adding `os.path.join(BASE_DIR, 'templates')`.
 
    ```python
    TEMPLATES = [
@@ -93,7 +74,7 @@ There are many ways to approach a django project. This is just one version of ho
    ]
    ```
 
-   next, add `STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]` to the bottom of the _settings.py_ file below the line specifying `STATIC_URL`.
+   Next, add `STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]` to the bottom of the _settings.py_ file below the line specifying `STATIC_URL`.
 
 **extra step** add `import os` at the top of the page if you do not see it there
 

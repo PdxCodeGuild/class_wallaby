@@ -113,7 +113,7 @@ Create a few Article entries:
 - run `Article`, you should be returned a class
 - run `Article.objects.all()`, to see the content of your database. You should see `<QuerySet []>` if empty
 
-Because the Article database table is linked to the Author table via Foreign Key, to create an Article object, we'll need to grab the ID of a Author entry first.
+Because the Article database table is linked to the Author table via Foreign Key, to create an Article object, we'll need to grab an Author entry first. We can use its ID to accomplish that.
 
 - run `author = Author.objects.filter(first_name__startswith='Vinny')` returns a query set (list)
 - `id = author[0].id` gets the ID of the first element in the query Set
