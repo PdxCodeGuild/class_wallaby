@@ -24,7 +24,7 @@ def add_todo(request):
             status = False
         else:
             status = True
-        todo = Todo.objects.create(title = title, text = text, status = status)
+        Todo.objects.create(title = title, text = text, status = status)
         return redirect('list')
         # list is the name of the view in todo_app > urls.py
 
