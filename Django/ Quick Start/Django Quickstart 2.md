@@ -58,10 +58,7 @@ class Car(models.Model):
 
 ```
 
-<img src="relation.png"
-     alt="One to many relationship"/>
-
-Check [this video](https://www.youtube.com/watch?v=wIPHER2UBB4&t=61s) for a more visual explanation of the relationship between models.
+Check [this video](https://www.youtube.com/watch?v=wIPHER2UBB4&t=61s) for a more visual explanation of the models.
 
 
 ## Create your model
@@ -76,18 +73,10 @@ class Blog(models.Model):
         title = models.CharField(max_length = 200)
         text = models.TextField(max_length = 500)
         pub_date = models.DateField()
-
+        user = models.ForeignKey(User, on_delete = models.CASCADE, null = True, blank = True)
 
         def __str__(self):
             return self.title
-
-
-class Author(models.Model):
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
 ```
 
 - Stage your migrations: `python manage.py makemigrations <appname>`
@@ -102,27 +91,10 @@ class Author(models.Model):
 - run `Blog`, you should be returned a class
 - run `Blog.objects.all()`, to see the content of your database. You should see `<QuerySet []>` if empty
 
-Create a few Blog entries:
+Create a few entries:
 
 - run `Blog.objects.create(title='I made my kittens bark', text='lorem ipsum', pub_date='2009-11-12')`
 - run `Blog.objects.create(title='The economy of the 20th century', text='another lorem ipsum', pub_date='2020-01-12')`
-
-Create a few Author entries
-
-- run `from my_app.models import Author`
-- run `Author`, you should be returned a class
-- run `Author.objects.all()`, to see the content of your database. You should see `<QuerySet []>` if empty
-
-Because the Author database table is linked to the Blog table via Foreign Key, to create an Author object, we'll need to grab the ID of a Blog entry first.
-
-- run `blog = Blog.objects.filter(title__startswith='I made')` returns a query set (list)
-- `blog[0].id` gets the ID of the first element in the query Set
-- `blog = Blog.objects.get(id=#num)` 
-- run `Author.objects.create(name='alex', blog = blog )`
-
-- add a few extra Author entries with different names. You should have something like this at the end:
-
-`<QuerySet [<Author: jake>, <Author: alex>, <Author: alex>, <Author: sam>, <Author: luke>]>`
 
 Filtering:
 
@@ -135,11 +107,6 @@ Filtering:
 - run `a[0]` to access the first element
 - run `a[0].delete()` to delete the first element
 
-How can I filter for all Author entries that are linked to `Alex`?
-
-- run `Author.objects.filter(name = 'alex')`
-
-
 
 ## Superuser
 
@@ -151,7 +118,7 @@ from django.contrib import admin
 from . import models
 
 admin.site.register(models.Blog)
-admin.site.register(models.Author)
+
 ```
 - In the terminal, make sure that the server is not running and type `python manage.py createsuperuser`
 - Start the server with `python manage.py runserver`

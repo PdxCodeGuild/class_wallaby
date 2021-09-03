@@ -1,0 +1,191 @@
+# Django Quickstart 1 - Creating URLs, Views and Static folders.
+
+## Set up Virtual Environment with Pipenv
+
+This document covers the content in the folder 'Views'.
+
+If you do not have Pipenv, install it globally on your machine. In the terminal run
+
+`pip install pipenv`
+
+I usually set Pipenv to the latest Python version available on my machine, so I run `pipenv --python 3.6`
+
+Make sure that your virtual environment is running. You can run `pipenv shell`
+
+Then run: `pipenv install django`
+
+## Set up Virtual Environment with Virtual ENV
+
+```bash
+python3 -m venv env
+source env/bin/activate
+python3 -m pip install django
+deactivate ##to deactivate
+```
+
+[Virtual Env with Python](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+
+## Create a project.
+
+- Create a site/project: `django-admin startproject <project_name> .` Remember to add a . (dot at the end, after the project name)
+
+## Create an app and reference it in the project folder.
+
+- Create an app: `python manage.py startapp <app-name>`
+- Add your app to the `INSTALLED_APPS` in `settings.py`
+
+  ```python
+  INSTALLED_APPS = [
+       .....
+      '<app-name>',
+  ]
+  ```
+
+  -Add `import os` at the top of the Settings.py page if you do not see it there.
+
+## Run server
+
+-To verify that Django was installed correctly, run the server. In the terminal run `python manage.py runserver` (if you are using Python 3 you may run `python3 manage.py runserver`)
+
+-To exit the server, press CONTROL + C.
+
+## Setup your static files. Base.HTML, CSS and Javascript files.
+
+1. create a _templates_ directory at the same level as the _project_name_ directory. **It should not** be nested inside another directory. Inside of the templates folder create a folder called _pages_. Pages will hold basic pages that display a home page, an about page, etc. Inside the folder _pages_, create a page named `home.html`that has the following:
+
+```html
+{% extends 'base.html' %} {% block content %}
+<h1>Home</h1>
+{% endblock %}
+```
+
+2. Create another page in the same folder named `about.html`:
+
+```html
+{% extends 'base.html' %} {% block content %}
+<h1>About</h1>
+{% endblock %}
+```
+
+3. Create a static directory at the same level as the _project_name_ directory. _Static_ **should not** be nested inside another directory. Inside of _static_, create two files: _styles.css_ and _app.js_. Inside of _styles.css_ add the following css:
+
+   ```css
+   h1 {
+     color: firebrick;
+   }
+   ```
+
+Inside _app.js_ add the following:
+
+```javascript
+console.log("hello there");
+```
+
+4. We now need to tell django where to find our templates and static files. Open up _settings.py_ in the _project_ folder. Modify the templates section to look like the following snippet. Specifically you need to modify the 'DIRS' line by adding `os.path.join(BASE_DIR, 'templates')`.
+
+   ```python
+   TEMPLATES = [
+       {
+           'BACKEND': 'django.template.backends.django.DjangoTemplates',
+           'DIRS': [os.path.join(BASE_DIR, 'templates')],
+           'APP_DIRS': True,
+           'OPTIONS': {
+               'context_processors': [
+                   'django.template.context_processors.debug',
+                   'django.template.context_processors.request',
+                   'django.contrib.auth.context_processors.auth',
+                   'django.contrib.messages.context_processors.messages',
+               ],
+           },
+       },
+   ]
+   ```
+
+Next, add `STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]` to the bottom of the _settings.py_ file below the line specifying `STATIC_URL`.
+
+## Adding a base HTML file.
+
+In root directory of the **templates** folder, add a base.html file:
+
+```html
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>welcome</title>
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+    <script src="{% static 'app.js' %}"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+```
+
+## Create a View
+
+- In your app's `views.py`:
+
+```python
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'pages/home.html')
+
+def about(request):
+    return render(request, 'pages/about.html')
+```
+
+## Create a Route to the Views
+
+- Create a `urls.py` inside your app folder
+- Add a route in your app's `urls.py` which points to the the view
+- Add an `app_name` to be able to look up paths when you render a template
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home, name = 'home'),
+    path('about/', views.about, name = 'about')
+]
+```
+
+## Hook these URLs and views to the Project URLs
+
+- Add a route in your project's `urls.py` which points to the app's `urls.py` using `include`
+
+```python
+from django.urls import path, include
+from django.contrib import admin
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('<appname>.urls'))
+]
+```

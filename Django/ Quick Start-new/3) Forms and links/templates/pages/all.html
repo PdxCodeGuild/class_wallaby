@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container mt-5">
+  <h1>Your articles</h1>
+  {%for person in authors%} 
+    {%for post in person.article_set.all%}
+  <ul class="list-group mt-4">
+    <li class="list-group-item">{{person.first_name}}</li>
+    <li class="list-group-item">{{post.title}}</li>
+    <li class="list-group-item">{{post.text}}</li>
+    <li class="list-group-item">{{post.pub_date}}</li>
+  </ul>
+    {% endfor %} 
+  {% endfor %}
+</div>
+
+{% endblock %}

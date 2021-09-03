@@ -34,10 +34,10 @@ def see_details(request, id): ##we get the id of the element. Remember, all elem
 ```html
 {% extends 'base.html' %}
 {% block content %}
-<a href="{%url 'add_posts'%}">add a blog post</a>
+<a href="http://localhost:8000/add">add a blog post</a>
 <ul>
   {% for post in blogs %}
-  <p><a href="{% url 'see_details' post.id%}">Title: {{ post.title }}</a></p>
+  <p><a href="http://localhost:8000/details/{{post.id}}">Title: {{ post.title }}</a></p>
   <p>ID: {{ post.id }}</p>
   <p>Description: {{ post.text }}</p>
   <p>Pub Date: {{post.pub_date}}</p>
@@ -54,7 +54,7 @@ As you can see we added an <a> tag with a link to page that is served by the vie
 ```html
 {% extends 'base.html' %}
 {% block content %}
-<p><a href="{%url 'posts'%}">Back to main view</a></p>
+<p><a href=http://localhost:8000/posts>Back to main view</a></p>
 <ul>
   <p>ID: {{ post.id }}</p>
   <p>Description: {{ post.text }}</p>
