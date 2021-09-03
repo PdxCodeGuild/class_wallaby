@@ -1,0 +1,20 @@
+{% extends 'todo/base.html' %} 
+{% block content %}
+    {% for post in posts %}
+    <article class="media content-section">
+        
+        <div class="media-body">
+            <h1>{{ post.title }}</h1>
+            <h1>{{ post.author }}</h1>
+            <h1>{{ post.created_date }}</h1>
+            <h1>{{ post.text_desc }}</h1>
+            
+            <h1>{{ post.completed }}</h1>
+        </div>
+    </article>
+
+    {% endfor %}
+
+
+
+{% endblock %}
