@@ -65,7 +65,7 @@ type todo description here</textarea
 {% endblock %}
 ```
 
-5. Remeber, we still need to connect the page to its endpoint. In todo_app > views.py add :
+5. Remeber, we still need to connect the page to its URL. In todo_app > views.py add :
 
 ```python
 def add_todo(request):
@@ -80,7 +80,7 @@ def add_todo(request):
             status = True
         # add the new todo to the databse. objects.create() automatically saves the new todo for us so we
         # don't need a separate call to the save() method
-        todo = Todo.objects.create(title = title, text = text, status = status)
+        Todo.objects.create(title = title, text = text, status = status)
         return redirect('list')
 ```
 
@@ -134,7 +134,7 @@ def details(request, id):
 
 The `<int:id>` expects an integer after the link. The integer is the ID of the todo.
 
-- Now grab an id and add it at the end of the following url:
+- Now grab an ID and add it at the end of the following url:
 
 example: `http://localhost:8000/todo/details/13`
 
