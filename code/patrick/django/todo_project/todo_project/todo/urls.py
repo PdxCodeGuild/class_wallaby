@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views, PostDetailView
+from todo.views import todo_list, about
 
 urlpatterns = [
-    path('', views.home, name='todo-home'),
-    path('about', views.about, name='about'),
+    path('', todo_list, name='todo_list'),
+    path('about', about, name='about'),
 ]
