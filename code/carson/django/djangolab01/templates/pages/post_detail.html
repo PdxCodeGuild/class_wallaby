@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+    <a href="{% url 'view_all'%}">
+        <h3>Back to all articles</h3>
+    </a>
+    <ul>
+        <p>ID: {{ post.id }}</p>
+        <p>Description: {{ post.text }}</p>
+        <p>Pub Date: {{post.pub_date}}</p>
+    </ul>
+</div>
+<div class="container mt-5">
+    <form action="{% url 'update_post' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="edit_description">Edit</label>
+            <input type="text" name="edit_description" class="form-control" placeholder="Edit Description" />
+        </div>
+      
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">Delete</button>
+    </form>
+</div>
+
+{% endblock %}
