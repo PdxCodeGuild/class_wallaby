@@ -1,0 +1,16 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class='container-fluid mt-5 ml-5'> 
+    <table  method="POST" enctype="multipart/form-data">
+        <!-- Security token -->
+        {% csrf_token %}
+    
+        <!-- Using the formset -->
+        {{ form.as_p }}
+        
+        <input type="submit" value="Submit">
+    </table>
+</div>   
+    
+{% endblock content %}
