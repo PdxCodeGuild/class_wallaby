@@ -118,7 +118,7 @@ Because the Article database table is linked to the Author table via Foreign Key
 - run `author = Author.objects.filter(first_name__startswith='Vinny')` returns a query set (list)
 - `id = author[0].id` gets the ID of the first element in the query Set
 - `author = Author.objects.get(id=id)` 
-- run `Article.objects.create(author = author, title = 'I love Jersey Shore', text = 'my friends are awesome', pub_date = '2009-11-11' )`
+- run `Article.objects.create(blog = author, title = 'I love Jersey Shore', text = 'my friends are awesome', pub_date = '2009-11-11' )`
 
 ## Quick Lab: 
 
