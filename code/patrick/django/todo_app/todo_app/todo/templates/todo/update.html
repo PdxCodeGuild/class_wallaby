@@ -1,16 +1,40 @@
+
+
 {% extends 'todo/base.html' %}
 
 {% block content %}
-    <form method="POST" enctype="multipart/form-data">
-    
-        <!-- Security token -->
-        {% csrf_token %}
-    
-        <!-- Using the formset -->
-        {{ form.as_p }}
-        
-        <input type="submit" value="Submit">
-    </form>
-
-    
-{% endblock content %}
+<form class='ml-5 mt-5 form-group' action="{% url 'update' todo.id %}" method="POST">
+    {% csrf_token %}
+    Title: <br> <input class="form-control form-group" type="text" name="title" value="{{ todo.title }}"><br>
+    Description:<br> <textarea name="description" id="" cols="30" rows="10">{{ todo.description }}</textarea><br>
+    Status: 
+        {% if todo.complete %}
+        <div class="form-check">
+        <input class="form-check-input" type="radio" name="complete" id="exampleRadios1" value="True"  checked>
+        <label class="form-check-label" for="exampleRadios1">
+          Complete
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="complete" value="False" id="exampleRadios2" >
+        <label class="form-check-label" for="exampleRadios2">
+          Incomplete
+        </label>
+      </div>
+      {% else %}
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="complete" id="exampleRadios1" value="True"  >
+        <label class="form-check-label" for="exampleRadios1">
+          Complete
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="complete" value="False" id="exampleRadios2" checked>
+        <label class="form-check-label" for="exampleRadios2">
+          Incomplete
+        </label>
+      </div>
+      {% endif %}
+    <input type="submit" value="update">
+</form>
+{% endblock %}

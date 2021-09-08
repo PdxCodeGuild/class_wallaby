@@ -1,12 +1,14 @@
-from .forms import TaskForm
+from .forms import TaskForm, UpdateForm
 from django.shortcuts import render, redirect
 from .models import Task
+# from django.http import HttpResponse 
 
 # from django.views.generic.list import ListView
 
 def TaskListForm(request):
     context = {}
     form = TaskForm(request.POST or None)
+    print('test')
     if form.is_valid():
         form.save()
         return redirect('taskview')
@@ -20,9 +22,28 @@ def TaskListView(request):
     context = {'todo_views':todo_views}
     return render(request, "todo/taskview.html", context)
 
-def DetailView(request, id):
-    detail = Task.objects.get(id = id)
-    return render (request, 'todo/detail.html', {'todo': detail})
+
+    
+def Update(request, id):
+    todo = Task.objects.get(id = id)
+    if request.method == 'GET':
+        return render(request, 'todo/update.html', {'todo': todo})
+    elif request.method == 'POST':
+        
+        todo.title = request.POST['title']
+        todo.description = request.POST['description']
+        print(todo.description)
+        if (request.POST['complete'] == 'False'):
+            todo.complete = False
+        else:
+            todo.complete = True
+        todo.save()
+        return redirect('taskview')
+        
+def Remove(request, id):
+    todo = Task.objects.get(id = id)
+    todo.delete()
+    return redirect('taskview')
 
 
 # def Add_list(request):

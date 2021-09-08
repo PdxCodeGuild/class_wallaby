@@ -7,7 +7,13 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = '__all__'
 
-    
+class UpdateForm(forms.ModelForm):
+    title = forms.TextInput(),
+    description = forms.Textarea(),
+    create = forms.TextInput()
+    class Meta:
+        model = Task
+        fields = ['title', 'description', 'complete']   
 
      # widgets = {
         #     'user': forms.Select(attrs={'class': 'form-control'}),

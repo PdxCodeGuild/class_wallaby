@@ -27,7 +27,7 @@
                     <th scope="col">Family Member</th>
                     <th scope="col">Task</th>
                     <!-- <th scope="col">Description</th> -->
-                    <th scope="col">Priority</th>
+                    <th scope="col">Notes</th>
                     <th scope="col">Status</th>
                     <th scope="col">Actions</th>
                   </tr>
@@ -41,20 +41,23 @@
                       <span class="ms-2">{{ task.user }}</span>
                     </th>
                     <td class="align-middle">
-                      <span >{{ task.title }} {{ task.description }}</span >
+                      <span >{{ task.title }} </span >
                     </td>
                     <td class="align-middle">
                         <span >{{ task.description }}</span >
                       </td>
+                    
                     <td class="align-middle">
-                      <h6 class="mb-0"><span class="badge bg-danger">High priority</span></h6>
+                      {% if task.complete %}
+                      <h6 class="mb-0"><span class="badge bg-success">Complete</span></h6> 
+                      {% else %}
+                      <h6 class="mb-0"><span class="badge bg-danger">Incomplete</span></h6>
+                      {% endif %}
                     </td>
+                   
                     <td class="align-middle">
-                      <h6 class="mb-0"><span >{{ task.complete }}</span></h6>
-                    </td>
-                    <td class="align-middle">
-                      <a href="#!" data-mdb-toggle="tooltip" title="Done">Done<i class="fas fa-check text-success me-3"></i></a>
-                      <a href="#!" data-mdb-toggle="tooltip" title="Remove">Remove<i class="fas fa-trash-alt text-danger text-decoration-none class"></i></a>
+                      <a href="{% url 'update' task.id %}" data-mdb-toggle="tooltip" title="update">Edit<i class="fas fa-check text-success me-3"></i></a>
+                      <a href="{% url 'remove' task.id %}" data-mdb-toggle="tooltip" title="Remove">Remove<i class="fas fa-trash-alt text-danger text-decoration-none class"></i></a>
                     </td>
                   </tr>
                   
@@ -64,8 +67,8 @@
   
             </div>
             <div class="card-footer text-end p-3">
-              <button class="me-2 btn btn-link">Cancel</button>
-              <button class="btn btn-primary">Add Task</button>
+              
+              <a class="btn btn-primary" href="{% url 'taskform' %}">Add Task</a>
             </div>
           </div>
   
