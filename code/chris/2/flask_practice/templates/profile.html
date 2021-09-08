@@ -1,0 +1,30 @@
+<h1>{{name.title()}} PokeDex ID: {{id}}</h1>
+<a href="/">Go Back</a>
+<img src={{sprite}}>
+
+<p>Types:
+  <ul>
+    {% for type in types %}
+      <li>{{type['type']['name']}}</li>
+    {% endfor %}
+  </ul>
+
+</p>
+<p>Height: {{height / 10}}m</p>
+<p>Weight: {{weight / 10}}kg</p>
+<p>Moves:
+  <ul>
+    {% for move in moves %}
+      <li>{{move}}</li>
+    {% endfor %}
+  </ul>
+</p>
+
+<p>Base stats:
+  {% for stat in stats %}
+    <li>{{stat}}: {{stats[stat]}}</li>
+  {% endfor %}
+
+</p>
+
+
