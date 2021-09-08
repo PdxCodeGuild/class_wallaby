@@ -1,0 +1,27 @@
+{% extends 'todo/base.html' %} 
+{% block content %}
+    
+    <form method='post' action="{% url 'todo_list' %}">
+        {% csrf_token %}
+        <label>Title</label>
+        <input type='text' name='title'>
+        <label>Author</label>
+        <input type='text' name='Author'>
+        <label>Description</label>
+        <input type='text' name='description'>
+        <label>Date Created</label>
+        <input type='text' name='created'>
+        <label>Completed</label>
+        <input type='text' name='complete'>
+    </form>
+
+    
+    {% for todo in object_list %}
+
+     <li>
+         {{ todo.title}}
+         
+     </li>
+    
+    {% endfor %}
+{% endblock %}
