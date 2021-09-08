@@ -34,4 +34,20 @@ def view_all(request):
 
 def post_details(request, id): 
     post = Note.objects.get(id = id) 
-    return render(request, 'pages/post_detail.html', {"post": post}) 
+    return render(request, 'pages/post_details.html', {"post": post}) 
+
+def update_post(request,id):
+    if request.method =='GET':
+        return render(request, 'pages/post_details.html')
+    elif request.method == 'POST':
+        post = Note.objects.get(id = id) 
+        post.text = request.POST['edit_description']
+        post.save()
+        return redirect('view_all')
+
+def delete_post(request,id):
+    post = Note.objects.get(id = id)
+    post.delete()
+    return redirect('view_all')
+
+

@@ -10,16 +10,21 @@
     </ul>
 </div>
 <div class="container mt-5">
-    <form action="{% url 'update_post' %}" method="POST">
+    <form action="{% url 'update_post' post.id %}" method="POST">
         {% csrf_token %}
         <div class="form-group">
             <label for="edit_description">Edit</label>
             <input type="text" name="edit_description" class="form-control" placeholder="Edit Description" />
         </div>
-      
-            <button type="submit" class="btn btn-primary">Update</button>
-            <button type="submit" class="btn btn-primary">Delete</button>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+
     </form>
 </div>
-
+<div class="container mt-5">
+    <form action="{% url 'delete_post' post.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Delete</button>
+    </form>
+</div>
 {% endblock %}
