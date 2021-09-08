@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block content %}
+<a href="{%url 'home' %}">Click to go back home</a>
+<ul>
+    {% for post in blogs %}
+    <li>Title {{post.title}}</li>
+    <li>Title {{post.text}}</li>
+    <li>Title {{post.pub_date}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

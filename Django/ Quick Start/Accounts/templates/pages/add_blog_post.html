@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container mt-5">
+  <form class="mt-3" action="{%url 'add_posts' %}" method="POST">
+    {% csrf_token %}
+    <div id="author-form" class="form-group">
+      <label for="book_title">Article Title</label>
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        placeholder="enter the article title"
+      /></br>
+      <textarea
+        class="form-control"
+        rows="3"
+        name="text"
+        placeholder="article main text"
+      ></textarea></br>
+      <input
+        type="date"
+        class="form-control"
+        name="pub_date"
+        value="2018-07-22"
+        min="2018-01-01"
+        max="2030-12-31"
+      /><br />
+      {%if authors%}
+      <select class="form-control" name="author">
+        {%for author in authors%}
+        <option value="{{author.id}}">{{author}}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn btn-primary mb-2 mt-3">Submit</button>
+      {%else%}
+      <a class="nav-link" href="{% url 'register_author'%}"
+        >Register an author first!</a
+      >
+      {%endif%}
+    </div>
+  </form>
+</div>
+{% endblock %}

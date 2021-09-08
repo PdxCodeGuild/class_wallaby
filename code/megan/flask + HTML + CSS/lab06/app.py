@@ -22,5 +22,6 @@ def home():
 
 app.run(debug=True)
 
+# megancook@Megans-Air lab06 % python3 -m venv env
 # megancook@Megans-Air lab06 % source env/bin/activate        
 # (enc) megancook@Megans-Air lab06 % flask run

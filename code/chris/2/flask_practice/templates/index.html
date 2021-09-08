@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vanilla Pokedex</title>
+  </head>
+  <body>
+    <h1>Vanilla Pokemon</h1>
+
+    {% for pokemon in pokemons %}
+    {% if loop.index0 % 10 == 0 %}
+    <form action="/pokemon" method="POST">
+      <label for="pokemon{{loop.index}}">Pokemon {{loop.index}} - {{loop.index + 9}}:</label>
+      <br>
+    {% if loop.index0 % 30 == 0 %}
+      <br>
+          {% endif %}
+          <select name="pokemon" id="{{loop.index}}">
+        {% endif %}
+
+        <option value={{loop.index}}>{{loop.index}} {{pokemon.name.title()}}</option>
+        {% if loop.index % 10 == 0 %}
+            {% if loop.index0 > 0 %}
+
+              </select>
+              <input type="submit" value="View Pokemon">
+            </form>
+            {% endif %}
+        {% endif %}
+      {% endfor %}
+      </select>
+      <br><br>
+
+  </body>
+</html>
