@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Converter</span>
+        </div>
+    </nav>
+
+
+    <title>Unit Converter</title>
+</head>
+
+<body>
+
+    <form action="/home/" method="POST" class="container">
+        <fieldset>
+            <legend>Unit Converter</legend>
+            <div class="mb-3">
+                <label for="TextInput" class="form-label"> Distance To Be Converted Into Meters</label>
+                <input type="text" id="distance" name="distance" class="form-control" placeholder=" input">
+            </div>
+            <div class="mb-3">
+                <label for="Select" class="form-label"> Select A Unit Of Measurement</label>
+                <select id="Select" class="form-select" name="distance_choice" >
+                    <option id="inches" name="inches"> Inches</option>
+                    <option id="feet" name="feet">Feet</option>
+                    <option id="yards" name="yards"> Yards</option>
+                    <option id="meters" name="meters"> Meters</option>
+                    <option id="kilometers" name="kilometers"> Kilometers</option>
+                    <option id="miles" name="miles">Miles</option>
+
+                </select>
+            </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+ <h1> {{distance}} meters converted into {{distance_choice}} is {{output}} {{distance_choice}}</h1> 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="js/bootstrap.js"></script>
+
+
+</body>
+
+
+</html>

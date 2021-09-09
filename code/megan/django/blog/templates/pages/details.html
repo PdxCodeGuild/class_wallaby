@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content%}
+<ul>
+    <li><a href="{% url 'see_details' post.id %}">ID: {{post.id}}</a></li>
+    <li>Title: {{title.id}}</li>
+    <li>Description: {{post.text}}</li>
+    <li>Date: {{}}</li>
+</ul>
+
+{% endblock %}

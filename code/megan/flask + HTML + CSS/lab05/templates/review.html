@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Review Order</h1>
+<h2>{{name}}, please review your order:</h2>
+<p>{{order}}</p>
+<form action="/confirmation/" method="post">
+    <button type="submit">Submit Order</button>
+</form>
+<form action="/" method="post">
+    <button type="submit">Edit Order</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Burrito Order Form</h1>
+<form id="order" action="/review/" method="post">
+    <input type="text" name="name" placeholder="Enter your name">
+    <h2>Choose your fixings:</h2>
+
+    <label for="meat">Meat</label>
+    <div>
+        <input type="radio" id="pollo-asado" name="meat" value="pollo-asado">
+        <label for="pollo-asado">Pollo Asado</label>
+    </div>
+    <div>
+        <input type="radio" id="carnitas" name="meat" value="carnitas">
+        <label for="carnitas">Carnitas</label>
+    </div>
+    <div>
+        <input type="radio" id="carne-asada" name="meat" value="carne-asada">
+        <label for="carne-asada">Carne Asada</label>
+    </div>
+    <div>
+        <input type="radio" id="no-meat" name="meat" value="no-meat">
+        <label for="no-meat">No Meat</label>
+    </div>
+
+    <label for="rice">Rice</label>
+    <div>
+        <input type="radio" id="brown" name="rice" value="brown rice">
+        <label for="brown">Brown Rice</label>
+    </div>
+    <div>
+        <input type="radio" id="white" name="rice" value="white rice">
+        <label for="white">White Rice</label>
+    </div>
+    <div>
+        <input type="radio" id="no-rice" name="rice" value="no rice">
+        <label for="no-rice">No Rice</label>
+    </div>
+
+    <label for="beans">Beans</label>
+    <div>
+        <input type="radio" id="black" name="beans" value="black beans">
+        <label for="black">Black Beans</label>
+    </div>
+    <div>
+        <input type="radio" id="pinto" name="beans" value="pinto beans">
+        <label for="pinto">Pinto Beans</label>
+    </div>
+    <div>
+        <input type="radio" id="no-beans" name="beans" value="no beans">
+        <label for="no-beans">No Beans</label>
+    </div>
+
+    <label for="cheese">Cheese</label>
+    <div>
+        <input type="radio" id="jack" name="cheese" value="Monterey jack cheese">
+        <label for="jack">Monterey Jack</label>
+    </div>
+    <div>
+        <input type="radio" id="cojita" name="cheese" value="cojita cheese">
+        <label for="cojita">Cojita</label>
+    </div>
+    <div>
+        <input type="radio" id="vegan-cheddar" name="cheese" value="vegan cheddar">
+        <label for="vegan-cheddar">Vegan Cheddar</label>
+    </div>
+    <div>
+        <input type="radio" id="no-cheese" name="cheese" value="no cheese">
+        <label for="no-cheese">No Cheese</label>
+    </div>
+
+    <label for="extras">Extras</label>
+    <div>
+        <input type="checkbox" id="guacamole" name="extras" value="guacamole">
+        <label for="guacamole">Guacamole</label>
+    </div>
+    <div>
+        <input type="checkbox" id="sour-cream" name="extras" value="sour cream">
+        <label for="sour-cream">Sour Cream</label>
+    </div>
+    <div>
+        <input type="checkbox" id="pico" name="extras" value="pico de gallo">
+        <label for="pico">Pico De Gallo</label>
+    </div>
+    <div>
+        <input type="checkbox" id="roja" name="extras" value="salsa roja">
+        <label for="roja">Salsa Roja</label>
+    </div>
+    <div>
+        <input type="checkbox" id="verde" name="extras" value="salsa verde">
+        <label for="verde">Salsa Verde</label>
+    </div>
+    <div>
+        <input type="checkbox" id="spicy" name="extras" value="spicy salsa">
+        <label for="spicy">Spicy Salsa</label>
+    </div>
+    <div>
+        <input type="checkbox" id="lettuce" name="extras" value="shredded lettuce">
+        <label for="lettuce">Shredded Lettuce</label>
+    </div>
+    <div>
+        <input type="checkbox" id="no-extras" name="extras" value="no extras">
+        <label for="no-extras">No Extras</label>
+    </div>
+
+    <button type="submit">Review Order</button>
+</form>
+
+{% endblock %}
