@@ -1,12 +1,23 @@
-from django.shortcuts import render, redirect 
+from django.shortcuts import render
+from django.views.generic.detail import DetailView
 from .models import Short
-from django.views.generic.edit import CreateView, DeleteView, UpdateView 
-from django.urls import reverse_lazy
-# from urlshort_app.forms import UrlForm
-# from django.views.generic import (CreateView, ListView)
+from django.views.generic.edit import CreateView, DeleteView, UpdateView  
+from django.views.generic import DetailView
+from django.urls import reverse_lazy, reverse
+from django.utils import timezone
+
 
 def home(request):
     return render(request, 'urlshort_app/home.html', {'title': 'About'})
+
+class URLDetailView(DetailView):
+    queryset = Short.objects.all()
+
+    def get_object(self):
+        obj=super().get_object()
+        obj.last_accessed = timezone.now()
+        obj.save()
+        return obj
 
 
 class ShortCreateView(CreateView):
