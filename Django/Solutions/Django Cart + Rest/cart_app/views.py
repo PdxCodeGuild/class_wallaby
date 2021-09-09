@@ -66,5 +66,8 @@ def product_detail(request, pk, format=None):
 
 def home(request):
     products = Product.objects.all()
-
+    ## view to retrieve the cart. filter by user. pass the cart 
+    ## cart should be persistent between views
+    ## cart should be created with the user creation, so it should not be 
+    ## created each time. Use Cart.objects.get_or_create 
     return render(request, 'home.html', {"products":products})
