@@ -4,7 +4,7 @@ from .models import Cart, Product
 #--> Rest
 from rest_framework.decorators import api_view
 from rest_framework import status
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer, CartSerializer  
 from rest_framework.response import Response
 #-->
 
@@ -24,6 +24,20 @@ def product_list(request, format=None):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def add_cart(request,pk, format=None):
+        product = Product.objects.get(pk=pk)
+        serializer = ProductSerializer(product, data=request.data)
+        # print(product, carts)
+        # Cart.objects.create(session=product)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def product_detail(request, pk, format=None):

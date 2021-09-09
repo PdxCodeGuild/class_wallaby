@@ -14,11 +14,20 @@
             {{product.description}}
         </p>
       </div>
+      <button  onclick="addToCart('{{product.id}}')" class="btn btn-outline-success my-2 my-sm-0 cart-btn" type="submit">
+        Add to Cart
+      </button>
     </div>
     {% endfor %}
   </div>
 </div>
 
+<script>
+    function addToCart(elem){
+        console.log(elem)
+    }
+
+</script>
 
 <!-- {% csrf_token %} -->
 <!-- <button id='btn'>Add product via API</button> -->
