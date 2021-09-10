@@ -1,0 +1,30 @@
+{% extends "urlshort_app/base.html" %}
+
+{% block content %}
+
+{% for url in urls %}
+    
+<div class='container-fluid'>
+    <table class="table">
+      <thead class='text-center'>
+        <tr>
+          <th scope="col">Code</th>
+          <th scope="col">Created</th>
+          <th scope="col">Short Url</th>
+          <th scope="col">Long Url</th>
+        </tr>
+      </thead>
+      <tbody class='text-center'>
+        <tr>
+          <th scope="row">{{ url.code }}</th>
+          <td>{{ url.created }}</td>
+          <td>{{ url.short_url }}</td>
+          <td>{{ url.long_url }}</td>
+          <td></td>
+      </tbody>
+    </table>
+  </div>
+
+{% endfor %}
+
+{% endblock content %}

@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render, get_object_or_404
 from django.views.generic.detail import DetailView
 from .models import Short
-from django.views.generic.edit import CreateView, DeleteView, UpdateView  
-from django.views.generic import DetailView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView   
+from django.views.generic import DetailView, ListView
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
+from .forms import ShortModelForm
+from django.utils.crypto import get_random_string
 
 
 def home(request):
@@ -13,17 +15,28 @@ def home(request):
 class URLDetailView(DetailView):
     queryset = Short.objects.all()
 
-    def get_object(self):
-        obj=super().get_object()
-        obj.last_accessed = timezone.now()
-        obj.save()
-        return obj
+class ShortListView(ListView):
+    model = Short
+    template_name = 'urlshort_app/short_list.html'
+    context_object_name = 'urls'
+    queryset = Short.objects.all() # <app>/<modelname>_list.html
 
+class ShortDetailView(DetailView):
+    model = Short
+    template_name = 'urlshort_app/short_detail.html'
+    context_object_name = 'urls'
+    queryset = Short.objects.all() # <app>/<modelname>_list.html
 
+   
 class ShortCreateView(CreateView):
     model = Short
-    fields = ['url']
+    form_class =  ShortModelForm
+    queryset = Short.objects.all()
 
+
+    
+
+  
 class ShortUpdateView(UpdateView):
     model = Short
     fields = ['__all__']
