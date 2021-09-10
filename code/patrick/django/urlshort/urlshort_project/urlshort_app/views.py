@@ -1,17 +1,30 @@
-from django.shortcuts import get_object_or_404, render, get_object_or_404
+from django.http.response import Http404
+from django.shortcuts import get_object_or_404, redirect, render, get_object_or_404
 from django.views.generic.detail import DetailView
 from .models import Short
 from django.views.generic.edit import CreateView, DeleteView, UpdateView   
 from django.views.generic import DetailView, ListView
 from django.urls import reverse_lazy, reverse
+
 from django.utils import timezone
 from .forms import ShortModelForm
-from django.utils.crypto import get_random_string
 
 
 def home(request):
     return render(request, 'urlshort_app/home.html', {'title': 'About'})
 
+def code_redirect(request, code):
+    
+   
+    print(code)
+    try: 
+        url = Short.objects.values('url').get(pk=code) 
+        print(url)
+        url = url.get('url')
+        print(url)
+        return redirect (url)
+    except:
+        raise Http404
 class URLDetailView(DetailView):
     queryset = Short.objects.all()
 
@@ -32,6 +45,7 @@ class ShortCreateView(CreateView):
     model = Short
     form_class =  ShortModelForm
     queryset = Short.objects.all()
+    
 
 
     

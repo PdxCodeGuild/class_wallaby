@@ -1,5 +1,6 @@
 {% extends "urlshort_app/base.html" %}
 
+
 {% block content %}
 
 {% for url in urls %}
@@ -17,9 +18,9 @@
     <tbody>
       <tr class="row">
         <td class='col-2 pl-5'>{{ url.date }}</th>
-        <td class='col-2 pl-5'>Mark</td>
+        <td class='col-2 pl-5'>{{ url.code }}</td>
        
-        <td class='col-8'>{{ url.url }}</td>
+        <td class='col-8 text-break'>{{ url.url }}</td>
       </tr>
 
     </tbody>
