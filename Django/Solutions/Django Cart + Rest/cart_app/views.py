@@ -1,8 +1,5 @@
 from django.shortcuts import render
 from .models import Cart, Product
-from rest_framework import viewsets
-from django.core import serializers as quickSerializer
-
 
 #--> Rest
 from rest_framework.decorators import api_view
@@ -11,14 +8,7 @@ from .serializers import ProductSerializer, CartSerializer
 from rest_framework.response import Response
 #-->
 
-# class productView(viewsets.ModelViewSet):
-#     serializer_class = ProductSerializer
-#     def get_queryset(self):
-#         return Product.objects.all()
-
-
-
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def product_list(request, format=None):
     """
     Get a list of products or create a product .
@@ -76,15 +66,11 @@ def product_detail(request, pk, format=None):
 
 def home(request):
     products = Product.objects.all()
-    serialized_products = quickSerializer.serialize("json", Product.objects.all()) 
-    print(serialized_products)
     user = request.user
     context = {
       "products": products,
       "user": user,
-      "serialized_products": serialized_products
     }
     user_cart = Cart.objects.get_or_create(user=user)
     print(user_cart)
-
     return render(request, 'home.html', context)

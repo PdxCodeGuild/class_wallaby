@@ -25,13 +25,16 @@
 {% csrf_token %}
 
 <script>
+    let state = []
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('http://localhost:8000/api/products/').then(res=>res.json()).then(data=>state.push(data))
+    });
     //fix current id vs array ID. Add logic to PUT
-    const allProducts = {{serialized_products | safe}}
-    console.log(allProducts[0])
+
     function addToCart(productId){
-        current_product = allProducts[productId - 1]
+        // current_product = allProducts[productId - 1]
         const cart_user = '{{ user.id }}'
-        console.log(current_product)
+        console.log('STATE & ID', state, productId)
         const product = {
         session : cart_user
     }
