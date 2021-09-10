@@ -45,12 +45,12 @@ class ShortCreateView(CreateView):
     model = Short
     form_class =  ShortModelForm
     queryset = Short.objects.all()
-    
 
-
-    
-
-  
+    def get_success_url(self):
+        print(self)
+        return reverse('short-detail', kwargs={'pk': self.object.pk})
+        
+     
 class ShortUpdateView(UpdateView):
     model = Short
     fields = ['__all__']
@@ -60,20 +60,5 @@ class ShortDeleteView(DeleteView):
     fields = ['__all__']
 
 
-# class URLFormView(FormView):
-#     model = Short
-#     template_name = 'urlshort_app/form.html'
-#     form_class = UrlForm
-    
 
-#     def form
-    
-    
-# class URLFormView(CreateView):
-#     model = Short
-#     fields = ['code', 'url']
-
-#     def form_valid(self, form):
-#         form.instance.author = self.request.user
-#         return super().form_valid(form)
 

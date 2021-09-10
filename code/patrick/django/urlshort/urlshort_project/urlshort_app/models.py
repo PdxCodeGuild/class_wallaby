@@ -11,11 +11,9 @@ class Short(models.Model):
     class Meta:
         ordering = ["-date"]
 
-    # def __str__(self):
-    #     return f'{self.url} to {self.code}'
+  
     
-    def get_absolute_url(self):
-        return reverse('short-detail', kwargs={'pk': self.pk})
+ 
 
     def save(self, *args, **kwargs):
         if not self.code:
