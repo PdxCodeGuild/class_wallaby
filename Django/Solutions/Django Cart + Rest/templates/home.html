@@ -14,7 +14,7 @@
             {{product.description}}
         </p>
       </div>
-      <button  onclick="addToCart('{{product.id}}')" class="btn btn-outline-success my-2 my-sm-0 cart-btn" type="submit">
+      <button onclick="addToCart('{{product.id}}')" class="btn btn-outline-success my-2 my-sm-0 cart-btn" type="submit">
         Add to Cart
       </button>
     </div>
@@ -22,14 +22,40 @@
   </div>
 </div>
 
+{% csrf_token %}
+
 <script>
-    function addToCart(elem){
-        console.log(elem)
+    //fix current id vs array ID. Add logic to PUT
+    const allProducts = {{serialized_products | safe}}
+    console.log(allProducts[0])
+    function addToCart(productId){
+        current_product = allProducts[productId - 1]
+        const cart_user = '{{ user.id }}'
+        console.log(current_product)
+        const product = {
+        session : cart_user
+    }
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    //     fetch(`http://localhost:8000/api/cart/1`, {
+    //     method: 'PUT',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'X-CSRFToken': csrftoken,
+    //     },
+    //     body: JSON.stringify(product),
+    // })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log('Success:', data);
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error:', error);
+    //     });   
     }
 
 </script>
 
-<!-- {% csrf_token %} -->
+ 
 <!-- <button id='btn'>Add product via API</button> -->
 <!-- <script>
     const button = document.getElementById('btn')
@@ -61,5 +87,5 @@
 
     button.addEventListener('click', PostProduct)
 
-</script> -->
+</script>
 {%endblock%}
