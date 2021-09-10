@@ -3,7 +3,7 @@ from django.db.models.deletion import PROTECT
 from django.contrib.auth.models import User
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, null=True, blank=True, on_delete=PROTECT)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
 
 class Product(models.Model):
     title = models.CharField(max_length=200)

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Cart, Product
+from django.contrib.auth.models import User
 
 #--> Rest
 from rest_framework.decorators import api_view
@@ -25,9 +26,17 @@ def product_list(request, format=None):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+##PUT request to update the status of an existing product
+## request links the product to the cart of logged person
 @api_view(['POST'])
-def add_cart(request,pk, format=None):
+def add_cart(request, pk, format=None):
+        #need to fix the user creation model
+        # user_cart = Cart.objects.get_or_create(user=1)
+        # print(request.user)
+
         product = Product.objects.get(pk=pk)
+        print(product.session)
         serializer = ProductSerializer(product, data=request.data)
         # print(product, carts)
         # Cart.objects.create(session=product)
