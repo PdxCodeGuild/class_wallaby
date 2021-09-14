@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+<div class="d-grid gap-2 col-6 mx-auto">
+    <a href="http://localhost:8000/todo/add"><button class="btn btn-info" type="button">Add Tasks</button></a>
+    <!-- <a href="http://localhost:8000/todo/update"><button class="btn btn-info" type="button">Update Tasks</button></a> -->
+</div>
+
+<!-- <a href="http://localhost:8000/todos/add">add task</a>
+<a href="http://localhost:8000/todos/update">update task</a> -->
+
+<ul>
+    {% for todo in todos %}
+    <a href="{% url 'details' todo.id %}">See Details</a>
+    <p>Title: {{ todo.title }}</p>
+    <p>ID: {{ todo.id }}</p>
+    <p>Description: {{ todo.text }}</p>
+    {% empty %}
+    <p>You did it! You have nothing to do.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

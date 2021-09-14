@@ -9,7 +9,7 @@ def todo_list(request):
         'todos': todos
     }
     
-    return render(request, 'todos/todo_list.html', context)
+    return render(request, 'todos/todo.html', context)
 
 def add_todo(request):
     if request.method == "GET":
@@ -22,7 +22,7 @@ def add_todo(request):
         else:
             status = True
         Todo.objects.create(title = title, text = text, status = status)
-        return redirect('list')
+        return redirect('todo')
 
 def details(request, id):
     todo = Todo.objects.get(id = id)
@@ -51,7 +51,7 @@ def remove_todo(request, id):
     todo = Todo.objects.get(id = id)
     #delete file with .delete()
     todo.delete()
-    return redirect('list')
+    return redirect('todo')
 
 
 # # function that grabs id of element and updates it
@@ -66,4 +66,4 @@ def remove_todo(request, id):
 # # function that grabs id of element and deletes it
 # def delete(request, id):
 #     # target item with id
-#     #delete file with .delete()
+#     # delete file with .delete()
