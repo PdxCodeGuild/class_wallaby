@@ -14,4 +14,9 @@
         </div>
     </form>
 </div>
+<h2 class='text-center'>URL List</h2>
+{%for url in all_url%}
+<p><a href = {{url.original}} target="_blank">{{url.updated}}</a></p>
+{% endfor %}
+
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . import models
+from . models import URL_shorten
 
-admin.site.register(models.URL_shorten)
+admin.site.register(URL_shorten)
 

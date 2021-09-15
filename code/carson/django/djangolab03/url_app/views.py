@@ -3,21 +3,17 @@ from django.shortcuts import render
 from django.utils.crypto import get_random_string
 
 
-from django.shortcuts import render
-
-def home(request):
-    return render(request, 'pages/home.html')
 
 def shorten_url(request):
-    url = URL_shorten.objects.all()
+    all_url = URL_shorten.objects.all()
  
     i = {
-            "url": url
+            "all_url": all_url
         }
     if request.method == 'GET':
-        return render(request, 'shorten.html', i)
+        return render(request, 'shorten.html',i)
     
-    elif request.method == 'POST':
+    if request.method == 'POST':
         input_url = request.POST['url'] 
         split_url = input_url.split('/')
         random_text = get_random_string(length=7) 
