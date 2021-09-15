@@ -5,9 +5,19 @@ from url_shortner.models import Url
 
 # Create your views here.
 def root(request):
-  return render(request, 'pages/root.html')
+  s = Url.objects.all()
+  context = {
+    'allUrls': s,
+  }
+  return render(request, 'pages/root.html', context)
 
-def surl_parse(request, surl):
-  l = Url.objects.filter(surl=surl)
-  print(l[0])
-  return redirect(f'{l[0]}')
+def surl_parse(request, shortUrl):
+  l = Url.objects.filter(surl=shortUrl).first()
+
+  return redirect(f'{l}')
+
+
+def addurl(request):
+  print(50 * '_')
+  print(request)
+  return HttpResponse('add url page')

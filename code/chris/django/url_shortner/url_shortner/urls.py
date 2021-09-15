@@ -3,5 +3,11 @@ from . import views
 
 urlpatterns = [
   path('', views.root, name = 'root'),
-  path('s/<str:surl>/', views.surl_parse, name='surl_parse'),
+  path('addurl/', views.addurl, name='addurl'),
+  path('<str:shortUrl>/', views.surl_parse, name='surl_parse'),
 ]
+
+
+
+
+
