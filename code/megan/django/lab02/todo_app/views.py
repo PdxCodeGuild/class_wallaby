@@ -4,10 +4,7 @@ from .models import Todo
 
 def todo_list(request):
     todos = Todo.objects.all() # Todo.objects.order_by('-date_entered', '-date_completed')
-    
-    context = {
-        'todos': todos
-    }
+    context = {'todos': todos}
     
     return render(request, 'todos/todo.html', context)
 
@@ -22,7 +19,7 @@ def add_todo(request):
         else:
             status = True
         Todo.objects.create(title = title, text = text, status = status)
-        return redirect('todo')
+        return redirect('list')
 
 def details(request, id):
     todo = Todo.objects.get(id = id)
@@ -51,7 +48,7 @@ def remove_todo(request, id):
     todo = Todo.objects.get(id = id)
     #delete file with .delete()
     todo.delete()
-    return redirect('todo')
+    return redirect('list')
 
 
 # # function that grabs id of element and updates it
