@@ -25,6 +25,10 @@ class BookListView(ListView):
     model = Book
     context_object_name = 'books'
     queryset = Book.objects.all()
+    status = Checkout.objects.first()
+   
+
+    
 
 class BookDetailView(DetailView):
     context_object_name = 'book'
@@ -86,7 +90,9 @@ class CheckoutListView(ListView):
     context_object_name = 'checkouts'
     queryset = Checkout.objects.all()
     
-    
+
+
+
     
     
     

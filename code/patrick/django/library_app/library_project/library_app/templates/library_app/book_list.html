@@ -10,6 +10,11 @@
             <th scope="col">Author</th>
             
             <th scope="col">Published Date</th>
+            <th scope="col">
+                {% if user.is_authenticated %}
+                Published Date
+                {% endif %}
+            </th>
             
           </tr>
         </thead>
@@ -21,8 +26,15 @@
                
             
             <td scope="row d-flex text-align-center"><a href="{% url 'book_detail' book.author.id %}">{{ book.title }}</a></td>
-            <td>{{ book.publish_date }}</td>
-            
+            <td>{{ status }}</td>
+            <td>{% if user.is_authenticated %} 
+                    {% if book.status == 'available' %}
+                        <p>available</p>
+                    {% else %}
+                        <p>Not Available</p>
+                    {% endif %}
+                {% endif %}
+            </td>
           </tr>
         </tbody>
         {% endfor %}
