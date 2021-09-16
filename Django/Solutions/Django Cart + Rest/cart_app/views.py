@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Cart, Product
+from django.contrib.auth.decorators import login_required
 
 #--> Rest
 from rest_framework.decorators import api_view
@@ -8,6 +9,7 @@ from .serializers import ProductSerializer, CartSerializer
 from rest_framework.response import Response
 #-->
 
+# @login_required
 @api_view(['GET'])
 def product_list(request, format=None):
     """
@@ -28,6 +30,7 @@ def product_list(request, format=None):
 
 ##PUT request to update the status of an existing product
 ## request links the product to the cart of logged person
+# @login_required
 @api_view(['PUT'])
 def add_cart(request, pk, format=None):
 
@@ -64,6 +67,7 @@ def product_detail(request, pk, format=None):
         products.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+@login_required
 def home(request):
     products = Product.objects.all()
     user = request.user
