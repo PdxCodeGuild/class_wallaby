@@ -1,5 +1,6 @@
 {%extends 'base.html'%} {%block content%}
 
+{{user}} {{user.id}}
 <div class="container mt-5">
   <div class="card-deck">
       {% for product in products %}
@@ -12,6 +13,7 @@
         </p>
         <p class="card-text">
             {{product.description}}
+            {{product.id}}
         </p>
       </div>
       <button onclick="addToCart('{{product.id}}')" class="btn btn-outline-success my-2 my-sm-0 cart-btn" type="submit">
@@ -25,35 +27,40 @@
 {% csrf_token %}
 
 <script>
-    let state = []
+    let products = []
     document.addEventListener("DOMContentLoaded", function() {
-        fetch('http://localhost:8000/api/products/').then(res=>res.json()).then(data=>state.push(data))
+        fetch('http://localhost:8000/api/products/').then(res=>res.json()).then(data=>products.push(data))
     });
     //fix current id vs array ID. Add logic to PUT
 
     function addToCart(productId){
-        // current_product = allProducts[productId - 1]
-        const cart_user = '{{ user.id }}'
-        console.log('STATE & ID', state, productId)
-        const product = {
-        session : cart_user
-    }
+        current_product_id = productId-1
+        current_product = products[0][productId-1]
+
+        const cart_user = parseInt('{{ user.id }}')
+        console.log('STATE & ID',  current_product, current_product_id, productId)
+
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    //     fetch(`http://localhost:8000/api/cart/1`, {
-    //     method: 'PUT',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'X-CSRFToken': csrftoken,
-    //     },
-    //     body: JSON.stringify(product),
-    // })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log('Success:', data);
-    //     })
-    //     .catch((error) => {
-    //         console.error('Error:', error);
-    //     });   
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append( 'X-CSRFToken', "csrftoken");
+
+        var raw = JSON.stringify({
+        "title": current_product.title,
+        "description": 'new',
+        "session": cart_user 
+        });
+
+        var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw
+        };
+
+        fetch(`http://localhost:8000/api/cart/${productId}`, requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
     }
 
 </script>
