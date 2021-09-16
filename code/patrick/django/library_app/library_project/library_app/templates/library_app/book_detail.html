@@ -1,0 +1,12 @@
+{% extends 'library_app/base.html' %}
+    
+{% block content %}
+
+<ul class="list-group ">
+    <li class="list-group-item">Title: {{ book.title }}</li>
+    <li class="list-group-item">Author: {{ book.author }}</li>
+    <li class="list-group-item">Published Date: {{ book.publish_date }}</li>
+    
+  </ul>
+
+  {% endblock content %}
