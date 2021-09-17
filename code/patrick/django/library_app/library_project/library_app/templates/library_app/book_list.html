@@ -1,0 +1,44 @@
+{% extends 'library_app/base.html' %}
+    
+{% block content %}
+  
+    <table class="table">
+        <thead>
+          <tr>
+            
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            
+            <th scope="col">Published Date</th>
+            <th scope="col">
+                {% if user.is_authenticated %}
+                Published Date
+                {% endif %}
+            </th>
+            
+          </tr>
+        </thead>
+        {% for book in books %}
+        <tbody>
+          <tr>
+            
+            <td scope="row d-flex text-align-center"><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a></td>
+               
+            
+            <td scope="row d-flex text-align-center"><a href="{% url 'book_detail' book.author.id %}">{{ book.title }}</a></td>
+            <td>{{ status }}</td>
+            <td>{% if user.is_authenticated %} 
+                    {% if book.status == 'available' %}
+                        <p>available</p>
+                    {% else %}
+                        <p>Not Available</p>
+                    {% endif %}
+                {% endif %}
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+
+    
+{% endblock content %}
