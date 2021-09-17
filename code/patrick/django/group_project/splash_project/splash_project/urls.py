@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('splash_app.urls')),
     path('accounts/', include('allauth.urls')),
+    path(r'^daguerre/', include('daguerre.urls')),
 ]
