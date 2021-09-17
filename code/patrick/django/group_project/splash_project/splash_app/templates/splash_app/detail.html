@@ -1,8 +1,21 @@
 {% extends 'splash_app/base.html' %}
 {% block content %}
  
-       
-   
-        <img src="{{ thumb }}" >
-   
+       <p>{{ data.alt_description }}</p>
+
+        <a href="{{ download }}" download>
+            <img src="{{ data.small }}" alt="Error">
+        </a>
+      
+        <p>{{ data.title }}</p>
+        <p>{{ data.description }}</p>
+        <p>{{ data.alt_description }}</p>
+        <p>{{ data.photographer }}</p>
+
+
+
+        
+        
+ 
+</a>
     {% endblock %}
