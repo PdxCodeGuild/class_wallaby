@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class='container mt-3'>
 <form action="" method="POST">
     <div id='author-form' class="form-group">
         {% csrf_token %}
@@ -17,4 +18,5 @@
         <button type="submit" class="btn btn-primary mb-2 mt-3">Submit</button>
     </div>
 </form>
+</div>
 {% endblock %}

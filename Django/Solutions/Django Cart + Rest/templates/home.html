@@ -1,6 +1,10 @@
 {%extends 'base.html'%} {%block content%}
 
-{{user}} {{user.id}}
+user == {{user}} user id == {{user.id}}
+{{cart_session}}
+{% for x in all_users %}
+ <p>{{x.username}}, {{x.id}}</p>
+{% endfor %}
 <div class="container mt-5">
   <div class="card-deck">
       {% for product in products %}
@@ -37,9 +41,9 @@
         current_product_id = productId-1
         current_product = products[0][productId-1]
 
-        const cart_user = parseInt('{{ user.id }}')
-        console.log('STATE & ID',  current_product, current_product_id, productId)
-
+        const cart_user = parseInt('{{cart_session}}')
+        console.log('STATE & ID', cart_user, current_product, current_product_id, productId)
+        
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");

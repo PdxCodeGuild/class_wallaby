@@ -7,7 +7,6 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CartSerializer(serializers.ModelSerializer):
-    session = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Cart
         fields = '__all__'
