@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class UpsplashAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'upsplash_app'
+    name = 'splash_app'
