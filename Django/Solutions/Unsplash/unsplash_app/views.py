@@ -5,6 +5,7 @@ from decouple import config
 from django.contrib import messages
 import os
 import requests
+import uuid
 
 ##Rest----
 from .serializers import BoardSerializer
@@ -17,7 +18,6 @@ class BoardView(viewsets.ModelViewSet):
     serializer_class = BoardSerializer
     def get_queryset(self):
         return Board.objects.all()
-import uuid
 def get_images(request):
     SECRET_KEY = config('SECRET_KEY')
     url = f'https://api.unsplash.com/photos/?client_id={SECRET_KEY}'
@@ -33,7 +33,6 @@ def get_images(request):
         f_ext = os.path.splitext(url)[-1]
         name = str(uuid.uuid4())
         f_name = name + 'img{}'.format(f_ext)
-        print('FEXT',f_name, 'ererg', f_ext)
         with open(os.path.join('media/images',f_name), 'wb') as f:
             f.write(page.content)
         GetImages.objects.create(
@@ -54,23 +53,6 @@ def add_pictures(request, id):
     elif request.method == "POST":
         pic_to_board = GetImages.objects.filter(id=id)
         url = GetImages.objects.get(id=id).thumb
-        image_instance = GetImages.objects.get(id=id)
-        # print(url)
-        url = url + '.jpg'
-        page = requests.get(url)
-        f_ext = os.path.splitext(url)[-1]
-        f_name = 'img{}'.format(f_ext)
-        print('FEXT',f_name, 'ererg', f_ext)
-
-        # with open(f_name, 'wb') as f:
-        #     f.write(page.content)
-        # image_instance.my_image = f_name
-        # image_instance.save()
-        # print('FNAME',f_name)
-
-
-
-
         Board.objects.create(full= pic_to_board[0].full, thumb = pic_to_board[0].thumb, download = pic_to_board[0].download )
         messages.success(request, 'Photo saved in your board')
         return render(request, 'pages/imageList.html', {'pics': pics})
