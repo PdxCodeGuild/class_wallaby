@@ -1,10 +1,11 @@
 {% extends 'splash_app/base.html' %}
 {% block content %}
-  
+    <p>{{ accounts.signup }}</p>
     <!-- <img src="{{ 'https://images.unsplash.com/photo-1630692852206-2030ed35ad20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjEwMDV8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzE4MTkyOTE&ixlib=rb-1.2.1&q=80&w=200' }}" alt="img"> -->
     <p> {{ alt_description }}</p>    
     <a href="{% url 'detail' id %}">
         <img src="{{ thumb }}" width="{{ 200 }}" height="{{ 200 }}">
-        
+
     </a>
+
 {% endblock %}ls

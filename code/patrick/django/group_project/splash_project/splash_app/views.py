@@ -1,6 +1,7 @@
 
 
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render, redirect
+
 import shutil
 from .forms import ImageModel
 from .key import key
@@ -9,8 +10,14 @@ from PIL import Image
 import io 
 from django.views.generic import DetailView
 import os
-
-
+from .models import ProfileModel, ImageModel, Order, Item
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.urls import reverse
+import datetime
+from datetime import date
+import random
+import string
 
 # def home(request):
 #     if request == 'GET':
@@ -109,3 +116,28 @@ def download(id):
 #     context = {}
 #     context['data'] = ImageModel.objects.get(id =id)
 #     return render(request, 'splash_app/detail.html', context)
+
+class ProfileDetailView(DetailView):
+    model = ProfileModel
+    queryset = ProfileModel.objects.all()
+    template_name = 'profile.html'
+
+
+@login_required
+def add_cart(request, **kwargs):
+    user = get_object_or_404(ProfileModel, user=request.user)
+    product = ImageModel.objects.filter(id=kwargs.get('id', '')).first()
+    order_item, status = Item.objects.get_or_create(image=product)
+    user_order, status = Order.objects.get_or_create(profile=user,  is_ordered=False)
+    user_order.items.add(order_item)
+    if status:
+        # generate a reference code
+        user_order.ref_code = generate_order_id()
+        user_order.save()
+    messages.info(request, "item added to cart")
+    return redirect(reverse('home'))
+
+def generate_order_id():
+    date_str = date.today().strftime('%Y%m%d')[2:] + str(datetime.datetime.now().second)
+    rand_str = "".join([random.choice(string.digits) for count in range(3)])
+    return date_str + rand_str

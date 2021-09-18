@@ -1,12 +1,13 @@
 {% extends 'splash_app/base.html' %}
 {% block content %}
  
-       <p>{{ data.alt_description }}</p>
-
+       
+<img src="{{ data.small }}" alt="Error">
         <a href="{{ download }}" download>
-            <img src="{{ data.small }}" alt="Error">
+            
+            Click Here to Download
         </a>
-      
+      <a href="{% url 'add_cart' data.id %}">Add to cart</a>
         <p>{{ data.title }}</p>
         <p>{{ data.description }}</p>
         <p>{{ data.alt_description }}</p>

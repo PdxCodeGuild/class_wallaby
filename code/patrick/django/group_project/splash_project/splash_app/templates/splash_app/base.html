@@ -13,12 +13,33 @@
     <link rel="stylesheet" type="text/css" href="#">
     
     {% if title %}
-    <title>PDX Library - {{ title }}</title>
+    <title>Image Search - {{ title }}</title>
     {% else %}
-    <title>PDX Library</title>
+    <title>Image Search</title>
     {% endif %}
 </head>
+<div class='row'>
+    {% if user.is_authenticated %}
+    <div class='col-sm-4'>
+    <a class='pl-3' href ="{% url 'home' %}">Home</a>
+    <a class='pl-3' href="{% url 'profile' user.pk %}"> Profile</a>
+    <a class='pl-3' href="{% url 'account_logout' %}">Sign Out</a>
+    </div>
+    {% else %}
+    <div class='col-sm-4'>
+    <a class='pl-3' href ="{% url 'home' %}">Home</a>
+    <a class='pl-3' href="{% url 'account_login' %}">Sign In</a>
+    <a class='pl-3' href="{% url 'account_signup' %}">Sign Up</a>
+    </div>
+    {% endif %}
+    <div class='col-lg-6'>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
 
+  </div>
 <body>
     {% block content %}{% endblock %}
   
