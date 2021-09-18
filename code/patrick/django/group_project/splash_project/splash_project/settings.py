@@ -45,12 +45,15 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'daguerre',
     'media',
+    
    
    
 ]
 
 
 SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -132,7 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT  = os.path.join(BASE_DIR, '/media/')
 MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
