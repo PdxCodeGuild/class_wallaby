@@ -54,7 +54,7 @@ def home(request):
     download = response['links']['download']
     thumb = response['urls']['thumb']
     alt_description = response['alt_description']
-    id = response['id']
+    sku = response['id']
     data = ImageModel(
         photographer=photographer,
         width = width, 
@@ -68,13 +68,13 @@ def home(request):
         download=download, 
         thumb=thumb, 
         alt_description=alt_description,
-        id=id,
+        sku=sku,
     )
     data.save()
     context = {
      'thumb' : response['urls']['thumb'],
      'alt_description': response['alt_description'], 
-     'id': response['id']
+     'sku': response['id'], 'data': data
      }
     # print(context)
     return render(request, 'splash_app/home.html', context = context)
@@ -87,10 +87,14 @@ def home(request):
 #     return render(request, 'splash_app/detail.html', context = context) 
 
 def image_detail(request, id):
-    
+    img_detail = ImageModel.objects.get(id =id)
+
+    # print(test)
     context = {}
-    context['data'] = ImageModel.objects.get(id =id)
-    return render(request, 'splash_app/detail.html', context)
+    # context['data'] = ImageModel.objects.get(id =id)
+    # print(context)
+    return render(request, 'splash_app/detail.html', {'img_detail': img_detail})
+    
 
 def download(id):
     obj = ImageModel.objects.first(id)
@@ -120,7 +124,8 @@ def download(id):
 class ProfileDetailView(DetailView):
     model = ProfileModel
     queryset = ProfileModel.objects.all()
-    template_name = 'profile.html'
+    template_name = 'splash_app/profile.html'
+    template_name_field = 'profile'
 
 
 @login_required
@@ -128,10 +133,9 @@ def add_cart(request, **kwargs):
     user = get_object_or_404(ProfileModel, user=request.user)
     product = ImageModel.objects.filter(id=kwargs.get('id', '')).first()
     order_item, status = Item.objects.get_or_create(image=product)
-    user_order, status = Order.objects.get_or_create(profile=user,  is_ordered=False)
+    user_order = Order.objects.get_or_create(profile=user,  is_ordered=False)
     user_order.items.add(order_item)
     if status:
-        # generate a reference code
         user_order.ref_code = generate_order_id()
         user_order.save()
     messages.info(request, "item added to cart")
