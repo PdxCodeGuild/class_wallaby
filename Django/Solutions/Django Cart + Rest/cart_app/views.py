@@ -71,10 +71,17 @@ def product_detail(request, pk, format=None):
 def home(request):
     products = Product.objects.all()
     user = request.user
+    user_cart = Cart.objects.get_or_create(user=user)
+    cart_session = Cart.objects.get(user=user.id)
     context = {
       "products": products,
-      "user": user,
+      "cart_session": cart_session.id,
     }
-    user_cart = Cart.objects.get_or_create(user=user)
-    print(user_cart)
+    print(user_cart, cart_session)
     return render(request, 'home.html', context)
+
+@login_required
+def get_cart(request):
+    #get and filter all cart objects by the user
+    ##return them to a page
+    pass

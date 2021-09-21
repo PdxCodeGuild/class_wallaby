@@ -41,8 +41,8 @@ user == {{user}} user id == {{user.id}}
         current_product_id = productId-1
         current_product = products[0][productId-1]
 
-        const cart_user = parseInt('{{cart_session}}')
-        console.log('STATE & ID', cart_user, current_product, current_product_id, productId)
+        const cart_session = parseInt('{{cart_session}}')
+        console.log('STATE & ID', cart_session)
         
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         var myHeaders = new Headers();
@@ -52,7 +52,7 @@ user == {{user}} user id == {{user.id}}
         var raw = JSON.stringify({
         "title": current_product.title,
         "description": 'new',
-        "session": cart_user 
+        "session": cart_session 
         });
 
         var requestOptions = {
@@ -63,43 +63,12 @@ user == {{user}} user id == {{user.id}}
 
         fetch(`http://localhost:8000/api/cart/${productId}`, requestOptions)
         .then(response => response.json())
-        .then(result => console.log(result))
+        .then(result => console.log('RESPONSE', result))
         .catch(error => console.log('error', error));
     }
 
 </script>
 
- 
-<!-- <button id='btn'>Add product via API</button> -->
-<!-- <script>
-    const button = document.getElementById('btn')
-    const product = {
-        title: 'product 3',
-        image: 'dummy image',
-        likes: 20
-
-    }
-    function PostProduct(){
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        fetch('http://127.0.0.1:8000/api/products/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken,
-        },
-        body: JSON.stringify(product),
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    }
-
-
-    button.addEventListener('click', PostProduct)
-
-</script>
 {%endblock%}
+
+ 
