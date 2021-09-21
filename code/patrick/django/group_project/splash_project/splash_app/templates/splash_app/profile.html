@@ -1,6 +1,7 @@
 {% extends 'splash_app/base.html' %}
 {% block content %}
 <p>{{ user }}</p>
-<p>{{ orders }}</p>
-
+<form>
+<a href="{% url 'user_orders' %}">Get Orders</a>
+</form>
 {% endblock %}

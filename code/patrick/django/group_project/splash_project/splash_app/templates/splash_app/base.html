@@ -17,6 +17,16 @@
     {% else %}
     <title>Image Search</title>
     {% endif %}
+
+
+    {% if messages %}
+        <ul class="alert alert-success">
+    {% for message in messages %}
+        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    {% endfor %}
+</ul>
+{% endif %}
+    
 </head>
 <div class='row'>
     {% if user.is_authenticated %}

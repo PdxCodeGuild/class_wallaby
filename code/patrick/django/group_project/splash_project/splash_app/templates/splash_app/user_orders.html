@@ -1,0 +1,12 @@
+{% extends 'splash_app/base.html' %}
+{% block content %}
+
+<ul>
+{% for order in orders %}
+    <li>{{ order.ref_num }}</li>
+    <li>{{ order.ref_num }}</li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}

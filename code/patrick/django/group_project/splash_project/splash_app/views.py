@@ -1,8 +1,6 @@
 
 
 from django.shortcuts import get_object_or_404, render, redirect
-
-import shutil
 from .forms import ImageModel
 from .key import key
 import requests
@@ -19,25 +17,7 @@ from datetime import date
 import random
 import string
 
-# def home(request):
-#     if request == 'GET':
-        
-       
-#         photographer = response['user']['username']
-#         width = response['width']
-#         height = response['height']
-#         color = response['color']
-#         description = response['description']
-        
-#         raw = response['urls']['raw']
-#         full = response['urls']['full']
-#         small = response['urls']['small']
-        
-#         regular = response['urls']['regular']
-#         download = response['links']['download']
-#         return(id, width, height, color, description, alt_description, raw, full, small, thumb, regular, download)
-#     elif request == 'GET':
-#         pass
+
 
 def home(request):
     image = f'https://api.unsplash.com/photos/random/?client_id={key}'
@@ -76,23 +56,13 @@ def home(request):
      'alt_description': response['alt_description'], 
      'sku': response['id'], 'data': data
      }
-    # print(context)
     return render(request, 'splash_app/home.html', context = context)
 
-# def image_detail(request, id):
-#     image = f'https://api.unsplash.com/photos/:{id}/?client_id={key}'
-#     response = requests.get(image).json()
-#     context = {'thumb' : response['urls']['thumb'], 'alt_description': response['alt_description']}
-    
-#     return render(request, 'splash_app/detail.html', context = context) 
+ 
 
 def image_detail(request, id):
     img_detail = ImageModel.objects.get(id =id)
-
-    # print(test)
     context = {}
-    # context['data'] = ImageModel.objects.get(id =id)
-    # print(context)
     return render(request, 'splash_app/detail.html', {'img_detail': img_detail})
     
 
@@ -107,48 +77,45 @@ def download(id):
         f.write(page.content)
 
 
-
-
-
-        # r = ImageModel.objects.get(download='download', stream=True)
-        # if r.status_code == 200:
-        #     r.raw.decode_content = True
-        #     with open(filename,'wb') as f:
-        #         shutil.copyfileobj(r.raw, f)
-    
-# def image_detail(request, id):       
-#     context = {}
-#     context['data'] = ImageModel.objects.get(id =id)
-#     return render(request, 'splash_app/detail.html', context)
-
 class ProfileDetailView(ListView):
-    model = Item
+    model = ProfileModel
     queryset = ProfileModel.objects.all()
     template_name = 'splash_app/profile.html'
     context_object_name = 'profile'
 
+def user_orders(request):
+    user1 = request.user.id
+    user = ProfileModel.objects.get(user_id=user1)
+    
+    orders = Order.objects.filter(profile=user.id)
+    print(orders)
+    for x in orders:
+        print(x.ref_num)
+       
+    return render (request, 'splash_app/user_orders.html', {'orders': orders})
+
 @login_required()
 def add_cart(request, id, **kwargs):
-    # get the user profile
-    user_profile = get_object_or_404(ProfileModel, user=request.user)
-    # filter products by id
   
-    # check if the user already owns this product
+    user_profile = get_object_or_404(ProfileModel, user=request.user)
+    
+  
+    
     if id in request.user.profile.orders.all():
         messages.info(request, 'You already own this')
         return redirect(reverse('splash_app.home.html')) 
-    # create orderItem of the selected product
+    
     order_item, status = Item.objects.get_or_create(image_id=id)
-    # create order associated with the user
+    
     user_order, status = Order.objects.get_or_create(profile=user_profile, is_ordered=False)
     user_order.items.add(order_item)
     if status:
-        # generate a reference code
+        
         user_order.ref_num = generate_order_id()
         user_order.save()
 
-    # show confirmation message and redirect back to the same page
-    messages.info(request, "item added to cart")
+   
+    messages.success(request, "item added to cart")
     return redirect(reverse('home'))
 
 def generate_order_id():
