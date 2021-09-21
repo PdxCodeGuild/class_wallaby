@@ -8,7 +8,7 @@ from .key import key
 import requests
 from PIL import Image
 import io 
-from django.views.generic import DetailView
+from django.views.generic import ListView
 import os
 from .models import ProfileModel, ImageModel, Order, Item
 from django.contrib.auth.decorators import login_required
@@ -121,23 +121,33 @@ def download(id):
 #     context['data'] = ImageModel.objects.get(id =id)
 #     return render(request, 'splash_app/detail.html', context)
 
-class ProfileDetailView(DetailView):
-    model = ProfileModel
+class ProfileDetailView(ListView):
+    model = Item
     queryset = ProfileModel.objects.all()
     template_name = 'splash_app/profile.html'
-    template_name_field = 'profile'
+    context_object_name = 'profile'
 
-
-@login_required
-def add_cart(request, **kwargs):
-    user = get_object_or_404(ProfileModel, user=request.user)
-    product = ImageModel.objects.filter(id=kwargs.get('id', '')).first()
-    order_item, status = Item.objects.get_or_create(image=product)
-    user_order = Order.objects.get_or_create(profile=user,  is_ordered=False)
+@login_required()
+def add_cart(request, id, **kwargs):
+    # get the user profile
+    user_profile = get_object_or_404(ProfileModel, user=request.user)
+    # filter products by id
+  
+    # check if the user already owns this product
+    if id in request.user.profile.orders.all():
+        messages.info(request, 'You already own this')
+        return redirect(reverse('splash_app.home.html')) 
+    # create orderItem of the selected product
+    order_item, status = Item.objects.get_or_create(image_id=id)
+    # create order associated with the user
+    user_order, status = Order.objects.get_or_create(profile=user_profile, is_ordered=False)
     user_order.items.add(order_item)
     if status:
-        user_order.ref_code = generate_order_id()
+        # generate a reference code
+        user_order.ref_num = generate_order_id()
         user_order.save()
+
+    # show confirmation message and redirect back to the same page
     messages.info(request, "item added to cart")
     return redirect(reverse('home'))
 
