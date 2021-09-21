@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.conf import settings
 from django.contrib.auth.models import User
 import shutil
 
@@ -16,19 +16,19 @@ class ImageModel(models.Model):
     small = models.CharField(max_length=200)
     regular = models.CharField(max_length=200)
     download = models.CharField(max_length=200)
-    id = models.CharField(max_length=200, primary_key=True)
+    sku = models.CharField(max_length=200)
     width = models.CharField(max_length=200)
     height = models.CharField(max_length=200)
-
+    
     def __str__(self):
-        return self.id
+        return self.sku
 
 
 class ProfileModel(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # products = models.ManyToManyField('Product', blank=True)
-    id = models.CharField(max_length=200, primary_key=True)
-
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    # order = models.ManyToManyField('Product', blank=True)
+    # orders = models.ForeignKey('Order', on_delete=models.SET_NULL, null=True)
+    orders = models.ManyToManyField(ImageModel, blank=True)
     def __str__(self):
         return f'{self.user.username}'
 
@@ -47,21 +47,20 @@ def create_profile(sender, instance, created, **kwargs):
         ProfileModel.objects.create(user=instance)
 
 
-class Item(models.Model):
-    image = models.OneToOneField('ImageModel', on_delete=models.SET_NULL, null=True, blank=True)
-    is_ordered = models.BooleanField(default=False)
-    date_ordered = models.DateTimeField(null=True)
-    
-    def __str__(self):
-        return self.image.id 
 
+class Item(models.Model):
+    image = models.OneToOneField(ImageModel, on_delete=models.SET_NULL, null=True, blank=True)
+    is_ordered = models.BooleanField(default=False)
+    date_added = models.DateTimeField(auto_now_add=True, null=True)
+   
+    def __str__(self):
+        return '{} - {}'.format(self.image, self.date_added)
 class Order(models.Model):
     ref_num = models.CharField(max_length=20)
-    profile = models.ForeignKey('ProfileModel', on_delete=models.SET_NULL, null=True)
+    profile = models.ForeignKey(ProfileModel, on_delete=models.SET_NULL, related_name='profiles', null=True, blank=True)
     is_ordered = models.BooleanField(default=False)
-    items = models.ManyToManyField(Item)
     date_ordered = models.DateTimeField(null=True)
-
+    items = models.ManyToManyField(Item)
     def get_cart_items(self):
         return self.items.all()
 
@@ -69,7 +68,7 @@ class Order(models.Model):
         return sum([item.image.price for item in self.items.all()])
     
     def __str__(self):
-        return self.ref_num
+        return '{} - {}'.format(self.profile, self.ref_num)
 
 
 
