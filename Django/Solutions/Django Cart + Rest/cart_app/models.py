@@ -7,8 +7,6 @@ class Cart(models.Model):
     def __str__(self):
         return "%s" % (self.user)
 
-
-
 class Product(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
@@ -16,6 +14,8 @@ class Product(models.Model):
     price = models.PositiveIntegerField(default=0, null=False, blank=False)
     quantity = models.PositiveIntegerField(default=1, null=False,  blank=False )
     session = models.ForeignKey(Cart, null=True, blank=True, on_delete=PROTECT)
+
+
 
     
     def __str__(self):
