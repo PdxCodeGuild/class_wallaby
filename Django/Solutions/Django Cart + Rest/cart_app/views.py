@@ -82,6 +82,16 @@ def home(request):
 
 @login_required
 def get_cart(request):
-    #get and filter all cart objects by the user
-    ##return them to a page
-    pass
+    cart_session = Cart.objects.filter(user=request.user).first()
+    order = Product.objects.filter(session=cart_session)
+    total = 0
+    for x in order:
+        total += sum([x.price * x.quantity])
+    print(total)
+    # total = sum([x.price for x in order])
+    context = {
+        'order': order,
+        'total': total
+    }
+    return render(request, 'cart.html', context)
+    

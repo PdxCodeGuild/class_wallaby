@@ -1,0 +1,29 @@
+{%extends 'base.html'%} {%block content%}
+
+<div class='container mt-4'>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+
+          </tr>
+        </thead>
+        {% for items in order %}
+        <tbody>
+          <tr>
+            <th scope="row">{{items.id}}</th>
+            <td>{{items.title}}</td>
+            <td><b>${{items.price}}</b></td>
+            <td>{{items.quantity}}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+      <h4 class='mt-4'>Total: ${{total}}</h4>
+</div>
+
+{%endblock%}
