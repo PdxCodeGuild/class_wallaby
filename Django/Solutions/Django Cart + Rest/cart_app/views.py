@@ -87,8 +87,6 @@ def get_cart(request):
     total = 0
     for x in order:
         total += sum([x.price * x.quantity])
-    print(total)
-    # total = sum([x.price for x in order])
     context = {
         'order': order,
         'total': total
