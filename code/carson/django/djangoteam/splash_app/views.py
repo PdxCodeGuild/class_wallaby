@@ -17,6 +17,13 @@ import shutil
 # import random
 # import string
 
+def home(request):
+    return render(request, 'home.html')
+def profile(request):
+    return render(request, 'profile.html')
+def cart(request):
+    return render(request, 'cart.html')
+
 # def home(request):
 #     if request == 'GET':
         
@@ -37,8 +44,8 @@ import shutil
 #     elif request == 'GET':
 #         pass
 
-def home(request):
-    image = f'https://api.unsplash.com/photos/random/?client_id=oipa2QJFQiBFEcO4MMvho2qH_kIrvBl72vM8_y7g538'
+# def home(request):
+    # image = f'https://api.unsplash.com/photos/random/?client_id=oipa2QJFQiBFEcO4MMvho2qH_kIrvBl72vM8_y7g538'
     # response = requests.get(image).json()
     # photographer = response['user']['username']
     # width = response['width']
@@ -75,7 +82,7 @@ def home(request):
     #  'id': response['id']
     #  }
     # print(context)
-    return render(request, 'splash_app/home.html') #context = context) 
+    # return render(request, 'splash_app/home.html') #context = context) 
 
 # def image_detail(request, id):
 #     image = f'https://api.unsplash.com/photos/:{id}/?client_id={key}'

@@ -7,10 +7,10 @@
                 <div class="col-sm-8 col-md-7 py-4">
                     <h4 class="text-white">About</h4>
                     <p class="text-muted">PDX Code Quild group project.
-                        Search for pictures from unsplash and either download or view them.
+                        Search for pictures using keywords and either download or view them.
                     </p>
                 </div>
-                <div class="col-sm-4 offset-md-1 py-4">
+                <div class="col-sm-4 offset-md-2 py-6">
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -19,10 +19,10 @@
             </div>
         </div>
     </div>
-    <div class="navbar fixed-top navbar-dark bg-dark shadow-sm">
-        <div class="container-fluid">
 
-            <a href="#" class="navbar-brand d-flex align-items-center">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
                     viewBox="0 0 24 24">
@@ -30,51 +30,36 @@
                     <circle cx="12" cy="13" r="4" />
                 </svg>
                 <strong>Unlpash Project</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-                aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                {% if title %}
-                <title>Image Search - {{ title }}</title>
-                {% else %}
-                <title>Image Search</title>
-                {% endif %}
-                </head>
-                <div class='row'>
-                    {% if user.is_authenticated %}
-                    <div class='col-sm-4'>
-                        <a class='pl-3' href="{% url 'home' %}">Home</a>
-                        <a class='pl-3' href="{% url 'profile' user.pk %}"> Profile</a>
-                        <a class='pl-3' href="{% url 'account_logout' %}">Sign Out</a>
-                    </div>
-                    {% else %}
-                    <div class='col-sm-4'>
-                        <a class='pl-3' href="{% url 'home' %}">Home</a>
-                        <a class='pl-3' href="{% url 'account_login' %}">Sign In</a>
-                        <a class='pl-3' href="{% url 'account_signup' %}">Sign Up</a>
-                    </div>
-                    {% endif %}
-                    <div class='col-lg-6'>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
 
+                        <li class="nav-item">
+
+                            <a class="nav-link ">Cart</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                 </div>
-
-                <body>
-                   
-
-
-            </button>
         </div>
-    </div>
+    </nav>
 </header>
 
 <body>
-   
 
+    <!-- 
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -108,244 +93,336 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-    </div>
-
+    </div> -->
 
     <main>
 
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Photos</h1>
-                    <p class="lead text-muted">Check out this awesome set of random photos</p>
-
-                </div>
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class=""
+                    aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"
+                    class=""></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+                    class="active" aria-current="true"></button>
             </div>
-        </section>
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <img src="https://www.planetware.com/wpimages/2020/03/oregon-portland-to-mount-hood-best-ways-to-get-there-by-car.jpg"
+                        class="d-block w-100" alt="...">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="#777"></rect>
+                    </svg>
 
-        <div class="album py-5 bg-light">
-            <div class="container-fluid">
-
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                    dy=".3em">Random pic</text>
-                            </svg>
-
-                            <div class="card-body">
-                                <p class="card-text">Description from unsplash</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
-                                    </div>
-
-                                </div>
-                            </div>
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Example headline.</h1>
+                            <p>Some representative placeholder content for the first slide of the carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                    dy=".3em">Random pic</text>
-                            </svg>
+                </div>
+                <div class="carousel-item active carousel-item-start">
+                    <img src="https://cloudfront-us-east-1.images.arcpublishing.com/opb/MNM5XDYYIBDY7DLM2Y5XTEGPOI.jpg"
+                        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="#777"></rect>
+                    </svg>
 
-                            <div class="card-body">
-                                <p class="card-text">Description from unsplash</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
-                                    </div>
-
-                                </div>
-                            </div>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Another example headline.</h1>
+                            <p>Some representative placeholder content for the second slide of the carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                    dy=".3em">Random pic</text>
-                            </svg>
+                </div>
+                <div class="carousel-item carousel-item-next carousel-item-start">
+                    <img src="data:image/jpeg;base64,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"
+                        class="d-block w-100" alt="...">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <rect width="100%" height="100%" fill="#777"></rect>
+                    </svg>
 
-                            <div class="card-body">
-                                <p class="card-text">Description from unsplash</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                    dy=".3em">Random pic</text>
-                            </svg>
-
-                            <div class="card-body">
-                                <p class="card-text">Description from unsplash</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                    dy=".3em">Random pic</text>
-                            </svg>
-
-                            <div class="card-body">
-                                <p class="card-text">Description from unsplash</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                    dy=".3em">Random pic</text>
-                            </svg>
-
-                            <div class="card-body">
-                                <p class="card-text">Description from unsplash</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                    dy=".3em">Random pic</text>
-                            </svg>
-
-                            <div class="card-body">
-                                <p class="card-text">Description from unsplash</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                    dy=".3em">Random pic</text>
-                            </svg>
-
-                            <div class="card-body">
-                                <p class="card-text">Description from unsplash</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                    dy=".3em">Random pic</text>
-                            </svg>
-
-                            <div class="card-body">
-                                <p class="card-text">Description from unsplash</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
-                                    </div>
-
-                                </div>
-                            </div>
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>One more for good measure.</h1>
+                            <p>Some representative placeholder content for the third slide of this carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
                         </div>
                     </div>
                 </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
 
-    </main>
-
-    <footer class="text-muted py-5">
-        <div class="container">
-            <p class="float-end mb-1">
-                <a href="#">Back to top</a>
-            </p </div>
-    </footer>
 
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+        <main>
+
+            <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <h1 class="fw-light">Photos</h1>
+                        <p class="lead text-muted">Check out this awesome set of random photos</p>
+
+                    </div>
+                </div>
+            </section>
+
+            <div class="album py-5 bg-light">
+                <div class="container-fluid">
+
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Random pic</text>
+                                </svg>
+
+                                <div class="card-body">
+                                    <p class="card-text">Description from unsplash</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary">Download</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Random pic</text>
+                                </svg>
+
+                                <div class="card-body">
+                                    <p class="card-text">Description from unsplash</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary">Download</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Random pic</text>
+                                </svg>
+
+                                <div class="card-body">
+                                    <p class="card-text">Description from unsplash</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary">Download</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Random pic</text>
+                                </svg>
+
+                                <div class="card-body">
+                                    <p class="card-text">Description from unsplash</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary">Download</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Random pic</text>
+                                </svg>
+
+                                <div class="card-body">
+                                    <p class="card-text">Description from unsplash</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary">Download</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Random pic</text>
+                                </svg>
+
+                                <div class="card-body">
+                                    <p class="card-text">Description from unsplash</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary">Download</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Random pic</text>
+                                </svg>
+
+                                <div class="card-body">
+                                    <p class="card-text">Description from unsplash</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary">Download</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Random pic</text>
+                                </svg>
+
+                                <div class="card-body">
+                                    <p class="card-text">Description from unsplash</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary">Download</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Random pic"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">Random pic</text>
+                                </svg>
+
+                                <div class="card-body">
+                                    <p class="card-text">Description from unsplash</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-secondary">Download</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-muted py-5">
+            <div class="container">
+                <p class="float-end mb-1">
+                    <a href="#">Back to top</a>
+                </p </div>
+        </footer>
+
+
+        <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
+<div class="container">
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Cart</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Profile</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+        <p class="text-center text-muted">© 2021 Company, Inc</p>
+    </footer>
+</div>
 
 </html>
 {% endblock %}
