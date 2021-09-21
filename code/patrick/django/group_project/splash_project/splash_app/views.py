@@ -21,51 +21,64 @@ import string
 
 def home(request):
     
-        search_term = request.POST['query1']
-   
+        # search_term = request.POST['query1']
+        
+        
+        
+    contexts =[]
+    search_term = 'cats'
+    count = 1
+    while True:
         image = f'https://api.unsplash.com/search/photos?page=1&per_page&query={search_term}&client_id={key}'
         response = requests.get(image).json()
-        print(response)
-        sku = response['results'][1]['id']
-        photographer = response['results'][1]['user']['username']
-        width = response['results'][1]['width']
-        height = response['results'][1]['height']
-        color = response['results'][1]['color']
-        description = response['results'][1]['description']
-        raw = response['results'][1]['urls']['raw']
-        full = response['results'][1]['urls']['full']
-        small = response['results'][1]['urls']['small']
-        regular = response['results'][1]['urls']['regular']
-        download = response['results'][1]['links']['download']
-        thumb = response['results'][1]['urls']['thumb']
-        alt_description = response['results'][1]['alt_description']
-        data = ImageModel(
-            photographer=photographer,
-            width = width, 
-            height = height, 
-            color = color, 
-            description = description,
-            raw=raw,
-            full=full, 
-            small=small,
-            regular=regular, 
-            download=download, 
-            thumb=thumb, 
-            alt_description=alt_description,
-            sku=sku,
-        )
-        data.save()
-        context = {
-        'thumb' : response['results'][1]['urls']['thumb'],
-        'alt_description': response['results'][1]['alt_description'], 
-        'sku': response['results'][1]['id'], 'data': data
-        }
-        return render(request, 'splash_app/home.html', context = context)
+        print(count)
+        if count >= 4:
+            break
+        else:
+            sku = response['results'][count]['id']
+            photographer = response['results'][count]['user']['username']
+            width = response['results'][count]['width']
+            height = response['results'][count]['height']
+            color = response['results'][count]['color']
+            description = response['results'][count]['description']
+            raw = response['results'][count]['urls']['raw']
+            full = response['results'][count]['urls']['full']
+            small = response['results'][count]['urls']['small']
+            regular = response['results'][count]['urls']['regular']
+            download = response['results'][count]['links']['download']
+            thumb = response['results'][count]['urls']['thumb']
+            alt_description = response['results'][count]['alt_description']
+            print(full)
+            data = ImageModel(
+                photographer=photographer,
+                width = width, 
+                height = height, 
+                color = color, 
+                description = description,
+                raw=raw,
+                full=full, 
+                small=small,
+                regular=regular, 
+                download=download, 
+                thumb=thumb, 
+                alt_description=alt_description,
+                sku=sku,
+            )
+            data.save()
+            stuff = {
+            'thumb' : response['results'][count]['urls']['thumb'],
+            'alt_description': response['results'][count]['alt_description'], 
+            'sku': response['results'][count]['id'], 'data': data
+            }
+            count += 1
+            contexts.append(stuff)
+    print(contexts)        
+    return render(request, 'splash_app/home.html', {'contexts': contexts})
 
 
 
 
-def image_detail(request, id):
+def image_detail(request,id):
     img_detail = ImageModel.objects.get(id =id)
     context = {}
     return render(request, 'splash_app/detail.html', {'img_detail': img_detail})
