@@ -101,19 +101,45 @@ class ProfileDetailView(ListView):
 def user_orders(request):
     user1 = request.user.id
     user = ProfileModel.objects.get(user_id=user1)
+    order = Order.objects.all()
+    test1 =[]
+    for item in order:
+        test1.append({
+            'ref_num': item.ref_num,
+            'items': item.items, 
+            'profile': item.profile, 
+
+        })
     
     orders = Order.objects.filter(profile=user.id)
-    print(orders)
-
-       
-    return render (request, 'splash_app/user_orders.html', {'orders': orders})
+    # print(orders, 'orders')
+    # items = Order.objects.filter(items=orders)
+    # print(items, 'items')
+    # test = Order.items.filter(profile=user.id)
+    # print(test)
+    # print(user, 'user')
+    # orders = Order.objects.filter(profile=user.id)
+    projects = Order.objects.filter(profile=user.id)
+    for project in projects:
+        developers = project.items.all().values()
+    for x in developers:
+        print(id)
+    context = {
+        'developers': developers,
+        'orders': orders
+    }
+    for y in developers:
+        print(y)    
+    print(context)
+    return render (request, 'splash_app/user_orders.html', {'context': context})
 
 @login_required()
 def add_cart(request, id, **kwargs):
   
     user_profile = get_object_or_404(ProfileModel, user=request.user)
     
-  
+
+   
     
     if id in request.user.profile.orders.all():
         messages.info(request, 'You already own this')
