@@ -115,9 +115,11 @@
                                     <div class="btn-group">
                                         <a type="button" class="btn btn-sm btn-outline-secondary"
                                             href="{% url 'detail' list.data.id %}">View</a>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Download</button>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary">Download</a>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary"
+                                        href="{% url 'add_cart' list.data.id %}">Add to Cart</a>
                                     </div>
-
+                                    
                                 </div>
                             </div>
                         </div>

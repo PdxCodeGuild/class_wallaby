@@ -21,10 +21,7 @@ import string
 
 def home(request):
     
-        # search_term = request.POST['query1']
-        
-        
-        
+        # search_term = request.POST['query1']       
     contexts =[]
     search_term = 'cats'
     count = 1
@@ -107,8 +104,7 @@ def user_orders(request):
     
     orders = Order.objects.filter(profile=user.id)
     print(orders)
-    for x in orders:
-        print(x.ref_num)
+
        
     return render (request, 'splash_app/user_orders.html', {'orders': orders})
 
@@ -135,6 +131,9 @@ def add_cart(request, id, **kwargs):
    
     messages.success(request, "item added to cart")
     return redirect(reverse('home'))
+
+def cart_view(request):
+    pass
 
 def generate_order_id():
     date_str = date.today().strftime('%Y%m%d')[2:] + str(datetime.datetime.now().second)
