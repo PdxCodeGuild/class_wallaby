@@ -1,0 +1,32 @@
+<h1> {{ todo.desc }} </h1>
+
+<form action="{% url 'edit' todo.id %}" method="POST">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="todo_name">Todo name:</label>
+    <input
+      type="text"
+      name="todo_name"
+      class="form-control"
+      placeholder="{{ todo.desc}}"
+      value="{{ todo.desc}}"
+    />
+  </div>
+
+  <input type="submit" value="submit">
+  </form>
+<p>Completed: {{ todo.flag_complete }}</p>
+<p>Date created: {{ todo.date_create }}</p>
+<p>Date completed: {{ todo.date_complete }}</p>
+
+<p>
+
+  <br>
+  <a href="{% url 'complete' todo.id %}">Complete</a>
+
+  <br>
+  <a href="{% url 'delete' todo.id %}">Delete</a>
+
+  <br>
+
+</p>
