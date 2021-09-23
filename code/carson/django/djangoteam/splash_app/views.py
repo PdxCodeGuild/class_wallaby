@@ -83,7 +83,7 @@ def home(request):
 def image_detail(request, id):
     img_detail = ImageModel.objects.get(id=id)
     context = {}
-    return render(request, 'splash_app/detail.html', {'img_detail': img_detail})
+    return render(request, 'detail.html', {'img_detail': img_detail})
 
 
 def download(id):
@@ -100,7 +100,7 @@ def download(id):
 class ProfileDetailView(ListView):
     model = ProfileModel
     queryset = ProfileModel.objects.all()
-    template_name = 'splash_app/profile.html'
+    template_name = 'profile.html'
     context_object_name = 'profile'
 
 
@@ -111,7 +111,7 @@ def user_orders(request):
     orders = Order.objects.filter(profile=user.id)
     print(orders)
 
-    return render(request, 'splash_app/user_orders.html', {'orders': orders})
+    return render(request, 'user_orders.html', {'orders': orders})
 
 
 @login_required()
