@@ -1,4 +1,4 @@
-"""upsplashcart URL Configuration
+"""splash_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -21,7 +21,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('splash_app.urls')),
-#     path('accounts/', include('allauth.urls')),
-# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-]
+    path('accounts/', include('allauth.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

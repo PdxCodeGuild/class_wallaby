@@ -1,148 +1,148 @@
+
 from django.shortcuts import get_object_or_404, render, redirect
+from .forms import ImageModel
+from .key import key
+import requests
+from PIL import Image
+import io
+from django.views.generic import ListView
 import os
-import io 
-import shutil
-# from .forms import ImageModel
-# import requests
-# from PIL import Image
+from .models import ProfileModel, ImageModel, Order, Item
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.urls import reverse
+import datetime
+from datetime import date
+import random
+import string
 
-# from django.views.generic import DetailView
 
-# from .models import ProfileModel, ImageModel, Order, Item
-# from django.contrib.auth.decorators import login_required
-# from django.contrib import messages
-# from django.urls import reverse
-# import datetime
-# from datetime import date
-# import random
-# import string
-
-def home(request):
-    return render(request, 'home.html')
 def profile(request):
     return render(request, 'profile.html')
-def cart(request):
-    return render(request, 'cart.html')
 
 # def home(request):
-#     if request == 'GET':
-        
-       
-#         photographer = response['user']['username']
-#         width = response['width']
-#         height = response['height']
-#         color = response['color']
-#         description = response['description']
-        
-#         raw = response['urls']['raw']
-#         full = response['urls']['full']
-#         small = response['urls']['small']
-        
-#         regular = response['urls']['regular']
-#         download = response['links']['download']
-#         return(id, width, height, color, description, alt_description, raw, full, small, thumb, regular, download)
-#     elif request == 'GET':
-#         pass
-
-# def home(request):
-    # image = f'https://api.unsplash.com/photos/random/?client_id=oipa2QJFQiBFEcO4MMvho2qH_kIrvBl72vM8_y7g538'
-    # response = requests.get(image).json()
-    # photographer = response['user']['username']
-    # width = response['width']
-    # height = response['height']
-    # color = response['color']
-    # description = response['description']
-    # raw = response['urls']['raw']
-    # full = response['urls']['full']
-    # small = response['urls']['small']
-    # regular = response['urls']['regular']
-    # download = response['links']['download']
-    # thumb = response['urls']['thumb']
-    # alt_description = response['alt_description']
-    # id = response['id']
-    # data = ImageModel(
-    #     photographer=photographer,
-    #     width = width, 
-    #     height = height, 
-    #     color = color, 
-    #     description = description,
-    #     raw=raw,
-    #     full=full, 
-    #     small=small,
-    #     regular=regular, 
-    #     download=download, 
-    #     thumb=thumb, 
-    #     alt_description=alt_description,
-    #     id=id,
-    # )
-    # data.save()
-    # context = {
-    #  'thumb' : response['urls']['thumb'],
-    #  'alt_description': response['alt_description'], 
-    #  'id': response['id']
-    #  }
-    # print(context)
-    # return render(request, 'splash_app/home.html') #context = context) 
-
-# def image_detail(request, id):
-#     image = f'https://api.unsplash.com/photos/:{id}/?client_id={key}'
-#     response = requests.get(image).json()
-#     context = {'thumb' : response['urls']['thumb'], 'alt_description': response['alt_description']}
-    
-#     return render(request, 'splash_app/detail.html', context = context) 
-
-# def image_detail(request, id):
-    
-#     context = {}
-#     context['data'] = ImageModel.objects.get(id =id)
-#     return render(request, 'splash_app/detail.html', context)
-
-# def download(id):
-#     obj = ImageModel.objects.first(id)
-#     url = getattr(obj, 'download')
-#     page = requests.get(url)
-
-#     f_ext = os.path.splitext(url)[-1]
-#     f_name = 'img{}'.format(f_ext)
-#     with open(f_name, 'wb') as f:
-#         f.write(page.content)
+#     return render(request, 'home.html')
+# def detail(request):
+#     return render(request, 'detail.html')
 
 
+def home(request):
+
+    # search_term = request.POST['query1']
+    contexts = []
+    search_term = 'cats'
+    count = 1
+    while True:
+        image = f'https://api.unsplash.com/search/photos?page=1&per_page&query={search_term}&client_id={key}'
+        response = requests.get(image).json()
+        print(count)
+        if count >= 4:
+            break
+        else:
+            sku = response['results'][count]['id']
+            photographer = response['results'][count]['user']['username']
+            width = response['results'][count]['width']
+            height = response['results'][count]['height']
+            color = response['results'][count]['color']
+            description = response['results'][count]['description']
+            raw = response['results'][count]['urls']['raw']
+            full = response['results'][count]['urls']['full']
+            small = response['results'][count]['urls']['small']
+            regular = response['results'][count]['urls']['regular']
+            download = response['results'][count]['links']['download']
+            thumb = response['results'][count]['urls']['thumb']
+            alt_description = response['results'][count]['alt_description']
+            print(full)
+            data = ImageModel(
+                photographer=photographer,
+                width=width,
+                height=height,
+                color=color,
+                description=description,
+                raw=raw,
+                full=full,
+                small=small,
+                regular=regular,
+                download=download,
+                thumb=thumb,
+                alt_description=alt_description,
+                sku=sku,
+            )
+            # data.save()
+            stuff = {
+                'thumb': response['results'][count]['urls']['thumb'],
+                'alt_description': response['results'][count]['alt_description'],
+                'sku': response['results'][count]['id'], 'data': data
+            }
+            count += 1
+            contexts.append(stuff)
+    print(contexts)
+    return render(request, 'home.html', {'contexts': contexts})
 
 
-
-        # r = ImageModel.objects.get(download='download', stream=True)
-        # if r.status_code == 200:
-        #     r.raw.decode_content = True
-        #     with open(filename,'wb') as f:
-        #         shutil.copyfileobj(r.raw, f)
-    
-# def image_detail(request, id):       
-#     context = {}
-#     context['data'] = ImageModel.objects.get(id =id)
-#     return render(request, 'splash_app/detail.html', context)
-
-# class ProfileDetailView(DetailView):
-#     model = ProfileModel
-#     queryset = ProfileModel.objects.all()
-#     template_name = 'profile.html'
+def image_detail(request, id):
+    img_detail = ImageModel.objects.get(id=id)
+    context = {}
+    return render(request, 'splash_app/detail.html', {'img_detail': img_detail})
 
 
-# @login_required
-# def add_cart(request, **kwargs):
-#     user = get_object_or_404(ProfileModel, user=request.user)
-#     product = ImageModel.objects.filter(id=kwargs.get('id', '')).first()
-#     order_item, status = Item.objects.get_or_create(image=product)
-#     user_order, status = Order.objects.get_or_create(profile=user,  is_ordered=False)
-#     user_order.items.add(order_item)
-#     if status:
-#         # generate a reference code
-#         user_order.ref_code = generate_order_id()
-#         user_order.save()
-#     messages.info(request, "item added to cart")
-#     return redirect(reverse('home'))
+def download(id):
+    obj = ImageModel.objects.first(id)
+    url = getattr(obj, 'download')
+    page = requests.get(url)
 
-# def generate_order_id():
-#     date_str = date.today().strftime('%Y%m%d')[2:] + str(datetime.datetime.now().second)
-#     rand_str = "".join([random.choice(string.digits) for count in range(3)])
-#     return date_str + rand_str
+    f_ext = os.path.splitext(url)[-1]
+    f_name = 'img{}'.format(f_ext)
+    with open(f_name, 'wb') as f:
+        f.write(page.content)
+
+
+class ProfileDetailView(ListView):
+    model = ProfileModel
+    queryset = ProfileModel.objects.all()
+    template_name = 'splash_app/profile.html'
+    context_object_name = 'profile'
+
+
+def user_orders(request):
+    user1 = request.user.id
+    user = ProfileModel.objects.get(user_id=user1)
+
+    orders = Order.objects.filter(profile=user.id)
+    print(orders)
+
+    return render(request, 'splash_app/user_orders.html', {'orders': orders})
+
+
+@login_required()
+def add_cart(request, id, **kwargs):
+
+    user_profile = get_object_or_404(ProfileModel, user=request.user)
+
+    if id in request.user.profile.orders.all():
+        messages.info(request, 'You already own this')
+        return redirect(reverse('splash_app.home.html'))
+
+    order_item, status = Item.objects.get_or_create(image_id=id)
+
+    user_order, status = Order.objects.get_or_create(
+        profile=user_profile, is_ordered=False)
+    user_order.items.add(order_item)
+    if status:
+
+        user_order.ref_num = generate_order_id()
+        user_order.save()
+
+    messages.success(request, "item added to cart")
+    return redirect(reverse('home'))
+
+
+def cart_view(request):
+    pass
+
+
+def generate_order_id():
+    date_str = date.today().strftime('%Y%m%d')[
+        2:] + str(datetime.datetime.now().second)
+    rand_str = "".join([random.choice(string.digits) for count in range(3)])
+    return date_str + rand_str

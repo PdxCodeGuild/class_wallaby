@@ -1,71 +1,88 @@
 {% extends 'base.html' %}
 {% block content %}
-{{ profile.user }}
-{{ profile.email }}
 
 
 
-<body class="text-center">
-<<<<<<< HEAD
-    <div id ="login" class="container-fluid">
-        <main class="form-signin">
-            <form>
-                <img class="mb-4" src=" " alt="" width="72" height="57">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-                <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
+<div id="content" class="container p-0">
+    <div class="profile-header">
+        <div class="profile-header-cover"></div>
+        <div class="profile-header-content">
+             <img id ='header' src="" alt="" />
+            <div class="profile-header-img">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/account-avatar-profile-human-man-user-30448.png" alt="" />
+            </div>
+            <div class="profile-header-info">
+               
+                <h4 class="m-t-sm">profile Name</h4>
 
-                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
-            </form>
-        </main>
+                <a href="#" class="btn btn-xs btn-primary mb-4">Edit Profile</a>
+            </div>
+        </div>
 
+        <ul class="profile-header-tab nav nav-tabs">
+            <li class="nav-item"><a href="#profile-post" class="nav-link" data-toggle="tab">POSTS</a></li>
+            <li class="nav-item"><a href="#profile-about" class="nav-link" data-toggle="tab">ABOUT</a></li>
+            <li class="nav-item"><a href="#profile-photos" class="nav-link active show" data-toggle="tab">PHOTOS</a>
+            </li>
+
+
+        </ul>
     </div>
-=======
 
-    <main class="form-signin">
-        <form>
-            <img src="/docs/5.1/assets/brand/orange-logo.svg" width="50" height="50" role="img" alt="Boosted" loading="lazy">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <div class="profile-container">
+        <div class="row row-space-20">
+            <div class="col-md-8">
+                <div class="tab-content p-0">
+                    <div class="tab-pane active show" id="profile-photos">
+                        <div class="m-b-10"><b>Photos (10)</b></div>
+                        <ul class="img-grid-list">
+                            <li>
+                                <a href="#"><img src="https://via.placeholder.com/150x150/008B8B/000000" alt=""
+                                        class="img-portrait" /></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="https://via.placeholder.com/150x150/6495ED/000000" alt=""
+                                        class="img-portrait" /></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="https://via.placeholder.com/150x150/4169E1/000000" alt=""
+                                        class="img-portrait" /></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="https://via.placeholder.com/150x150/FF7F50/000000" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="https://via.placeholder.com/150x150/FF0000/000000" alt=""
+                                        class="img-portrait" /></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="https://via.placeholder.com/150x150/6495ED/000000" alt="" /></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="https://via.placeholder.com/150x150/B0E0E6/000000" alt=""
+                                        class="img-portrait" /></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="https://via.placeholder.com/150x150/9932CC/000000" alt=""
+                                        class="img-portrait" /></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="https://via.placeholder.com/150x150/DB7093/000000" alt=""
+                                        class="img-portrait" /></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="https://via.placeholder.com/150x150/FF1493/000000" alt=""
+                                        class="img-portrait" /></a>
+                            </li>
 
-            <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-            </div>
 
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
-        </form>
-    </main>
-
-
->>>>>>> 71cf1633869b2f0fb809f28353d8ad18ae1acbb2
-
-
-
-</body>
-
-
+        </div>
+    </div>
+</div>
 
 {% endblock %}
