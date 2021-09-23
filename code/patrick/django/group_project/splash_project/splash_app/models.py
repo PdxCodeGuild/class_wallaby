@@ -19,7 +19,7 @@ class ImageModel(models.Model):
     sku = models.CharField(max_length=200)
     width = models.CharField(max_length=200)
     height = models.CharField(max_length=200)
-    
+    price = models.IntegerField()
     def __str__(self):
         return self.sku
 
@@ -54,7 +54,7 @@ class Item(models.Model):
     date_added = models.DateTimeField(auto_now_add=True, null=True)
    
     def __str__(self):
-        return '{} - {}'.format(self.image, self.date_added)
+        return '{}'.format(self.image)
 class Order(models.Model):
     ref_num = models.CharField(max_length=20)
     profile = models.ForeignKey(ProfileModel, on_delete=models.SET_NULL, related_name='profiles', null=True, blank=True)
