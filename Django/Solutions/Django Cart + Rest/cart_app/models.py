@@ -8,11 +8,11 @@ class Cart(models.Model):
         return "%s" % (self.user)
 
 class Product(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, null=True, blank=True)
+    description = models.CharField(max_length=200, null=True, blank=True)
     # image = models.ImageField(upload_to ='images/')
-    price = models.PositiveIntegerField(default=0, null=False, blank=False)
-    quantity = models.PositiveIntegerField(default=1, null=False,  blank=False )
+    price = models.PositiveIntegerField(default=0)
+    quantity = models.PositiveIntegerField(default=1)
     session = models.ForeignKey(Cart, null=True, blank=True, on_delete=PROTECT)
 
 

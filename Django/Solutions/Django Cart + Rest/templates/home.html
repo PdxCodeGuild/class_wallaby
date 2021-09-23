@@ -38,6 +38,7 @@ user == {{user}} user id == {{user.id}}
     //fix current id vs array ID. Add logic to PUT
 
     function addToCart(productId){
+      console.log(products)
         current_product_id = productId-1
         current_product = products[0][productId-1]
 
@@ -47,9 +48,11 @@ user == {{user}} user id == {{user.id}}
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append( 'X-CSRFToken', "csrftoken");
+        myHeaders.append( 'X-CSRFToken', csrftoken);
 
         var raw = JSON.stringify({
+        "description": current_product.description,
+        "title": current_product.title,
         "session": cart_session 
         });
 
