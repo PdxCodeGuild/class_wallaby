@@ -1,0 +1,9 @@
+#spin-icon:hover{
+    transform: rotate(360deg);
+    transition: .5s;
+    cursor: pointer;
+}
+
+#spin-icon{
+    margin: 10px;
+}
