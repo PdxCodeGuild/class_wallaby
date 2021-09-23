@@ -8,7 +8,8 @@ urlpatterns = [
     path('profile/<int:pk>', ProfileDetailView.as_view(), name='profile'),
     path('add_cart/<int:id>', add_cart, name='add_cart'),
     path('user_orders/', user_orders, name='user_orders'),
-    path('cart/', cart_view, name='cart' )
+    path('cart/', cart_view, name='cart' ), 
+    
    
 
     
