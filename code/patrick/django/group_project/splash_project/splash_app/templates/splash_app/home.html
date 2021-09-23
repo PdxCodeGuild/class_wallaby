@@ -107,7 +107,7 @@
                     <div class="col">
                         <div class="card shadow-sm ">
 
-                            <img class='25rem' src="{{ list.thumb }}"  height="{{ 350 }}">
+                            <img class='25rem' src="{{ list.thumb }}" height="{{ 350 }}">
 
                             <div class="card-body">
                                 <p class="card-text">{{ list.alt_description }}</p>
@@ -117,9 +117,9 @@
                                             href="{% url 'detail' list.data.id %}">View</a>
                                         <a type="button" class="btn btn-sm btn-outline-secondary">Download</a>
                                         <a type="button" class="btn btn-sm btn-outline-secondary"
-                                        href="{% url 'add_cart' list.data.id %}">Add to Cart</a>
+                                            href="{% url 'add_cart' list.data.id %}">Add to Cart</a>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
