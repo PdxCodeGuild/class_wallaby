@@ -10,7 +10,6 @@ class Cart(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=200, null=True, blank=True)
     description = models.CharField(max_length=200, null=True, blank=True)
-    # image = models.ImageField(upload_to ='images/')
     price = models.PositiveIntegerField(default=0)
     quantity = models.PositiveIntegerField(default=1)
     session = models.ForeignKey(Cart, null=True, blank=True, on_delete=PROTECT)
