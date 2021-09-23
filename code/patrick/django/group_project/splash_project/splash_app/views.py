@@ -16,19 +16,21 @@ import datetime
 from datetime import date
 import random
 import string
+from .forms import search_form
 
 
 
 def home(request):
     
-        # search_term = request.POST['query1']       
+          
     contexts =[]
-    search_term = 'cats'
+    search_term = request.POST.get('search')
+    print(search_term)
     count = 1
     while True:
         image = f'https://api.unsplash.com/search/photos?page=1&per_page&query={search_term}&client_id={key}'
         response = requests.get(image).json()
-        print(count)
+        
         if count >= 4:
             break
         else:
@@ -45,7 +47,7 @@ def home(request):
             download = response['results'][count]['links']['download']
             thumb = response['results'][count]['urls']['thumb']
             alt_description = response['results'][count]['alt_description']
-            print(full)
+            price = 5
             data = ImageModel(
                 photographer=photographer,
                 width = width, 
@@ -60,16 +62,17 @@ def home(request):
                 thumb=thumb, 
                 alt_description=alt_description,
                 sku=sku,
+                price=price
             )
             data.save()
             stuff = {
             'thumb' : response['results'][count]['urls']['thumb'],
             'alt_description': response['results'][count]['alt_description'], 
-            'sku': response['results'][count]['id'], 'data': data
+            'sku': response['results'][count]['id'], 'price': price, 'data': data
             }
             count += 1
             contexts.append(stuff)
-    print(contexts)        
+           
     return render(request, 'splash_app/home.html', {'contexts': contexts})
 
 
@@ -78,6 +81,7 @@ def home(request):
 def image_detail(request,id):
     img_detail = ImageModel.objects.get(id =id)
     context = {}
+    print(img_detail)
     return render(request, 'splash_app/detail.html', {'img_detail': img_detail})
     
 
@@ -102,15 +106,6 @@ def user_orders(request):
     user1 = request.user.id
     user = ProfileModel.objects.get(user_id=user1)
     order = Order.objects.all()
-    test1 =[]
-    for item in order:
-        test1.append({
-            'ref_num': item.ref_num,
-            'items': item.items, 
-            'profile': item.profile, 
-
-        })
-    
     orders = Order.objects.filter(profile=user.id)
     # print(orders, 'orders')
     # items = Order.objects.filter(items=orders)
@@ -122,15 +117,23 @@ def user_orders(request):
     projects = Order.objects.filter(profile=user.id)
     for project in projects:
         developers = project.items.all().values()
+    to_show = []
     for x in developers:
-        print(id)
+       to_show.append(x['image_id'])
+    print(to_show)
+    image_url=[]   
+    for x in to_show:
+        images = ImageModel.objects.filter(pk=x).values()    
+        for image in images:
+            image_url.append(image['thumb'])
     context = {
         'developers': developers,
-        'orders': orders
+        'orders': orders,
+        'image_url': image_url, 
+        'to_show': to_show
     }
-    for y in developers:
-        print(y)    
-    print(context)
+    
+  
     return render (request, 'splash_app/user_orders.html', {'context': context})
 
 @login_required()

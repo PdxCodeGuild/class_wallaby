@@ -2,38 +2,56 @@
 {% block content %}
 
 {% for item in orders.items.all %}
-   <p>{{ item }}</p> 
+<p>{{ item }}</p>
 {% endfor %}
 
 <table class="table">
-    <thead>
-      <tr>
-          
-        <th scope="col">#</th>
-        <th scope="col">Profile</th>
-        <th scope="col">Order Reference Number</th>
-        <th scope="col">Items</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for order in context.orders %}
-            
-        <tr>
-        <th scope="row">1</th>
-        <td>{{ user }}</td>
-        <td>{{ order }}</td>
-        <td>    {% for order in context.developers %}
-            <a href="{% url 'detail' order.image_id %}">
-            {{ order.image_id }}
-            </a>
-            {% endfor %}
-        </td>
-    </tr>
-        {% endfor %}
+  <thead>
+    <tr>
 
+      <th scope="col">#</th>
+      <th scope="col">Profile</th>
+      <th scope="col">Order Reference Number</th>
+      <th scope="col">Total</th>
+      <th scope="col">Items</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in context.orders %}
+
+    <tr>
+      <th scope="row">1</th>
+      <td>{{ user }}</td>
+      <td>{{ order }}</td>
+      <td>{{ order.get_cart_total }}</td>
+      <td> {% for order in context.developers %}
+        <a href="{% url 'detail' order.image_id %}">
+          {{ order.image_id }}
+        </a>
+        {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+
+ 
+  </tbody>
+</table>
+<div class='container-fluid'>
+  <div class='row'>
+    {% for order in context.image_url %}
+    
+    <div class='col-lg-4 col-md-4 col-xs-4 thumb'>
+      <div class="thumbnail">
+        <img src="{{ order }}" class="img-fluid rounded d-block" alt="...">
         
-    </tbody>
-  </table>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
 
 
 {% endblock %}
