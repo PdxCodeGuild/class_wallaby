@@ -120,7 +120,7 @@ def user_orders(request):
     to_show = []
     for x in developers:
        to_show.append(x['image_id'])
-    print(to_show)
+    
     image_url=[]   
     for x in to_show:
         images = ImageModel.objects.filter(pk=x).values()    
