@@ -31,7 +31,7 @@ def home(request):
         image = f'https://api.unsplash.com/search/photos?page=1&per_page&query={search_term}&client_id={key}'
         response = requests.get(image).json()
         
-        if count >= 4:
+        if count >= 7:
             break
         else:
             sku = response['results'][count]['id']
@@ -120,7 +120,7 @@ def user_orders(request):
     to_show = []
     for x in developers:
        to_show.append(x['image_id'])
-    print(to_show)
+    
     image_url=[]   
     for x in to_show:
         images = ImageModel.objects.filter(pk=x).values()    
