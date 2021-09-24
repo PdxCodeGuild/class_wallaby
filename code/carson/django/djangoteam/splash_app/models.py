@@ -19,7 +19,7 @@ class ImageModel(models.Model):
     sku = models.CharField(max_length=200)
     width = models.CharField(max_length=200)
     height = models.CharField(max_length=200)
-    
+    price = models.IntegerField()
     def __str__(self):
         return self.sku
 

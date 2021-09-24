@@ -1,23 +1,31 @@
-{% extends 'base.html' %}
+{% extends 'splash_app/base.html' %}
 {% block content %}
+<div class='container-fluid '>
+  <div class='row pt-3 ps-3'>
+    <div class='col-md-6 '>
+      <img class='col-lg-12 img-fluid' src="{{ img_detail.regular }}" alt="Error">
+    </div>
+    <div class='col-md-6'>
+      <table class='table'>
+        <tbody>
+          <p>Image Title: <strong>{{ img_detail.title }}</strong></p>
+          <p>Image Description: <strong>{{ img_detail.description }}</strong></p>
+          <p>Image Alternate Description: <strong>{{ img_detail.alt_description }}</strong></p>
+          <p>Image Photographer: <strong>{{ img_detail.photographer }}</strong></p>
+          <p>Image SKU: <strong>{{ img_detail.sku }}</strong></p>
+          <p><a href="{% url 'add_cart' img_detail.id %}">Add to cart</a></p>
+          <p> <a crossorigin="anonymous" href="{{ download }}" class="download_file" download>Click Here to Download  </a>  Note:cross-origin downloads are no longer supported.</p>
+          <p>Download Link: <a href='{{ img_detail.download }}'>{{ img_detail.download }}</a></p>
+          <p>Download RAW: <a href='{{ img_detail.raw }}'>{{ img_detail.raw }}</a></p>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
- 
-       
-<img src="{{ data.small }}" alt="Error">
-        <a href="{{ download }}" download>
-            
-            Click Here to Download
-        </a>
-      <a href="{% url 'add_cart' data.id %}">Add to cart</a>
-        <p>{{ data.title }}</p>
-        <p>{{ data.description }}</p>
-        <p>{{ data.alt_description }}</p>
-        <p>{{ data.photographer }}</p>
 
 
 
-        
-        
- 
-</a>
-    {% endblock %}
+
+
+{% endblock %}
