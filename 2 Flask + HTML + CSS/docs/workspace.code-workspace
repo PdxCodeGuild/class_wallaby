@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "pdx_code",
+			"path": "..\\..\\.."
+		},
+		{
+			"name": "ccloter.github.io",
+			"path": "..\\..\\..\\..\\carson\\ccloter.github.io"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "pdx_code"
+	}
+}

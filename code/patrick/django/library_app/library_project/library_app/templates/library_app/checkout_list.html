@@ -1,0 +1,29 @@
+{% extends 'library_app/base.html' %}
+    
+{% block content %}
+    <table class="table">
+        <thead>
+          <tr>
+            
+            <th scope="col">Book</th>
+            <th scope="col">Status</th>
+            <th scope="col">On Loan</th>
+            <th scope="col">Checked Out</th>
+            <th scope="col">Due Back</th>
+          </tr>
+        </thead>
+        {% for checkout in checkouts %}
+        <tbody>
+          <tr>
+            
+            <td scope="row d-flex text-align-center"><a href="{% url 'book_detail' checkout.book.id %}">{{ checkout.book }}</a></td>
+               
+            <td>{{ checkout.get_status_display }}</td>
+            <td>{{ checkout.profile }}</td>
+            <td>{{ checkout.checked_out }}</td>
+            <td>{{ checkout.due_back }}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+{% endblock content %}

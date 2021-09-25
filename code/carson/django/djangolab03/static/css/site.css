@@ -1,0 +1,13 @@
+h1 {
+    color: firebrick;
+    font-weight: bold;
+    font-size: 50px;
+  }
+
+body { text-align: center;
+}
+
+label { font-weight: bold;
+        font-size: larger;
+
+}

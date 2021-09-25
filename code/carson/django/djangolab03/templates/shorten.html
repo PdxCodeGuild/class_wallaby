@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<h1>Welcome</h1>
+
+<div class="container mt-5">
+    <form class="mt-3" action="{% url 'shorten' %}" method="POST">
+        {% csrf_token %}
+        <div id="author-form" class="form-group">
+            <label for="book_title">URL Shorten</label></br>
+            <input type="text" class="form-control" name='url' placeholder="Enter A URL" /></br>
+            <button type="submit" class="btn btn-primary mb-2 mt-3">Submit</button>
+
+        </div>
+    </form>
+</div>
+<h2 class='text-center'>URL List</h2>
+{%for url in all_url%}
+<p><a href = {{url.original}} target="_blank">{{url.updated}}</a></p>
+{% endfor %}
+
+{% endblock %}

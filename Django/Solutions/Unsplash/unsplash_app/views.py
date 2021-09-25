@@ -1,19 +1,23 @@
 from django.shortcuts import render, redirect
 from .models import GetImages, Board
 import requests
-from django.core import serializers
 from decouple import config
+from django.contrib import messages
+import os
+import requests
+import uuid
 
 ##Rest----
 from .serializers import BoardSerializer
 from rest_framework import viewsets
 ##Rest----
 
+
+
 class BoardView(viewsets.ModelViewSet):
     serializer_class = BoardSerializer
     def get_queryset(self):
         return Board.objects.all()
-
 def get_images(request):
     SECRET_KEY = config('SECRET_KEY')
     url = f'https://api.unsplash.com/photos/?client_id={SECRET_KEY}'
@@ -24,7 +28,15 @@ def get_images(request):
     if all_img:
         all_img.delete()
     for pics in data:
+        url = pics['urls']['thumb'] + '.jpg'
+        page = requests.get(url)
+        f_ext = os.path.splitext(url)[-1]
+        name = str(uuid.uuid4())
+        f_name = name + 'img{}'.format(f_ext)
+        with open(os.path.join('media/images',f_name), 'wb') as f:
+            f.write(page.content)
         GetImages.objects.create(
+            my_image = f_name,
             full=pics['urls']['full'], thumb=pics['urls']['thumb'], download=pics['links']['download'])
 
     pics = GetImages.objects.all()
@@ -40,15 +52,20 @@ def add_pictures(request, id):
         return render(request, 'pages/imageList.html', {'pics': pics})
     elif request.method == "POST":
         pic_to_board = GetImages.objects.filter(id=id)
-        my_board = Board.objects.create(full= pic_to_board[0].full, thumb = pic_to_board[0].thumb, download = pic_to_board[0].download )
+        url = GetImages.objects.get(id=id).thumb
+        Board.objects.create(full= pic_to_board[0].full, thumb = pic_to_board[0].thumb, download = pic_to_board[0].download )
         messages.success(request, 'Photo saved in your board')
         return render(request, 'pages/imageList.html', {'pics': pics})
 
 def my_board(request):
-    serialized_board = serializers.serialize("json", Board.objects.all()) 
     my_board = Board.objects.all()
     context = {
-        "serialized_board": serialized_board,
         "my_board": my_board
     }
     return render(request, 'pages/board.html', context)
+
+def delete(request, id):
+    img = Board.objects.get(id=id)
+    img.delete()
+    return redirect('board')
+    

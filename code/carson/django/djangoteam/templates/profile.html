@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ profile.user }}
+{{ profile.email }}
+
+
+
+<div id="content" class="container p-0">
+    <div class="profile-header">
+        <div class="profile-header-cover"></div>
+        <div class="profile-header-content">
+             <img id ='header' src="" alt="" />
+            <div class="profile-header-img">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/account-avatar-profile-human-man-user-30448.png" alt="" />
+            </div>
+            <div class="profile-header-info">
+
+                <h4 class="m-t-sm">profile Name</h4>
+                <a href="#" class="btn btn-xs btn-primary mb-4">Edit Profile</a>
+            </div>
+
+            <ul class="profile-header-tab nav nav-tabs">
+                <li class="nav-item"><a href="#profile-post" class="nav-link" data-toggle="tab">POSTS</a></li>
+                <li class="nav-item"><a href="#profile-about" class="nav-link" data-toggle="tab">ABOUT</a></li>
+                <li class="nav-item"><a href="#profile-photos" class="nav-link active show" data-toggle="tab">PHOTOS</a>
+                </li>
+    
+    
+            </ul>
+        </div>
+    
+        <div class="profile-container">
+            <div class="row row-space-20">
+                <div class="col-md-8">
+                    <div class="tab-content p-0">
+                        <div class="tab-pane active show" id="profile-photos">
+                            <div class="m-b-10"><b>Photos (10)</b></div>
+                            <ul class="img-grid-list">
+                                <li>
+                                    <a href="#"><img src="https://via.placeholder.com/150x150/008B8B/000000" alt=""
+                                            class="img-portrait" /></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="https://via.placeholder.com/150x150/6495ED/000000" alt=""
+                                            class="img-portrait" /></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="https://via.placeholder.com/150x150/4169E1/000000" alt=""
+                                            class="img-portrait" /></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="https://via.placeholder.com/150x150/FF7F50/000000" alt="" /></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="https://via.placeholder.com/150x150/FF0000/000000" alt=""
+                                            class="img-portrait" /></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="https://via.placeholder.com/150x150/6495ED/000000" alt="" /></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="https://via.placeholder.com/150x150/B0E0E6/000000" alt=""
+                                            class="img-portrait" /></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="https://via.placeholder.com/150x150/9932CC/000000" alt=""
+                                            class="img-portrait" /></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="https://via.placeholder.com/150x150/DB7093/000000" alt=""
+                                            class="img-portrait" /></a>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="https://via.placeholder.com/150x150/FF1493/000000" alt=""
+                                            class="img-portrait" /></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

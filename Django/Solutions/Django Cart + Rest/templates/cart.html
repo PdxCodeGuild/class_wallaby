@@ -1,0 +1,77 @@
+{%extends 'base.html'%} {%block content%}
+<div class='container mt-4'>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+
+          </tr>
+        </thead>
+        {% for items in order %}
+        <tbody>
+          <tr>
+            <th scope="row">{{items.id}}</th>
+            <td>{{items.title}}</td>
+            <td><b>${{items.price}}</b></td>
+            <td class ='spin-td d-flex flex-row space-between align-items-center'>
+              <input type="text" style="width:60px" value = {{items.quantity}}  id= 'quantity' class="form-control">
+              <svg onclick="updateCart('{{items.id}}', event)"  class = 'ml-4' xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" id="spin-icon" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+              </svg>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+      <h4 class='mt-4'>Total: ${{total}}</h4>
+</div>
+{% csrf_token %}
+
+
+<script>
+    let products = []
+    const user = {{user}}
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch(`http://localhost:8000/api/retrieve_cart/${user}`).then(res=>res.json()).then(data=>products.push(data))
+    });
+
+function updateCart(productId, event){
+        let quantity = event.target.previousElementSibling.value
+        targetProduct = products[0].filter(item=> item.id==parseInt(productId))
+        let targetProductId = targetProduct[0].id
+
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append( 'X-CSRFToken', csrftoken);
+
+        var raw = JSON.stringify({
+        "quantity": quantity
+        });
+
+        var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw
+        };
+
+        fetch(`http://localhost:8000/api/products/${targetProductId}`, requestOptions)
+        .then(response => response.json())
+        .then(function(result){
+          console.log('RESPONSE', result)
+          setTimeout(function(){   location.reload(true); }, 500);        
+        })
+        .catch(error => console.log('error', error));
+
+    }  
+  
+  </script>
+  
+
+{%endblock%}
+

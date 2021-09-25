@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Get your url shortened here!</h1>
+
+<ul>
+  {% for url in allUrls %}
+  <li><a href="{% url 'surl_parse' url.surl %}">{{ url.surl }} </a> => {{url.lurl}}</li>
+  {% endfor %}
+</ul>
+
+<form action="{% url 'addurl' %}" method="post">
+  {% csrf_token %}
+
+
+  <div class="form-group">
+    <label for="lurl">Long URL:</label>
+    <input
+    type="text"
+    name="lurl"
+    class="form-control"
+    placeholder="Long URL"
+    />
+  </div>
+  <input type="submit" value="submit">
+</form>
+
+{% endblock %}
+

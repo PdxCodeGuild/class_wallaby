@@ -1,0 +1,25 @@
+{% extends "urlshort_app/base.html" %}
+{% block content %}
+<div class='container-flex'>
+  <table class="table table-striped">
+    <thead>
+      <tr class='row'>
+        <th class="col-2 pl-5">Date</th>
+        <th class="col-2 pl-5">Code</th>
+        
+        <th class="col-8">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row">
+        <td class='col-2 pl-5'>{{ urls.date }}</th>
+        <td class='col-2 pl-5'>{{ urls.code }}</td>
+       
+        <td class='col-8 text-break'>{{ urls.url }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
+{% endblock content %}

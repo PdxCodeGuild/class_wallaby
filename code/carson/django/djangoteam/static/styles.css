@@ -1,0 +1,19 @@
+h1{
+color: rgb(226, 156, 27);
+}
+
+.carousel .carousel-item {
+    height: 500px;
+  }
+  
+  .carousel-item img {
+      position: absolute;
+      object-fit:cover;
+      top: 0;
+      left: 0;
+      min-height: 500px;
+  }
+
+.rect{
+    text-align: center;
+}
