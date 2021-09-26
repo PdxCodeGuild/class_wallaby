@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <table>
+        <colgroup>
+            <col span="3" style="background-color:red">
+            <col style="background-color:yellow">
+          </colgroup>
+        <tr>
+            <th>Cost</th>
+            
+            <th>Earnings</th>
+            
+            <th>Balance</th>
+            <th>ROI</th>
+        </tr>
+        <tr>
+            <td id="cost"></td>
+            
+            <td id="winnings"></td>
+            
+            <td id="balance"></td>
+            <td id="roi"></td>
+        </tr>
+   
+   
+</table>
+    <script>
+        winning = 0
+        cost = 0
+
+        for (let i = 0; i < 100000; i++) {
+            let ticket = [];
+            for (let i = 0; i < 6; i++) {
+                tickets = Math.floor(Math.random() * 100)
+                ticket.push(tickets)
+            }
+            // console.log(ticket)
+            // document.getElementById("ticket").innerHTML = ticket;
+            let win_ticket = [];
+            for (let i = 0; i < 6; i++) {
+                win_tickets = Math.floor(Math.random() * 100)
+                win_ticket.push(win_tickets)
+            }
+            // document.getElementById("win_ticket").innerHTML = win_ticket;
+            // ticket = ['1', '2', '3', '4', '6', '7', '8']
+            // win_ticket = ['3', '2', '1', '4', '6', '7', '7']
+            // console.log(ticket)
+            // console.log(win_ticket)
+            
+            matches = 0
+            for (let i = 0; i <= ticket.length - 1; i++) {
+                
+                if (ticket[i] == win_ticket[i])
+                matches += 1
+                
+            }
+            
+            // document.getElementById("matches").innerHTML = matches;
+            
+            let earnings = {
+                0: 0,
+                1: 4,
+                2: 7,
+                3: 100,
+                4: 50000,
+                5: 1000000,
+                6: 25000000,
+            }
+            // console.log(matches)
+            var winnings = earnings[matches]
+            // console.log(winnings)
+            winning += winnings
+            cost += 2
+        }
+        console.log(cost+' cost')
+        console.log(winning+' winnings')
+        total = (winning-cost)
+        roi = (winning-cost)/cost
+        console.log(total+' take home')
+        document.getElementById("winnings").innerHTML = winning;
+        document.getElementById("cost").innerHTML = cost;
+        document.getElementById("balance").innerHTML = total;
+        document.getElementById("roi").innerHTML = roi;
+        </script>
+
+</body>
+
+</html>
