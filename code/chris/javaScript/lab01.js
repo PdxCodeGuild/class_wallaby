@@ -55,5 +55,9 @@ const pick6 = rounds => {
   return tally < 0 ? `You lost $${Math.abs(tally)}. ${roiStr}`: `You made $${tally}!!!`
 }
 
-console.log(pick6(100000))
+// console.log(pick6(100000))
 
+const rot13 = str =>
+  str.split('').map(el => String.fromCharCode(((el.charCodeAt(0) - 6) % 26) + 97))
+
+console.log(rot13('abcn'))
