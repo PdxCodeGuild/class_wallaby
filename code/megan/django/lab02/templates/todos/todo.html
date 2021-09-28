@@ -10,7 +10,6 @@
 <ul>
     {% for todo in todos %}
     <a href="{% url 'details' todo.id %}">See Details</a>
-    <p>Title: {{ todo.title }}</p>
     <p>ID: {{ todo.id }}</p>
     <p>Description: {{ todo.text }}</p>
     {% empty %}
