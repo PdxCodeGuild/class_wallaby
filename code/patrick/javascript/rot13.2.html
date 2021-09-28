@@ -10,6 +10,7 @@
 <body>
     <form>
         <input id="message_in" placeholder="Enter Message"></input>
+        <input id="number_turn" placeholder="Enter number"></input>
         <button id="btn_1" onClick="encode()">Encode</button>
     </form>
 
@@ -17,16 +18,22 @@
         <br></br>
         Encoded message is:
         <strong id="message_out"></strong>
-
     </form>
+
     <script>
         document.getElementById("btn_1").addEventListener("click", function (event) {
             event.preventDefault()
         });
         function encode() {
             let user_input = document.getElementById('message_in').value;
+            let number = document.getElementById('number_turn').value;
+            let number1 = number % 26
+
             let alpha_index = 'abcdefghijklmnopqrstuvwxyz';
-            let rot_index = 'opqrstuvwxyzabcdefghijklmn';
+            let r1 = alpha_index.slice(number1);
+            let r2 = alpha_index.slice(0, number1);
+            let rot_index = r1 + r2
+
             alpha_2 = []
             for (let i = 0; i < user_input.length; i++) {
                 if (user_input[i] == " ") {
@@ -35,20 +42,18 @@
                 else {
                     alpha_2.push(alpha_index.indexOf(user_input[i]));
                 }
-                user_output = ""
-                
-                for (let i = 0; i < alpha_2.length; i++) {
-                    if (typeof alpha_2[i] == "string") {
-                        user_output += (alpha_2[i])
-                    }
-                    else {
-                        user_output += (rot_index[alpha_2[i]])
-                    }
-                }
-                document.getElementById("message_out").innerHTML = user_output
             }
+            user_output = ""
+            for (let i = 0; i < alpha_2.length; i++) {
+                if (typeof alpha_2[i] == "string") {
+                    user_output += (alpha_2[i])
+                }
+                else {
+                    user_output += (rot_index[alpha_2[i]])
+                }
+            }
+            document.getElementById("message_out").innerHTML = user_output
         }
     </script>
 </body>
-
 </html>
