@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Enter Task Below</label>
+                <textarea class="form-control" placeholder="Enter Task Here" id="tasktext" rows="2"></textarea>
+                <button id='btn1' onclick="taskApp()">Add Task</button>
+            </div>
+        </form>
+    </div>
+    <div class='container-fluid'>
+        <ul class="list-group" id='submittedtasks'>
+
+        </ul>
+    </div>
+    <script>
+        // prevents default reload of page. However, commenting it out is neccesary in order to delete the item without having to refresh the page manually. 
+        // document.getElementById("btn1").addEventListener("click", function (event) {
+        //     event.preventDefault()
+        // });
+
+
+
+
+        // localStorage.clear()
+
+        // populate the list after refresh
+        for (i = 0; i < localStorage.length; ++i) {
+
+            let lis = document.getElementById("submittedtasks");
+            let li = document.createElement('li');
+            li.id = i
+
+            li.className = "list-group-item pl-5"
+            li.innerText = localStorage[i];
+
+            let button = document.createElement('button');
+            button.setAttribute("onclick", "remove(this)");
+            button.className = "d-flex pl-1 alert-button"
+            button.innerText = 'delete';
+
+            let button1 = document.createElement('button');
+            button1.setAttribute("onclick", "completed(this)");
+            button1.className = "d-flex pl-1 alert-button"
+            button1.innerText = 'Mark as complete';
+
+            li.appendChild(button1);
+            li.appendChild(button);
+            lis.appendChild(li);
+        }
+
+        
+
+
+        // New tasks
+        function taskApp() {
+            x = []
+            let tasktext = document.getElementById('tasktext').value;
+            localStorage.setItem(localStorage.length, tasktext);
+            console.log(localStorage);
+            let list = document.getElementById("submittedtasks");
+
+
+            // localStorage.getItem(i)
+
+
+            // for (i = 0; i < localStorage.length; ++i) {
+            let i = localStorage.length + 1
+            let lis = document.getElementById("submittedtasks");
+            let li = document.createElement('li');
+            li.id = i
+
+            li.className = "list-group-item pl-5"
+            li.innerText = tasktext;
+
+            let button = document.createElement('button');
+            button.setAttribute("onclick", "remove(this)");
+            button.className = "d-flex pl-1 alert-button"
+            button.innerText = 'delete';
+
+            let button1 = document.createElement('button');
+            button1.setAttribute("onclick", "completed(this)");
+            button1.className = "d-flex pl-1 alert-button"
+            button1.innerText = 'Mark as complete';
+            li.appendChild(button1);
+            li.appendChild(button);
+            lis.appendChild(li);
+            // }
+            let elem = document.querySelectorAll('ul')
+            console.log(elem + ' elem')
+            for (let i = 0; i < elem.length; i++) {
+
+                elem[i].addEventListener('click', function (event) {
+                    console.log(event.target, i + ' stuff')
+                })
+
+            }
+        }
+
+
+        function remove(x) {
+
+            x.parentElement.remove()
+            // console.log(localStorage.removeItem(el['i']))
+            localStorage.removeItem(x.parentElement['id'])
+            console.log(x)
+
+
+            // console.log(el.parentNode)
+
+            // console.log(element + ' element')
+            // element.remove(el.parentNode);
+
+
+        }
+
+        function completed(x) {
+            console.log(x + ' element')
+            console.log(Object.getOwnPropertyNames(x.parentElement));
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>
