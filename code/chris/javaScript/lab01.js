@@ -57,7 +57,24 @@ const pick6 = rounds => {
 
 // console.log(pick6(100000))
 
-const rot13 = str =>
-  str.split('').map(el => String.fromCharCode(((el.charCodeAt(0) - 6) % 26) + 97))
+const rot13 = (str, rot) => {
+  return str.split('').map( el => {
+    if (el === ' ')
+      return ' '
+    else {
+      let setter = el.charCodeAt(0) > 96 && el.charCodeAt(0) < 123 ? 97 : 65
+      let charCode = (el.charCodeAt(0) - setter + rot) % 26
+      if (charCode < 0)
+        charCode += 26;
+      return String.fromCharCode(charCode + setter)
+    }
+  }).join('')
+}
 
-console.log(rot13('abcn'))
+// console.log(rot13('abcn', 13))
+// console.log(rot13('nopa', -13))
+// console.log(rot13('abcz', 1))
+// console.log(rot13('bcda', -1))
+console.log(rot13('zhere Is soMe ranDom sTRing', 1))
+console.log(rot13('aifsf Jt tpNf sboEpn tUSjoh', -1))
+
