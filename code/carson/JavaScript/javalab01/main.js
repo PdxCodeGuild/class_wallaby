@@ -8,13 +8,27 @@ const units = {
     'inches': .0254
 
 }
-let index = prompt({units},'What unit would you like to convert into meters ?');
-let nums = units[index]
-let distance = parseInt(prompt('How long ?'));
-let total = distance * nums
+let distance = parseInt(prompt('Enter a distance'));
+let unit1 = prompt('Select the unit of your distance');
+let unit2 = prompt('Select a unit to convert your distance in to !');
 
-console.log(nums)
-console.log(total)
-console.log( distance + index + " " + 'into meters is'+ " " + total )
+let nums = units[unit1]
+let nums2 = units[unit2]
+console.log(unit1, nums)
+console.log(unit2, nums2)
+
+function math(nums, nums2) {
+
+    total = distance * nums
+    convert = total / nums2
+    return (convert)
+}
+var x = math(nums, nums2)
+// console.log(x)
+console.log ( distance + ' ' + unit1 + ' ' + 'is' + ' ' + x  + ' ' + unit2)
+
+// console.log(nums)
+// console.log(total)
+// console.log(distance + index + " " + 'into meters is' + " " + total)
 
 
