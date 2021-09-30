@@ -17,3 +17,66 @@ color: rgb(226, 156, 27);
 .rect{
     text-align: center;
 }
+
+
+.login{
+    padding: 375px;
+}
+
+body{
+    background: #eaeaea;
+    margin-top:60px;
+}
+
+.profile-header-img img {
+    max-width: 100%;
+}
+.table.table-profile th {
+    border: none;
+    color: #000;
+    padding-bottom: 0.3125rem;
+    padding-top: 0;
+}
+.table.table-profile td {
+    border-color: #c8c7cc;
+}
+.table.table-profile tbody + thead > tr > th {
+    padding-top: 1.5625rem;
+}
+.table.table-profile .field {
+    color: #666;
+    font-weight: 600;
+    width: 25%;
+    text-align: right;
+}
+.table.table-profile .value {
+    font-weight: 500;
+}
+
+.friend-list,
+.img-grid-list {
+    margin: -1px;
+    list-style-type: none;
+}
+.img-grid-list {
+    padding: 0;
+}
+.img-grid-list > li {
+    float: left;
+    width: 20%;
+    padding: 1px;
+}
+.img-grid-list > li a {
+    position: relative;
+    overflow: hidden;
+    padding-top: 75%;
+    display: block;
+}
+.img-grid-list > li a img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+}
