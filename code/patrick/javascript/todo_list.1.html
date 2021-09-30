@@ -21,7 +21,7 @@
             <div class="mb-3">
                 <label class="form-label">Enter Task Below</label>
                 <textarea class="form-control" placeholder="Enter Task Here" id="tasktext" rows="2"></textarea>
-                <button id='btn1' onclick="taskApp()">Add Task</button>
+                <button id='btn1'>Add Task</button>
             </div>
         </form>
     </div>
@@ -31,115 +31,73 @@
         </ul>
     </div>
     <script>
-        // prevents default reload of page. However, commenting it out is neccesary in order to delete the item without having to refresh the page manually. 
-        // document.getElementById("btn1").addEventListener("click", function (event) {
-        //     event.preventDefault()
-        // });
-
-
-
 
         // localStorage.clear()
 
         // populate the list after refresh
-        for (i = 0; i < localStorage.length; ++i) {
-
+        function render() {
+            const completedelements = []
             let lis = document.getElementById("submittedtasks");
-            let li = document.createElement('li');
-            li.id = i
+            lis.innerHTML = ""
+            for (i = 0; i < localStorage.length; ++i) {
+                console.log('hi')
+                const task = JSON.parse(localStorage[i])
+                let li = document.createElement('li');
+                li.id = i
+                li.className = "list-group-item pl-5"
 
-            li.className = "list-group-item pl-5"
-            li.innerText = localStorage[i];
+                let button = document.createElement('button');
+                button.setAttribute("onclick", "remove(this)");
+                button.className = "d-flex pl-1 alert-button"
+                button.innerText = 'delete';
 
-            let button = document.createElement('button');
-            button.setAttribute("onclick", "remove(this)");
-            button.className = "d-flex pl-1 alert-button"
-            button.innerText = 'delete';
-
-            let button1 = document.createElement('button');
-            button1.setAttribute("onclick", "completed(this)");
-            button1.className = "d-flex pl-1 alert-button"
-            button1.innerText = 'Mark as complete';
-
-            li.appendChild(button1);
-            li.appendChild(button);
-            lis.appendChild(li);
-        }
-
-        
-
-
-        // New tasks
-        function taskApp() {
-            x = []
-            let tasktext = document.getElementById('tasktext').value;
-            localStorage.setItem(localStorage.length, tasktext);
-            console.log(localStorage);
-            let list = document.getElementById("submittedtasks");
-
-
-            // localStorage.getItem(i)
-
-
-            // for (i = 0; i < localStorage.length; ++i) {
-            let i = localStorage.length + 1
-            let lis = document.getElementById("submittedtasks");
-            let li = document.createElement('li');
-            li.id = i
-
-            li.className = "list-group-item pl-5"
-            li.innerText = tasktext;
-
-            let button = document.createElement('button');
-            button.setAttribute("onclick", "remove(this)");
-            button.className = "d-flex pl-1 alert-button"
-            button.innerText = 'delete';
-
-            let button1 = document.createElement('button');
-            button1.setAttribute("onclick", "completed(this)");
-            button1.className = "d-flex pl-1 alert-button"
-            button1.innerText = 'Mark as complete';
-            li.appendChild(button1);
-            li.appendChild(button);
-            lis.appendChild(li);
-            // }
-            let elem = document.querySelectorAll('ul')
-            console.log(elem + ' elem')
-            for (let i = 0; i < elem.length; i++) {
-
-                elem[i].addEventListener('click', function (event) {
-                    console.log(event.target, i + ' stuff')
-                })
-
+                if (task.completed) {
+                    completedelements.push(li);
+                    li.innerHTML = task.name.strike();
+                }
+                else {
+                    li.innerHTML = task.name
+                    let button1 = document.createElement('button');
+                    button1.addEventListener("click", completed);
+                    button1.className = "d-flex pl-1 alert-button"
+                    button1.innerText = 'Mark as complete';
+                    li.appendChild(button1);
+                    lis.appendChild(li);
+                }
+                li.appendChild(button);
             }
+            lis.append(...completedelements)
+        
         }
-
+        render()
+        function taskApp(e) {
+            e.preventDefault()
+            const tasktextinput = document.getElementById('tasktext')
+            let task = { name: tasktextinput.value, completed: false};
+            localStorage.setItem(localStorage.length, JSON.stringify(task));
+            console.log(localStorage);
+            tasktextinput.value = ""
+            render()
+        }
 
         function remove(x) {
-
-            x.parentElement.remove()
-            // console.log(localStorage.removeItem(el['i']))
             localStorage.removeItem(x.parentElement['id'])
-            console.log(x)
-
-
-            // console.log(el.parentNode)
-
-            // console.log(element + ' element')
-            // element.remove(el.parentNode);
-
-
+            render()
         }
 
         function completed(x) {
-            console.log(x + ' element')
-            console.log(Object.getOwnPropertyNames(x.parentElement));
 
+            const id = x.target.parentElement['id']
+            const task = JSON.parse(localStorage[id])
+            task.completed = true;
+            localStorage.setItem(id, JSON.stringify(task));
+            render()
         }
+        document.getElementById("btn1").addEventListener("click", taskApp);
+    
+    render()
     </script>
 
 
-
 </body>
-
 </html>
