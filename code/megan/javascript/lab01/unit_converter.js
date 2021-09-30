@@ -1,51 +1,51 @@
 // Version 1
 
 // const distance = prompt('What is the distance in feet?')
-// alert(`${distance} feet is ${(distance * 0.3048)} meters.`)
-// console.log(`${distance} feet is ${(distance * 0.3048)} meters.`)
+// alert(`${distance} feet is equal to ${(distance * 0.3048)} meters.`)
+// console.log(`${distance} feet is equal to ${(distance * 0.3048)} meters.`)
 
 // Version 2
 
 // const distance = prompt('What is the distance?')
 // console.log(distance)
 
-// const units = prompt('What are the units (ft, mi, km)?')
+// const units = prompt('What are the units (feet, miles, kilometers)?')
 // console.log(units)
 
-// const conversionFactor = {
-//     'ft': 0.3048,
-//     'mi': 1609.34,
-//     'm': 1,
-//     'km': 1000,
-// }
+const conversionFactor = {
+    'feet': 0.3048,
+    'miles': 1609.34,
+    'meters': 1,
+    'kilmeters': 1000,
+}
 
-// alert(`${distance} ${units} is ${(distance * conversionFactor[units])} meters`)
-// console.log(`${distance} ${units} is ${(distance * conversionFactor[units])} meters`)
+// alert(`${distance} ${units} is equal to ${(distance * conversionFactor[units])} meters.`)
+// console.log(`${distance} ${units} is equal to ${(distance * conversionFactor[units])} meters.`)
 
 // Version 3
 
-// conversionFactor.add { // not correct; fix
-//     'yd': 0.9144,
-//     'in': 0.0254,
-// }
+conversionFactor.yards = '0.9144'
+conversionFactor.inches = '0.0254'
+
+// const distance = prompt('What is the distance?')
+// console.log(distance)
+
+// const units = prompt('What are the units (feet, miles, kilometers, yards, inches)?')
+// console.log(units)
+
+// alert(`${distance} ${units} is equal to ${(distance * conversionFactor[units])} meters.`)
+// console.log(`${distance} ${units} is equal to ${(distance * conversionFactor[units])} meters.`)
+
+// Version 4
 
 const distance = prompt('What is the distance?')
 console.log(distance)
 
-const units = prompt('What are the units (ft, mi, km, yd, in)?')
-console.log(units)
+const inputUnits = prompt('What are the input units (feet, miles, meters, kilometers, yards, inches)?')
+console.log(inputUnits)
 
-const conversionFactor = {
-    'ft': 0.3048,
-    'mi': 1609.34,
-    'm': 1,
-    'km': 1000,
-    'yd': 0.9144,
-    'in': 0.0254
-}
+const outputUnits = prompt('What are the output units (feet, miles, meters, kilometers, yards, inches)')
+console.log(outputUnits)
 
-alert(`${distance} ${units} is ${(distance * conversionFactor[units])} meters`)
-console.log(`${distance} ${units} is ${(distance * conversionFactor[units])} meters`)
-
-
-// Version 4
+alert(`${distance} ${inputUnits} is equal to ${(distance * conversionFactor[inputUnits] / conversionFactor.meters)} ${outputUnits}.`)
+console.log(`${distance} ${inputUnits} is equal to ${(distance * conversionFactor[inputUnits] / conversionFactor.meters)} ${outputUnits}.`)
