@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+    <form>
+        <button id='button_1' onClick="urlRedirect()">click to redirect</button>
+    </form>
+
+    <script>
+         document.getElementById("button_1").addEventListener("click", function (event) {
+            event.preventDefault()
+        });
+
+        function urlRedirect() {
+            console.log('hi')
+            urlChoices = [
+                'https://github.com/PdxCodeGuild/class_wallaby/blob/main/3%20JavaScript/labs/lab03_random_redirector.md',
+                'https://www.google.com/',
+                'http://www.pbpdx.net/'
+            ]
+            let randomNumber = getRandomInt(3)
+            let urlPick = urlChoices[randomNumber]
+            console.log(randomNumber)
+            location.assign(urlPick)
+
+        }
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+    </script>
+
+
+
+</body>
+
+</html>
