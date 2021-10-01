@@ -71,8 +71,8 @@
         }
         render()
         function taskApp(e) {
-            e.preventDefault()
-            const tasktextinput = document.getElementById('tasktext')
+            e.preventDefault();
+            const tasktextinput = document.getElementById('tasktext');
             let task = { name: tasktextinput.value, completed: false};
             localStorage.setItem(localStorage.length, JSON.stringify(task));
             console.log(localStorage);

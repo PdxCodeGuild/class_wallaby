@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <form>
+        <div class="mb-3">
+          <label class="form-label">Enter Task Below</label>
+          <textarea
+            class="form-control"
+            placeholder="Enter Task Here"
+            id="tasktext"
+            rows="2"
+          ></textarea>
+          <button id="btn1">Add Task</button>
+        </div>
+      </form>
+    </div>
+    <div class="container-fluid">
+      <ul class="list-group" id="submittedtasks"></ul>
+    </div>
+    <script>
+
+        
+      //Usually you should define all moving pieces at the top of your document
+      const task = document.getElementById("tasktext");
+      let ul = document.getElementById("submittedtasks");
+      const btn = document.getElementById("btn1");
+      let body = document.getElementsByName('body')
+      
+    //This is your 'reload' function. It loads before the documents prints on the page.
+      window.onload = function () {
+        let keys = Object.keys(localStorage);
+        if (keys) {
+         for (let elem of keys){
+            createTask(elem) //Re-use the createTask function
+         }
+        }
+      };
+
+      function createTask(elem) {
+        //This function creates a new element and appends it to the DOM
+        const textvalue = task.value || elem;
+        const li = document.createElement("li");
+        li.innerHTML =
+          "<div></li>" +
+          textvalue +
+          "</li><button class='delete-button'>delete task</button></div>";
+        ul.appendChild(li);
+        localStorage.setItem(textvalue, 'any value, it does not matter');
+      }
+
+      //This is where the main logic flows
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        createTask();
+      });
+
+      //This technique is using the 'event bubbling' or 'event delegation' technique. Basically, I look at the parent element and check
+      //for children. We'll look into this next week
+
+      //Explore some code here https://codepen.io/DeMichieli/pen/XWjmbyb
+      //Read more here https://javascript.info/bubbling-and-capturing
+      ul.addEventListener("click", function (e) {
+        if (
+          e.target.tagName == "BUTTON" &&
+          e.target.classList.contains("delete-button")
+        ) {
+          let parent = ul;
+          let child = e.target.parentElement.parentElement;
+          let localStorageItem  = e.target.parentElement.innerText.replace('delete task', '') //this is a little hacky
+          localStorage.removeItem(localStorageItem) //removes element from local storage
+          parent.removeChild(child) // removes element from DOM
+        }
+      });
+
+    </script>
+  </body>
+</html>
