@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Enter Task Below</label>
+                <textarea class="form-control" placeholder="Enter Task Here" id="tasktext" rows="2"></textarea>
+                <button id='btn1'>Add Task</button>
+            </div>
+        </form>
+    </div>
+    <div class='container-fluid'>
+        <ul class="list-group" id='submittedtasks'>
+
+        </ul>
+    </div>
+    <script>
+
+        // localStorage.clear()
+
+        // populate the list after refresh
+        function render() {
+            const completedelements = []
+            let lis = document.getElementById("submittedtasks");
+            lis.innerHTML = ""
+            for (i = 0; i < localStorage.length; ++i) {
+                console.log('hi')
+                const task = JSON.parse(localStorage[i])
+                let li = document.createElement('li');
+                li.id = i
+                li.className = "list-group-item pl-5"
+
+                let button = document.createElement('button');
+                button.setAttribute("onclick", "remove(this)");
+                button.className = "d-flex pl-1 alert-button"
+                button.innerText = 'delete';
+
+                if (task.completed) {
+                    completedelements.push(li);
+                    li.innerHTML = task.name.strike();
+                }
+                else {
+                    li.innerHTML = task.name
+                    let button1 = document.createElement('button');
+                    button1.addEventListener("click", completed);
+                    button1.className = "d-flex pl-1 alert-button"
+                    button1.innerText = 'Mark as complete';
+                    li.appendChild(button1);
+                    lis.appendChild(li);
+                }
+                li.appendChild(button);
+            }
+            lis.append(...completedelements)
+        
+        }
+        render()
+        function taskApp(e) {
+            e.preventDefault();
+            const tasktextinput = document.getElementById('tasktext');
+            let task = { name: tasktextinput.value, completed: false};
+            localStorage.setItem(localStorage.length, JSON.stringify(task));
+            console.log(localStorage);
+            tasktextinput.value = ""
+            render()
+        }
+
+        function remove(x) {
+            localStorage.removeItem(x.parentElement['id'])
+            render()
+        }
+
+        function completed(x) {
+
+            const id = x.target.parentElement['id']
+            const task = JSON.parse(localStorage[id])
+            task.completed = true;
+            localStorage.setItem(id, JSON.stringify(task));
+            render()
+        }
+        document.getElementById("btn1").addEventListener("click", taskApp);
+    
+    render()
+    </script>
+
+
+</body>
+</html>
