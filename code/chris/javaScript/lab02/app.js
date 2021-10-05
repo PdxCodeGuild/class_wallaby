@@ -5,11 +5,14 @@ const incompLi = document.getElementById('incompleteList')
 const compLi = document.getElementById('completeList')
 
 const addTodo = e => {
-  const newTodo = document.createElement('li')
-  newTodo.className = 'todo'
-  newTodo.innerText = input.value
-  input.value = ''
-  incompLi.appendChild(newTodo)
+  if (input.value) {
+    const newTodo = document.createElement('li')
+    newTodo.className = 'todo'
+    newTodo.innerText = input.value
+    input.value = ''
+    incompLi.appendChild(newTodo)
+
+  }
 }
 
 const deleteTodo = e => {
