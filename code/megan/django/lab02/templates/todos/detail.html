@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-<p>title: {{ todo.title }}</p>
-<p>description: {{ todo.text }}</p>
-<p>status: {{ todo.status }}</p>
-<a href="{% url 'update' todo.id %}">update</a>
-<a href="{% url 'remove' todo.id %}">remove</a>
-<a href="http://localhost:8000/todo/">Back to To Do List</a> {% endblock %}
+<p>Title: {{ todo.title }}</p>
+<p>Description: {{ todo.text }}</p>
+<p>Status: {{ todo.status }}</p>
+<a href="{% url 'update' todo.id %}">Update</a>
+<a href="{% url 'remove_todo' todo.id %}">Delete</a>
+<a href="http://localhost:8000/todo/"><button class="btn btn-info" type="button">Back To To Do List</button></a> {% endblock %}
