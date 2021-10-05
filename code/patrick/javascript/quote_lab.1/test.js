@@ -10,7 +10,6 @@ function getUrl() {
         })
         .then(function (data) {
             console.log(data['quote']['body'])
-            document.getElementById('displayQuote').innerHTML = data['quote']['body']
-              
+            document.getElementById('displayQuote').innerHTML = data['quote']['body']         
         })
 }
