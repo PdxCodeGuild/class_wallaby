@@ -45,7 +45,7 @@ A much better way is to assign the event listener to the element. You can read m
 ```html
 <button id="bt">click</button>
 <script>
-  let bt = document.querySelector("#bt");
+  const bt = document.querySelector("#bt");
   bt.addEventListener("click", function () {
     alert("hello world!");
   });

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <form>
+        <button id='button_1' onClick="count()">click to redirect in 5 seconds</button>
+    </form>
+    <div id="myTimer"></div>
+
+    <script>
+        document.getElementById("button_1").addEventListener("click", function (event) {
+            event.preventDefault()
+        });
+
+        function count() {
+            let l = 5
+            window.setInterval(function () {
+                if (l == 0) {
+                    clearInterval(count)
+                    urlRedirect()
+                }
+                else {
+                    let count1 = document.getElementById('myTimer').textContent = l + ' seconds';
+                    console.log(l)
+                }
+                l += - 1
+            }, 1000);
+        }
+
+        function urlRedirect() {
+            urlChoices = [
+                'https://github.com/PdxCodeGuild/class_wallaby/blob/main/3%20JavaScript/labs/lab03_random_redirector.md',
+                'https://www.google.com/',
+                'http://www.pbpdx.net/'
+            ]
+            let randomNumber = getRandomInt(3)
+            let urlPick = urlChoices[randomNumber]
+            console.log(randomNumber)
+            location.assign(urlPick)
+        }
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+    </script>
+</body>
+
+</html>

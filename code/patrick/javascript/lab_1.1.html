@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to demonstrate the prompt box.</p>
+
+<button onclick="convert()">Try it</button>
+
+<p id="result"></p>
+
+<script>
+function convert() {
+  var value = prompt("Please enter number of feet");
+  if (value != null) {
+    var x = value*.3048
+    document.getElementById("result").innerHTML =
+    value+ " ft equlas " + x + " meters.";
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+
+<body>
+
+    <form>
+        <input id='integer' placeholder="Enter distance in feet"></input>
+        <select id='input_values'>
+            <option value="" disabled selected hidden>Choose unit type</option>
+            <option>m</option>
+            <option>km</option>
+            <option>ft</option>
+            <option>mi</option>
+            <option>yrds</option>
+            <option>in</option>
+        </select>
+        <select id='output_values'>
+            <option value="" disabled selected hidden>Choose unit type</option>
+            <option>m</option>
+            <option>km</option>
+            <option>ft</option>
+            <option>mi</option>
+        </select>
+        <button id='button_1' onClick="convert()" type='submit'>Calculate</button>
+    </form>
+    <a id="result"></a>
+    <script>
+        document.getElementById("button_1").addEventListener("click", function (event) {
+            event.preventDefault()
+        });
+        function convert() {
+            var inputFieldValue = document.getElementById("integer").value;
+            var input = document.getElementById("input_values").value;
+            
+            var output = document.getElementById("output_values").value;
+            let measurements = {
+                
+                ft: .3048,
+                mi: 1609.34,
+                m: 1,
+                km: 1000,
+            };
+         
+            
+            var val = measurements[input];
+            var val1 = measurements[output]
+            console.log(val1)
+            if (inputFieldValue != null) {
+                document.getElementById("result").innerHTML =
+                    inputFieldValue+" "+input +" is equal to " + val/val1 +" "+output;
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>
