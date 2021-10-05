@@ -135,13 +135,13 @@ Similarly, you can also access the values of input fields. You can read more abo
 <button id="trigger">click me</button>
 <div id="output"></div>
 <script>
-  const text_field = document.getElementById("user_input");
+  const textField = document.getElementById("user_input");
   const output = document.getElementById("output");
   const trigger = document.getElementById("trigger");
 
   trigger.addEventListener("click", function () {
-    console.log(text_field.value);
-    output.innerHTML = text_field.value;
+    console.log(textField.value);
+    output.innerHTML = textField.value;
   });
 </script>
 ```
