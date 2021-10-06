@@ -84,31 +84,38 @@ btn.addEventListener("click", function () {
 Here's an example of a callback function to change the color of squares:
 
 ```html
-<div id="red"></div>
-<div id="blue"></div>
-<div id="yellow"></div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <body>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
 
-<style>
-  div {
-    width: 500px;
-    height: 500px;
-    border: 1px solid black;
-  }
-</style>
+    <style>
+      div {
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+      }
+    </style>
 
-<script>
-  function myElement(elem, color) {
-    document.getElementById(elem).style.backgroundColor = color;
-  }
+    <script>
+      function myElement(elem, color) {
+        document.getElementById(elem).style.backgroundColor = color;
+      }
 
-  function changeColor(elem, color) {
-    myElement(elem, color);
-  }
+      function changeColor(callback, elem, color) {
+        callback(elem, color);
+      }
 
-  changeColor("red", "red");
-  changeColor("blue", "blue");
-  changeColor("yellow", "yellow");
-</script>
+      changeColor(myElement, "one", "red");
+    </script>
+  </body>
+</html>
 ```
 
 You would use a callback function to work with asynchronous operations. In the example below we simulate getting data from a server.
