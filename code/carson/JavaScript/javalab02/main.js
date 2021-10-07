@@ -6,10 +6,14 @@ const remove = document.getElementById("remove");
 
 add.addEventListener("click", function () {
     console.log(text_field.value);
-  
+
     const li = document.createElement("li")
-    li.innerHTML ="<li>" + text_field.value + "</li>"
+    li.innerHTML = "<li>" + text_field.value + "</li>"
     list.appendChild(li)
+})
+const btn = document.querySelector('button');
+btn.addEventListener('click', () => {
+    alert('You added a note!');
 })
 
 remove.addEventListener("click", function () {
@@ -20,6 +24,13 @@ remove.addEventListener("click", function () {
 function hide(event) {
     event.target.style.textDecorationLine = "line-through";
     console.log(event.target, event.target.tagName);
-  }
-  const list = document.querySelector("#list");
-  list.addEventListener("click", hide);
+}
+const list = document.querySelector("#list");
+list.addEventListener("click", hide);
+
+
+
+
+
+
+
