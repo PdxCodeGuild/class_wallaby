@@ -126,12 +126,9 @@ You would use a callback function to work with asynchronous operations. In the e
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title></title>
   </head>
   <body>
-    <script src="script.js"></script>
-  </body>
   <script>
     const posts = [
       { id: 1, title: "blog 1" },
@@ -156,6 +153,7 @@ You would use a callback function to work with asynchronous operations. In the e
     addPost({ id: 3, title: "blog 3" });
     getPosts();
   </script>
+</body>
 </html>
 ```
 
