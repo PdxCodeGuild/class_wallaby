@@ -29,20 +29,20 @@ The following code demonstrates how each of these are used:
 
 <script>
   const a = document.getElementById("mydiv");
-  const bs = document.getElementsByTagName("div");
+  const b = document.getElementsByTagName("div");
   console.log(bs.length); // 3
   Array.from(bs).map(function (item) {
     //allows you to iterate from a HTML collection list
     console.log(item);
   });
-  const cs = document.getElementsByName("adiv");
+  const c = document.getElementsByName("adiv");
   console.log(cs.length); // 2
   Array.from(cs).map(function (item) {
     //allows you to iterate from a Node list
     console.log(item);
   });
   const d = document.querySelector("#mydiv");
-  const es = document.querySelectorAll(".myclass");
+  const e = document.querySelectorAll(".myclass");
   console.log(es.length); // 2
 </script>
 ```
@@ -82,7 +82,6 @@ You can assign attributes to elements just as you'd assign attributes to objects
   const demo_div = document.querySelector("#demo_div");
   demo_div.innerHTML = "Hello World!";
   demo_div.style.fontSize = "24px";
-  demo_div.name = "demo_div";
 </script>
 ```
 
@@ -136,13 +135,13 @@ Similarly, you can also access the values of input fields. You can read more abo
 <button id="trigger">click me</button>
 <div id="output"></div>
 <script>
-  const text_field = document.getElementById("user_input");
+  const textField = document.getElementById("user_input");
   const output = document.getElementById("output");
   const trigger = document.getElementById("trigger");
 
   trigger.addEventListener("click", function () {
-    console.log(text_field.value);
-    output.innerHTML = text_field.value;
+    console.log(textField.value);
+    output.innerHTML = textField.value;
   });
 </script>
 ```
@@ -163,12 +162,16 @@ We can also create elements from scratch.
 ```html
 <div id="container_div"></div>
 <script>
-  let btn = document.createElement("button");
+  const container_div = document.getElementById("container_div");
+
+  const btn = document.createElement("button");
   btn.style.backgroundColor = "lightblue";
   btn.style.border = "1px solid white";
   btn.innerText = "click";
-  let container_div = document.getElementById("container_div");
+
   container_div.appendChild(btn);
+
+
 </script>
 ```
 
