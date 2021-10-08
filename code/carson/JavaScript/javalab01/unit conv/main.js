@@ -1,4 +1,4 @@
-
+//UNIT CONVERTER
 const units = {
     'feet': 0.3048,
     'miles': 1609.34,
@@ -23,12 +23,10 @@ function math(nums, nums2) {
     convert = total / nums2
     return (convert)
 }
-var x = math(nums, nums2)
-// console.log(x)
-console.log ( distance + ' ' + unit1 + ' ' + 'is' + ' ' + x  + ' ' + unit2)
+let = math(nums, nums2)
 
-// console.log(nums)
-// console.log(total)
-// console.log(distance + index + " " + 'into meters is' + " " + total)
+console.log ( distance + ' ' + unit1 + ' ' + 'is' + ' ' + x  + ' ' + unit2)
+//------------------------------------------------------------------------------------------
+
 
 

@@ -37,7 +37,7 @@ expenses = 0
 winner = pick6()
 
 i = 1
-for i in range(100_    000): #Loop function
+for i in range(100_000): #Loop function
   ticket = pick6()
   total = matches(winner,ticket)  
   x = payout.get(total)  
