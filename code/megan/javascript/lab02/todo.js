@@ -5,7 +5,7 @@ const btnRemove = document.querySelector('#btn-remove-task')
 const list = document.querySelector('#task-list')
 const completed = document.querySelector('#completed-list')
 
-// add item to list
+// add item to list (click)
 btnNew.addEventListener('click', function() {
     let task = document.createElement('li');
     task.innerHTML = textField.value;
@@ -13,9 +13,8 @@ btnNew.addEventListener('click', function() {
 });
 
 // remove item from list
-btnRemove.addEventListener('click', function(event) {
-    // event.target.style.visibility = 'hidden';
-    list.removeChild(event.target)
+btnRemove.addEventListener('click', function() {
+    list.removeChild(list.children[0])
 });
 
 // mark item as completed
@@ -33,12 +32,3 @@ const buttons = document.querySelector('.btn')
 buttons.style.backgroundColor = 'blue'
 buttons.style.border = '1px dark-blue'
 buttons.style.color = 'white'
-
-body.addEventListener('click', function(event) {
-    if (event.target.className === 'btn') {
-        let buttons = document.querySelector('.btn')
-        buttons.style.backgroundColor = 'blue'
-        buttons.style.border = '1px dark-blue'
-        buttons.style.color = 'white'
-    }
-})
