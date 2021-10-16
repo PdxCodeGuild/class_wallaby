@@ -1,0 +1,152 @@
+h1 {
+    color: #9c101c98;
+  }
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+
+  nav{ 
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      min-height: 8vh;
+      background-color: rgb(2, 155, 202);
+      font-weight: bold;
+      
+
+    }
+
+.logo{
+  color: aliceblue;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 30px;
+
+}
+
+.nav-links{
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+  
+
+}
+
+.nav-links li{
+    list-style: none;
+}
+.nav-links a{
+  color: aliceblue;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 15px;
+
+}
+
+.burger{
+  display: none;
+  cursor: pointer;
+ 
+}
+.burger div{
+  width: 25px;
+  height: 5px;
+  background-color: aliceblue;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.ctrlHolder{
+  font-weight: bold;
+}
+@media screen and (max-width: 1200px){
+  
+  .nav-links{
+  
+    width: 60%;
+   
+  }
+}
+@media screen and (max-width: 768px){
+  body{
+    overflow-x: hidden;
+  }
+  .nav-links{
+  position: absolute;
+  right: 0px;
+  height: 92vh;
+  top: 8vh;
+  background-color:  rgb(2, 155, 202);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in;
+  }
+.nav-links li{
+  opacity: 0;
+}
+
+.burger{
+  display: block;
+}
+
+}
+
+
+.nav-active{
+  transform: translateX(0%);
+  z-index: 2;
+}
+
+@keyframes navLinkFade{
+  from{
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+}
+
+.toggle .line1{
+  transform: rotate(-50deg) translate(-5px,6px);
+}
+.toggle .line2{
+opacity: 0;
+}
+.toggle .line3{
+  transform: rotate(45deg) translate(-7px,-11px);
+}
+
+ /* .modal-bg{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+ .modal{
+  background-color: aquamarine;
+  width: 30%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}   */
