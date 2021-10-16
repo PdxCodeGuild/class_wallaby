@@ -1,5 +1,5 @@
 h1 {
-    color: rgb(160, 214, 32);
+    color: #9c101c98;
   }
 
 *{
@@ -9,12 +9,15 @@ h1 {
     font-family: 'Poppins', sans-serif;
   }
 
+
   nav{ 
       display: flex;
       justify-content: space-around;
       align-items: center;
       min-height: 8vh;
       background-color: rgb(2, 155, 202);
+      font-weight: bold;
+      
 
     }
 
@@ -30,6 +33,8 @@ h1 {
   display: flex;
   justify-content: space-around;
   width: 30%;
+  
+
 }
 
 .nav-links li{
@@ -47,6 +52,7 @@ h1 {
 .burger{
   display: none;
   cursor: pointer;
+ 
 }
 .burger div{
   width: 25px;
@@ -56,11 +62,15 @@ h1 {
   transition: all 0.3s ease;
 }
 
+.ctrlHolder{
+  font-weight: bold;
+}
 @media screen and (max-width: 1200px){
   
   .nav-links{
   
     width: 60%;
+   
   }
 }
 @media screen and (max-width: 768px){
@@ -93,8 +103,8 @@ h1 {
 
 .nav-active{
   transform: translateX(0%);
+  z-index: 2;
 }
-
 
 @keyframes navLinkFade{
   from{
@@ -110,7 +120,6 @@ h1 {
 
 .toggle .line1{
   transform: rotate(-50deg) translate(-5px,6px);
-  
 }
 .toggle .line2{
 opacity: 0;
@@ -118,3 +127,26 @@ opacity: 0;
 .toggle .line3{
   transform: rotate(45deg) translate(-7px,-11px);
 }
+
+ /* .modal-bg{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+ .modal{
+  background-color: aquamarine;
+  width: 30%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}   */
