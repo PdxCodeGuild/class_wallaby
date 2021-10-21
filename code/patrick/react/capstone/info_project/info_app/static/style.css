@@ -1,0 +1,9 @@
+hr {
+    border-top: 5px solid #302e2e; 
+    margin-top: -5px; 
+}
+
+.savedSnips {
+    font-weight: 600px;
+    font-size: 40px;
+}

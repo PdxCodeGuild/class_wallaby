@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<script src="{% static 'profile.js' %}"></script>
+
+<div class="content-section w-100 p-3">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+    <div class="media-body">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
+    </div>
+  </div>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Profile Info</legend>
+
+      {{ u_form|crispy }}
+      {{ p_form|crispy }}
+
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Update</button>
+    </div>
+  </form>
+</div>
+<div class="container-fluid ">
+  <h5 class='savedSnips'>Feed Subscriptions</h5>
+  <hr>
+  <div id='feedSubscriptions'></div>
+  <h5 class='savedSnips'>Saved Snippets</h5>
+  <hr>
+  <div class="list-group mx-3">
+    <div class="row align-items-start">
+      <ul class="list-group" id="submittedtasks"></ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock content %}

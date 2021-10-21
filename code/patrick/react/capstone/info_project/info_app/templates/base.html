@@ -1,0 +1,84 @@
+{% load static %}
+{% load account %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel=”stylesheet” href=”https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css”>
+    
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% if title %}
+    <title>Info App - {{ title }}</title>
+    {% else %}
+    <title>InfoApp</title>
+    {% endif %}
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'federalregister' %}">SEC Feed</a>
+                        
+                    </li>
+                </ul>
+                    {% if user.is_authenticated %}
+                    <div class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <button  class="nav-link dropdown-toggle btn btn-outline-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="rounded-circle account-img" height="50" src="{{ user.profile.image.url }}"> Welcome, {% user_display user %} 
+                               </button>
+                               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                                 <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
+                               </ul>
+                        </li>
+                    </div>
+                    {% else %}
+                    <a class="nav-item nav-link" href="{% url 'account_login' %}">Login</a>
+                    <a class="nav-item nav-link" href="{% url 'account_signup' %}">Register</a>
+                    {% endif %}
+
+               
+                <form class="d-flex"  action="{% url 'search_results' %}" method="get">
+                    <input class="form-control me-2" id=mySearch name="q" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" id='searchTxt' type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    
+
+    {% block content %}{% endblock %}
+    <!-- allows for the user ID to be parsed by JS -->
+    {{ request.user.id|json_script:"user_id" }}
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    
+    <script src="{% static 'search.js' %}"></script>
+    <script src="{% static 'profile.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
