@@ -1,8 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import './App.css';
+import NavBar from './components/NavBar'
+import Home from './pages/Home'
+import FederalRegister from './pages/FederalRegister'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
-function Car() {
-  return <h2>Hi, I am a Car!</h2>;
+
+export default function App() {
+  return (
+    <Router>
+      <div>
+        <NavBar />      
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/federalregister">
+            <FederalRegister />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
-ReactDOM.render(<Car />, document.getElementById('root'));
+
+// function Federalregister() {
+//   return <FederalRegister />;
+// }
+
+
