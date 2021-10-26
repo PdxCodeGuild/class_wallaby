@@ -2,6 +2,7 @@ import React from "react";
 import './App.css';
 import NavBar from './components/NavBar'
 import Home from './pages/Home'
+
 import FederalRegister from './pages/FederalRegister'
 import {
   BrowserRouter as Router,
@@ -16,13 +17,13 @@ export default function App() {
       <div>
         <NavBar />      
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+          <Route exact path="/" component={Home} />
+         {/* <Route exact path="/login" component={Login} /> */}
           <Route exact path="/federalregister">
             <FederalRegister />
           </Route>
         </Switch>
+        
       </div>
     </Router>
   );

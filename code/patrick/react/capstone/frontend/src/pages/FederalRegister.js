@@ -1,24 +1,23 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { ListGroup, Badge } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
 
 
 function FederalRegister() {
-  const [posts, setPosts] = useState([]);
+  const [snippets, setSnippets] = useState([]);
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/feed/all/`).then((res) => {
-      const feeds = res.data;
-      setPosts(feeds);
+      setSnippets(res.data);
     });
   }, []);
 
-  const ListItems = items.map(el => (
-    <div key={el.id}></div>
-  ))
+ const AddUserToSnippet = (item) => {
+   console.log(item)
+ }
 
   return (
     <ListGroup as="ol" numbered>
-      {posts.map((item) => (
+      {snippets.map((item) => (
         <div key={item.id}>
           <a
             href={item.link}
@@ -27,8 +26,10 @@ function FederalRegister() {
           >
             <div className="ms-2 me-auto">
               <div className="fw-bold">{item.title}</div>
+              <div>{item.pubDate}</div>
             </div>
           </a>
+          <button type='submit' onClick={AddUserToSnippet(item.id)} className="btn btn-primary">Add Snippet</button>
           
         </div>
       ))}

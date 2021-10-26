@@ -47,11 +47,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'rest_framework',
     'corsheaders',
     'prettytable',
-    
-    
+    'rest_framework.authtoken',   
 ]
 
 MIDDLEWARE = [
@@ -67,14 +65,17 @@ MIDDLEWARE = [
 ]
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:8000', 'http://localhost:3000']
-
+CORS_ALLOW_CREDENTIALS = True
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+CSRF_TRUSTED_ORIGINS = ['localhost:3000']
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGIN_REDIRECT_URL = '/'
 ROOT_URLCONF = 'info_project.urls'
 SITE_ID = 1
+
+
 
 TEMPLATES = [
     {
