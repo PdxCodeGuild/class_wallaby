@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container-fluid mx-6 mt-5">
+    <div class="clearfix  ">
+        <a class="btn btn-info left" href="{% url 'calendar' %}?{{ prev_month }}"> Previous Month </a>
+        <a class="btn btn-info right" href="{% url 'calendar' %}?{{ next_month }}"> Next Month </a>
+        <a class="btn btn-info right" href="{% url 'event' %}"> New Event </a>
+    </div>
+
+
+{{ calendar }}
+</div>
+{% endblock %}
