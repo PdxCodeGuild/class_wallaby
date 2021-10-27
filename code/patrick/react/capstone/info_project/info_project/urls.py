@@ -18,12 +18,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from users import views as user_views
+from rest_framework.authtoken import views
+from info_app.views import CustomAuthToken
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('info_app.urls')),
     path('accounts/', include('allauth.urls')),
     path('profile/', user_views.profile, name='profile'),
+    path('api-token/', CustomAuthToken.as_view())
 ]
 
 if settings.DEBUG:

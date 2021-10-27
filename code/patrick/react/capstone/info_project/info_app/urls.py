@@ -1,12 +1,16 @@
 from django.urls import path
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
+from django.contrib import admin
+from django.urls import path
+
 from .views import (
     home, 
     federalregister,
     addfeedsubs,
     profilesniplist,
     test,
+    
     
     FRList, 
     FRDetail, 
@@ -66,4 +70,5 @@ urlpatterns = [
     path('search/api/', Search.as_view(), name='search_api'),
     path('search/', SearchResultsView.as_view(), name='search_results'),
     
+   
 ]

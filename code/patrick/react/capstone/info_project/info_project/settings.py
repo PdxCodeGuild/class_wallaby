@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'corsheaders',
     'prettytable',
-    'rest_framework.authtoken',   
+    'rest_framework.authtoken', 
+      
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -75,7 +75,11 @@ LOGIN_REDIRECT_URL = '/'
 ROOT_URLCONF = 'info_project.urls'
 SITE_ID = 1
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (  
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 TEMPLATES = [
     {
