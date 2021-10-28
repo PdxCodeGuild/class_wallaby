@@ -4,62 +4,59 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import React, { useState, useEffect, Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../API/context/AuthContext";
+import LogOutBtn from "../authorization/LogOutBtn";
 
-const NavBar = () => {
-  const [isAuth, setIsAuth] = useState(false);
+// function Navbar() {
+//   const { loggedIn } = useContext(AuthContext);
+//   console.log(loggedIn, 'navbar')
+//   return (
+//     <div>
+//       <Link to="/">Home</Link>
+//       {loggedIn === 'false' && (
+//         <>
+//           <Link to="/register">Register</Link>
+//           <Link to="/login">Log in</Link>
+//         </>
+//       )}
+//       {loggedIn === 'true' && (
+//         <>
+//           <Link to="/customer">Customers</Link>
+
+//         </>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default Navbar;
+
+function NavBar() {
+  const { loggedIn } = useContext(AuthContext);
+  console.log(loggedIn, "navbar");
 
   useEffect(() => {
-    if (localStorage.getItem("token") !== null) {
-      setIsAuth(true);
-    }
-  }, []);
+        getLoggedIn();
+      }, []);
 
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">Home Page</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/register">Signup</Nav.Link>
-            <Nav.Link href="/login">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/federalregister">
-                Federal Register
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/about">Action</NavDropdown.Item>
-              {isAuth === true ? (
-                <Fragment>
-                  {" "}
-                  <NavDropdown.Item>
-                    <Link href="/profile">Dashboard</Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
-                    <Link href="/logout">Logout</Link>
-                  </NavDropdown.Item>
-                </Fragment>
-              ) : (
-                <Fragment>
-                  {" "}
-                  <NavDropdown.Item to="/login">Login</NavDropdown.Item>
-                  <NavDropdown.Item to="/register">Signup</NavDropdown.Item>
-                </Fragment>
-              )}
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-        {/*           
-         < div className="container mt-3">
-        <Switch>
-          <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
-          <Route exact path="/add" component={AddTutorial} />
-          <Route path="/tutorials/:id" component={Tutorial} />
-        </Switch>
-      </div> */}
-
+          <Link to="/">Home</Link>
+          {!loggedIn ? (
+           <>
+           <Link to="/login">Login</Link>
+           <Link to="/register">Signup</Link>
+         </>
+          ) :  (
+            <>
+              <Link to="/profile">Profile</Link>
+              
+           <LogOutBtn />
+          </>
+          )}
         <Form>
           <Row className="align-items-center">
             <Col xs="auto">

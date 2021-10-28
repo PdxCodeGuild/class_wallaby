@@ -8,7 +8,8 @@ axios.defaults.withCredentials = true;
 
 function App() {
   return(
-    <AuthContextProvider>
+    // Gifting router AuthContext
+    <AuthContextProvider>  
       <Router />
     </AuthContextProvider>
   )

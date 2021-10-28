@@ -68,16 +68,19 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+SITE_ID = 1
+
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
-REST_USE_JWT = True
 LOGIN_REDIRECT_URL = '/'
+
+
 ROOT_URLCONF = 'info_project.urls'
-SITE_ID = 1
 REST_USE_JWT = True
 JWT_AUTH_COOKIE = 'info-app-auth'
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',

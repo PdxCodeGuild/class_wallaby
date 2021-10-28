@@ -107,7 +107,7 @@ def isauthorized(request):
 
 # Listview and create feeds
 class Subscribe(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     queryset = Feeds.objects.order_by('-pubDate')
     serializer_class = FeedSerializer
 

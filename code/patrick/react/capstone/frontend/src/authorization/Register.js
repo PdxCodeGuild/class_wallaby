@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import { useForm } from "react-hook-form";
-import { Container, Col } from "react-bootstrap";
+import React, { useContext, useState } from 'react';
+// import { useForm } from "react-hook-form";
+// import { Container, Col } from "react-bootstrap";
 import axios from 'axios'
-
-
-
+import AuthContext from '../API/context/AuthContext';
+import { useHistory } from 'react-router';
 
 function Register() {
+    
     const [username, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
     
-  
-    // const { getLoggedIn } = useContext(AuthContext);
-    // const history = useHistory();
+    const { getLoggedIn } = useContext(AuthContext);
+    const history = useHistory();
   
   async function register(e) {
       e.preventDefault();
@@ -31,8 +30,8 @@ function Register() {
     })
         
 
-        // await getLoggedIn();
-        // history.push("/");
+        await getLoggedIn();
+        history.push("/");
      
     }
   

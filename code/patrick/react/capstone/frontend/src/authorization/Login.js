@@ -1,26 +1,24 @@
-import Requests from "../API/Calls";
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Container, Col, } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
-
-
+import AuthContext from "../API/context/AuthContext";
+import { useHistory } from "react-router";
 
 export default function Login() {
   const {register, handleSubmit, formState: { errors } } = useForm(); 
-  const [token, setToken] = useState([]);
-  const onSubmit = (data) => {
+  let history = useHistory()
+  const { getLoggedIn } = useContext(AuthContext);
+
+ async function onSubmit(data) {
   let creds = data
-  axios.post("http://localhost:8000/dj-rest-auth/login/", creds,).then((res) => {
-      // let cookie = res.data["key"]
-      // document.cookie = `token: ${cookie}` 
-      // console.log(res)
-      console.log('loged in')
-    setToken(res)
-    ;})}
-  
-  
+  await axios.post("http://localhost:8000/dj-rest-auth/login/", creds,).then((res) => {
+      console.log(res, 'loged in')
+      ;})
+      await getLoggedIn()
+      history.push("/")
+    
+    }
   
   return (
     <Container>
