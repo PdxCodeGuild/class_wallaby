@@ -49,7 +49,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'corsheaders',
     'prettytable',
-    'rest_framework.authtoken', 
+    'rest_framework.authtoken',
+    'rest_framework',
+    'dj_rest_auth.registration',
+    'dj_rest_auth',
+    'rest_framework_simplejwt',
+     
       
 ]
 
@@ -64,22 +69,33 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:8000', 'http://localhost:3000']
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
 CORS_ALLOW_CREDENTIALS = True
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
-CSRF_TRUSTED_ORIGINS = ['localhost:3000']
-CRISPY_TEMPLATE_PACK = "bootstrap5"
-
+REST_USE_JWT = True
 LOGIN_REDIRECT_URL = '/'
 ROOT_URLCONF = 'info_project.urls'
 SITE_ID = 1
-
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'info-app-auth'
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (  
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
+AUTHENTICATION_BACKENDS = [
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+]
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 TEMPLATES = [
     {
@@ -158,3 +174,10 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+# LOGIN_URL = 'http://localhost:8000/users/login'

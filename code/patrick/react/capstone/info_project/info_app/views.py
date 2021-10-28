@@ -20,7 +20,7 @@ from django.contrib.auth.models import User
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 #-----------------------------------------------------
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from django.http.response import JsonResponse
@@ -33,6 +33,8 @@ from .serializers import (
     FeedNameSerializer, 
     ProfileSnipListSerializer,
     )
+from rest_framework.permissions import IsAuthenticated
+
 
 # Home page rendering 
 def home(request):
@@ -69,7 +71,9 @@ def test(request):
 #Profile snippet listview
 
 @api_view(["GET", "PATCH"])
+@permission_classes([IsAuthenticated])
 def profilesniplist(request, pk): 
+    
     if request.method == 'GET':
         usersnips = Feeds.objects.filter(subscriber__id=pk)
         serializer = ProfileSnipListSerializer(usersnips, many=True)      
@@ -77,7 +81,9 @@ def profilesniplist(request, pk):
 
 
 @api_view(["GET", "POST"])
+@permission_classes([IsAuthenticated])
 def addfeedsubs(request, format=None):
+    
     if request.method == 'GET':
         user_subscriptions = UserSubscriptions.objects.all()
         serializer = UserSubscriptionsSerializer(user_subscriptions, many=True, partial=True)
@@ -91,8 +97,17 @@ def addfeedsubs(request, format=None):
         return Response ("user exists")
 
 
+@api_view(["GET", "POST"])
+@permission_classes([IsAuthenticated])
+def isauthorized(request):
+    context = 'true'
+    print(user.id)
+    return Response (context)
+
+
 # Listview and create feeds
 class Subscribe(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Feeds.objects.order_by('-pubDate')
     serializer_class = FeedSerializer
 
@@ -112,7 +127,6 @@ class UserSubscriptions(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserSubscriptions.objects.all()
     serializer_class = UserSubscriptionsSerializer
 
-    
 
 class FeedNameUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = FeedName.objects.all()
@@ -170,8 +184,6 @@ def federalregister(request):
     page_obj = paginator.get_page(page_number)
     return render(request, 'info_app/federalregister.html', {'page_obj': page_obj})
 
-
-    
 
 
 

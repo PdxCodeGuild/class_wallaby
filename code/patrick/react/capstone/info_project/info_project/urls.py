@@ -20,14 +20,37 @@ from django.conf.urls.static import static
 from users import views as user_views
 from rest_framework.authtoken import views
 from info_app.views import CustomAuthToken
+from django.conf.urls import url, include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from django.urls import path, re_path
+from dj_rest_auth.registration.views import RegisterView, VerifyEmailView, ConfirmEmailView
+from dj_rest_auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('info_app.urls')),
     path('accounts/', include('allauth.urls')),
     path('profile/', user_views.profile, name='profile'),
-    path('api-token/', CustomAuthToken.as_view())
+    path('api-token/', CustomAuthToken.as_view()),
+    # url(r'^rest-auth/', include('rest_auth.urls')),
+    # url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+    
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # path('verify-email/',
+    #      VerifyEmailView.as_view(), name='rest_verify_email'),
+    # path('account-confirm-email/',
+    #      VerifyEmailView.as_view(), name='account_email_verification_sent'),
+    # re_path(r'^account-confirm-email/(?P<key>[-:\w]+)/$',
+    #      VerifyEmailView.as_view(), name='account_confirm_email'),
+    # path('account-confirm-email/<str:key>/', ConfirmEmailView.as_view()),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

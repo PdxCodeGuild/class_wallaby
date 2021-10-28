@@ -4,7 +4,7 @@ import SnipBtn from "../components/SnipBtn";
 import Requests from '../API/Calls'
 
 function FederalRegister() {
-  
+
   const [snippets, setSnippets] = useState([]);
 
   useEffect(() => {

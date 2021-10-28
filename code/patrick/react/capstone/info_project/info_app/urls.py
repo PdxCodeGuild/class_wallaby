@@ -10,6 +10,7 @@ from .views import (
     addfeedsubs,
     profilesniplist,
     test,
+    isauthorized,
     
     
     FRList, 
@@ -27,6 +28,8 @@ from .views import (
 urlpatterns = [
     #home path
     path('', home, name='home'),
+
+    path('isauthorized/', isauthorized),
 
     #User snippet subscription
     path('profile/profilesniplist/<int:pk>', profilesniplist, name='profilesniplist'),
@@ -49,16 +52,12 @@ urlpatterns = [
     path('feed/all/', Subscribe.as_view()),
     path('profile/feed/all/', Subscribe.as_view()),
     
-    
     #api to get data for the federal register, filtered for SEC
     path('federalregister', federalregister, name='federalregister'),
-    
-    
     
     #Profile views
     path('frapi/', FRList.as_view()),
     path('frapi/<int:pk>', FRDetail.as_view()),
-
     path('test/', test),
     
 
