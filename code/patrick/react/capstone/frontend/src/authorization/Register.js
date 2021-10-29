@@ -25,8 +25,7 @@ function Register() {
           password2: password2
       }
         
-      const res = await axios.post( "http://localhost:8000/dj-rest-auth/registration/", data1)
-      // const logged =  await getLoggedIn(); 
+      const res = await axios.post( "http://localhost:8000/dj-rest-auth/registration/", data1) 
       console.log(res.data)
       const creds = {
         email: res.data.user.email,
@@ -36,15 +35,10 @@ function Register() {
       console.log(creds)
       await axios.post("http://localhost:8000/dj-rest-auth/login/", creds,).then((res) => {
       console.log(res, 'loged in')
-      // setUserCreds(res.data.user)
+      
       ;})
       await getLoggedIn()
-      history.push("/")
-
-    
-        await axios.get(
-          "http://localhost:8000/isauthorized/")
-     
+      history.push("/")   
     }
   
     return (
@@ -80,5 +74,4 @@ function Register() {
       </div>
     );
   }
-  
   export default Register;
