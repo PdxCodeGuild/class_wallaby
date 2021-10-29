@@ -13,6 +13,7 @@ function AuthContextProvider(props) {
     ).then(res =>{
       console.log(res, 'auth response')
     setLoggedIn(res.data)
+    console.log(res.data)
       })
       .catch(error =>{
         console.log(error)

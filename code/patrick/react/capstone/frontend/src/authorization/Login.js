@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Container, Col, } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -9,6 +9,7 @@ import { useHistory } from "react-router";
 
 export default function Login() {
   const {register, handleSubmit, formState: { errors } } = useForm(); 
+  const [usercreds, setUserCreds] = useState([])
   let history = useHistory()
   const { getLoggedIn } = useContext(AuthContext);
   
@@ -16,10 +17,11 @@ export default function Login() {
   let creds = data
   await axios.post("http://localhost:8000/dj-rest-auth/login/", creds,).then((res) => {
       console.log(res, 'loged in')
+      // setUserCreds(res.data.user)
       ;})
       await getLoggedIn()
       history.push("/")
-    
+
     }
   
   return (

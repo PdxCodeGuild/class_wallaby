@@ -12,25 +12,38 @@ function Register() {
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
     
-    const { getLoggedIn } = useContext(AuthContext);
+    const {getLoggedIn} = useContext(AuthContext);
     const history = useHistory();
   
-  async function register() {
-      
+  async function register(e) {
+      e.preventDefault();
       const data1 = {
+          
           username: username,
           email: email, 
           password1: password1,
           password2: password2
       }
         
-      await axios.post( "http://localhost:8000/dj-rest-auth/registration/", data1).then((res) => {
-          console.log(res)
-          getLoggedIn();
-    })
-        
+      const res = await axios.post( "http://localhost:8000/dj-rest-auth/registration/", data1)
+      // const logged =  await getLoggedIn(); 
+      console.log(res.data)
+      const creds = {
+        email: res.data.user.email,
+        username: res.data.user.username,
+        password: data1.password1
+      }
+      console.log(creds)
+      await axios.post("http://localhost:8000/dj-rest-auth/login/", creds,).then((res) => {
+      console.log(res, 'loged in')
+      // setUserCreds(res.data.user)
+      ;})
+      await getLoggedIn()
+      history.push("/")
 
-        history.push("/");
+    
+        await axios.get(
+          "http://localhost:8000/isauthorized/")
      
     }
   

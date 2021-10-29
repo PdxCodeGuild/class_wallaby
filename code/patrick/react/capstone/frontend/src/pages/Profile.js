@@ -15,7 +15,7 @@ function Profile() {
     const creds = {
         username: "patrick",
         first_name: "pat",
-        last_name: "barry"
+        
     }
 
     axios.get( "http://localhost:8000/dj-rest-auth/user/", creds).then((res) => {
