@@ -5,12 +5,14 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import (
+    UserDetails,
     home, 
     federalregister,
     addfeedsubs,
     profilesniplist,
     test,
     isauthorized,
+    UserDetails,
     
     
     FRList, 
@@ -57,8 +59,9 @@ urlpatterns = [
     
     #Profile views
     path('frapi/', FRList.as_view()),
-    path('frapi/<int:pk>', FRDetail.as_view()),
+    path('frapis/<int:pk>', FRDetail.as_view()),
     path('test/', test),
+    path('userdetails/<int:pk>', UserDetails),
     
 
     #Feed Lists that exist

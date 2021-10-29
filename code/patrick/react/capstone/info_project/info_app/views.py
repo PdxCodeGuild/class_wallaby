@@ -27,7 +27,8 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
 from rest_framework import generics 
 from .serializers import (
-    FeedSerializer, 
+    FeedSerializer,
+    UserSerializer, 
     UserSubscriptionsSerializer, 
     ProfileSerializer,  
     FeedNameSerializer, 
@@ -73,7 +74,6 @@ def test(request):
 @api_view(["GET", "PATCH"])
 @permission_classes([IsAuthenticated])
 def profilesniplist(request, pk): 
-    
     if request.method == 'GET':
         usersnips = Feeds.objects.filter(subscriber__id=pk)
         serializer = ProfileSnipListSerializer(usersnips, many=True)      
@@ -100,6 +100,7 @@ def addfeedsubs(request, format=None):
 @api_view(["GET", "POST"])
 @permission_classes([IsAuthenticated])
 def isauthorized(request):
+    get_queryset = User.objects.all()
     context = 'true'
     print(user.id)
     return Response (context)
@@ -145,6 +146,12 @@ class FRList(generics.ListCreateAPIView):
 class FRDetail(generics.ListAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+
+@api_view(["GET"])
+def UserDetails(request,pk): 
+    queryset = User.objects.filter(pk=pk)
+    serializer = ProfileSerializer(queryset)
+    return Response (serializer)
 
 
 

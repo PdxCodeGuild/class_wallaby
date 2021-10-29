@@ -28,9 +28,9 @@ export default function Login() {
     <Container>
       <Col>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input  {...register("username")} />
-          <input  {...register("email")} />
-          <input {...register("password", { required: true })} />
+          <input placeholder="username" {...register("username")} />
+          <input  placeholder="email"{...register("email")} />
+          <input placeholder="password"{...register("password", { required: true })} />
           {errors.exampleRequired && <span>This field is required</span>}
           <input type="submit" />
         </form>

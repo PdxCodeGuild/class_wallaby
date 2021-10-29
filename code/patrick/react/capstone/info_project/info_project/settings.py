@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -80,6 +82,10 @@ LOGIN_REDIRECT_URL = '/'
 ROOT_URLCONF = 'info_project.urls'
 REST_USE_JWT = True
 JWT_AUTH_COOKIE = 'info-app-auth'
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'info_app.serializers.UserSerializer'
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

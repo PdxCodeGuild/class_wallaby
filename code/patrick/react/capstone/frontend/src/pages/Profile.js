@@ -17,9 +17,11 @@ function Profile() {
         first_name: "pat",
         
     }
+// feedsubs/pk which whole feeds user is subscribed to
 
-    axios.get( "http://localhost:8000/dj-rest-auth/user/", creds).then((res) => {
+    axios.get( "http://localhost:8000/dj-rest-auth/user/").then((res) => {
           setUserCreds(res.data)
+          console.log(res)
     })
 }
     useEffect(() => {
