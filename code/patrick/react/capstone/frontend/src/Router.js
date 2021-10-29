@@ -10,11 +10,11 @@ import Profile from './pages/Profile';
 
 
 export default function Router() {
+  const {loggedIn} = useContext(AuthContext);
 
-  const { loggedIn } = useContext(AuthContext);
   return (
     <BrowserRouter>
-      <NavBar />
+     <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/federalregister" component={FederalRegister} />

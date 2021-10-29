@@ -37,10 +37,6 @@ function NavBar() {
   const { loggedIn } = useContext(AuthContext);
   console.log(loggedIn, "navbar");
 
-  useEffect(() => {
-        getLoggedIn();
-      }, []);
-
   return (
     <Navbar bg="light" expand="lg">
       <Container>

@@ -30,6 +30,10 @@ class ProfileSnipListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feeds
         fields = ('__all__')
+
+
+
+
               
             
     

@@ -15,10 +15,9 @@ function Register() {
     const { getLoggedIn } = useContext(AuthContext);
     const history = useHistory();
   
-  async function register(e) {
-      e.preventDefault();
+  async function register() {
+      
       const data1 = {
-          
           username: username,
           email: email, 
           password1: password1,
@@ -27,10 +26,10 @@ function Register() {
         
       await axios.post( "http://localhost:8000/dj-rest-auth/registration/", data1).then((res) => {
           console.log(res)
+          getLoggedIn();
     })
         
 
-        await getLoggedIn();
         history.push("/");
      
     }
