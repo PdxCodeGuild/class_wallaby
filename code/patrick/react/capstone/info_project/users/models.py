@@ -1,20 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
-from versatileimagefield.fields import VersatileImageField, PPOIField
+from PIL import Image
 
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='userprofile')
-    image = VersatileImageField(
-        'Image',
-        upload_to='profile_pics',
-        width_field='width',
-        height_field='height',
-        default='default.jpg',
-        ppoi_field='image_ppoi'
-    )
-    image_ppoi = PPOIField()
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    
 
     def __str__(self):
         return f'{self.user.username} Profile'

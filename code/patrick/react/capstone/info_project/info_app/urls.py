@@ -5,7 +5,6 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import (
-    ProfilePicture,
     UserDetails,
     home, 
     federalregister,
@@ -72,10 +71,6 @@ urlpatterns = [
     #search
     path('search/api/', Search.as_view(), name='search_api'),
     path('search/', SearchResultsView.as_view(), name='search_results'),
-
-
-
-    path('updatepic/', ProfilePicture.as_view())
     
    
 ]

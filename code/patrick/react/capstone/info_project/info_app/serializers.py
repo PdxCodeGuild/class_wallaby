@@ -1,8 +1,6 @@
 from rest_framework import serializers 
 from .models import Feeds, UserSubscriptions, FeedName
 from users.models import Profile
-from versatileimagefield.serializers import VersatileImageFieldSerializer
-
  
 class FeedSerializer(serializers.ModelSerializer):
     class Meta:
@@ -42,37 +40,13 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 
-
+from rest_framework import serializers
 from dj_rest_auth.serializers import UserDetailsSerializer
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ('__all__')
-
-
-
-class ProfilePicSerializer(serializers.ModelSerializer):
-    headshot = VersatileImageFieldSerializer(
-        sizes=[
-            ('full_size', 'url'),
-            ('thumbnail', 'thumbnail__100x100'),
-            ('medium_square_crop', 'crop__400x400'),
-            ('small_square_crop', 'crop__50x50')
-        ]
-    )
-
-    class Meta:
-        model = Profile
-        fields = (
-            'image'
-        )
-
-
-
-
-
-
 
 class UserSerializer(UserDetailsSerializer):
 
@@ -87,8 +61,8 @@ class UserSerializer(UserDetailsSerializer):
         userprofile_data = validated_data.pop('userprofile', {})
 
         # to access the 'company_name' field in here
-        # image = userprofile_data.get('image')
-
+        # company_name = userprofile_data.get('company_name')   
+        profile_img = user_profile.object.get('image')                 
         # update the userprofile fields
         userprofile_serializer.update(userprofile_instance, userprofile_data)
 
