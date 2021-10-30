@@ -1,75 +1,66 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+import "./Profile.css";
+import { useForm } from "react-hook-form";
+import SendIt from "../components/ImageApi";
 
 function Profile() {
-    
-    const [username, setUserName] = useState("");
-    const [email, setEmail] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [profileImage, setProfileImage] = useState("");
-    
+  const {  register, handleSubmit, reset } = useForm();
+  const [profileImage, setProfileImage] = useState(undefined)
 
-    
-    
-    
-    async function profileDetail() {
-    
-    
-// feedsubs/pk which whole feeds user is subscribed to
+    async function updateImage(data){
+       
+        
+        console.log(data)
+     await axios.patch("http://localhost:8000/dj-rest-auth/user/")
+        .then((result) => {
+          console.log("Success:", result);
+        })
+    }
 
-    await axios.get( "http://localhost:8000/dj-rest-auth/user/").then((res) => {
-          setUserName(res.data.username)
-          setEmail(res.data.email)
-          setFirstName(res.data.first_name)
-          setLastName(res.data.last_name)
-          setProfileImage(res.data.profile['image'])
-    })
-}
-    useEffect(() => {
-        profileDetail();
-      }, []);
-    
-    return (  
-        <div>
-        <h1>Register a new account</h1>
-        <form onSubmit={profileDetail}>
-        <img src={profileImage} alt="profile"/>
-        <input
-            type="password"
-            placeholder="Verify your password"
-            onChange={(e) => setProfileImage(e.target.value)}
-            value={profileImage}
-          />
-        <input
-            type="username"
-            placeholder="Username"
-            onChange={(e) => setUserName( e.target.value)}
-            value={username}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-          <input
-            type="first_name"
-            placeholder="Password"
-            onChange={(e) => setFirstName(e.target.value)}
-            value={firstName}
-          />
-          <input
-            type="password"
-            placeholder="Verify your password"
-            onChange={(e) => setLastName(e.target.value)}
-            value={lastName}
-          />
-          <button type="submit">Register</button>
-        </form>
-      </div>
-    );
+
+
+  async function updateProfile(data) {
+    console.log(data)
+    // feedsubs/pk which whole feeds user is subscribed to
+    await axios
+      .patch("http://localhost:8000/dj-rest-auth/user/", data)
+      .then((res) => {
+        //   setUserName(res.data.username)
+        //   setEmail(res.data.email)
+        //   setFirstName(res.data.first_name)
+        //   setLastName(res.data.last_name)
+        console.log(res);
+      });
+  }
+  useEffect(() => {
+    axios.get("http://localhost:8000/dj-rest-auth/user/").then((res) => {
+      setProfileImage(res.data.profile["image"]);
+      console.log(res);
+      setTimeout(() => {
+        reset({
+          first_name: res.data.first_name,
+          last_name: res.data.last_name,
+        });
+      });
+    }, 2000);
+  }, [reset]);
+
+  return (
+    <Container>
+        <SendIt />
+        <img src={profileImage} alt="ima" />
+      <form onSubmit={handleSubmit(updateProfile)}>
+        <label>First name: </label>
+        
+        <input {...register("first_name")} />
+        <label>Last name: </label>
+        <input {...register("last_name")} />
+        <input type="submit" />
+      </form>
+    </Container>
+  );
 }
 
 export default Profile;

@@ -1,0 +1,7 @@
+.profileImage {
+    border-radius: 25px;
+    border: 2px solid #f1f3ed;
+    
+    width: 200px;
+    height: 150px;
+}

@@ -40,3 +40,12 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
+
+def image_update(request):
+    p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+    if p_form.is_valid():
+        p_form.save()
+        messages.success(request, f'Your account has been updated!')
+        return redirect('profile')
+
+    

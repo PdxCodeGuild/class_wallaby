@@ -28,6 +28,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework import generics 
 from .serializers import (
     FeedSerializer,
+    ProfilePicSerializer,
     UserSerializer, 
     UserSubscriptionsSerializer, 
     ProfileSerializer,  
@@ -68,6 +69,11 @@ def test(request):
         print(snip.pubDate)
     print(snips)
     return HttpResponse(request, "confirm")
+
+
+@api_view(["GET", "PATCH"])
+@permission_classes([IsAuthenticated])
+
 
 #Profile snippet listview
 
@@ -132,6 +138,13 @@ class UserSubscriptions(generics.RetrieveUpdateDestroyAPIView):
 class FeedNameUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = FeedName.objects.all()
     serializer_class = UserSubscriptionsSerializer
+
+
+
+
+
+class ProfilePicture(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ProfilePicSerializer
 
 class FeedNameList(generics.ListCreateAPIView):
     queryset = FeedName.objects.all()

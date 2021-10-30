@@ -1,6 +1,8 @@
 from rest_framework import serializers 
 from .models import Feeds, UserSubscriptions, FeedName
 from users.models import Profile
+from versatileimagefield.serializers import VersatileImageFieldSerializer
+
  
 class FeedSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,13 +42,37 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 
-from rest_framework import serializers
+
 from dj_rest_auth.serializers import UserDetailsSerializer
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ('__all__')
+
+
+
+class ProfilePicSerializer(serializers.ModelSerializer):
+    headshot = VersatileImageFieldSerializer(
+        sizes=[
+            ('full_size', 'url'),
+            ('thumbnail', 'thumbnail__100x100'),
+            ('medium_square_crop', 'crop__400x400'),
+            ('small_square_crop', 'crop__50x50')
+        ]
+    )
+
+    class Meta:
+        model = Profile
+        fields = (
+            'image'
+        )
+
+
+
+
+
+
 
 class UserSerializer(UserDetailsSerializer):
 
