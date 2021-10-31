@@ -9,15 +9,15 @@ function Profile() {
   const {  register, handleSubmit, reset } = useForm();
   const [profileImage, setProfileImage] = useState(undefined)
 
-    async function updateImage(data){
+    // async function updateImage(data){
        
         
-        console.log(data)
-     await axios.patch("http://localhost:8000/dj-rest-auth/user/")
-        .then((result) => {
-          console.log("Success:", result);
-        })
-    }
+    //     console.log(data)
+    //  await axios.post("http://localhost:8000/dj-rest-auth/user/")
+    //     .then((result) => {
+    //       console.log("Success:", result);
+    //     })
+    // }
 
 
 

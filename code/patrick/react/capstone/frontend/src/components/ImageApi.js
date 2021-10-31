@@ -1,99 +1,67 @@
+
+  import React, { Component } from 'react';
 import axios from 'axios';
- 
-import React,{Component} from 'react';
- 
+
 class App extends Component {
-  
-    state = {
- 
-      // Initially, no file is selected
-      selectedFile: null
-    };
-    
-    // On file select (from the pop up)
-    onFileChange = event => {
-    
-      // Update the state
-      this.setState({ selectedFile: event.target.files[0] });
-    
-    };
-    
-    // On file upload (click the upload button)
-    onFileUpload = () => {
-    
-      // Create an object of formData
-      const formData = new FormData();
-    
-      // Update the formData object
-      formData.append(
-        "myFile",
-        this.state.selectedFile,
-        this.state.selectedFile.name
-      );
-    
-      // Details of the uploaded file
-      console.log(this.state.selectedFile);
-    const data1 = {
-        "profile['image']": formData
-    }
-      // Request made to the backend api
-      // Send formData object
-      axios.patch("http://localhost:8000/updatepic/", data1);
-    };
-    
-    // File content to be displayed after
-    // file upload is complete
-    fileData = () => {
-    
-      if (this.state.selectedFile) {
-         
-        return (
-          <div>
-            <h2>File Details:</h2>
-             
-<p>File Name: {this.state.selectedFile.name}</p>
- 
-             
-<p>File Type: {this.state.selectedFile.type}</p>
- 
-             
-<p>
-              Last Modified:{" "}
-              {this.state.selectedFile.lastModifiedDate.toDateString()}
-            </p>
- 
-          </div>
-        );
-      } else {
-        return (
-          <div>
-            <br />
-            <h4>Choose before Pressing the Upload button</h4>
-          </div>
-        );
+
+  state = {
+    title: '',
+    content: '',
+    image: null
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  };
+
+  handleImageChange = (e) => {
+    this.setState({
+      image: e.target.files[0]
+    })
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state);
+    let form_data = new FormData();
+    form_data.append('image', this.state.image, this.state.image.name);
+    form_data.append('title', this.state.title);
+    form_data.append('content', this.state.content);
+    let url = "http://localhost:8000/imageupload/";
+    axios.post(url, form_data, {
+      headers: {
+        'content-type': 'multipart/form-data'
       }
-    };
-    
-    render() {
-    
-      return (
-        <div>
-            <h1>
-              GeeksforGeeks
-            </h1>
-            <h3>
-              File Upload using React!
-            </h3>
-            <div>
-                <input type="file" onChange={this.onFileChange} />
-                <button onClick={this.onFileUpload}>
-                  Upload!
-                </button>
-            </div>
-          {this.fileData()}
-        </div>
-      );
-    }
+    })
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => console.log(err))
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <form onSubmit={this.handleSubmit}>
+          {/* <p>
+            <input type="text" placeholder='Title' id='title' value={this.state.title} onChange={this.handleChange} required/>
+          </p>
+          <p>
+            <input type="text" placeholder='Content' id='content' value={this.state.content} onChange={this.handleChange} required/>
+
+          </p> */}
+          <p>
+            <input type="file"
+                   id="image"
+                   accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
+          </p>
+          <input type="submit"/>
+        </form>
+      </div>
+    );
   }
- 
-  export default App;
+}
+
+export default App;

@@ -44,7 +44,9 @@ from rest_framework import serializers
 from dj_rest_auth.serializers import UserDetailsSerializer
 
 class UserProfileSerializer(serializers.ModelSerializer):
+
     class Meta:
+        print(User)
         model = Profile
         fields = ('__all__')
 
@@ -62,11 +64,12 @@ class UserSerializer(UserDetailsSerializer):
 
         # to access the 'company_name' field in here
         # company_name = userprofile_data.get('company_name')   
-        profile_img = user_profile.object.get('image')                 
+        profile_img = userprofile_data.get('image')                 
         # update the userprofile fields
         userprofile_serializer.update(userprofile_instance, userprofile_data)
 
         instance = super().update(instance, validated_data)
+        print(instance)
         return instance            
             
     

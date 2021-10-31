@@ -111,6 +111,9 @@ def isauthorized(request):
     return Response (context)
 
 
+
+
+
 # Listview and create feeds
 class Subscribe(generics.ListCreateAPIView):
     # permission_classes = [IsAuthenticated]
@@ -157,7 +160,6 @@ def UserDetails(request,pk):
     queryset = User.objects.filter(pk=pk)
     serializer = ProfileSerializer(queryset)
     return Response (serializer)
-
 
 
 #api to get xml data and convert it.
