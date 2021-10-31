@@ -46,7 +46,7 @@ from dj_rest_auth.serializers import UserDetailsSerializer
 class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
-        print(User)
+        
         model = Profile
         fields = ('__all__')
 

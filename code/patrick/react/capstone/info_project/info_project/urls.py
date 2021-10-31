@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from rest_framework.authtoken import views
 from info_app.views import CustomAuthToken
 from django.conf.urls import url, include
-from users.views import ProfileView
+from users.views import ProfileView, UpdateUser
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -38,6 +38,7 @@ urlpatterns = [
  
     path('api-token/', CustomAuthToken.as_view()),
     path('imageupload/', ProfileView.as_view(), name='users'),
+    path('edituser/<int:pk>', UpdateUser.as_view()),
     # url(r'^rest-auth/', include('rest_auth.urls')),
     # url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     

@@ -47,14 +47,15 @@
         # return JsonResponse(serializer.errors, status=400)
 
    
+from django.views import generic
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
-from .serializers import user_image_serializer
+from .serializers import UpdateUserSerializer, user_image_serializer
 from .models import Profile
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import generics, status
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -64,7 +65,6 @@ from django.contrib.auth.models import User
 class ProfileView(APIView):
     # parser_classes = (MultiPartParser, FormParser)
     
-
     def patch(self, request):
         context={'request': request}
         # print(request.user.profile, 'patch')
@@ -76,4 +76,7 @@ class ProfileView(APIView):
             print('error', profile_serializer.errors)
             return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
 
-    
+@permission_classes([IsAuthenticated])
+class UpdateUser(generics.RetrieveUpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UpdateUserSerializer

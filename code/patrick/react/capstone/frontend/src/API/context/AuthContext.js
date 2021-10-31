@@ -19,10 +19,7 @@ function AuthContextProvider(props) {
         console.log(error)
       setLoggedIn(undefined);
       })
-    
-    ;
   }
-
   useEffect(() => {
     getLoggedIn();
   }, []);

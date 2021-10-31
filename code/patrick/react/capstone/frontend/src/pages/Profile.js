@@ -7,7 +7,10 @@ import { useForm } from "react-hook-form";
 function Profile() {
   const { register, handleSubmit, reset } = useForm();
   const [image, setImage] = useState(null);
- const [newImage, setNewImage] = useState(null)
+  const [newImage, setNewImage] = useState(null);
+  const [userID, setUserID] = useState("");
+  // const [userName, setUserName] = useState("")
+
   const ImageChange = (e) => {
     setNewImage(e.target.files[0]);
   };
@@ -20,16 +23,16 @@ function Profile() {
     axios
       .patch("http://localhost:8000/imageupload/", form_data)
       .then((res) => {
-        setImage(res.data.image)
+        setImage(res.data.image);
       })
       .catch((err) => console.log(err));
   };
 
   async function updateProfile(data) {
-    console.log(data);
+    console.log(data, ' user id');
     // feedsubs/pk which whole feeds user is subscribed to
     await axios
-      .patch("http://localhost:8000/dj-rest-auth/user/", data)
+      .patch("http://localhost:8000/edituser/" + userID, data)
       .then((res) => {
         //   setUserName(res.data.username)
         //   setEmail(res.data.email)
@@ -40,10 +43,14 @@ function Profile() {
   }
   useEffect(() => {
     axios.get("http://localhost:8000/dj-rest-auth/user/").then((res) => {
+      setUserID(res.data.pk);
       setImage(res.data.profile["image"]);
-      console.log(res);
+      
+     
       setTimeout(() => {
         reset({
+          username: res.data.username,
+          email: res.data.email,
           first_name: res.data.first_name,
           last_name: res.data.last_name,
         });
@@ -76,6 +83,10 @@ function Profile() {
       </div>
       <img src={image} alt="ima" />
       <form onSubmit={handleSubmit(updateProfile)}>
+        <label>Email: </label>
+        <input {...register("email")} />
+        <label>Username: </label>
+        <input {...register("username")} />
         <label>First name: </label>
         <input {...register("first_name")} />
         <label>Last name: </label>
