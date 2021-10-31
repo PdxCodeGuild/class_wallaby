@@ -62,25 +62,18 @@ from django.contrib.auth.models import User
 
 @permission_classes([IsAuthenticated])
 class ProfileView(APIView):
-    parser_classes = (MultiPartParser, FormParser)
+    # parser_classes = (MultiPartParser, FormParser)
     
 
-    def get(self, request, *args, **kwargs):
-        context={'request': request}
-        print(User, 'patch')
-        profiles = Profile.objects.all()
-        serializer = user_image_serializer(profiles, many=True, context=context, partial=True)
-        return Response(serializer.data)
-
-    def patch(self, request, *args, **kwargs):
+    def patch(self, request):
         context={'request': request}
         # print(request.user.profile, 'patch')
-        posts_serializer = user_image_serializer(request.user.userprofile, data=request.data, context=context, partial=True)
-        if posts_serializer.is_valid():
-            posts_serializer.save()
-            return Response(posts_serializer.data, status=status.HTTP_201_CREATED)
+        profile_serializer = user_image_serializer(request.user.userprofile, data=request.data, context=context, partial=True)
+        if profile_serializer.is_valid():
+            profile_serializer.save()
+            return Response(profile_serializer.data, status=status.HTTP_201_CREATED)
         else:
-            print('error', posts_serializer.errors)
-            return Response(posts_serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
+            print('error', profile_serializer.errors)
+            return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
 
     

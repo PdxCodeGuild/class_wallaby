@@ -3,26 +3,30 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import "./Profile.css";
 import { useForm } from "react-hook-form";
-import SendIt from "../components/ImageApi";
 
 function Profile() {
-  const {  register, handleSubmit, reset } = useForm();
-  const [profileImage, setProfileImage] = useState(undefined)
+  const { register, handleSubmit, reset } = useForm();
+  const [image, setImage] = useState(null);
+ const [newImage, setNewImage] = useState(null)
+  const ImageChange = (e) => {
+    setNewImage(e.target.files[0]);
+  };
 
-    // async function updateImage(data){
-       
-        
-    //     console.log(data)
-    //  await axios.post("http://localhost:8000/dj-rest-auth/user/")
-    //     .then((result) => {
-    //       console.log("Success:", result);
-    //     })
-    // }
+  const Submit = (e) => {
+    e.preventDefault();
+    const form_data = new FormData();
+    form_data.append("image", newImage);
 
-
+    axios
+      .patch("http://localhost:8000/imageupload/", form_data)
+      .then((res) => {
+        setImage(res.data.image)
+      })
+      .catch((err) => console.log(err));
+  };
 
   async function updateProfile(data) {
-    console.log(data)
+    console.log(data);
     // feedsubs/pk which whole feeds user is subscribed to
     await axios
       .patch("http://localhost:8000/dj-rest-auth/user/", data)
@@ -36,7 +40,7 @@ function Profile() {
   }
   useEffect(() => {
     axios.get("http://localhost:8000/dj-rest-auth/user/").then((res) => {
-      setProfileImage(res.data.profile["image"]);
+      setImage(res.data.profile["image"]);
       console.log(res);
       setTimeout(() => {
         reset({
@@ -49,11 +53,30 @@ function Profile() {
 
   return (
     <Container>
-        <SendIt />
-        <img src={profileImage} alt="ima" />
+      <div>
+        <form onSubmit={Submit}>
+          {/* <p>
+            <input type="text" placeholder='Title' id='title' value={this.state.title} onChange={this.handleChange} required/>
+          </p>
+          <p>
+            <input type="text" placeholder='Content' id='content' value={this.state.content} onChange={this.handleChange} required/>
+
+          </p> */}
+          <p>
+            <input
+              type="file"
+              id="image"
+              accept="image/png, image/jpeg"
+              onChange={ImageChange}
+              required
+            />
+          </p>
+          <input type="submit" />
+        </form>
+      </div>
+      <img src={image} alt="ima" />
       <form onSubmit={handleSubmit(updateProfile)}>
         <label>First name: </label>
-        
         <input {...register("first_name")} />
         <label>Last name: </label>
         <input {...register("last_name")} />

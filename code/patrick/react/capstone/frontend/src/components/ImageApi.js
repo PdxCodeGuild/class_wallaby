@@ -26,7 +26,7 @@ class App extends Component {
     e.preventDefault();
     console.log(this.state);
     let form_data = new FormData();
-    form_data.append('image', this.state.image, this.state.image.name);
+    form_data.append('image', this.state.image);
     // form_data.append('user', 1);
     
     let url = "http://localhost:8000/imageupload/";
