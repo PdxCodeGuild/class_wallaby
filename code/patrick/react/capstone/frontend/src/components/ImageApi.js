@@ -27,10 +27,10 @@ class App extends Component {
     console.log(this.state);
     let form_data = new FormData();
     form_data.append('image', this.state.image, this.state.image.name);
-    form_data.append('title', this.state.title);
-    form_data.append('content', this.state.content);
+    // form_data.append('user', 1);
+    
     let url = "http://localhost:8000/imageupload/";
-    axios.post(url, form_data, {
+    axios.patch(url, form_data, {
       headers: {
         'content-type': 'multipart/form-data'
       }

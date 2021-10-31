@@ -107,7 +107,7 @@ def addfeedsubs(request, format=None):
 def isauthorized(request):
     get_queryset = User.objects.all()
     context = 'true'
-    print(user.id)
+   
     return Response (context)
 
 

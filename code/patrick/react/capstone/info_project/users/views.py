@@ -55,8 +55,8 @@ from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
+from django.contrib.auth.models import User
 
-from users import serializers
 # Create your views here.
 
 
@@ -67,14 +67,15 @@ class ProfileView(APIView):
 
     def get(self, request, *args, **kwargs):
         context={'request': request}
-       
+        print(User, 'patch')
         profiles = Profile.objects.all()
-        serializer = user_image_serializer(profiles, many=True, context=context)
+        serializer = user_image_serializer(profiles, many=True, context=context, partial=True)
         return Response(serializer.data)
 
-    def post(self, request, *args, **kwargs):
+    def patch(self, request, *args, **kwargs):
         context={'request': request}
-        posts_serializer = user_image_serializer(data=request.data, context=context)
+        # print(request.user.profile, 'patch')
+        posts_serializer = user_image_serializer(request.user.userprofile, data=request.data, context=context, partial=True)
         if posts_serializer.is_valid():
             posts_serializer.save()
             return Response(posts_serializer.data, status=status.HTTP_201_CREATED)
