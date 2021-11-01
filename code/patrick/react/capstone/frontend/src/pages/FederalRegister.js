@@ -5,49 +5,44 @@ import Requests from '../API/Calls'
 import axios from "axios";
 
 function FederalRegister() {
-  const [saved, setSaved] = useState([])
-  const [snipbtn, setSnipBtn] = React.useState("add")
-  const toAdd = () => setSnipBtn("add")
-  const toRemove = () => setSnipBtn("remove")
   const [snippets, setSnippets] = useState([]);
-
-  // console.log(length.snippets[2])
-
-  async function getSnips() {
-    await axios.get("http://localhost:8000/feed/all/")
-    .then(res =>{
-      console.log(res)
-    })
-  }
+  const [userID, setUserID] = useState("")
+   
+console.log(userID)
 
   useEffect(() => {
+
+    axios.get("http://localhost:8000/dj-rest-auth/user/").then((res)=>{
+      setUserID(res.data.pk)
+  })
     axios.get("http://localhost:8000/federalregister")
     Requests.getAll().then((res) => {
+      console.log(res.data)
       setSnippets(res.data);
       
     });
   }, []);
 
-  const userId = 1; // need logged in user
+  // const userId = 1; // need logged in user
 
-  const snipSubs = (item) => {
-    console.log(item)
-    for (let i = 0; i < item.length; i++) {
-      if (item[i] in userId) {
-        alert("contains user");
-      } else {
+  // const snipSubs = (item) => {
+  //   console.log(item)
+  //   for (let i = 0; i < item.length; i++) {
+  //     if (item[i] in userId) {
+  //       alert("contains user");
+  //     } else {
         
-        alert("contains user");
-      }
-    }
-  };
+  //       alert("contains user");
+  //     }
+  //   }
+  // };
 
   
   return (
     <Container>
-        <ListGroup as="ol" numbered>
-      <ListGroupItem>
+        <ListGroup>
     {snippets.map((item) => (
+      <ListGroupItem>
         <div key={item.id}>
           <a
             href={item.link}
@@ -60,10 +55,10 @@ function FederalRegister() {
             </div>
           </a>
           
-          <SnipBtn id={snippets[item.id]} />
+          <SnipBtn id={snippets[item.id-1]} pk={userID}/>
         </div>
-         ))}
       </ListGroupItem>
+         ))}
     </ListGroup>
       </Container>
   );

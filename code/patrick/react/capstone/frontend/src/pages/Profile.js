@@ -75,13 +75,12 @@ function Profile() {
               <div className="text-center">
                 <Image
                   variant="top"
-                  img
-                  id="profileImage"
+                  
                   src={image}
                   alt="ima"
                   className="img-responsive center-block d-block mx-auto"
                   roundedCircle
-                  fluid
+                  
                 />
                 <Button href="#" onClick={handleShow}>
                   Change Profile Image

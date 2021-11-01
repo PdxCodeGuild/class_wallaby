@@ -1,25 +1,42 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
-export default function SnipBtn(id) {
+export default function SnipBtn(id, pk) {
     const [snipDetail, setSnipDetail] = useState([])
     const [snipbtn, setSnipBtn] = useState("add")
-    
-    const toAdd = () => {
-        setSnipDetail(id)
-        setSnipBtn("remove")
 
+   
+
+    const toAdd = () => {
+        console.log(id.id.subscriber)
+        setSnipDetail(id.id.subscriber)
+        setSnipDetail((snipDetail) => [...snipDetail,  ])
+        setSnipBtn("remove")
+        
     }
+    if (snipDetail.includes(1)) {
+        console.log('test')
+    }
+    // else {
+    //     console.log('null')
+    // }
     
     const toRemove = () => {
+        console.log(pk)
+    const index = snipDetail.indexOf(pk)
+    const update = snipDetail.splice(index, 1)
+    // setSnipDetail(update)
     setSnipBtn("add")
-    console.log({id})
     
+    console.log(snipDetail)
 }    
 
-useEffect(() => {
-    axios.get("http://localhost:8000/snipsubs/1").then((res) => {
+// useEffect(() => {
+//     axios.get("http://localhost:8000/snipsubs/1").then((res) => {
+//         console.log(res, 'response')
+// })
+// })
   
 
 

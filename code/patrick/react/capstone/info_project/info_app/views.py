@@ -196,7 +196,7 @@ def federalregister(request):
     paginator = Paginator(contact_list, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'info_app/federalregister.html', {'page_obj': page_obj})
+    return render(request, 'info_app/base.html')
 
 
 

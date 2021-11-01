@@ -64,7 +64,7 @@ class UserSerializer(UserDetailsSerializer):
 
         # to access the 'company_name' field in here
         # company_name = userprofile_data.get('company_name')   
-        profile_img = userprofile_data.get('image')                 
+        # profile_img = userprofile_data.get('image')                 
         # update the userprofile fields
         userprofile_serializer.update(userprofile_instance, userprofile_data)
 
