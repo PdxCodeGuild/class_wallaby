@@ -41,6 +41,7 @@ function NavBar() {
     <Navbar bg="light" expand="lg">
       <Container>
           <Link to="/">Home</Link>
+          <Link to="/federalregister">Federal Register</Link>
           {!loggedIn ? (
            <>
            <Link to="/login">Login</Link>

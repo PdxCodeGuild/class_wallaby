@@ -1,13 +1,27 @@
 import React, { useState, useEffect} from "react";
-import { ListGroup } from "react-bootstrap";
+import { Container, ListGroup, ListGroupItem } from "react-bootstrap";
 import SnipBtn from "../components/SnipBtn";
 import Requests from '../API/Calls'
+import axios from "axios";
 
 function FederalRegister() {
-
+  const [saved, setSaved] = useState([])
+  const [snipbtn, setSnipBtn] = React.useState("add")
+  const toAdd = () => setSnipBtn("add")
+  const toRemove = () => setSnipBtn("remove")
   const [snippets, setSnippets] = useState([]);
 
+  // console.log(length.snippets[2])
+
+  async function getSnips() {
+    await axios.get("http://localhost:8000/feed/all/")
+    .then(res =>{
+      console.log(res)
+    })
+  }
+
   useEffect(() => {
+    axios.get("http://localhost:8000/federalregister")
     Requests.getAll().then((res) => {
       setSnippets(res.data);
       
@@ -22,7 +36,7 @@ function FederalRegister() {
       if (item[i] in userId) {
         alert("contains user");
       } else {
-        //patch the user into the subscriber section using an axiox patch request.
+        
         alert("contains user");
       }
     }
@@ -30,8 +44,10 @@ function FederalRegister() {
 
   
   return (
-    <ListGroup as="ol" numbered>
-      {snippets.map((item) => (
+    <Container>
+        <ListGroup as="ol" numbered>
+      <ListGroupItem>
+    {snippets.map((item) => (
         <div key={item.id}>
           <a
             href={item.link}
@@ -43,12 +59,13 @@ function FederalRegister() {
               <div>{item.pubDate}</div>
             </div>
           </a>
-          <div onClick={() => snipSubs(item)}>
-            <SnipBtn />   /Need to be able to render each view and assign a add/added depending if user has added them or not already
-          </div>
+          
+          <SnipBtn id={snippets[item.id]} />
         </div>
-      ))}
+         ))}
+      </ListGroupItem>
     </ListGroup>
+      </Container>
   );
 }
 export default FederalRegister;

@@ -1,17 +1,25 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 
 
+export default function SnipBtn(id) {
+    const [snipDetail, setSnipDetail] = useState([])
+    const [snipbtn, setSnipBtn] = useState("add")
+    
+    const toAdd = () => {
+        setSnipDetail(id)
+        setSnipBtn("remove")
 
+    }
+    
+    const toRemove = () => {
+    setSnipBtn("add")
+    console.log({id})
+    
+}    
 
-
-
-
-export default function SnipBtn() {
-    const [snipbtn, setSnipBtn] = React.useState("add")
-
-    const toAdd = () => setSnipBtn("add")
-    const toRemove = () => setSnipBtn("remove")
-
+useEffect(() => {
+    axios.get("http://localhost:8000/snipsubs/1").then((res) => {
   
 
 
@@ -19,9 +27,9 @@ export default function SnipBtn() {
     return(
         <div className={snipbtn} >
             {snipbtn === 'add' ? 
-            (<button className="btn btn-primary" onClick = {toRemove}>Add</button>)
+            (<button className="btn btn-primary" onClick= {toAdd}>Add</button>)
             :
-            (<button className="btn btn-success" onClick = {toAdd}>Added</button>)
+            (<button className="btn btn-success" onClick = {toRemove}>Added</button>)
                
             }
         </div>

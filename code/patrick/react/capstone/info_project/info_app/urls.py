@@ -55,7 +55,7 @@ urlpatterns = [
     path('profile/feed/all/', Subscribe.as_view()),
     
     #api to get data for the federal register, filtered for SEC
-    path('federalregister', federalregister, name='federalregister'),
+    path('federalregister/', federalregister, name='federalregister'),
     
     #Profile views
     path('frapi/', FRList.as_view()),
