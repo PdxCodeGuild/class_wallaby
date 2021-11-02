@@ -34,7 +34,7 @@ import LogOutBtn from "../authorization/LogOutBtn";
 // export default Navbar;
 
 function NavBar() {
-  const { loggedIn } = useContext(AuthContext);
+  const {loggedIn} = useContext(AuthContext);
   console.log(loggedIn, "navbar");
 
   return (

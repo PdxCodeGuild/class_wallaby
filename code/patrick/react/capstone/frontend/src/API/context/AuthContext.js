@@ -5,23 +5,31 @@ const AuthContext = createContext();
 
 function AuthContextProvider(props) {
   const [loggedIn, setLoggedIn] = useState(undefined);
+  
+
   console.log('auth function')
+
+  
   async function getLoggedIn() {
     
      await axios.get(
-      "http://localhost:8000/isauthorized/"
+      "http://localhost:8000/dj-rest-auth/user/"
     ).then(res =>{
-      console.log(res, 'auth response')
-    setLoggedIn(res.data)
-    console.log(res.data)
-      })
-      .catch(error =>{
+      console.log(res.data.pk)
+      if (res.status===200){
+        localStorage.setItem("UserID", res.data.pk)
+        setLoggedIn(true);
+      }
+    })
+    .catch(error =>{
+        console.log('Not Authorized')
         console.log(error)
       setLoggedIn(undefined);
       })
   }
   useEffect(() => {
     getLoggedIn();
+    
   }, []);
 
   return (

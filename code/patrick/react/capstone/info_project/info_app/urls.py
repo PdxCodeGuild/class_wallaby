@@ -5,18 +5,17 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import (
-    UserDetails,
+    
     home, 
     federalregister,
     addfeedsubs,
-    profilesniplist,
-    test,
-    isauthorized,
-    UserDetails,
+    
+
     
     
-    FRList, 
-    FRDetail, 
+    
+    
+  
     Subscribe, 
     UserSubscriptions, 
     Subscribers,  
@@ -31,11 +30,10 @@ urlpatterns = [
     #home path
     path('', home, name='home'),
 
-    path('isauthorized/', isauthorized),
+    
 
     #User snippet subscription
-    path('profile/profilesniplist/<int:pk>', profilesniplist, name='profilesniplist'),
-    path('profilesniplist/<int:pk>', profilesniplist, name='profilesniplist'),
+    
 
     #Feed: post a new Feed user subscription or return a 404 to initiate an update.
     path('create/subscriptions', addfeedsubs, name='createsubscriptions'),
@@ -57,11 +55,8 @@ urlpatterns = [
     #api to get data for the federal register, filtered for SEC
     path('federalregister/', federalregister, name='federalregister'),
     
-    #Profile views
-    path('frapi/', FRList.as_view()),
-    path('frapis/<int:pk>', FRDetail.as_view()),
-    path('test/', test),
-    path('userdetails/<int:pk>', UserDetails),
+
+
     
 
     #Feed Lists that exist

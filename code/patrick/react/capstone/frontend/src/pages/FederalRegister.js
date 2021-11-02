@@ -6,20 +6,15 @@ import axios from "axios";
 
 function FederalRegister() {
   const [snippets, setSnippets] = useState([]);
-  const [userID, setUserID] = useState("")
-   
-console.log(userID)
+  
+ 
+
 
   useEffect(() => {
-
-    axios.get("http://localhost:8000/dj-rest-auth/user/").then((res)=>{
-      setUserID(res.data.pk)
-  })
-    axios.get("http://localhost:8000/federalregister")
-    Requests.getAll().then((res) => {
-      console.log(res.data)
+    axios.get("http://localhost:8000/feed/all/")
+    Requests.getAll().then((res) => {  
       setSnippets(res.data);
-      
+      console.log(res.data)
     });
   }, []);
 
@@ -55,8 +50,8 @@ console.log(userID)
             </div>
           </a>
           
-          <SnipBtn id={snippets[item.id-1]} pk={userID}/>
         </div>
+        <SnipBtn  id={snippets[item.id-1]} />
       </ListGroupItem>
          ))}
     </ListGroup>

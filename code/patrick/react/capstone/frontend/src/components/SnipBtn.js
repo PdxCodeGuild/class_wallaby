@@ -1,54 +1,67 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 
-export default function SnipBtn(id, pk) {
-    const [snipDetail, setSnipDetail] = useState([])
-    const [snipbtn, setSnipBtn] = useState("add")
+export default function SnipBtn(id) {
+  const [snipDetail, setSnipDetail] = useState(id.id.subscriber);
+  const [snipbtn, setSnipBtn] = useState("add");
 
+  async function UpdateSubs() {
+    const data = {
+      data:{
+        data: {      
+          "subscriber": [1]
+        }
+          }
+      }
+        
+        
+      
    
 
-    const toAdd = () => {
-        console.log(id.id.subscriber)
-        setSnipDetail(id.id.subscriber)
-        setSnipDetail((snipDetail) => [...snipDetail,  ])
-        setSnipBtn("remove")
-        
+    console.log((id.id.id), " test")
+    axios.patch(`http://localhost:8000/snipsubs/1`, data).then((res) => {  
+    console.log(res);
+    });
+  } 
+
+  useEffect(() => {}, []);
+
+  function toAdd() {
+    console.log(localStorage["UserID"])
+    setSnipDetail((snipDetail) => [...snipDetail, 1]);
+    setSnipBtn("remove");
+    UpdateSubs()
+  }
+
+  function toRemove() {
+    if (snipDetail.includes(1) === true) {
+      const index = snipDetail.indexOf(1);
+      if (index > -1) {
+        snipDetail.splice(index, 1);
+      } else {
+        snipDetail.shift();
+      }
     }
-    if (snipDetail.includes(1)) {
-        console.log('test')
-    }
-    // else {
-    //     console.log('null')
-    // }
-    
-    const toRemove = () => {
-        console.log(pk)
-    const index = snipDetail.indexOf(pk)
-    const update = snipDetail.splice(index, 1)
-    // setSnipDetail(update)
-    setSnipBtn("add")
-    
-    console.log(snipDetail)
-}    
+    setSnipDetail(snipDetail);
+    setSnipBtn("add");
+    console.log(snipDetail, " remove");
+    UpdateSubs()
+  }
 
-// useEffect(() => {
-//     axios.get("http://localhost:8000/snipsubs/1").then((res) => {
-//         console.log(res, 'response')
-// })
-// })
-  
+  console.log(snipDetail, " check ");
 
-
-
-    return(
-        <div className={snipbtn} >
-            {snipbtn === 'add' ? 
-            (<button className="btn btn-primary" onClick= {toAdd}>Add</button>)
-            :
-            (<button className="btn btn-success" onClick = {toRemove}>Added</button>)
-               
-            }
-        </div>
-    )
+  return (
+    <div className={snipbtn}>
+      {snipbtn === "add" ? (
+        <button className="btn btn-primary" onClick={toAdd}>
+          Add
+        </button>
+      ) : (
+        <button className="btn btn-success" onClick={toRemove}>
+          Added
+        </button>
+      )}
+    </div>
+  );
 }
