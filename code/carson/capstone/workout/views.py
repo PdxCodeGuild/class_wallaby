@@ -14,8 +14,28 @@ from .models import Event
 from .models import *
 from .utils import Calendar
 from .forms import EventForm
+from rest_framework.decorators import api_view
+from rest_framework import status
+from .serializers import DiarySerializer
+from rest_framework.response import Response
 
 
+@api_view(['GET', 'POST'])
+def diary_list(request, format=None):
+    """
+    Get a list of products or create a product .
+    """
+    if request.method == 'GET':
+        products = Diary.objects.all()
+        serializer = DiarySerializer(products, many=True)
+        return Response(serializer.data)
+    
+    elif request.method == 'POST':
+        serializer = DiarySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CalendarView(generic.ListView):
     model = Event
@@ -77,9 +97,12 @@ def event(request, event_id=None):
 def profile(request):
     return render(request, 'profile.html')
 
+def record(request):
+    return render(request, 'record.html' )
 
-# def remove(request, event_id):
-#     events = Event.objects.get(id=event_id)
-#     print(events)
-#     # events.delete()
-#     return redirect('calendar')
+def delete(request, id):
+    event = Event.objects.get(id=id)
+    event.delete()
+    return redirect ('calendar')
+
+

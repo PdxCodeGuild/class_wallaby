@@ -2,6 +2,14 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 
+
+class Diary(models.Model):
+    # date = models.DateField()
+    meal = models.TextField()
+    name = models.TextField()
+    # amount = models.IntegerField()
+
+
 class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()

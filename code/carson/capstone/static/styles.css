@@ -278,3 +278,32 @@ main {
     padding: 5px;
     width: 100%;
   }
+
+  .fatsecret_container .fatsecret_heading {
+    background-color: #fae3fa !important;
+}
+ .fatsecret_container {
+    border: 1px solid #d99bec !important;
+}
+    
+    /* heading in the canvas */
+ .fatsecret_container .fatsecret_heading {
+    color:#3472AB;
+    }
+    
+    /* all buttons in the canvas */
+  .fatsecret_container .fatsecret_button {
+    border:1px solid #4592C0;
+    background-color:#D8ECF7;
+    }
+     
+    /* item separators */
+   .fatsecret_container .fatsecret_borderbottom {
+    border-bottom:1px solid #D8ECF7;
+    } 
+    
+    /* footer */
+   .fatsecret_footer {
+    text-align:center;
+    padding:5px 0;
+    } 

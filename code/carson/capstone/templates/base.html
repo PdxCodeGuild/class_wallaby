@@ -47,7 +47,7 @@
 
                     <li class='mx-3'><a href="{% url 'profile' %}">Profile</a></li>
 
-                    <li><a href=#>Record</a></li>
+                    <li><a href="{% url 'record' %}">Record</a></li>
 
                 </ul>
             </div>
@@ -78,7 +78,7 @@
 <body>
 
     {% block content %} {% endblock %}
-    <script src='fullcalendar/main.js'></script>
+  
 
     <script src="{% static 'main.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
