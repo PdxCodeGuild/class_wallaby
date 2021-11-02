@@ -38,9 +38,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 # Home page rendering 
-def home(request):
-    x = Feeds.objects.all()
-    return render(request, 'info_app/home.html')
+
 
 class SearchResultsView(ListView):
     model = Feeds
@@ -59,12 +57,6 @@ class Search(generics.ListCreateAPIView):
         )
         object_list = object_list.order_by('-pubDate')
         return object_list
-
-
-
-
-
-
 
 
 
@@ -96,7 +88,7 @@ class Subscribe(generics.ListCreateAPIView):
     queryset = Feeds.objects.order_by('-pubDate')
     serializer_class = FeedSerializer
 
-class Subscribers(generics.RetrieveUpdateAPIView):
+class UpdateSnipSubs(generics.RetrieveUpdateAPIView):
     queryset = Feeds.objects.order_by('-pubDate')
     serializer_class = FeedSerializer
 

@@ -1,55 +1,48 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-
 export default function SnipBtn(id) {
-  const [snipDetail, setSnipDetail] = useState(id.id.subscriber);
+  var [snipDetail, setSnipDetail] = useState(id.id.subscriber);
   const [snipbtn, setSnipBtn] = useState("add");
+  const userID = localStorage["UserID"];
+  
 
   async function UpdateSubs() {
     const data = {
-      data:{
-        data: {      
-          "subscriber": [1]
-        }
-          }
-      }
-        
-        
-      
-   
-
-    console.log((id.id.id), " test")
-    axios.patch(`http://localhost:8000/snipsubs/1`, data).then((res) => {  
-    console.log(res);
-    });
-  } 
-
-  useEffect(() => {}, []);
+      subscriber: snipDetail,
+    };
+    console.log(data, " request details sent");
+    await axios
+      .patch(`http://localhost:8000/snipsubs/${id.id.id}`, data)
+      .then((res) => {
+        console.log(res.data.subscriber, " return patch request");
+        setSnipDetail(res.subscriber);
+      });
+  }
 
   function toAdd() {
-    console.log(localStorage["UserID"])
-    setSnipDetail((snipDetail) => [...snipDetail, 1]);
-    setSnipBtn("remove");
-    UpdateSubs()
+    setSnipDetail(snipDetail)
+    if (snipDetail.includes(userID) !== true) {
+      console.log(snipDetail)
+      setSnipDetail(snipDetail => [...snipDetail, userID]);
+      console.log("is not subscribed test");
+      setSnipBtn("remove");
+      UpdateSubs();
+      console.log(snipDetail)
+
+    }
   }
 
   function toRemove() {
-    if (snipDetail.includes(1) === true) {
-      const index = snipDetail.indexOf(1);
-      if (index > -1) {
-        snipDetail.splice(index, 1);
-      } else {
-        snipDetail.shift();
-      }
-    }
+    if (snipDetail.includes(userID) === true) {
+    let index = snipDetail.indexOf(userID);
+    snipDetail.splice(index, 1);
+    console.log(snipDetail, " remove button output");
     setSnipDetail(snipDetail);
     setSnipBtn("add");
-    console.log(snipDetail, " remove");
-    UpdateSubs()
+    UpdateSubs();
+    }
   }
-
-  console.log(snipDetail, " check ");
 
   return (
     <div className={snipbtn}>

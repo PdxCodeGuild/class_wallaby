@@ -6,7 +6,7 @@ from django.urls import path
 
 from .views import (
     
-    home, 
+   
     federalregister,
     addfeedsubs,
     
@@ -18,7 +18,7 @@ from .views import (
   
     Subscribe, 
     UserSubscriptions, 
-    Subscribers,  
+    UpdateSnipSubs,  
     FeedNameList, 
     FeedNameUpdate,
     SearchResultsView,
@@ -28,7 +28,7 @@ from .views import (
 
 urlpatterns = [
     #home path
-    path('', home, name='home'),
+   
 
     
 
@@ -43,9 +43,9 @@ urlpatterns = [
     path('profile/feedsubs/<int:pk>', UserSubscriptions.as_view()),
     
     #Snippet subscription
-    path('snipsubs/<int:pk>', Subscribers.as_view(), name='snipsubs'),
-    path('search/snipsubs/<int:pk>', Subscribers.as_view(), name='snipsubs'),
-    path('profile/snipsubs/<int:pk>', Subscribers.as_view()),
+    path('snipsubs/<int:pk>', UpdateSnipSubs.as_view(), name='snipsubs'),
+    path('search/snipsubs/<int:pk>', UpdateSnipSubs.as_view(), name='snipsubs'),
+    path('profile/snipsubs/<int:pk>', UpdateSnipSubs.as_view()),
     path('profile/update/<int:pk>', SubscribersUpdate.as_view()),
 
     #list of all the feeds and details

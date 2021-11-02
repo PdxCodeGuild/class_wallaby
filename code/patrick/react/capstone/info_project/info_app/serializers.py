@@ -1,6 +1,8 @@
 from rest_framework import serializers 
 from .models import Feeds, UserSubscriptions, FeedName
 from users.models import Profile
+from dj_rest_auth.serializers import UserDetailsSerializer
+from django.contrib.auth.models import User
  
 class FeedSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,16 +34,14 @@ class ProfileSnipListSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 
-from django.contrib.auth.models import User
+
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('__all__')
 
-
-from rest_framework import serializers
-from dj_rest_auth.serializers import UserDetailsSerializer
 
 class UserProfileSerializer(serializers.ModelSerializer):
 
