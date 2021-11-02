@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'crispy_forms',
     'workout',
+    'rest_framework',
     
 
     'allauth',
