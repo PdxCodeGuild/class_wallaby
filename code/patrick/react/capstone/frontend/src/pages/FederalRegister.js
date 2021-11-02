@@ -51,7 +51,7 @@ function FederalRegister() {
           </a>
           
         </div>
-        <SnipBtn  id={snippets[item.id-1]} />
+        <SnipBtn  id={snippets[item.id-1]} pk={snippets[item.id.pubDate]} />
       </ListGroupItem>
          ))}
     </ListGroup>

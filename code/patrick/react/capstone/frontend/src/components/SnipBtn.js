@@ -2,46 +2,52 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 export default function SnipBtn(id) {
-  var [snipDetail, setSnipDetail] = useState(id.id.subscriber);
+  const [snipDetail, setSnipDetail] = useState(id.id.subscriber);
   const [snipbtn, setSnipBtn] = useState("add");
-  const userID = localStorage["UserID"];
+  const [userID, setUserID] = useState(parseInt(localStorage["UserID"]))
   
-
-  async function UpdateSubs() {
+  useEffect(() => {
+    UpdateSubs();
+  }, [snipDetail]);
+  
+  function UpdateSubs() {
     const data = {
       subscriber: snipDetail,
     };
     console.log(data, " request details sent");
-    await axios
+    axios
       .patch(`http://localhost:8000/snipsubs/${id.id.id}`, data)
       .then((res) => {
         console.log(res.data.subscriber, " return patch request");
-        setSnipDetail(res.subscriber);
       });
   }
 
-  function toAdd() {
-    setSnipDetail(snipDetail)
-    if (snipDetail.includes(userID) !== true) {
-      console.log(snipDetail)
-      setSnipDetail(snipDetail => [...snipDetail, userID]);
-      console.log("is not subscribed test");
-      setSnipBtn("remove");
-      UpdateSubs();
-      console.log(snipDetail)
 
+  function toAdd() {
+    if (snipDetail.includes(userID) !== true) {
+      console.log("is not subscribed test");
     }
+    setSnipDetail((snipDetail) => [...snipDetail, userID]);
+    setSnipBtn("remove");
+    UpdateSubs();
+    console.log(snipDetail)
   }
 
   function toRemove() {
-    if (snipDetail.includes(userID) === true) {
     let index = snipDetail.indexOf(userID);
     snipDetail.splice(index, 1);
     console.log(snipDetail, " remove button output");
-    setSnipDetail(snipDetail);
+    var x = [];
+    for (let i = 0; i < snipDetail.length; i++) {
+      if (snipDetail[i] !== 1) {
+        x.push(snipDetail[i]);
+        console.log(snipDetail[i], " inside the for loop");
+      }
+    }
+    console.log(x, " for loop");
+    setSnipDetail([x]);
     setSnipBtn("add");
     UpdateSubs();
-    }
   }
 
   return (
