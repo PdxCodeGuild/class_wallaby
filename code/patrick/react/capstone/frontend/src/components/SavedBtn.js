@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 
-export default function SavedBtn(id) {
+export default function SavedBtn(id, updatePageState) {
     
       const [requestInFlight, setRequestInFlight] = useState(false);
   const [snipDetail, setSnipDetail] = useState(id.id["subscriber"]);
@@ -28,11 +28,14 @@ export default function SavedBtn(id) {
     UpdateSubs([...snipDetail, userID]);
   }
 
-  function toRemove() {
+  function toRemove(e) {
     let index = snipDetail.indexOf(userID);
     snipDetail.splice(index, 1);
+    updatePageState('false')
 
     UpdateSubs(snipDetail);
+    // let parent = document.getElementById(event.target.name)
+    // parent.remove()
     console.log(snipDetail, " remove button output");
   }
 
@@ -61,7 +64,7 @@ export default function SavedBtn(id) {
     <span className="visually-hidden">Loading...</span>
   </Button>
   );
-  return spinner 
+  return requestInFlight? spinner : b
 }
 
 

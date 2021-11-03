@@ -3,12 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { Container, ListGroup, ListGroupItem } from 'react-bootstrap';
 import SavedBtn from './SavedBtn';
 
-
-
 function SavedSnips() {
-    const [savedSnips, setSavedSnips] = useState([])
-    const [requestInFlight, setRequestInFlight] = useState(false);
+    const [deleteSnip, setDeleteSnip] = useState(true)
+    const [requestInFlight, setRequestInFlight] = useState(false);   
     const [snippets, setSnippets] = useState([])
+
+    const updatePageState = (state) => {
+        setDeleteSnip(state);
+      } 
+
         
     useEffect(() => {
         setRequestInFlight(true)
@@ -18,7 +21,8 @@ function SavedSnips() {
           console.log(res.data)
         }).finally(() => setRequestInFlight(false))
       }, []);
-    return (  
+    
+      return (  
         <Container>
         <ListGroup>
     {snippets.map((item) => (
@@ -35,7 +39,7 @@ function SavedSnips() {
             </div>
           </a>
         </div>
-        <SavedBtn id={item}/>
+        <SavedBtn id={item} deleteSnip={deleteSnip} trigger={updatePageState}/>
       </ListGroupItem>
          ))}
     </ListGroup>
