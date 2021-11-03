@@ -4,15 +4,10 @@ import { Container, ListGroup, ListGroupItem } from 'react-bootstrap';
 import SavedBtn from './SavedBtn';
 
 function SavedSnips() {
-    const [deleteSnip, setDeleteSnip] = useState(true)
     const [requestInFlight, setRequestInFlight] = useState(false);   
     const [snippets, setSnippets] = useState([])
-
-    const updatePageState = (state) => {
-        setDeleteSnip(state);
-      } 
-
-        
+ 
+    
     useEffect(() => {
         setRequestInFlight(true)
         axios.get("http://localhost:8000/savedsnips/")
@@ -22,6 +17,9 @@ function SavedSnips() {
         }).finally(() => setRequestInFlight(false))
       }, []);
     
+      const deleteUser = id => setSnippets(snippets.filter(item => item.id !== id));
+      console.log(deleteUser, " delete user")
+
       return (  
         <Container>
         <ListGroup>
@@ -39,7 +37,9 @@ function SavedSnips() {
             </div>
           </a>
         </div>
-        <SavedBtn id={item} deleteSnip={deleteSnip} trigger={updatePageState}/>
+         <div onClick={() => deleteUser(item.id)}> {/* bubler to remove snippet from   */}
+        <SavedBtn id={item}  />
+          </div>
       </ListGroupItem>
          ))}
     </ListGroup>

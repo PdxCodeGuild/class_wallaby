@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 
 export default function SavedBtn(id, updatePageState) {
-    
-      const [requestInFlight, setRequestInFlight] = useState(false);
+  const [requestInFlight, setRequestInFlight] = useState(false);
   const [snipDetail, setSnipDetail] = useState(id.id["subscriber"]);
   const [userID, setUserID] = useState(parseInt(localStorage["UserID"]));
 
@@ -24,47 +23,30 @@ export default function SavedBtn(id, updatePageState) {
       .finally(() => setRequestInFlight(false));
   }
 
-  function toAdd() {
-    UpdateSubs([...snipDetail, userID]);
-  }
-
   function toRemove(e) {
     let index = snipDetail.indexOf(userID);
     snipDetail.splice(index, 1);
-    updatePageState('false')
-
     UpdateSubs(snipDetail);
-    // let parent = document.getElementById(event.target.name)
-    // parent.remove()
-    console.log(snipDetail, " remove button output");
   }
 
   const b = (
     <div>
-      {snipDetail.includes(userID) ? (
-        <button className="btn btn-success" onClick={toRemove}>
-          Added
-        </button>
-      ) : (
-        <button className="btn btn-primary" onClick={toAdd}>
-          Add
-        </button>
-      )}
+      <button className="btn btn-danger" onClick={toRemove}>
+        Delete
+      </button>
     </div>
   );
   const spinner = (
     <Button variant="primary" disabled>
-    <Spinner
-      as="span"
-      animation="border"
-      size="sm"
-      role="status"
-      aria-hidden="true"
-    />
-    <span className="visually-hidden">Loading...</span>
-  </Button>
+      <Spinner
+        as="span"
+        animation="border"
+        size="sm"
+        role="status"
+        aria-hidden="true"
+      />
+      <span className="visually-hidden">Loading...</span>
+    </Button>
   );
-  return requestInFlight? spinner : b
+  return requestInFlight ? spinner : b;
 }
-
-

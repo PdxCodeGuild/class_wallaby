@@ -15,7 +15,7 @@ function LogOutBtn() {
     history.push("/");
   }
 
-  return <button onClick={logOut}>Log out</button>;
+  return <button className="btn btn-primary" onClick={logOut}>Log out</button>;
 }
 
 export default LogOutBtn;

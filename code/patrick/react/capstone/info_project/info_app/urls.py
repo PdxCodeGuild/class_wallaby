@@ -5,17 +5,9 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import (
-    
-   
     federalregister,
     addfeedsubs,
     
-
-    
-    
-    
-    
-  
     Subscribe, 
     UserSubscriptions, 
     UpdateSnipSubs,  
@@ -33,13 +25,11 @@ urlpatterns = [
 
     #Feed user subscription updates
     path('feedsubs/<int:pk>', UserSubscriptions.as_view()),
-    path('profile/feedsubs/<int:pk>', UserSubscriptions.as_view()),
     
     #Snippet subscription
     path('snipsubs/<int:pk>', UpdateSnipSubs.as_view(), name='snipsubs'),
     path('search/snipsubs/<int:pk>', UpdateSnipSubs.as_view(), name='snipsubs'),
-    path('profile/snipsubs/<int:pk>', UpdateSnipSubs.as_view()),
-    path('profile/update/<int:pk>', SubscribersUpdate.as_view()),
+  
 
     #list of all the feeds and details
     path('feed/all/', Subscribe.as_view()),
