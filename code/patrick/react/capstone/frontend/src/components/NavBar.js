@@ -9,29 +9,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../API/context/AuthContext";
 import LogOutBtn from "../authorization/LogOutBtn";
 
-// function Navbar() {
-//   const { loggedIn } = useContext(AuthContext);
-//   console.log(loggedIn, 'navbar')
-//   return (
-//     <div>
-//       <Link to="/">Home</Link>
-//       {loggedIn === 'false' && (
-//         <>
-//           <Link to="/register">Register</Link>
-//           <Link to="/login">Log in</Link>
-//         </>
-//       )}
-//       {loggedIn === 'true' && (
-//         <>
-//           <Link to="/customer">Customers</Link>
 
-//         </>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default Navbar;
 
 function NavBar() {
   const {loggedIn} = useContext(AuthContext);

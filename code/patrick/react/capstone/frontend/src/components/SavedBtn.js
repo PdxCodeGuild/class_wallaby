@@ -3,10 +3,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 
-export default function SnipBtn(id) {
+export default function SavedBtn(id) {
+    
+      const [requestInFlight, setRequestInFlight] = useState(false);
   const [snipDetail, setSnipDetail] = useState(id.id["subscriber"]);
   const [userID, setUserID] = useState(parseInt(localStorage["UserID"]));
-  const [requestInFlight, setRequestInFlight] = useState(false);
 
   async function UpdateSubs(snipDetail) {
     const data = {
@@ -15,7 +16,7 @@ export default function SnipBtn(id) {
     console.log(data, " request details sent");
     setRequestInFlight(true);
     return axios
-      .patch(`http://localhost:8000/snipsubs/${id.id["id"]}`, data)
+      .patch(`http://localhost:8000/snipsubs/${id.id.id}`, data)
       .then((res) => {
         console.log(res.data.subscriber, " return patch request");
         setSnipDetail(snipDetail);
@@ -60,7 +61,7 @@ export default function SnipBtn(id) {
     <span className="visually-hidden">Loading...</span>
   </Button>
   );
-  return requestInFlight? spinner : b
+  return spinner 
 }
 
 

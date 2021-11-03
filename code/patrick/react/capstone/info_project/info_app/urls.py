@@ -24,17 +24,10 @@ from .views import (
     SearchResultsView,
     SubscribersUpdate,
     Search, 
+    SavedSnips
 )
 
 urlpatterns = [
-    #home path
-   
-
-    
-
-    #User snippet subscription
-    
-
     #Feed: post a new Feed user subscription or return a 404 to initiate an update.
     path('create/subscriptions', addfeedsubs, name='createsubscriptions'),
 
@@ -55,7 +48,7 @@ urlpatterns = [
     #api to get data for the federal register, filtered for SEC
     path('federalregister/', federalregister, name='federalregister'),
     
-
+    path('savedsnips/', SavedSnips.as_view()),
 
     
 

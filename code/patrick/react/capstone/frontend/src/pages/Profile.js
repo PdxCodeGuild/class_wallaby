@@ -8,11 +8,14 @@ import {
   Row,
   CardGroup,
   Image,
+  Container,
 } from "react-bootstrap";
 import "./Profile.css";
 import { useForm } from "react-hook-form";
 import { CardBody } from "reactstrap";
 import Button from "@restart/ui/esm/Button";
+import SavedSnips from "../components/SavedSnips";
+
 
 function Profile() {
   const { register, handleSubmit, reset } = useForm();
@@ -67,11 +70,12 @@ function Profile() {
   }, [reset]);
 
   return (
+    <Container>
     <CardGroup fluid className="mx-3 pt-3 ">
       <Card>
         <CardBody>
           <Row>
-            <Col s={6} md={5}>
+            <Col s={6} md={6}>
               <div className="text-center">
                 <Image
                   variant="top"
@@ -80,7 +84,6 @@ function Profile() {
                   alt="ima"
                   className="img-responsive center-block d-block mx-auto"
                   roundedCircle
-                  
                 />
                 <Button href="#" onClick={handleShow}>
                   Change Profile Image
@@ -145,16 +148,9 @@ function Profile() {
           </Button>
         </Modal.Footer>
       </Modal>
-
-      {/* <Col xs={12} md={8}> */}
-      {/* <Card className="text-start">
-            <CardBody>
-              
-            </CardBody>
-          </Card> */}
-      {/* </Col>
-      </Row> */}
     </CardGroup>
+    <SavedSnips />
+    </Container>
   );
 }
 

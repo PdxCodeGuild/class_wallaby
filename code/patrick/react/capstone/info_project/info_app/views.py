@@ -79,7 +79,12 @@ def addfeedsubs(request, format=None):
 
 
 
+class SavedSnips(generics.ListAPIView):
+    serializer_class = FeedSerializer
 
+    def get_queryset(self):
+        user = self.request.user.id
+        return Feeds.objects.filter(subscriber=user)
 
 
 
@@ -114,9 +119,6 @@ class FeedNameList(generics.ListCreateAPIView):
     serializer_class = FeedNameSerializer
 
 
-
-
-
 def federalregister(request):
     data= requests.get('http://www.federalregister.gov/api/v1/documents.rss?&amp;conditions%5Bagency_ids%5D%5B%5D=466&amp;order=newest')
     response = data.text
@@ -145,7 +147,7 @@ def federalregister(request):
             data.save()
         except:
             print('unable to copy duplicate')
-        
+        return Response ("list Refreshed")
    
 
 

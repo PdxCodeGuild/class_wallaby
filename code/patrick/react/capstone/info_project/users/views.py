@@ -31,3 +31,5 @@ class ProfileView(APIView):
 class UpdateUser(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UpdateUserSerializer
+
+
