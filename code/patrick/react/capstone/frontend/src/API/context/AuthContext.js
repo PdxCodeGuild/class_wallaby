@@ -8,23 +8,27 @@ function AuthContextProvider(props) {
 
   async function getLoggedIn() {
     await axios
-      .get("http://localhost:8000/dj-rest-auth/user/")
+      .get("http://localhost:8000/dj-rest-auth/user/") // endpoint to retrieve user details
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem("UserID", res.data.pk); // set user pk to local storage.
           setLoggedIn(true);
-        }
-         else if (res.status === 401) {
-           axios.post("http://localhost:8000/dj-rest-auth/token/refresh/").then((res) => console.log(res, "refresh request"))
+        } else if (res.status === 401) {
+          axios
+            .post("http://localhost:8000/dj-rest-auth/token/refresh/") // request returns new token upon auth
+            .then((res) => console.log(res, "refresh request"));
         }
       })
       .catch((error) => {
-        axios.post("http://localhost:8000/dj-rest-auth/token/refresh/").then((res) => console.log(res, "refresh request"))
+        axios
+          .post("http://localhost:8000/dj-rest-auth/token/refresh/") // ensure 
+          .then((res) => console.log(res, "refresh request"));
         console.log("Not Authorized");
         console.log(error);
         setLoggedIn(undefined);
       });
   }
+
   useEffect(() => {
     getLoggedIn();
   }, []);

@@ -1,23 +1,13 @@
 import { Navbar } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import React, { Fragment, useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../API/context/AuthContext";
 import LogOutBtn from "../authorization/LogOutBtn";
 import Search from "./Search";
 
-
-
-function NavBar() {
+function NavBar({setSearchData}) {
   const {loggedIn} = useContext(AuthContext);
-  const [searchData, setSearchData] = useState([])
-  console.log(searchData, " navbar searchdata")
-
-  function handleChange(newValue){
-    setSearchData(newValue)
-  }
-
-  console.log(loggedIn, "navbar");
 
   return (
     <Navbar bg="light" expand="lg">
@@ -32,11 +22,10 @@ function NavBar() {
           ) :  (
             <>
               <Link to="/profile">Profile</Link>
-              
            <LogOutBtn />
           </>
           )}
-        <Search searchData={searchData} onChange={handleChange}/>
+        <Search setSearchData={setSearchData}/>
       </Container>
     </Navbar>
   );

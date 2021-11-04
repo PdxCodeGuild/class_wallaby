@@ -12,15 +12,17 @@ import SearchResults from './pages/SearchResults';
 
 export default function Router() {
   const {loggedIn} = useContext(AuthContext);
-  
- 
+  const [searchData, setSearchData] = useState([])
+
   return (
     <BrowserRouter>
-     <NavBar />
+     <NavBar setSearchData={setSearchData}/>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/federalregister" component={FederalRegister} />
-        <Route exact path="/searchresults" component={SearchResults} />
+        <Route  exact path="/searchresults" >
+          <SearchResults searchData={searchData} />
+        </Route>
         {! loggedIn ? (
           <Route>
           <Route exact path="/login" component={Login} />
@@ -36,37 +38,3 @@ export default function Router() {
   );
 }
 
-
-// function Router() {
-//   const { loggedIn } = useContext(AuthContext);
-//   console.log(loggedIn)
-//   return (
-//     <BrowserRouter>
-//       <NavBar />
-//       <Switch>
-//         <Route exact path="/">
-//           <div>Home</div>
-//         </Route>
-//         {loggedIn === false && (
-//           <>
-//             <Route path="/register">
-//               <Register />
-//             </Route>
-//             <Route path="/login">
-//               <Login />
-//             </Route>
-//           </>
-//         )}
-//         {loggedIn === true && (
-//           <>
-//             <Route path="/customer">
-//               <Profile />
-//             </Route>
-//           </>
-//         )}
-//       </Switch>
-//     </BrowserRouter>
-//   );
-// }
-
-// export default Router;
