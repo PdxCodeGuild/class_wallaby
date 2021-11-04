@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
@@ -7,17 +7,20 @@ import FederalRegister from "./pages/FederalRegister";
 import Register from './authorization/Register';
 import AuthContext from './API/context/AuthContext';
 import Profile from './pages/Profile';
+import SearchResults from './pages/SearchResults';
 
 
 export default function Router() {
   const {loggedIn} = useContext(AuthContext);
-
+  
+ 
   return (
     <BrowserRouter>
      <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/federalregister" component={FederalRegister} />
+        <Route exact path="/searchresults" component={SearchResults} />
         {! loggedIn ? (
           <Route>
           <Route exact path="/login" component={Login} />

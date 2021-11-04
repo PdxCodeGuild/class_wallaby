@@ -43,12 +43,10 @@ urlpatterns = [
     
 
     #Feed Lists that exist
-    path('feedlist', FeedNameList.as_view()),
-    path('feedlistupdate', FeedNameUpdate.as_view()),
+    path('feedlist/', FeedNameList.as_view()),
+    path('feedlistupdate/', FeedNameUpdate.as_view()),
 
     #search
     path('search/api/', Search.as_view(), name='search_api'),
     path('search/', SearchResultsView.as_view(), name='search_results'),
-    
-   
 ]
