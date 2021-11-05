@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Stats</h1>
+
+{% for gesture in g %}
+  <div class="container">
+    {% if forloop.counter0|divisibleby:2 %}
+    <div class="row">
+
+    {% endif %}
+
+      <ul>
+        <li>name: {{gesture.name}}</li>
+        <li>times correct: {{gesture.timesCorrect}}</li>
+        <li>times incorrect: {{gesture.timesIncorrect}}</li>
+        <li>date correct: {{gesture.dateCorrect}}</li>
+        <li>img url: {{gesture.imgURL}}</li>
+        <li>bin: {{gesture.bin}}</li>
+
+      </ul>
+
+    </div>
+  </div>
+{% endfor %}
+
+
+{% endblock %}
