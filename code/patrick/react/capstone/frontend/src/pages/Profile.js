@@ -10,7 +10,7 @@ import {
   Image,
   Container,
 } from "react-bootstrap";
-import "./Profile.css";
+import "../css/Profile.css";
 import { useForm } from "react-hook-form";
 import { CardBody } from "reactstrap";
 import Button from "@restart/ui/esm/Button";
@@ -35,7 +35,6 @@ function Profile() {
     e.preventDefault();
     const form_data = new FormData();
     form_data.append("image", newImage);
-
     axios
       .patch("http://localhost:8000/imageupload/", form_data)
       .then((res) => {
@@ -47,13 +46,13 @@ function Profile() {
 
   async function updateProfile(data) {
     console.log(data, " user id");
-    // feedsubs/pk which whole feeds user is subscribed to
     await axios
       .patch("http://localhost:8000/edituser/" + userID, data)
       .then((res) => {
         console.log(res);
       });
   }
+
   useEffect(() => {
     axios.get("http://localhost:8000/dj-rest-auth/user/").then((res) => {
       setUserID(res.data.pk);
@@ -79,7 +78,6 @@ function Profile() {
               <div className="text-center">
                 <Image
                   variant="top"
-                  
                   src={image}
                   alt="ima"
                   className="img-responsive center-block d-block mx-auto"
@@ -115,11 +113,8 @@ function Profile() {
           </Row>
         </CardBody>
       </Card>
-      
-     
-     
-     
-      <Modal show={show} autoFocus="true" onHide={handleClose}>
+    
+       <Modal show={show} autoFocus="true" onHide={handleClose}> {/* modal to save new profile image */}
         <Modal.Header closeButton>
           <Modal.Title>Update Profile Image</Modal.Title>
         </Modal.Header>
@@ -153,5 +148,4 @@ function Profile() {
     </Container>
   );
 }
-
 export default Profile;

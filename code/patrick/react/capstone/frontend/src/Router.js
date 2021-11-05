@@ -29,7 +29,7 @@ export default function Router() {
           <Route exact path="/register" component={Register} />
           </Route>
           ) : (
-          <Route>
+            <Route>
           <Route exact path="/profile" component={Profile} />
           </Route>
         )}

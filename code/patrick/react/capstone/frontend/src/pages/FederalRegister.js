@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, ListGroup, ListGroupItem } from "react-bootstrap";
 import SnipBtn from "../components/SnipBtn";
 import axios from "axios";
+import "../css/FederalRegister.css";
 
 
 function FederalRegister() {
@@ -20,21 +21,21 @@ function FederalRegister() {
   }, []);
 
   const isLoaded = (
-    <Container>
-      <ListGroup>
+    <Container >
+      <ListGroup className="pt-2 ">
         {snippets.map((item) => (
-          <ListGroupItem>
-            <div key={item.id}>
+          <ListGroupItem className="body ">
+            <div key={item.id} >
               <a
                 href={item.link}
-                className="list-group-item list-group-item-action"
+                className="snippet list-group-item list-group-item-action" 
               >
-                <div className="ms-2 me-auto">
-                  <div className="fw-bold">{item.title}</div>
+                <div className=" ms-2 me-auto ">
+                  <div className=" fw-bold">{item.title}</div>
                   <div>{item.pubDate}</div>
                 </div>
               </a>
-              <SnipBtn id={item} />
+              <SnipBtn id={item} className="btn" />
             </div>
           </ListGroupItem>
         ))}
