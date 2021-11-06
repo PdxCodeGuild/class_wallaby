@@ -7,7 +7,6 @@ function AuthContextProvider(props) {
   const [loggedIn, setLoggedIn] = useState(undefined);
   const [avatarImg, setAvatarImage] = useState(undefined);
   const [profileName, setUserName] = useState(undefined);
-  console.log(profileName)
 
   async function getLoggedIn() {
     await axios
@@ -16,7 +15,6 @@ function AuthContextProvider(props) {
         if (res.status === 200) {
           localStorage.setItem("UserID", res.data.pk); // set user pk to local storage.
           setLoggedIn(true);
-          console.log(res)
           setAvatarImage(res.data.profile["image"])
           setUserName(res.data.username)
         } else if (res.status === 401) {
@@ -27,14 +25,12 @@ function AuthContextProvider(props) {
       })
       .catch((error) => {
         axios
-          .post("http://localhost:8000/dj-rest-auth/token/refresh/") // ensure 
+          .post("http://localhost:8000/dj-rest-auth/token/refresh/") // ensure refresh will take place
           .then((res) => console.log(res, "refresh request"));
-        console.log("Not Authorized");
         console.log(error);
         setLoggedIn(undefined);
       });
   }
-
   useEffect(() => {
     getLoggedIn();
   }, []);

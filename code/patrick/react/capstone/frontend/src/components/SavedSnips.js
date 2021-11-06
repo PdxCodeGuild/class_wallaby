@@ -24,10 +24,11 @@ function SavedSnips() { //
 
   const isLoaded = (
     <Container>
-      <ListGroup>
+      <ListGroup className="mx-2 pt-3 rounded">
+        
         {snippets.map((item) => (
-          <ListGroupItem>
             <div key={item.id}>
+          <ListGroupItem>
               <a
                 href={item.link}
                 as="li"
@@ -38,12 +39,12 @@ function SavedSnips() { //
                   <div>{item.pubDate}</div>
                 </div>
               </a>
-            </div>
             <div onClick={() => deleteUser(item.id)}> {/* bubbler to remove snippet from SavedSnips by filtering */}
               {" "}
               <SavedBtn id={item} />
             </div>
           </ListGroupItem>
+            </div>
         ))}
       </ListGroup>
     </Container>

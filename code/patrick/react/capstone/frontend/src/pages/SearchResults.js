@@ -11,8 +11,8 @@ return (
     <Container>
         <ListGroup>
     {searchData.map((item) => (
-      <ListGroupItem>
         <div key={item.id}>
+      <ListGroupItem>
           <a href={item.link} className="list-group-item list-group-item-action">
             <div className="ms-2 me-auto">
               <div className="fw-bold">{item.title}</div>
@@ -24,8 +24,8 @@ return (
           ) : (
         <SnipBtn  id={item}  />
         )}
-        </div>
       </ListGroupItem>
+        </div>
          ))}
     </ListGroup>
       </Container>

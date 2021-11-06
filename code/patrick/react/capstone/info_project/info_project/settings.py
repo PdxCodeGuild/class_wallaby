@@ -17,9 +17,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,10 +36,9 @@ INSTALLED_APPS = [
     'rest_framework', #auth
     'dj_rest_auth', #auth
     'rest_framework_simplejwt', #auth - enable JWT token
-    'versatileimagefield'
-     
-      
+    'versatileimagefield'    
 ]
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -55,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 SITE_ID = 1
 REST_USE_JWT = True #auth
 JWT_AUTH_COOKIE = 'info-app-auth' #auth
@@ -66,7 +63,6 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
 # CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
 LOGIN_REDIRECT_URL = '/'
-
 
 ROOT_URLCONF = 'info_project.urls'
 

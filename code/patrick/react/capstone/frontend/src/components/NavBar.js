@@ -19,7 +19,7 @@ function NavBar({ setSearchData }) {
     <Navbar bg="light" expand="md">
       <Container>
         <NavbarBrand className="navItem" href="/">
-          Home
+          Info App
         </NavbarBrand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>

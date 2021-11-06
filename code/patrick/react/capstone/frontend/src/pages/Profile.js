@@ -72,7 +72,7 @@ function Profile() {
 
   return (
     <Container>
-      <CardGroup fluid className="mx-3 pt-3 ">
+      <CardGroup className="mx-3 pt-3 ">
         <Card>
           <CardBody>
             <Row>

@@ -14,7 +14,6 @@ from .views import (
     FeedNameList, 
     FeedNameUpdate,
     SearchResultsView,
-    SubscribersUpdate,
     Search, 
     SavedSnips
 )
@@ -28,19 +27,15 @@ urlpatterns = [
     
     #Snippet subscription
     path('snipsubs/<int:pk>', UpdateSnipSubs.as_view(), name='snipsubs'),
-    path('search/snipsubs/<int:pk>', UpdateSnipSubs.as_view(), name='snipsubs'),
-  
 
     #list of all the feeds and details
     path('feed/all/', Subscribe.as_view()),
-    path('profile/feed/all/', Subscribe.as_view()),
     
     #api to get data for the federal register, filtered for SEC
     path('federalregister/', federalregister, name='federalregister'),
     
+    #snips saved by user
     path('savedsnips/', SavedSnips.as_view()),
-
-    
 
     #Feed Lists that exist
     path('feedlist/', FeedNameList.as_view()),

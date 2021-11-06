@@ -37,9 +37,6 @@ from .serializers import (
 from rest_framework.permissions import IsAuthenticated
 
 
-# Home page rendering 
-
-
 class SearchResultsView(ListView):
     model = Feeds
     queryset = Feeds.objects.order_by('-pubDate')
@@ -59,17 +56,13 @@ class Search(generics.ListCreateAPIView):
         return object_list
 
 
-
-
 @api_view(["GET", "POST"])
 @permission_classes([IsAuthenticated])
-def addfeedsubs(request, format=None):
-    
+def addfeedsubs(request, format=None): 
     if request.method == 'GET':
         user_subscriptions = UserSubscriptions.objects.all()
         serializer = UserSubscriptionsSerializer(user_subscriptions, many=True, partial=True)
         return Response (serializer.data)
-
     elif request.method == 'POST':
         serializer = UserSubscriptionsSerializer(data=request.data)      
         if serializer.is_valid():
@@ -78,14 +71,11 @@ def addfeedsubs(request, format=None):
         return Response ("user exists")
 
 
-
 class SavedSnips(generics.ListAPIView):
     serializer_class = FeedSerializer
-
     def get_queryset(self):
         user = self.request.user.id
         return Feeds.objects.filter(subscriber=user)
-
 
 
 # Listview and create feeds
@@ -102,13 +92,10 @@ class SubscribersUpdate(generics.RetrieveUpdateAPIView):
     queryset = Feeds.objects.all()
     serializer_class = FeedSerializer
 
-
-
 #Feed update subscriptions for UserSubscriptions model.
 class UserSubscriptions(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserSubscriptions.objects.all()
     serializer_class = UserSubscriptionsSerializer
-
 
 class FeedNameUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = FeedName.objects.all()
@@ -117,7 +104,6 @@ class FeedNameUpdate(generics.RetrieveUpdateDestroyAPIView):
 class FeedNameList(generics.ListCreateAPIView):
     queryset = FeedName.objects.all()
     serializer_class = FeedNameSerializer
-
 
 def federalregister(request):
     data= requests.get('http://www.federalregister.gov/api/v1/documents.rss?&amp;conditions%5Bagency_ids%5D%5B%5D=466&amp;order=newest')

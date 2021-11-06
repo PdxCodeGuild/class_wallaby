@@ -10,11 +10,8 @@ from rest_framework import generics, status
 from django.contrib.auth.models import User
 
 
-
-
 @permission_classes([IsAuthenticated])
-class ProfileView(APIView):
-    
+class ProfileView(APIView): 
     def patch(self, request):
         context={'request': request}
         profile_serializer = user_image_serializer(request.user.userprofile, data=request.data, context=context, partial=True)
@@ -24,6 +21,7 @@ class ProfileView(APIView):
         else:
             print('error', profile_serializer.errors)
             return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
+
 
 @permission_classes([IsAuthenticated])
 class UpdateUser(generics.RetrieveUpdateAPIView):
