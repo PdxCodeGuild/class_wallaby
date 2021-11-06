@@ -1,6 +1,6 @@
 import Button from "@restart/ui/esm/Button";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Spinner } from "react-bootstrap";
 
 export default function SavedBtn(id, updatePageState) {

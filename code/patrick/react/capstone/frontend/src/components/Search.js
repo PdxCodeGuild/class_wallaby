@@ -20,8 +20,8 @@ function Search({ setSearchData }) {
 
   return (
     <Form onSubmit={SearchApi}>
-      <Row className="align-items-center">
-        <Col xs="auto">
+      <Row >
+        <Col xs="auto" className="ml-5">
           <Form.Label htmlFor="inlineFormInputName" visuallyHidden>
             Search
           </Form.Label>
@@ -29,12 +29,13 @@ function Search({ setSearchData }) {
             onChange={(e) => setSearchParams(e.target.value)}
             value={searchParams}
             placeholder="Search"
+            
           />
         </Col>
-        <Col xs={"auto"}>
+        <Col  >
           <Button
             id="searchBtn"
-            className="btn btn-primary"
+            className="btn btn-outline-dark button"
             variant="primary"
             type="submit"
           >

@@ -1,8 +1,11 @@
 import { Container, ListGroup, ListGroupItem } from "react-bootstrap";
 import SnipBtn from "../components/SnipBtn";
+import AuthContext from "../API/context/AuthContext";
+import { useContext } from "react";
 
 
 function SearchResults({searchData}) {
+  const { loggedIn } = useContext(AuthContext);
 
 return (
     <Container>
@@ -16,7 +19,11 @@ return (
               <div>{item.pubDate}</div>
             </div>
           </a>
+          {!loggedIn ? (
+            <div></div>
+          ) : (
         <SnipBtn  id={item}  />
+        )}
         </div>
       </ListGroupItem>
          ))}

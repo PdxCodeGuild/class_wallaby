@@ -6,6 +6,8 @@ const AuthContext = createContext(); // set context for conditional routing, log
 function AuthContextProvider(props) {
   const [loggedIn, setLoggedIn] = useState(undefined);
   const [avatarImg, setAvatarImage] = useState(undefined);
+  const [profileName, setUserName] = useState(undefined);
+  console.log(profileName)
 
   async function getLoggedIn() {
     await axios
@@ -16,6 +18,7 @@ function AuthContextProvider(props) {
           setLoggedIn(true);
           console.log(res)
           setAvatarImage(res.data.profile["image"])
+          setUserName(res.data.username)
         } else if (res.status === 401) {
           axios
             .post("http://localhost:8000/dj-rest-auth/token/refresh/") // request returns new token upon auth
@@ -37,7 +40,7 @@ function AuthContextProvider(props) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ loggedIn, getLoggedIn, avatarImg }}>
+    <AuthContext.Provider value={{ loggedIn, getLoggedIn, avatarImg, profileName }}>
       {props.children}
     </AuthContext.Provider>
   );

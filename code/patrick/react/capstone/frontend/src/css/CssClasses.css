@@ -1,0 +1,50 @@
+.avatarImage {
+    border-radius: 50%;
+  }
+  
+  .navItem:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+    
+  }
+  
+  body {
+    background-color: rgb(48, 34, 34);
+  }
+  
+  .button {
+    transition-duration: 0.4s;
+  }
+  
+  .button:hover {
+    background-color: #4caf50; /* Green */
+    color: white;
+  }
+  
+  .title {
+    color: white;
+  }
+  
+  profileImage {
+    border-radius: 140px;
+    border: 2px solid #f1f3ed;
+    
+    width: auto;
+    height: auto;
+  }
+  
+  .body {
+    background-color: rgb(242, 242, 248);
+    border-style: hidden;
+  }
+  
+  .container {
+    border-style: hidden;
+    
+  }
+  
+  .snippet {
+    box-shadow: 5px 5px 2px grey;
+  }
+

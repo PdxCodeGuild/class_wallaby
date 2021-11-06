@@ -14,11 +14,9 @@ from django.contrib.auth.models import User
 
 @permission_classes([IsAuthenticated])
 class ProfileView(APIView):
-    # parser_classes = (MultiPartParser, FormParser)
     
     def patch(self, request):
         context={'request': request}
-        # print(request.user.profile, 'patch')
         profile_serializer = user_image_serializer(request.user.userprofile, data=request.data, context=context, partial=True)
         if profile_serializer.is_valid():
             profile_serializer.save()

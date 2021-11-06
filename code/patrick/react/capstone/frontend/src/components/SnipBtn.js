@@ -1,6 +1,6 @@
 import Button from "@restart/ui/esm/Button";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Spinner } from "react-bootstrap";
 
 export default function SnipBtn(id) {
@@ -32,7 +32,7 @@ export default function SnipBtn(id) {
     snipDetail.splice(index, 1);
 
     UpdateSubs(snipDetail);
-    console.log(snipDetail, " remove button output");
+    
   }
 
   const b = (
